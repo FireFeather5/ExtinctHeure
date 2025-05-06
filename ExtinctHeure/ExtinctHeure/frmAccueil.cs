@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace ExtinctHeure
 {
-    public partial class Form1 : Form
+    public partial class frmAccueil : Form
     {
-        public Form1()
+        public frmAccueil()
         {
             InitializeComponent();
+        }
+
+        private void frmAccueil_Load(object sender, EventArgs e)
+        {
+            MessageBox.Show("Bienvenue");
         }
     }
 }

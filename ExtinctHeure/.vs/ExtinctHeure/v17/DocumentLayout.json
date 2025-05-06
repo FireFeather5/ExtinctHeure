@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\sae24\\ExtinctHeure\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|c:\\users\\afena\\documents\\but_informatique_local\\a1\\sae24\\extinctheure\\extinctheure\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|solutionrelative:extinctheure\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|c:\\users\\afena\\documents\\but_informatique_local\\a1\\sae24\\extinctheure\\extinctheure\\frmaccueil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|solutionrelative:extinctheure\\frmaccueil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|c:\\users\\afena\\documents\\but_informatique_local\\a1\\sae24\\extinctheure\\extinctheure\\frmaccueil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|solutionrelative:extinctheure\\frmaccueil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +23,28 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\sae24\\ExtinctHeure\\ExtinctHeure\\Form1.cs",
-              "RelativeDocumentMoniker": "ExtinctHeure\\Form1.cs",
-              "ToolTip": "C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\sae24\\ExtinctHeure\\ExtinctHeure\\Form1.cs [Design]",
-              "RelativeToolTip": "ExtinctHeure\\Form1.cs [Design]",
+              "Title": "frmAccueil.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\sae24\\ExtinctHeure\\ExtinctHeure\\frmAccueil.cs",
+              "RelativeDocumentMoniker": "ExtinctHeure\\frmAccueil.cs",
+              "ToolTip": "C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\sae24\\ExtinctHeure\\ExtinctHeure\\frmAccueil.cs [Design]",
+              "RelativeToolTip": "ExtinctHeure\\frmAccueil.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-06T14:36:57.259Z",
+              "IsPinned": true,
               "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "frmAccueil.cs",
+              "DocumentMoniker": "C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\sae24\\ExtinctHeure\\ExtinctHeure\\frmAccueil.cs",
+              "RelativeDocumentMoniker": "ExtinctHeure\\frmAccueil.cs",
+              "ToolTip": "C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\sae24\\ExtinctHeure\\ExtinctHeure\\frmAccueil.cs",
+              "RelativeToolTip": "ExtinctHeure\\frmAccueil.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAIA1wBYAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T15:10:47.644Z",
+              "EditorCaption": ""
             }
           ]
         }

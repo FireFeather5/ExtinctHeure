@@ -1,0 +1,10 @@
+C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\bin\Debug\ExtinctHeure.exe.config
+C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\bin\Debug\ExtinctHeure.exe
+C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\bin\Debug\ExtinctHeure.pdb
+C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\obj\Debug\ExtinctHeure.csproj.AssemblyReference.cache
+C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\obj\Debug\ExtinctHeure.frmAccueil.resources
+C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\obj\Debug\ExtinctHeure.Properties.Resources.resources
+C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\obj\Debug\ExtinctHeure.csproj.GenerateResource.cache
+C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\obj\Debug\ExtinctHeure.csproj.CoreCompileInputs.cache
+C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\obj\Debug\ExtinctHeure.exe
+C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\obj\Debug\ExtinctHeure.pdb
