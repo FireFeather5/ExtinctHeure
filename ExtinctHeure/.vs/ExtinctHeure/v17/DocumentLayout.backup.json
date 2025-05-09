@@ -14,8 +14,7 @@
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\A21\\DIAPO_2\\Forms\\formTrombinoscope\\formTrombinoscope\\Form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|c:\\users\\afena\\documents\\but_informatique_local\\a1\\sae24\\extinctheure\\extinctheure\\connexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|solutionrelative:extinctheure\\connexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\A21\\FORMS_SQL\\WindowsFormsAppCommandes\\WindowsFormsAppCommandes\\FormCommande.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -25,7 +24,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
@@ -42,26 +41,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\A21\\DIAPO_2\\Forms\\formTrombinoscope\\formTrombinoscope\\Form1.cs",
-              "RelativeDocumentMoniker": "..\\..\\A21\\DIAPO_2\\Forms\\formTrombinoscope\\formTrombinoscope\\Form1.cs",
-              "ToolTip": "C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\A21\\DIAPO_2\\Forms\\formTrombinoscope\\formTrombinoscope\\Form1.cs",
-              "RelativeToolTip": "..\\..\\A21\\DIAPO_2\\Forms\\formTrombinoscope\\formTrombinoscope\\Form1.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T06:12:49.311Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "frmAccueil.cs",
               "DocumentMoniker": "C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\sae24\\ExtinctHeure\\ExtinctHeure\\frmAccueil.cs",
               "RelativeDocumentMoniker": "ExtinctHeure\\frmAccueil.cs",
               "ToolTip": "C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\sae24\\ExtinctHeure\\ExtinctHeure\\frmAccueil.cs",
               "RelativeToolTip": "ExtinctHeure\\frmAccueil.cs",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAswFEAAAA5AAAAAAAAAA==",
+              "ViewState": "AgIAAKEAAAAAAAAAAAAAwLUAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-06T15:10:47.644Z",
               "EditorCaption": ""
@@ -69,15 +55,26 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Connexion.cs",
-              "DocumentMoniker": "C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\sae24\\ExtinctHeure\\ExtinctHeure\\Connexion.cs",
-              "RelativeDocumentMoniker": "ExtinctHeure\\Connexion.cs",
-              "ToolTip": "C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\sae24\\ExtinctHeure\\ExtinctHeure\\Connexion.cs",
-              "RelativeToolTip": "ExtinctHeure\\Connexion.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAA0AAAAAAAAAA==",
+              "Title": "FormCommande.cs",
+              "DocumentMoniker": "C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\A21\\FORMS_SQL\\WindowsFormsAppCommandes\\WindowsFormsAppCommandes\\FormCommande.cs",
+              "RelativeDocumentMoniker": "..\\..\\A21\\FORMS_SQL\\WindowsFormsAppCommandes\\WindowsFormsAppCommandes\\FormCommande.cs",
+              "ToolTip": "C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\A21\\FORMS_SQL\\WindowsFormsAppCommandes\\WindowsFormsAppCommandes\\FormCommande.cs",
+              "RelativeToolTip": "..\\..\\A21\\FORMS_SQL\\WindowsFormsAppCommandes\\WindowsFormsAppCommandes\\FormCommande.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T05:36:48.359Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-09T12:08:33.721Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\A21\\DIAPO_2\\Forms\\formTrombinoscope\\formTrombinoscope\\Form1.cs",
+              "RelativeDocumentMoniker": "..\\..\\A21\\DIAPO_2\\Forms\\formTrombinoscope\\formTrombinoscope\\Form1.cs",
+              "ToolTip": "C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\A21\\DIAPO_2\\Forms\\formTrombinoscope\\formTrombinoscope\\Form1.cs",
+              "RelativeToolTip": "..\\..\\A21\\DIAPO_2\\Forms\\formTrombinoscope\\formTrombinoscope\\Form1.cs",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-09T06:12:49.311Z"
             }
           ]
         }

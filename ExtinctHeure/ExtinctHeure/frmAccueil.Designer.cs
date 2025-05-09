@@ -36,27 +36,30 @@
             this.grpInfosPerso = new System.Windows.Forms.GroupBox();
             this.grpChoix = new System.Windows.Forms.GroupBox();
             this.lblRetour = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pcbIconeRetour = new System.Windows.Forms.PictureBox();
             this.lblNouveau = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pcbIconeNouveau = new System.Windows.Forms.PictureBox();
             this.cboPompiers = new System.Windows.Forms.ComboBox();
             this.cboCasernes = new System.Windows.Forms.ComboBox();
             this.lblPompier = new System.Windows.Forms.Label();
             this.lblCaserne = new System.Windows.Forms.Label();
             this.pcbIcone = new System.Windows.Forms.PictureBox();
+            this.pcbIconeQuit = new System.Windows.Forms.PictureBox();
             this.grpGestion.SuspendLayout();
             this.grpInfosPompier.SuspendLayout();
+            this.grpInfosPerso.SuspendLayout();
             this.grpChoix.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbIconeRetour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbIconeNouveau)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbIcone)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbIconeQuit)).BeginInit();
             this.SuspendLayout();
             // 
             // grpGestion
             // 
             this.grpGestion.Controls.Add(this.grpInfosPompier);
             this.grpGestion.Controls.Add(this.grpChoix);
-            this.grpGestion.Location = new System.Drawing.Point(110, 117);
+            this.grpGestion.Location = new System.Drawing.Point(310, 117);
             this.grpGestion.Margin = new System.Windows.Forms.Padding(4);
             this.grpGestion.Name = "grpGestion";
             this.grpGestion.Padding = new System.Windows.Forms.Padding(4);
@@ -66,18 +69,19 @@
             // 
             // grpInfosPompier
             // 
-            this.grpInfosPompier.Controls.Add(this.btnPlusInfos);
             this.grpInfosPompier.Controls.Add(this.grpInfosCarriere);
             this.grpInfosPompier.Controls.Add(this.grpInfosPerso);
+            this.grpInfosPompier.Cursor = System.Windows.Forms.Cursors.Default;
             this.grpInfosPompier.Location = new System.Drawing.Point(446, 35);
             this.grpInfosPompier.Name = "grpInfosPompier";
             this.grpInfosPompier.Size = new System.Drawing.Size(759, 701);
             this.grpInfosPompier.TabIndex = 1;
             this.grpInfosPompier.TabStop = false;
+            this.grpInfosPompier.Visible = false;
             // 
             // btnPlusInfos
             // 
-            this.btnPlusInfos.Location = new System.Drawing.Point(536, 417);
+            this.btnPlusInfos.Location = new System.Drawing.Point(513, 377);
             this.btnPlusInfos.Name = "btnPlusInfos";
             this.btnPlusInfos.Size = new System.Drawing.Size(197, 30);
             this.btnPlusInfos.TabIndex = 4;
@@ -96,6 +100,7 @@
             // 
             // grpInfosPerso
             // 
+            this.grpInfosPerso.Controls.Add(this.btnPlusInfos);
             this.grpInfosPerso.Location = new System.Drawing.Point(23, 14);
             this.grpInfosPerso.Name = "grpInfosPerso";
             this.grpInfosPerso.Size = new System.Drawing.Size(710, 407);
@@ -105,9 +110,9 @@
             // grpChoix
             // 
             this.grpChoix.Controls.Add(this.lblRetour);
-            this.grpChoix.Controls.Add(this.pictureBox2);
+            this.grpChoix.Controls.Add(this.pcbIconeRetour);
             this.grpChoix.Controls.Add(this.lblNouveau);
-            this.grpChoix.Controls.Add(this.pictureBox1);
+            this.grpChoix.Controls.Add(this.pcbIconeNouveau);
             this.grpChoix.Controls.Add(this.cboPompiers);
             this.grpChoix.Controls.Add(this.cboCasernes);
             this.grpChoix.Controls.Add(this.lblPompier);
@@ -126,45 +131,45 @@
             this.lblRetour.AutoSize = true;
             this.lblRetour.Location = new System.Drawing.Point(74, 613);
             this.lblRetour.Name = "lblRetour";
-            this.lblRetour.Size = new System.Drawing.Size(64, 21);
+            this.lblRetour.Size = new System.Drawing.Size(52, 17);
             this.lblRetour.TabIndex = 1;
             this.lblRetour.Text = "Retour";
             // 
-            // pictureBox2
+            // pcbIconeRetour
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(11, 598);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
+            this.pcbIconeRetour.Image = ((System.Drawing.Image)(resources.GetObject("pcbIconeRetour.Image")));
+            this.pcbIconeRetour.Location = new System.Drawing.Point(11, 598);
+            this.pcbIconeRetour.Name = "pcbIconeRetour";
+            this.pcbIconeRetour.Size = new System.Drawing.Size(50, 50);
+            this.pcbIconeRetour.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pcbIconeRetour.TabIndex = 5;
+            this.pcbIconeRetour.TabStop = false;
             // 
             // lblNouveau
             // 
             this.lblNouveau.AutoSize = true;
             this.lblNouveau.Location = new System.Drawing.Point(74, 406);
             this.lblNouveau.Name = "lblNouveau";
-            this.lblNouveau.Size = new System.Drawing.Size(82, 21);
+            this.lblNouveau.Size = new System.Drawing.Size(65, 17);
             this.lblNouveau.TabIndex = 1;
             this.lblNouveau.Text = "Nouveau";
             // 
-            // pictureBox1
+            // pcbIconeNouveau
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(11, 391);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
+            this.pcbIconeNouveau.Image = ((System.Drawing.Image)(resources.GetObject("pcbIconeNouveau.Image")));
+            this.pcbIconeNouveau.Location = new System.Drawing.Point(11, 391);
+            this.pcbIconeNouveau.Name = "pcbIconeNouveau";
+            this.pcbIconeNouveau.Size = new System.Drawing.Size(50, 50);
+            this.pcbIconeNouveau.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pcbIconeNouveau.TabIndex = 4;
+            this.pcbIconeNouveau.TabStop = false;
             // 
             // cboPompiers
             // 
             this.cboPompiers.FormattingEnabled = true;
             this.cboPompiers.Location = new System.Drawing.Point(11, 255);
             this.cboPompiers.Name = "cboPompiers";
-            this.cboPompiers.Size = new System.Drawing.Size(237, 29);
+            this.cboPompiers.Size = new System.Drawing.Size(237, 24);
             this.cboPompiers.TabIndex = 3;
             this.cboPompiers.SelectedValueChanged += new System.EventHandler(this.cboPompiers_SelectedValueChanged);
             // 
@@ -173,15 +178,16 @@
             this.cboCasernes.FormattingEnabled = true;
             this.cboCasernes.Location = new System.Drawing.Point(11, 165);
             this.cboCasernes.Name = "cboCasernes";
-            this.cboCasernes.Size = new System.Drawing.Size(237, 29);
+            this.cboCasernes.Size = new System.Drawing.Size(237, 24);
             this.cboCasernes.TabIndex = 1;
+            this.cboCasernes.SelectedValueChanged += new System.EventHandler(this.cboCasernes_SelectedValueChanged);
             // 
             // lblPompier
             // 
             this.lblPompier.AutoSize = true;
             this.lblPompier.Location = new System.Drawing.Point(7, 216);
             this.lblPompier.Name = "lblPompier";
-            this.lblPompier.Size = new System.Drawing.Size(231, 21);
+            this.lblPompier.Size = new System.Drawing.Size(189, 17);
             this.lblPompier.TabIndex = 2;
             this.lblPompier.Text = "Veuillez choisir un pompier :";
             // 
@@ -190,7 +196,7 @@
             this.lblCaserne.AutoSize = true;
             this.lblCaserne.Location = new System.Drawing.Point(7, 125);
             this.lblCaserne.Name = "lblCaserne";
-            this.lblCaserne.Size = new System.Drawing.Size(241, 21);
+            this.lblCaserne.Size = new System.Drawing.Size(197, 17);
             this.lblCaserne.TabIndex = 1;
             this.lblCaserne.Text = "Veuillez choisir une caserne :";
             // 
@@ -204,11 +210,23 @@
             this.pcbIcone.TabIndex = 1;
             this.pcbIcone.TabStop = false;
             // 
+            // pcbIconeQuit
+            // 
+            this.pcbIconeQuit.Image = ((System.Drawing.Image)(resources.GetObject("pcbIconeQuit.Image")));
+            this.pcbIconeQuit.Location = new System.Drawing.Point(15, 880);
+            this.pcbIconeQuit.Name = "pcbIconeQuit";
+            this.pcbIconeQuit.Size = new System.Drawing.Size(100, 100);
+            this.pcbIconeQuit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pcbIconeQuit.TabIndex = 2;
+            this.pcbIconeQuit.TabStop = false;
+            this.pcbIconeQuit.Click += new System.EventHandler(this.pcbIconeQuit_Click);
+            // 
             // frmAccueil
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1443, 873);
+            this.ClientSize = new System.Drawing.Size(1443, 951);
+            this.Controls.Add(this.pcbIconeQuit);
             this.Controls.Add(this.grpGestion);
             this.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -220,11 +238,13 @@
             this.Load += new System.EventHandler(this.frmAccueil_Load);
             this.grpGestion.ResumeLayout(false);
             this.grpInfosPompier.ResumeLayout(false);
+            this.grpInfosPerso.ResumeLayout(false);
             this.grpChoix.ResumeLayout(false);
             this.grpChoix.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbIconeRetour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbIconeNouveau)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbIcone)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbIconeQuit)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -239,13 +259,14 @@
         private System.Windows.Forms.Label lblPompier;
         private System.Windows.Forms.Label lblCaserne;
         private System.Windows.Forms.Label lblNouveau;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pcbIconeNouveau;
         private System.Windows.Forms.Label lblRetour;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pcbIconeRetour;
         private System.Windows.Forms.GroupBox grpInfosPompier;
         private System.Windows.Forms.GroupBox grpInfosCarriere;
         private System.Windows.Forms.GroupBox grpInfosPerso;
         private System.Windows.Forms.Button btnPlusInfos;
+        private System.Windows.Forms.PictureBox pcbIconeQuit;
     }
 }
 
