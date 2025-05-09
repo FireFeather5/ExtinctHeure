@@ -8,3 +8,6 @@ C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeu
 C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\obj\Debug\ExtinctHeure.csproj.CoreCompileInputs.cache
 C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\obj\Debug\ExtinctHeure.exe
 C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\obj\Debug\ExtinctHeure.pdb
+C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\bin\Debug\System.Data.SQLite.dll
+C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\bin\Debug\System.Data.SQLite.xml
+C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\obj\Debug\ExtinctH.6CAEC7F4.Up2Date
