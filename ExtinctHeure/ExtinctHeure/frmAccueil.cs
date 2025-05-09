@@ -22,67 +22,43 @@ namespace ExtinctHeure
 
         private void frmAccueil_Load(object sender, EventArgs e)
         {
+            lblNumeroEngin.Text = "";
+            lblReceptionEngin.Text = "";
+
             SQLiteConnection cx = Connexion.Connec;
-        }
-    }
-
-    public class MesDatas
-    {
-        private static DataSet dsGlobal = new DataSet();
-
-        public static DataSet DsGlobal { get { return MesDatas.dsGlobal; } }
-
-    }
-
-    internal class Connexion
-    {
-        // Objet Connection
-        private static SQLiteConnection connec;
-
-        // Constructeur privé pour empêcher l'instanciation directe depuis l'extérieur.
-        private Connexion() { }
-
-        // Méthode publique pour obtenir l'instance unique de la classe.
-        public static SQLiteConnection Connec
-        {
-            get
+            DataTable SchemaTable = cx.GetSchema("Tables");
+            foreach (DataRow row in SchemaTable.Rows)
             {
-                // Si l'instance n'existe pas, on la crée.
-                if (connec == null)
-                {
-                    try
-                    {
-                        // Chaîne de connexion à votre base de données
-                        string chaine = @"Data Source = ..\..\..\SDIS67.db";
-                        connec = new SQLiteConnection(chaine);
-                        connec.Open();
-                    }
-                    catch (SQLiteException err)
-                    {
-                        Console.WriteLine($"Erreur lors de l'ouverture de la connexion : {err.Message}");
-                    }
-                }
-                //Dans tous les cas on renvoie la connexion
-                return connec;
-            }
-        }
+                string requete = "SELECT * FROM " + row["TABLE_NAME"].ToString();
+                SQLiteCommand cmd = new SQLiteCommand(requete, cx);
+                SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
 
-        // Méthode pour fermer proprement la connexion
-        public static void FermerConnexion()
-        {
-            if (connec != null)
-            {
-                try
-                {
-                    connec.Close();
-                    connec.Dispose();
-                    connec = null; // Libération pour permettre une nouvelle connexion propre
-                }
-                catch (Exception err)
-                {
-                    Console.WriteLine($"Erreur lors de la fermeture de la connexion : {err.Message}");
-                }
+                da.Fill(monDS, row["TABLE_NAME"].ToString());
             }
+            Connexion.FermerConnexion();
+
+            BindingSource bsCaserne = new BindingSource();
+            bsCaserne.DataSource = monDS.Tables["Caserne"];
+            cboCaserne.DataSource = bsCaserne;
+            cboCaserne.DisplayMember = "nom";
+
+            monDS.Relations.Add("Caserne_Engin", monDS.Tables["Caserne"].Columns["id"], monDS.Tables["Engin"].Columns["idCaserne"]);
+
+            BindingSource bsEngin = new BindingSource();
+            bsEngin.DataSource = bsCaserne;
+            bsEngin.DataMember = "Caserne_Engin";
+
+            bnNavigation.BindingSource = bsEngin;
+
+            DataColumn idcomplet = new DataColumn("idComplet", typeof(string), "idCaserne + '-' + codeTypeEngin + '-' + numero");
+            monDS.Tables["Engin"].Columns.Add(idcomplet);
+
+            lblNumeroEngin.DataBindings.Add("Text", bsEngin, "idComplet");
+            lblReceptionEngin.DataBindings.Add("Text", bsEngin, "dateReception");
+            chkMission.DataBindings.Add("Checked", bsEngin, "enMission");
+            chkReparation.DataBindings.Add("Checked", bsEngin, "enPanne");
+
+            pcbEngin.Image = Image.FromFile(@"..\..\..\..\Ressources\ImagesCamions\" + "" + ".jpg");
         }
     }
 }
