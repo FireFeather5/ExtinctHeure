@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ExtinctHeure.Properties;
 using Pinpon;
 
 namespace ExtinctHeure
@@ -43,6 +44,8 @@ namespace ExtinctHeure
             if (cboCasernes.Text != String.Empty)
             {
                 ChargercboPompiers();
+                lblPompier.Visible = true;
+                cboPompiers.Visible = true;
             }
         }
 
@@ -83,7 +86,7 @@ namespace ExtinctHeure
             string req = $@"SELECT P.nom, P.prenom FROM Pompier P
                             JOIN Affectation A ON P.matricule = A.matriculePompier
                             JOIN Caserne C ON A.idCaserne = C.id
-                            WHERE C.nom = '{cboCasernes.Text}'";
+                            WHERE lower(C.nom) = '{cboCasernes.Text.ToLower()}'";
 
             SQLiteCommand cmd = new SQLiteCommand(req, this.cx);
             SQLiteDataReader pompierReader = cmd.ExecuteReader();
@@ -92,7 +95,7 @@ namespace ExtinctHeure
             {
                 string nom = pompierReader.GetString(0);
                 string prenom = pompierReader.GetString(1);
-                this.cboPompiers.Items.Add(nom + ' ' + prenom);
+                this.cboPompiers.Items.Add(nom + ',' + prenom);
             }
         }
 
@@ -102,44 +105,18 @@ namespace ExtinctHeure
             grpInfosPerso.Controls.Clear();
             grpInfosCarriere.Controls.Clear();
 
-            // On a besoin d'initialiser ces variables dans le cas où un nom de famille comporte un espace'
-            string finalNom = "";
-            string prenom = "";
-            string req = "";
+            string nom = cboPompiers.Text.Split(',')[0].ToLower();
+            string prenom = cboPompiers.Text.Split(',')[1].ToLower();
 
-            string[] text = cboPompiers.Text.Split(' ');
-            MessageBox.Show(text.Length.ToString());
-
-            if (text.Length > 2)
-            {
-                for(int i = 0; i < text.Length - 1; i++)
-                {
-                    if (i == text.Length - 2)
-                    {
-                        finalNom += text[i].ToLower();
-                    }
-                    else
-                    {
-                        finalNom += text[i].ToLower() + " ";
-                    }
-                }
-            }
-            else
-            {
-                finalNom = text[0].ToLower();
-            }
-            
-            prenom = cboPompiers.Text.Split(' ')[text.Length-1].ToLower();
-
-            req = $"SELECT * FROM Pompier WHERE lower(nom) = '{finalNom}' AND lower(prenom) = '{prenom}'";
+            string req = $"SELECT p.*, g.libelle FROM Pompier p JOIN Grade g on p.codeGrade = g.code WHERE lower(nom) = '{nom}' AND lower(prenom) = '{prenom}'";
             MessageBox.Show(req);
             SQLiteCommand cmd = new SQLiteCommand(req, this.cx);
             SQLiteDataReader pompierReader = cmd.ExecuteReader();
 
             // Tableau des nom des colonnes
             string[] labels = {"Matricule", "Nom", "Prénom", "Sexe", "Date de Naissance",
-                               "Type", "Portable", "Bip", "En Mission",
-                               "En Conge", "Code grade", "Date d'embauche"};
+                               "Type", "Portable", "Bip", "En mission",
+                               "En conge", "Code grade", "Date d'embauche", "Libelle"};
 
             while (pompierReader.Read())
             {
@@ -149,7 +126,7 @@ namespace ExtinctHeure
 
                     string valeur = "";
                     
-                    // Pour les colonnes ayant pour valeur des entiers
+                    // Pour les colonnes de la DB ayant pour valeur des entiers
                     if (pompierReader.GetFieldType(i).ToString() == "System.Int64")
                     {
                         // On personnalise ici l'affichage des valeurs pour éviter simplement des nombres
@@ -190,8 +167,9 @@ namespace ExtinctHeure
                         lbl.Text = $"{labels[i]} : " + valeur;
 
                         // On créer une nouvelle font pour mettre le matricule en valeur
-                        lbl.Font = new Font("Arial", 20, FontStyle.Regular, GraphicsUnit.Pixel);
-                        lbl.Top = 35;
+                        lbl.Font = new Font("Arial", 26, FontStyle.Bold, GraphicsUnit.Pixel);
+                        lbl.Height = 40;
+                        lbl.Top = 25;
                         lbl.Left = 250;
                         lbl.Width = lbl.Text.Length * 15;
                         
@@ -200,22 +178,22 @@ namespace ExtinctHeure
                     else if (labels[i] == "Type")
                     {
                         // Ce label également isolé
-                        lbl.Text = $"{labels[i]} : ";
-                        lbl.Top = i * 35;
+                        lbl.Text = "Pompier : ";
+                        lbl.Top = i * 33;
                         lbl.Left = 10;
-                        lbl.Width = lbl.Text.Length * 7;
+                        lbl.Width = lbl.Text.Length * 9;
                         lbl.Height = 20;
 
                         // On gère le placement des deux RadioButton
                         RadioButton rdbProfessionel = new RadioButton();
-                        rdbProfessionel.Top = (i * 35) - 2;
-                        rdbProfessionel.Left = 75;
+                        rdbProfessionel.Top = (i * 33) - 2;
+                        rdbProfessionel.Left = 105;
                         rdbProfessionel.Text = "Professionel";
                         rdbProfessionel.Width = rdbProfessionel.Text.Length * 10;
                         
                         RadioButton rdbVolontaire = new RadioButton();
-                        rdbVolontaire.Top = (i * 35) - 2;
-                        rdbVolontaire.Left = 210;
+                        rdbVolontaire.Top = (i * 33) - 2;
+                        rdbVolontaire.Left = 235;
                         rdbVolontaire.Text = "Volontaire";
 
                         if (pompierReader.GetString(i) == "p")
@@ -232,29 +210,40 @@ namespace ExtinctHeure
                         grpInfosPerso.Controls.Add(rdbProfessionel);
                         grpInfosPerso.Controls.Add(rdbVolontaire);
                     }
+                    else if (labels[i] == "Code grade")
+                    {
+                        // Affichage de l'image associé au grade
+                        PictureBox grade = new PictureBox();
+                        grade.SizeMode = PictureBoxSizeMode.Zoom;
+                        grade.Top = 100;
+                        grade.Left = 550;
+                        grade.Size = new Size(100, 100);
+                        grade.ImageLocation = $@"..\..\..\..\Ressources\images\ImagesGrades\{valeur}.png";
+                        grade.Load();
+                        grpInfosPerso.Controls.Add(grade);
+                    }
+                    else if (labels[i] == "Libelle")
+                    {
+                        lbl.Font = new Font("Arial", 15, FontStyle.Bold, GraphicsUnit.Pixel);
+                        lbl.Text = $"Grade : \n{valeur}";
+                        lbl.TextAlign = ContentAlignment.MiddleCenter;
+                        lbl.Top = 50;
+                        lbl.Left = 520;
+                        lbl.Width = 160;
+                        lbl.Height = 40;
+
+                        grpInfosPerso.Controls.Add(lbl);
+                    }
                     else
                     {
                         lbl.Text = $"{labels[i]} : " + valeur;
                         grpInfosPerso.Controls.Add(lbl);
-                        lbl.Top = i * 35;
+                        lbl.Top = i * 33;
                         lbl.Left = 10;
                         lbl.Width = lbl.Text.Length * 12;
                         lbl.Height = 20;
                     }
                 }
-            }
-        }
-
-        private void pcbIconeQuit_Click(object sender, EventArgs e)
-        {
-            if (cx.State == ConnectionState.Open)
-            {
-                cx.Close();
-                Application.Exit();
-            }
-            else
-            {
-                Application.Exit();
             }
         }
     }
