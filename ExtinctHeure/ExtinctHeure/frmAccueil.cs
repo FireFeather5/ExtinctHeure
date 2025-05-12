@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ExtinctHeure
 {
-    public partial class Form1 : Form
+    public partial class frmAccueil : Form
     {
-        public Form1()
+        public frmAccueil()
         {
             InitializeComponent();
         }
