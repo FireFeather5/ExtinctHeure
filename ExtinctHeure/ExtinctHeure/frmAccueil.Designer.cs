@@ -96,7 +96,7 @@
             this.bindingNavigatorMoveNextItem,
             this.bindingNavigatorMoveLastItem,
             this.bindingNavigatorSeparator2});
-            this.bnNavigation.Location = new System.Drawing.Point(855, 569);
+            this.bnNavigation.Location = new System.Drawing.Point(781, 622);
             this.bnNavigation.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bnNavigation.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.bnNavigation.MoveNextItem = this.bindingNavigatorMoveNextItem;
@@ -179,7 +179,8 @@
             // 
             this.chkReparation.AutoSize = true;
             this.chkReparation.Enabled = false;
-            this.chkReparation.Location = new System.Drawing.Point(422, 580);
+            this.chkReparation.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkReparation.Location = new System.Drawing.Point(433, 467);
             this.chkReparation.Name = "chkReparation";
             this.chkReparation.Size = new System.Drawing.Size(15, 14);
             this.chkReparation.TabIndex = 5;
@@ -189,7 +190,8 @@
             // 
             this.chkMission.AutoSize = true;
             this.chkMission.Enabled = false;
-            this.chkMission.Location = new System.Drawing.Point(422, 546);
+            this.chkMission.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkMission.Location = new System.Drawing.Point(433, 434);
             this.chkMission.Name = "chkMission";
             this.chkMission.Size = new System.Drawing.Size(15, 14);
             this.chkMission.TabIndex = 5;
@@ -198,7 +200,7 @@
             // pcbEngin
             // 
             this.pcbEngin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pcbEngin.Location = new System.Drawing.Point(704, 66);
+            this.pcbEngin.Location = new System.Drawing.Point(630, 119);
             this.pcbEngin.Name = "pcbEngin";
             this.pcbEngin.Size = new System.Drawing.Size(500, 500);
             this.pcbEngin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -208,18 +210,20 @@
             // lblReparation
             // 
             this.lblReparation.AutoSize = true;
-            this.lblReparation.Location = new System.Drawing.Point(147, 577);
+            this.lblReparation.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblReparation.Location = new System.Drawing.Point(158, 461);
             this.lblReparation.Name = "lblReparation";
-            this.lblReparation.Size = new System.Drawing.Size(103, 17);
+            this.lblReparation.Size = new System.Drawing.Size(148, 24);
             this.lblReparation.TabIndex = 3;
             this.lblReparation.Text = "En réparation :";
             // 
             // lblMission
             // 
             this.lblMission.AutoSize = true;
-            this.lblMission.Location = new System.Drawing.Point(147, 544);
+            this.lblMission.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMission.Location = new System.Drawing.Point(158, 428);
             this.lblMission.Name = "lblMission";
-            this.lblMission.Size = new System.Drawing.Size(89, 17);
+            this.lblMission.Size = new System.Drawing.Size(124, 24);
             this.lblMission.TabIndex = 3;
             this.lblMission.Text = "En mission :";
             // 
@@ -227,7 +231,7 @@
             // 
             this.lblReception.AutoSize = true;
             this.lblReception.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblReception.Location = new System.Drawing.Point(145, 139);
+            this.lblReception.Location = new System.Drawing.Point(157, 324);
             this.lblReception.Name = "lblReception";
             this.lblReception.Size = new System.Drawing.Size(189, 24);
             this.lblReception.TabIndex = 3;
@@ -237,7 +241,7 @@
             // 
             this.lblReceptionEngin.AutoSize = true;
             this.lblReceptionEngin.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblReceptionEngin.Location = new System.Drawing.Point(422, 139);
+            this.lblReceptionEngin.Location = new System.Drawing.Point(434, 324);
             this.lblReceptionEngin.Name = "lblReceptionEngin";
             this.lblReceptionEngin.Size = new System.Drawing.Size(18, 24);
             this.lblReceptionEngin.TabIndex = 3;
@@ -247,7 +251,7 @@
             // 
             this.lblNumeroEngin.AutoSize = true;
             this.lblNumeroEngin.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumeroEngin.Location = new System.Drawing.Point(422, 106);
+            this.lblNumeroEngin.Location = new System.Drawing.Point(434, 291);
             this.lblNumeroEngin.Name = "lblNumeroEngin";
             this.lblNumeroEngin.Size = new System.Drawing.Size(18, 24);
             this.lblNumeroEngin.TabIndex = 3;
@@ -257,7 +261,7 @@
             // 
             this.lblNumero.AutoSize = true;
             this.lblNumero.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumero.Location = new System.Drawing.Point(146, 106);
+            this.lblNumero.Location = new System.Drawing.Point(158, 291);
             this.lblNumero.Name = "lblNumero";
             this.lblNumero.Size = new System.Drawing.Size(94, 24);
             this.lblNumero.TabIndex = 3;

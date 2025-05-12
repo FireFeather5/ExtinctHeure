@@ -38,8 +38,7 @@
               "RelativeToolTip": "ExtinctHeure\\Connexion.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAQwB8AAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T06:55:58.051Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-09T06:55:58.051Z"
             },
             {
               "$type": "Document",
@@ -59,9 +58,9 @@
               "Title": "frmAccueil.cs",
               "DocumentMoniker": "C:\\Users\\abelx\\Documents\\SAE24\\ExtinctHeure\\ExtinctHeure\\frmAccueil.cs",
               "RelativeDocumentMoniker": "ExtinctHeure\\frmAccueil.cs",
-              "ToolTip": "C:\\Users\\abelx\\Documents\\SAE24\\ExtinctHeure\\ExtinctHeure\\frmAccueil.cs*",
-              "RelativeToolTip": "ExtinctHeure\\frmAccueil.cs*",
-              "ViewState": "AgIAABsAAAAAAAAAAAAowD8AAABJAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\abelx\\Documents\\SAE24\\ExtinctHeure\\ExtinctHeure\\frmAccueil.cs",
+              "RelativeToolTip": "ExtinctHeure\\frmAccueil.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAowEMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-06T15:11:43.375Z",
               "EditorCaption": ""
@@ -72,8 +71,8 @@
               "Title": "frmAccueil.cs [Design]",
               "DocumentMoniker": "C:\\Users\\abelx\\Documents\\SAE24\\ExtinctHeure\\ExtinctHeure\\frmAccueil.cs",
               "RelativeDocumentMoniker": "ExtinctHeure\\frmAccueil.cs",
-              "ToolTip": "C:\\Users\\abelx\\Documents\\SAE24\\ExtinctHeure\\ExtinctHeure\\frmAccueil.cs [Design]*",
-              "RelativeToolTip": "ExtinctHeure\\frmAccueil.cs [Design]*",
+              "ToolTip": "C:\\Users\\abelx\\Documents\\SAE24\\ExtinctHeure\\ExtinctHeure\\frmAccueil.cs [Design]",
+              "RelativeToolTip": "ExtinctHeure\\frmAccueil.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-06T14:36:57.259Z",
               "EditorCaption": " [Design]"
