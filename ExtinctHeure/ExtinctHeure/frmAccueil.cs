@@ -121,18 +121,99 @@ namespace ExtinctHeure
 
         private void btnConstEqu_Click(object sender, EventArgs e)
         {
-            ArrayList Vehicule = new ArrayList();
-            ArrayList NbrVehi = new ArrayList();
+            ArrayList Vehicule = new ArrayList();   //type de vehicule necessaire
+            ArrayList NbrVehi = new ArrayList();    //nombre de chaque type de vehicule nece
+            ArrayList validate = new ArrayList();   //est ce que le vehicule est disponible
+
+            dgvEng.Columns.Clear();
+
+            dgvEng.Columns.Add("Engin", "Engin");
+            dgvEng.Columns.Add("Nombre", "Nombre");
 
             int idSin = cboNatSin.SelectedIndex + 1;
             foreach (DataRow dr in MesDatas.DsGlobal.Tables["Necessiter"].Rows)
             {
                 if (Convert.ToInt32(dr["idNatureSinistre"]) == idSin)
                 {
-
                     Vehicule.Add(dr["codeTypeEngin"]);
+                    NbrVehi.Add(dr["nombre"]);
+
+                    //dgvEng.Rows.Add(dr["codeTypeEngin"], dr["nombre"]);
                 }
             }
+
+
+            // pour chaque rows -> teste si caserne ok
+            // si ok -> prend array list vehicule
+            // si vehicule et codetype pareils
+            // si le vehicule est libre
+            // mettre dans une nouvelle array list finale
+            // qui contient tout ce qui est valide
+            // et apres je sais pas
+
+            foreach (DataRow dr in MesDatas.DsGlobal.Tables["Engin"].Rows)
+            {
+                if (Convert.ToInt32(dr["idCaserne"]) == cboCasMob.SelectedIndex + 1)      //si la caserne est la meme
+                {
+                    
+                    int truuuc = 0;         //sert d'indexeur à NbrVehi
+                    foreach(string Eng in Vehicule)     //pour chaque engin necessaire
+                    {
+                        int truc = 0;      //sert à tester si il y a le bon nombre d'engin disponibles
+                        bool val = false;   //est ce que le vehicule est disponible
+
+                        if (Eng == dr["codeTypeEngin"].ToString())      //si le code engin est le meme
+                        {
+
+
+                            if ((Convert.ToInt32(dr["enMission"]) == 0) && (Convert.ToInt32(dr["enPanne"]) == 0))       //si l'engin est disponible
+                            {
+                                truc++;         //incrémente si disponible
+                            }
+
+                            
+                        }
+
+                        if (truc >= Convert.ToInt32(NbrVehi[truuuc]))       //si il y a assez d'engins dispo
+                        {
+                            val = true;     //on valide l'engin
+
+                            MessageBox.Show("valide");
+                        }
+                        else
+                        {
+                            // le false fait planter le programme il faut trouver un moyen de
+                            // dire si un engin est valide ou non sans que cela affecte le type
+                            // d'engin complet
+                            MessageBox.Show("non valide");
+                        }
+
+                        truuuc++;       //incrémentation de l'indexeur
+                    }
+                }
+            }
+
+            bool te = true;         // sert à vérifier que tous les engins sont dispo en nbr suffisant
+            foreach (bool val in validate)
+            {
+                if (!val)           // si engin pas validé
+                {
+                    te = false;
+                    MessageBox.Show("certains Engins ne sont pas disponibles, choisissez une autre caserne.");
+                }
+            }
+
+            if (te)         //si tout est bon
+            {
+                int z = 0;      // indexeur
+                foreach (string vehi in Vehicule)       //ajout dans le dgv
+                {
+                    dgvEng.Rows.Add(vehi, NbrVehi[z]);
+                    z++;
+                }
+            }
+
+
         }
 
         //Pour trouver le bon véhicule à emmener :
