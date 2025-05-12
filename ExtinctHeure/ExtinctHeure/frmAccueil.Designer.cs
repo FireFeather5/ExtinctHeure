@@ -31,6 +31,16 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAccueil));
             this.grpEngins = new System.Windows.Forms.GroupBox();
+            this.bnNavigation = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
+            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.chkReparation = new System.Windows.Forms.CheckBox();
             this.chkMission = new System.Windows.Forms.CheckBox();
             this.pcbEngin = new System.Windows.Forms.PictureBox();
@@ -42,20 +52,10 @@
             this.lblNumero = new System.Windows.Forms.Label();
             this.cboCaserne = new System.Windows.Forms.ComboBox();
             this.lblCaserne = new System.Windows.Forms.Label();
-            this.bnNavigation = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.grpEngins.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbEngin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bnNavigation)).BeginInit();
             this.bnNavigation.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbEngin)).BeginInit();
             this.SuspendLayout();
             // 
             // grpEngins
@@ -74,112 +74,10 @@
             this.grpEngins.Controls.Add(this.lblCaserne);
             this.grpEngins.Location = new System.Drawing.Point(12, 100);
             this.grpEngins.Name = "grpEngins";
-            this.grpEngins.Size = new System.Drawing.Size(1043, 476);
+            this.grpEngins.Size = new System.Drawing.Size(1210, 749);
             this.grpEngins.TabIndex = 0;
             this.grpEngins.TabStop = false;
             this.grpEngins.Text = "Liste des engins";
-            // 
-            // chkReparation
-            // 
-            this.chkReparation.AutoSize = true;
-            this.chkReparation.Enabled = false;
-            this.chkReparation.Location = new System.Drawing.Point(282, 317);
-            this.chkReparation.Name = "chkReparation";
-            this.chkReparation.Size = new System.Drawing.Size(15, 14);
-            this.chkReparation.TabIndex = 5;
-            this.chkReparation.UseVisualStyleBackColor = true;
-            // 
-            // chkMission
-            // 
-            this.chkMission.AutoSize = true;
-            this.chkMission.Enabled = false;
-            this.chkMission.Location = new System.Drawing.Point(282, 283);
-            this.chkMission.Name = "chkMission";
-            this.chkMission.Size = new System.Drawing.Size(15, 14);
-            this.chkMission.TabIndex = 5;
-            this.chkMission.UseVisualStyleBackColor = true;
-            // 
-            // pcbEngin
-            // 
-            this.pcbEngin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pcbEngin.Location = new System.Drawing.Point(733, 94);
-            this.pcbEngin.Name = "pcbEngin";
-            this.pcbEngin.Size = new System.Drawing.Size(250, 250);
-            this.pcbEngin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pcbEngin.TabIndex = 4;
-            this.pcbEngin.TabStop = false;
-            // 
-            // lblReparation
-            // 
-            this.lblReparation.AutoSize = true;
-            this.lblReparation.Location = new System.Drawing.Point(146, 314);
-            this.lblReparation.Name = "lblReparation";
-            this.lblReparation.Size = new System.Drawing.Size(103, 17);
-            this.lblReparation.TabIndex = 3;
-            this.lblReparation.Text = "En réparation :";
-            // 
-            // lblMission
-            // 
-            this.lblMission.AutoSize = true;
-            this.lblMission.Location = new System.Drawing.Point(146, 281);
-            this.lblMission.Name = "lblMission";
-            this.lblMission.Size = new System.Drawing.Size(89, 17);
-            this.lblMission.TabIndex = 3;
-            this.lblMission.Text = "En mission :";
-            // 
-            // lblReception
-            // 
-            this.lblReception.AutoSize = true;
-            this.lblReception.Location = new System.Drawing.Point(146, 139);
-            this.lblReception.Name = "lblReception";
-            this.lblReception.Size = new System.Drawing.Size(131, 17);
-            this.lblReception.TabIndex = 3;
-            this.lblReception.Text = "Date de récéption :";
-            // 
-            // lblReceptionEngin
-            // 
-            this.lblReceptionEngin.AutoSize = true;
-            this.lblReceptionEngin.Location = new System.Drawing.Point(283, 139);
-            this.lblReceptionEngin.Name = "lblReceptionEngin";
-            this.lblReceptionEngin.Size = new System.Drawing.Size(14, 17);
-            this.lblReceptionEngin.TabIndex = 3;
-            this.lblReceptionEngin.Text = "*";
-            // 
-            // lblNumeroEngin
-            // 
-            this.lblNumeroEngin.AutoSize = true;
-            this.lblNumeroEngin.Location = new System.Drawing.Point(283, 106);
-            this.lblNumeroEngin.Name = "lblNumeroEngin";
-            this.lblNumeroEngin.Size = new System.Drawing.Size(14, 17);
-            this.lblNumeroEngin.TabIndex = 3;
-            this.lblNumeroEngin.Text = "*";
-            // 
-            // lblNumero
-            // 
-            this.lblNumero.AutoSize = true;
-            this.lblNumero.Location = new System.Drawing.Point(146, 106);
-            this.lblNumero.Name = "lblNumero";
-            this.lblNumero.Size = new System.Drawing.Size(68, 17);
-            this.lblNumero.TabIndex = 3;
-            this.lblNumero.Text = "Numero :";
-            // 
-            // cboCaserne
-            // 
-            this.cboCaserne.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCaserne.FormattingEnabled = true;
-            this.cboCaserne.Location = new System.Drawing.Point(485, 18);
-            this.cboCaserne.Name = "cboCaserne";
-            this.cboCaserne.Size = new System.Drawing.Size(239, 25);
-            this.cboCaserne.TabIndex = 2;
-            // 
-            // lblCaserne
-            // 
-            this.lblCaserne.AutoSize = true;
-            this.lblCaserne.Location = new System.Drawing.Point(334, 21);
-            this.lblCaserne.Name = "lblCaserne";
-            this.lblCaserne.Size = new System.Drawing.Size(145, 17);
-            this.lblCaserne.TabIndex = 1;
-            this.lblCaserne.Text = "Choix de la caserne :";
             // 
             // bnNavigation
             // 
@@ -198,7 +96,7 @@
             this.bindingNavigatorMoveNextItem,
             this.bindingNavigatorMoveLastItem,
             this.bindingNavigatorSeparator2});
-            this.bnNavigation.Location = new System.Drawing.Point(417, 448);
+            this.bnNavigation.Location = new System.Drawing.Point(855, 569);
             this.bnNavigation.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bnNavigation.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.bnNavigation.MoveNextItem = this.bindingNavigatorMoveNextItem;
@@ -208,6 +106,13 @@
             this.bnNavigation.Size = new System.Drawing.Size(202, 25);
             this.bnNavigation.TabIndex = 6;
             this.bnNavigation.Text = "bindingNavigator1";
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(37, 22);
+            this.bindingNavigatorCountItem.Text = "de {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Nombre total d\'éléments";
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -242,16 +147,9 @@
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Position actuelle";
             // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(37, 22);
-            this.bindingNavigatorCountItem.Text = "de {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Nombre total d\'éléments";
-            // 
             // bindingNavigatorSeparator1
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
             this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // bindingNavigatorMoveNextItem
@@ -274,26 +172,133 @@
             // 
             // bindingNavigatorSeparator2
             // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // chkReparation
+            // 
+            this.chkReparation.AutoSize = true;
+            this.chkReparation.Enabled = false;
+            this.chkReparation.Location = new System.Drawing.Point(422, 580);
+            this.chkReparation.Name = "chkReparation";
+            this.chkReparation.Size = new System.Drawing.Size(15, 14);
+            this.chkReparation.TabIndex = 5;
+            this.chkReparation.UseVisualStyleBackColor = true;
+            // 
+            // chkMission
+            // 
+            this.chkMission.AutoSize = true;
+            this.chkMission.Enabled = false;
+            this.chkMission.Location = new System.Drawing.Point(422, 546);
+            this.chkMission.Name = "chkMission";
+            this.chkMission.Size = new System.Drawing.Size(15, 14);
+            this.chkMission.TabIndex = 5;
+            this.chkMission.UseVisualStyleBackColor = true;
+            // 
+            // pcbEngin
+            // 
+            this.pcbEngin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pcbEngin.Location = new System.Drawing.Point(704, 66);
+            this.pcbEngin.Name = "pcbEngin";
+            this.pcbEngin.Size = new System.Drawing.Size(500, 500);
+            this.pcbEngin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pcbEngin.TabIndex = 4;
+            this.pcbEngin.TabStop = false;
+            // 
+            // lblReparation
+            // 
+            this.lblReparation.AutoSize = true;
+            this.lblReparation.Location = new System.Drawing.Point(147, 577);
+            this.lblReparation.Name = "lblReparation";
+            this.lblReparation.Size = new System.Drawing.Size(103, 17);
+            this.lblReparation.TabIndex = 3;
+            this.lblReparation.Text = "En réparation :";
+            // 
+            // lblMission
+            // 
+            this.lblMission.AutoSize = true;
+            this.lblMission.Location = new System.Drawing.Point(147, 544);
+            this.lblMission.Name = "lblMission";
+            this.lblMission.Size = new System.Drawing.Size(89, 17);
+            this.lblMission.TabIndex = 3;
+            this.lblMission.Text = "En mission :";
+            // 
+            // lblReception
+            // 
+            this.lblReception.AutoSize = true;
+            this.lblReception.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblReception.Location = new System.Drawing.Point(145, 139);
+            this.lblReception.Name = "lblReception";
+            this.lblReception.Size = new System.Drawing.Size(189, 24);
+            this.lblReception.TabIndex = 3;
+            this.lblReception.Text = "Date de récéption :";
+            // 
+            // lblReceptionEngin
+            // 
+            this.lblReceptionEngin.AutoSize = true;
+            this.lblReceptionEngin.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblReceptionEngin.Location = new System.Drawing.Point(422, 139);
+            this.lblReceptionEngin.Name = "lblReceptionEngin";
+            this.lblReceptionEngin.Size = new System.Drawing.Size(18, 24);
+            this.lblReceptionEngin.TabIndex = 3;
+            this.lblReceptionEngin.Text = "*";
+            // 
+            // lblNumeroEngin
+            // 
+            this.lblNumeroEngin.AutoSize = true;
+            this.lblNumeroEngin.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumeroEngin.Location = new System.Drawing.Point(422, 106);
+            this.lblNumeroEngin.Name = "lblNumeroEngin";
+            this.lblNumeroEngin.Size = new System.Drawing.Size(18, 24);
+            this.lblNumeroEngin.TabIndex = 3;
+            this.lblNumeroEngin.Text = "*";
+            // 
+            // lblNumero
+            // 
+            this.lblNumero.AutoSize = true;
+            this.lblNumero.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumero.Location = new System.Drawing.Point(146, 106);
+            this.lblNumero.Name = "lblNumero";
+            this.lblNumero.Size = new System.Drawing.Size(94, 24);
+            this.lblNumero.TabIndex = 3;
+            this.lblNumero.Text = "Numero :";
+            // 
+            // cboCaserne
+            // 
+            this.cboCaserne.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCaserne.FormattingEnabled = true;
+            this.cboCaserne.Location = new System.Drawing.Point(597, 18);
+            this.cboCaserne.Name = "cboCaserne";
+            this.cboCaserne.Size = new System.Drawing.Size(239, 25);
+            this.cboCaserne.TabIndex = 2;
+            // 
+            // lblCaserne
+            // 
+            this.lblCaserne.AutoSize = true;
+            this.lblCaserne.Location = new System.Drawing.Point(446, 21);
+            this.lblCaserne.Name = "lblCaserne";
+            this.lblCaserne.Size = new System.Drawing.Size(145, 17);
+            this.lblCaserne.TabIndex = 1;
+            this.lblCaserne.Text = "Choix de la caserne :";
             // 
             // frmAccueil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 588);
+            this.ClientSize = new System.Drawing.Size(1234, 861);
             this.Controls.Add(this.grpEngins);
             this.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmAccueil";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Extinct\'Heure";
             this.Load += new System.EventHandler(this.frmAccueil_Load);
             this.grpEngins.ResumeLayout(false);
             this.grpEngins.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbEngin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bnNavigation)).EndInit();
             this.bnNavigation.ResumeLayout(false);
             this.bnNavigation.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbEngin)).EndInit();
             this.ResumeLayout(false);
 
         }

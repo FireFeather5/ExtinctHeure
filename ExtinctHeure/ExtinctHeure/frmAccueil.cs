@@ -53,12 +53,15 @@ namespace ExtinctHeure
             DataColumn idcomplet = new DataColumn("idComplet", typeof(string), "idCaserne + '-' + codeTypeEngin + '-' + numero");
             monDS.Tables["Engin"].Columns.Add(idcomplet);
 
+            DataColumn image = new DataColumn("image", typeof(string), "'..\\..\\..\\..\\Ressources\\ImagesCamions\\' + codeTypeEngin + '.jpg'");
+            monDS.Tables["Engin"].Columns.Add(image);
+
+
             lblNumeroEngin.DataBindings.Add("Text", bsEngin, "idComplet");
             lblReceptionEngin.DataBindings.Add("Text", bsEngin, "dateReception");
             chkMission.DataBindings.Add("Checked", bsEngin, "enMission");
             chkReparation.DataBindings.Add("Checked", bsEngin, "enPanne");
-
-            pcbEngin.Image = Image.FromFile(@"..\..\..\..\Ressources\ImagesCamions\" + "" + ".jpg");
+            pcbEngin.DataBindings.Add("ImageLocation", bsEngin, "image");
         }
     }
 }
