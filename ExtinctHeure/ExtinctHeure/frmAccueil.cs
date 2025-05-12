@@ -60,6 +60,7 @@ namespace ExtinctHeure
             }
         }
 
+        // Boutons pour afficher des informations supplémentaires sur la carrière du pompier
         private void btnPlusInfos_Click(object sender, EventArgs e)
         {
             btnPlusInfos.Visible = false;
@@ -73,6 +74,7 @@ namespace ExtinctHeure
             string req = "SELECT nom FROM Caserne";
             SQLiteCommand cmd = new SQLiteCommand(req, this.cx);
             SQLiteDataReader caserneReader = cmd.ExecuteReader();
+
             while (caserneReader.Read())
             {
                 string nomCaserne = caserneReader.GetString(0);
@@ -91,6 +93,7 @@ namespace ExtinctHeure
             SQLiteCommand cmd = new SQLiteCommand(req, this.cx);
             SQLiteDataReader pompierReader = cmd.ExecuteReader();
 
+            // Ajout des pompiers à la combobox
             while (pompierReader.Read())
             {
                 string nom = pompierReader.GetString(0);
@@ -220,10 +223,12 @@ namespace ExtinctHeure
                         grade.Size = new Size(100, 100);
                         grade.ImageLocation = $@"..\..\..\..\Ressources\images\ImagesGrades\{valeur}.png";
                         grade.Load();
+
                         grpInfosPerso.Controls.Add(grade);
                     }
                     else if (labels[i] == "Libelle")
                     {
+                        // Affichage du texte du grade
                         lbl.Font = new Font("Arial", 15, FontStyle.Bold, GraphicsUnit.Pixel);
                         lbl.Text = $"Grade : \n{valeur}";
                         lbl.TextAlign = ContentAlignment.MiddleCenter;
@@ -236,6 +241,7 @@ namespace ExtinctHeure
                     }
                     else
                     {
+                        // Sinon on gère le label de la même manière
                         lbl.Text = $"{labels[i]} : " + valeur;
                         grpInfosPerso.Controls.Add(lbl);
                         lbl.Top = i * 33;
@@ -244,6 +250,20 @@ namespace ExtinctHeure
                         lbl.Height = 20;
                     }
                 }
+            }
+        }
+
+        // On créer un nouveau formulaire pour l'ajout d'un pompier dans la DB
+        private void pcbIconeNouveau_Click(object sender, EventArgs e)
+        {
+            frmAjoutPompier ajouterPimpon = new frmAjoutPompier();
+            if (ajouterPimpon.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("Changements confirmés");
+            }
+            else
+            {
+                MessageBox.Show("Changements abandonnés");
             }
         }
     }
