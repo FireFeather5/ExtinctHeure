@@ -110,20 +110,22 @@ namespace ExtinctHeure
 
             string nom = cboPompiers.Text.Split(',')[0].ToLower();
             string prenom = cboPompiers.Text.Split(',')[1].ToLower();
-
-            string req = $"SELECT p.*, g.libelle FROM Pompier p JOIN Grade g on p.codeGrade = g.code WHERE lower(nom) = '{nom}' AND lower(prenom) = '{prenom}'";
-            MessageBox.Show(req);
+            
+            // Requêtes pour remplir les infos persos sans la carrière
+            string req = $@"SELECT p.matricule, p.nom, p.prenom, p.sexe, p.dateNaissance, p.type, p.dateEmbauche, p.codeGrade, g.libelle
+                            FROM Pompier p JOIN Grade g on p.codeGrade = g.code
+                            WHERE lower(nom) = '{nom}' AND lower(prenom) = '{prenom}'";
             SQLiteCommand cmd = new SQLiteCommand(req, this.cx);
             SQLiteDataReader pompierReader = cmd.ExecuteReader();
 
             // Tableau des nom des colonnes
-            string[] labels = {"Matricule", "Nom", "Prénom", "Sexe", "Date de Naissance",
-                               "Type", "Portable", "Bip", "En mission",
-                               "En conge", "Code grade", "Date d'embauche", "Libelle"};
+            string[] labelsPerso = {"Matricule", "Nom", "Prénom", "Sexe", "Date de Naissance",
+                                    "Type", "Date d'embauche", "Code grade", "Libelle"};
 
             while (pompierReader.Read())
             {
-                for (int i = 0; i < pompierReader.FieldCount; i++)
+                // Pour uniquement les infos persos
+                for (int i = 0; i < labelsPerso.Length; i++)
                 {
                     Label lbl = new Label();
 
@@ -164,10 +166,10 @@ namespace ExtinctHeure
                     }
                     
                     // Si on souhaite personnaliser les affichages des labels il faut les gérer individuellments
-                    if (labels[i] == "Matricule")
+                    if (labelsPerso[i] == "Matricule")
                     {
                         // Ce label est isolé, il faut le gérer séparement des autres
-                        lbl.Text = $"{labels[i]} : " + valeur;
+                        lbl.Text = $"{labelsPerso[i]} : " + valeur;
 
                         // On créer une nouvelle font pour mettre le matricule en valeur
                         lbl.Font = new Font("Arial", 26, FontStyle.Bold, GraphicsUnit.Pixel);
@@ -178,7 +180,7 @@ namespace ExtinctHeure
                         
                         grpInfosPerso.Controls.Add(lbl);
                     }
-                    else if (labels[i] == "Type")
+                    else if (labelsPerso[i] == "Type")
                     {
                         // Ce label également isolé
                         lbl.Text = "Pompier : ";
@@ -213,7 +215,7 @@ namespace ExtinctHeure
                         grpInfosPerso.Controls.Add(rdbProfessionel);
                         grpInfosPerso.Controls.Add(rdbVolontaire);
                     }
-                    else if (labels[i] == "Code grade")
+                    else if (labelsPerso[i] == "Code grade")
                     {
                         // Affichage de l'image associé au grade
                         PictureBox grade = new PictureBox();
@@ -226,7 +228,7 @@ namespace ExtinctHeure
 
                         grpInfosPerso.Controls.Add(grade);
                     }
-                    else if (labels[i] == "Libelle")
+                    else if (labelsPerso[i] == "Libelle")
                     {
                         // Affichage du texte du grade
                         lbl.Font = new Font("Arial", 15, FontStyle.Bold, GraphicsUnit.Pixel);
@@ -242,12 +244,88 @@ namespace ExtinctHeure
                     else
                     {
                         // Sinon on gère le label de la même manière
-                        lbl.Text = $"{labels[i]} : " + valeur;
+                        lbl.Text = $"{labelsPerso[i]} : " + valeur;
                         grpInfosPerso.Controls.Add(lbl);
                         lbl.Top = i * 33;
                         lbl.Left = 10;
                         lbl.Width = lbl.Text.Length * 12;
                         lbl.Height = 20;
+                    }
+                }
+            }
+            // Ajout de la groupebox pour les infos de la carrière
+            GroupBox grpCarriere = new GroupBox();
+            grpCarriere.Text = "Carrière";
+            grpCarriere.Size = new Size(720, 125);
+            grpCarriere.Location = new Point(10, 260);
+
+            grpInfosPerso.Controls.Add(grpCarriere);
+
+            // Requête pour les infos relative à la carrière du pompier
+            req = $@"SELECT p.codeGrade, g.libelle, p.portable, p.bip
+                            FROM Pompier p JOIN Grade g on p.codeGrade = g.code
+                            WHERE lower(p.nom) = '{nom}' AND lower(p.prenom) = '{prenom}'";
+            cmd = new SQLiteCommand(req, this.cx);
+            pompierReader = cmd.ExecuteReader();
+
+            //Tableau avec le noms des colonnes
+            string[] labelsCarriere = {"Code grade", "Libelle", "Portable", "Bip"};
+
+            while (pompierReader.Read())
+            {
+                for (int i = 0; i < labelsCarriere.Length; i++)
+                {
+                    Label lbl = new Label();
+
+                    // On gère les labels de la même manière que pour les infos persos
+                    string valeur = "";
+
+                    try
+                    {
+                        valeur = pompierReader.GetString(i);
+                    }
+                    catch (Exception)
+                    {
+                        valeur = pompierReader.GetInt32(i).ToString();
+                    }
+
+                    if (labelsCarriere[i] == "Code grade")
+                    {
+                        // On personnalise l'affichage du code grade
+                        lbl.Text = $"{labelsCarriere[i]} : ";
+                        grpCarriere.Controls.Add(lbl);
+
+                        lbl.Top = 25;
+                        lbl.Left = 10;
+                        lbl.Width = 100;
+                        lbl.Height = 20;
+                        
+                        // On affiche le code dans une textBox à coté du libellé du grade
+                        TextBox txtCode = new TextBox();
+                        txtCode.Text = valeur;
+                        txtCode.Top = 23;
+                        txtCode.Left = 115;
+                        txtCode.Size = new Size(75, 30);
+                        grpCarriere.Controls.Add(txtCode);
+                    }
+                    else if (labelsCarriere[i] == "Libelle")
+                    {
+                        // On personnalise l'affichage du libelle
+                        lbl.Text = $"{labelsCarriere[i]} : " + valeur;
+                        grpCarriere.Controls.Add(lbl);
+
+                        lbl.Top = 25;
+                        lbl.Left = 220;
+                        lbl.Width = 200;
+                        lbl.Height = 20;
+                    }
+                    else{
+                        lbl.Text = $"{labelsCarriere[i]} : " + valeur;
+                        grpCarriere.Controls.Add(lbl);
+
+                        lbl.Top = i * 35;
+                        lbl.Left = 10;
+                        lbl.Size = new Size(200, 20);
                     }
                 }
             }
