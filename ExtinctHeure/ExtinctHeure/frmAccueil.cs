@@ -19,6 +19,7 @@ namespace ExtinctHeure
         }
 
         DataSet monDS = MesDatas.DsGlobal;
+        BindingSource bsEngin = new BindingSource();
 
         private void frmAccueil_Load(object sender, EventArgs e)
         {
@@ -44,11 +45,9 @@ namespace ExtinctHeure
 
             monDS.Relations.Add("Caserne_Engin", monDS.Tables["Caserne"].Columns["id"], monDS.Tables["Engin"].Columns["idCaserne"]);
 
-            BindingSource bsEngin = new BindingSource();
             bsEngin.DataSource = bsCaserne;
             bsEngin.DataMember = "Caserne_Engin";
 
-            bnNavigation.BindingSource = bsEngin;
 
             DataColumn idcomplet = new DataColumn("idComplet", typeof(string), "idCaserne + '-' + codeTypeEngin + '-' + numero");
             monDS.Tables["Engin"].Columns.Add(idcomplet);
@@ -62,6 +61,29 @@ namespace ExtinctHeure
             chkMission.DataBindings.Add("Checked", bsEngin, "enMission");
             chkReparation.DataBindings.Add("Checked", bsEngin, "enPanne");
             pcbEngin.DataBindings.Add("ImageLocation", bsEngin, "image");
+        }
+
+        private void changerEngin(object sender, EventArgs e)
+        {
+            if (sender is Button)
+            {
+                Button btn = (Button)sender;
+                switch (btn.Name)
+                {
+                    case "btnPrevious":
+                        bsEngin.MovePrevious();
+                        break;
+                    case "btnNext":
+                        bsEngin.MoveNext();
+                        break;
+                    case "btnFirst":
+                        bsEngin.MoveFirst();
+                        break;
+                    case "btnLast":
+                        bsEngin.MoveLast();
+                        break;
+                }
+            }
         }
     }
 }
