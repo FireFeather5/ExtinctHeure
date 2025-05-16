@@ -121,107 +121,107 @@ namespace ExtinctHeure
 
         private void btnConstEqu_Click(object sender, EventArgs e)
         {
-            ArrayList Vehicule = new ArrayList();   //type de vehicule necessaire
-            ArrayList NbrVehi = new ArrayList();    //nombre de chaque type de vehicule nece
-            ArrayList validate = new ArrayList();   //est ce que le vehicule est disponible
+            ArrayList listeCodeNece = new ArrayList();      //type de vehicule necessaire (un seul par type)
+            ArrayList listeNbrNece = new ArrayList();       //nombre de vehicule necessaire de chaque type
+            int verifValide = 0;            //vérifie que la liste finale contient tous les numéros des engins
 
             dgvEng.Columns.Clear();
 
             dgvEng.Columns.Add("Engin", "Engin");
             dgvEng.Columns.Add("Nombre", "Nombre");
 
-            int idSin = cboNatSin.SelectedIndex + 1;
+            int idSin = cboNatSin.SelectedIndex + 1;        //id du sinistre
             foreach (DataRow dr in MesDatas.DsGlobal.Tables["Necessiter"].Rows)
             {
                 if (Convert.ToInt32(dr["idNatureSinistre"]) == idSin)
                 {
-                    Vehicule.Add(dr["codeTypeEngin"]);
-                    NbrVehi.Add(dr["nombre"]);
-
-                    //dgvEng.Rows.Add(dr["codeTypeEngin"], dr["nombre"]);
+                    listeCodeNece.Add(dr["codeTypeEngin"]);
+                    listeNbrNece.Add(dr["nombre"]);
+                    verifValide += Convert.ToInt32(dr["nombre"]);
                 }
             }
 
-
-            // pour chaque rows -> teste si caserne ok
-            // si ok -> prend array list vehicule
-            // si vehicule et codetype pareils
-            // si le vehicule est libre
-            // mettre dans une nouvelle array list finale
-            // qui contient tout ce qui est valide
-            // et apres je sais pas
+            ArrayList listeCodeVehi = new ArrayList();    //contient tous les véhicules nécésaires, dans tout leurs exemplaires disponibles
+            ArrayList listeNumeroVehi = new ArrayList();         //contient les numéros de tous les véhicules de listeCodeVehi
 
             foreach (DataRow dr in MesDatas.DsGlobal.Tables["Engin"].Rows)
             {
-                if (Convert.ToInt32(dr["idCaserne"]) == cboCasMob.SelectedIndex + 1)      //si la caserne est la meme
+                if (Convert.ToInt32(dr["idCaserne"]) == cboCasMob.SelectedIndex + 1)      //si la caserne de l'engin est celle demandée
                 {
-                    
-                    int truuuc = 0;         //sert d'indexeur à NbrVehi
-                    foreach(string Eng in Vehicule)     //pour chaque engin necessaire
+                    foreach(string Eng in listeCodeNece)     //pour chaque engin nécéssaire
                     {
-                        int truc = 0;      //sert à tester si il y a le bon nombre d'engin disponibles
-                        bool val = false;   //est ce que le vehicule est disponible
-
-                        if (Eng == dr["codeTypeEngin"].ToString())      //si le code engin est le meme
+                        if (Eng == dr["codeTypeEngin"].ToString())      //si le code engin est le meme que celui nécéssaire
                         {
-
-
                             if ((Convert.ToInt32(dr["enMission"]) == 0) && (Convert.ToInt32(dr["enPanne"]) == 0))       //si l'engin est disponible
                             {
-                                truc++;         //incrémente si disponible
+                                listeNumeroVehi.Add(dr["numero"]);
+                                listeCodeVehi.Add(Eng);
                             }
-
-                            
                         }
-
-                        if (truc >= Convert.ToInt32(NbrVehi[truuuc]))       //si il y a assez d'engins dispo
-                        {
-                            val = true;     //on valide l'engin
-
-                            MessageBox.Show("valide");
-                        }
-                        else
-                        {
-                            // le false fait planter le programme il faut trouver un moyen de
-                            // dire si un engin est valide ou non sans que cela affecte le type
-                            // d'engin complet
-                            MessageBox.Show("non valide");
-                        }
-
-                        truuuc++;       //incrémentation de l'indexeur
                     }
                 }
             }
 
-            bool te = true;         // sert à vérifier que tous les engins sont dispo en nbr suffisant
-            foreach (bool val in validate)
+            int indexAjoutNumero;           //index de la valeur de listeNumeroVehi à ajouter dans listeNumVehiFinale
+            int verifNbrVehi;               //assure qu'il n'y a pas plus d'engin du meme type que nécéssaire
+            int indexNbrVehi = 0;           //assure qu'il n'y a pas plus d'engin du meme type que nécéssaire en vérifiant dans listeNrbVehi
+            ArrayList listeNumVehiFinale = new ArrayList();         //arraylist finale contenant uniquement les numéros des engins qui sont utilisés pour la mission
+
+            foreach (string eeng in listeCodeNece)
             {
-                if (!val)           // si engin pas validé
+                indexAjoutNumero = 0;
+                verifNbrVehi = 0;
+                foreach (string eng in listeCodeVehi)
                 {
-                    te = false;
-                    MessageBox.Show("certains Engins ne sont pas disponibles, choisissez une autre caserne.");
+                    if ((eeng == eng) && (verifNbrVehi < Convert.ToInt32(listeNbrNece[indexNbrVehi])))
+                    {
+                        listeNumVehiFinale.Add(listeNumeroVehi[indexAjoutNumero]);
+                        verifNbrVehi++;
+                    }
+                    indexAjoutNumero++;
+                }
+                indexNbrVehi++;
+            }
+
+            bool validate = true;
+            if (listeNumVehiFinale.Count != verifValide)        //si il n'y a pas le meme nombre, alors certains vehicules ne sont pas disponibles en assez grand nombre
+            {
+                validate = false;
+            }
+
+            ArrayList listeCodeVehiPrPomp = new ArrayList();
+
+            // sert à vérifier que tous les engins sont disponibles en nombre suffisant
+            if (!validate)           // si l'un des engins n'est pas disponible
+            {
+                MessageBox.Show("certains Engins ne sont pas disponibles, choisissez une autre caserne.");
+            }
+            else
+            {
+                int indexNumVehi = 0;       //index du numéro de l'engin à ajouter
+                int indexNbrVehic = 0;      //index du nombre d'engin du meme type (vehi n'en contient qu'un, il faut donc une boucle)
+                foreach (string vehi in listeCodeNece)
+                {
+                    if (Convert.ToInt32(listeNbrNece[indexNbrVehic]) > 1)
+                    {
+                        dgvEng.Rows.Add(vehi, listeNumVehiFinale[indexNumVehi]);      //ajout de l'engin dans le dgv
+                        indexNumVehi++;
+                        listeCodeVehiPrPomp.Add(vehi);
+                    }
+                    dgvEng.Rows.Add(vehi, listeNumVehiFinale[indexNumVehi]);      //ajout de l'engin dans le dgv
+                    indexNumVehi++;
+                    indexNbrVehic++;
                 }
             }
 
-            if (te)         //si tout est bon
+
+
+            foreach(string vehi in listeCodeVehiPrPomp)
             {
-                int z = 0;      // indexeur
-                foreach (string vehi in Vehicule)       //ajout dans le dgv
-                {
-                    dgvEng.Rows.Add(vehi, NbrVehi[z]);
-                    z++;
-                }
+                //tt sur les pompiers   (matricule nom prenom habilitation) G la flemme
             }
 
 
         }
-
-        //Pour trouver le bon véhicule à emmener :
-        //cboTag id (nature sinistre) -> codetype et nombre (necessiter)
-        //-> id caserne, numero, enmission et enpanne (engin)
-
-
-
-
     }
 }

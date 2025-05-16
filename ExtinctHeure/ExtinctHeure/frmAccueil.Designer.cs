@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblEngMob = new System.Windows.Forms.Label();
+            this.dgvPomp = new System.Windows.Forms.DataGridView();
+            this.dgvEng = new System.Windows.Forms.DataGridView();
             this.lblDteMis = new System.Windows.Forms.Label();
             this.lblNumMis = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -48,17 +53,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.dgvEng = new System.Windows.Forms.DataGridView();
-            this.dgvPomp = new System.Windows.Forms.DataGridView();
-            this.lblEngMob = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPomp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEng)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEng)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPomp)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -68,12 +68,63 @@
             this.groupBox1.Controls.Add(this.lblNumMis);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Location = new System.Drawing.Point(12, 163);
+            this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1208, 678);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label6);
+            this.groupBox4.Controls.Add(this.lblEngMob);
+            this.groupBox4.Controls.Add(this.dgvPomp);
+            this.groupBox4.Controls.Add(this.dgvEng);
+            this.groupBox4.Location = new System.Drawing.Point(30, 427);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(1151, 245);
+            this.groupBox4.TabIndex = 5;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Mobilisation des engins et des pompiers";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(797, 24);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(136, 22);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Pompiers mobilisés";
+            // 
+            // lblEngMob
+            // 
+            this.lblEngMob.AutoSize = true;
+            this.lblEngMob.Location = new System.Drawing.Point(227, 24);
+            this.lblEngMob.Name = "lblEngMob";
+            this.lblEngMob.Size = new System.Drawing.Size(118, 22);
+            this.lblEngMob.TabIndex = 2;
+            this.lblEngMob.Text = "Engins mobilisés";
+            // 
+            // dgvPomp
+            // 
+            this.dgvPomp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPomp.Location = new System.Drawing.Point(668, 60);
+            this.dgvPomp.Name = "dgvPomp";
+            this.dgvPomp.RowHeadersWidth = 51;
+            this.dgvPomp.RowTemplate.Height = 24;
+            this.dgvPomp.Size = new System.Drawing.Size(387, 170);
+            this.dgvPomp.TabIndex = 1;
+            // 
+            // dgvEng
+            // 
+            this.dgvEng.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEng.Location = new System.Drawing.Point(102, 60);
+            this.dgvEng.Name = "dgvEng";
+            this.dgvEng.RowHeadersWidth = 51;
+            this.dgvEng.RowTemplate.Height = 24;
+            this.dgvEng.Size = new System.Drawing.Size(387, 170);
+            this.dgvEng.TabIndex = 0;
             // 
             // lblDteMis
             // 
@@ -256,57 +307,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Motif";
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.label6);
-            this.groupBox4.Controls.Add(this.lblEngMob);
-            this.groupBox4.Controls.Add(this.dgvPomp);
-            this.groupBox4.Controls.Add(this.dgvEng);
-            this.groupBox4.Location = new System.Drawing.Point(30, 427);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1151, 245);
-            this.groupBox4.TabIndex = 5;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Mobilisation des engins et des pompiers";
-            // 
-            // dgvEng
-            // 
-            this.dgvEng.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEng.Location = new System.Drawing.Point(102, 60);
-            this.dgvEng.Name = "dgvEng";
-            this.dgvEng.RowHeadersWidth = 51;
-            this.dgvEng.RowTemplate.Height = 24;
-            this.dgvEng.Size = new System.Drawing.Size(387, 170);
-            this.dgvEng.TabIndex = 0;
-            // 
-            // dgvPomp
-            // 
-            this.dgvPomp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPomp.Location = new System.Drawing.Point(668, 60);
-            this.dgvPomp.Name = "dgvPomp";
-            this.dgvPomp.RowHeadersWidth = 51;
-            this.dgvPomp.RowTemplate.Height = 24;
-            this.dgvPomp.Size = new System.Drawing.Size(387, 170);
-            this.dgvPomp.TabIndex = 1;
-            // 
-            // lblEngMob
-            // 
-            this.lblEngMob.AutoSize = true;
-            this.lblEngMob.Location = new System.Drawing.Point(227, 24);
-            this.lblEngMob.Name = "lblEngMob";
-            this.lblEngMob.Size = new System.Drawing.Size(118, 22);
-            this.lblEngMob.TabIndex = 2;
-            this.lblEngMob.Text = "Engins mobilisés";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(797, 24);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(136, 22);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Pompiers mobilisés";
-            // 
             // frmAccueil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 22F);
@@ -320,14 +320,14 @@
             this.Load += new System.EventHandler(this.frmAccueil_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPomp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEng)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEng)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPomp)).EndInit();
             this.ResumeLayout(false);
 
         }
