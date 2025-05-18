@@ -43,6 +43,9 @@
             this.grpInfosPompier = new System.Windows.Forms.GroupBox();
             this.btnPlusInfos = new System.Windows.Forms.Button();
             this.grpInfosCarriere = new System.Windows.Forms.GroupBox();
+            this.btnAnnuler = new System.Windows.Forms.Button();
+            this.ckbConge = new System.Windows.Forms.CheckBox();
+            this.lblAncienneCasernes = new System.Windows.Forms.Label();
             this.lstHabilitations = new System.Windows.Forms.ListView();
             this.btnConfirmerMaj = new System.Windows.Forms.Button();
             this.lstAnciennesCasernes = new System.Windows.Forms.ListView();
@@ -50,8 +53,6 @@
             this.cboChoixCaserne = new System.Windows.Forms.ComboBox();
             this.lblRattachement = new System.Windows.Forms.Label();
             this.grpInfosPerso = new System.Windows.Forms.GroupBox();
-            this.lblAncienneCasernes = new System.Windows.Forms.Label();
-            this.ckbConge = new System.Windows.Forms.CheckBox();
             this.grpGestion.SuspendLayout();
             this.pnlInfosPompiers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbIcone)).BeginInit();
@@ -86,9 +87,9 @@
             this.pnlInfosPompiers.Controls.Add(this.lblNouveauPompier);
             this.pnlInfosPompiers.Controls.Add(this.pcbIconeNouveau);
             this.pnlInfosPompiers.Controls.Add(this.lblCaserne);
-            this.pnlInfosPompiers.Location = new System.Drawing.Point(37, 36);
+            this.pnlInfosPompiers.Location = new System.Drawing.Point(30, 36);
             this.pnlInfosPompiers.Name = "pnlInfosPompiers";
-            this.pnlInfosPompiers.Size = new System.Drawing.Size(270, 677);
+            this.pnlInfosPompiers.Size = new System.Drawing.Size(275, 675);
             this.pnlInfosPompiers.TabIndex = 2;
             // 
             // lblRetour
@@ -104,7 +105,7 @@
             // pcbIcone
             // 
             this.pcbIcone.Image = ((System.Drawing.Image)(resources.GetObject("pcbIcone.Image")));
-            this.pcbIcone.Location = new System.Drawing.Point(92, 14);
+            this.pcbIcone.Location = new System.Drawing.Point(105, 15);
             this.pcbIcone.Name = "pcbIcone";
             this.pcbIcone.Size = new System.Drawing.Size(65, 65);
             this.pcbIcone.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -215,6 +216,7 @@
             // 
             // grpInfosCarriere
             // 
+            this.grpInfosCarriere.Controls.Add(this.btnAnnuler);
             this.grpInfosCarriere.Controls.Add(this.ckbConge);
             this.grpInfosCarriere.Controls.Add(this.lblAncienneCasernes);
             this.grpInfosCarriere.Controls.Add(this.lstHabilitations);
@@ -231,6 +233,34 @@
             this.grpInfosCarriere.Text = "Informations supplémentaire sur la carrière";
             this.grpInfosCarriere.Visible = false;
             // 
+            // btnAnnuler
+            // 
+            this.btnAnnuler.Location = new System.Drawing.Point(446, 229);
+            this.btnAnnuler.Name = "btnAnnuler";
+            this.btnAnnuler.Size = new System.Drawing.Size(135, 45);
+            this.btnAnnuler.TabIndex = 8;
+            this.btnAnnuler.Text = "Annuler";
+            this.btnAnnuler.UseVisualStyleBackColor = true;
+            // 
+            // ckbConge
+            // 
+            this.ckbConge.AutoSize = true;
+            this.ckbConge.Location = new System.Drawing.Point(26, 239);
+            this.ckbConge.Name = "ckbConge";
+            this.ckbConge.Size = new System.Drawing.Size(108, 25);
+            this.ckbConge.TabIndex = 7;
+            this.ckbConge.Text = "En congé";
+            this.ckbConge.UseVisualStyleBackColor = true;
+            // 
+            // lblAncienneCasernes
+            // 
+            this.lblAncienneCasernes.AutoSize = true;
+            this.lblAncienneCasernes.Location = new System.Drawing.Point(22, 76);
+            this.lblAncienneCasernes.Name = "lblAncienneCasernes";
+            this.lblAncienneCasernes.Size = new System.Drawing.Size(205, 21);
+            this.lblAncienneCasernes.TabIndex = 6;
+            this.lblAncienneCasernes.Text = "Anciennes affectations : ";
+            // 
             // lstHabilitations
             // 
             this.lstHabilitations.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -246,7 +276,7 @@
             // 
             this.btnConfirmerMaj.Location = new System.Drawing.Point(601, 229);
             this.btnConfirmerMaj.Name = "btnConfirmerMaj";
-            this.btnConfirmerMaj.Size = new System.Drawing.Size(134, 43);
+            this.btnConfirmerMaj.Size = new System.Drawing.Size(135, 45);
             this.btnConfirmerMaj.TabIndex = 4;
             this.btnConfirmerMaj.Text = "Mettre à jour";
             this.btnConfirmerMaj.UseVisualStyleBackColor = true;
@@ -275,7 +305,7 @@
             this.cboChoixCaserne.FormattingEnabled = true;
             this.cboChoixCaserne.Location = new System.Drawing.Point(228, 41);
             this.cboChoixCaserne.Name = "cboChoixCaserne";
-            this.cboChoixCaserne.Size = new System.Drawing.Size(173, 29);
+            this.cboChoixCaserne.Size = new System.Drawing.Size(175, 29);
             this.cboChoixCaserne.TabIndex = 1;
             // 
             // lblRattachement
@@ -295,30 +325,11 @@
             this.grpInfosPerso.TabIndex = 2;
             this.grpInfosPerso.TabStop = false;
             // 
-            // lblAncienneCasernes
-            // 
-            this.lblAncienneCasernes.AutoSize = true;
-            this.lblAncienneCasernes.Location = new System.Drawing.Point(22, 76);
-            this.lblAncienneCasernes.Name = "lblAncienneCasernes";
-            this.lblAncienneCasernes.Size = new System.Drawing.Size(205, 21);
-            this.lblAncienneCasernes.TabIndex = 6;
-            this.lblAncienneCasernes.Text = "Anciennes affectations : ";
-            // 
-            // ckbConge
-            // 
-            this.ckbConge.AutoSize = true;
-            this.ckbConge.Location = new System.Drawing.Point(26, 239);
-            this.ckbConge.Name = "ckbConge";
-            this.ckbConge.Size = new System.Drawing.Size(108, 25);
-            this.ckbConge.TabIndex = 7;
-            this.ckbConge.Text = "En congé";
-            this.ckbConge.UseVisualStyleBackColor = true;
-            // 
             // frmAccueil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1234, 861);
+            this.ClientSize = new System.Drawing.Size(1232, 853);
             this.Controls.Add(this.grpGestion);
             this.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -365,6 +376,7 @@
         private System.Windows.Forms.Button btnConfirmerMaj;
         private System.Windows.Forms.Label lblAncienneCasernes;
         private System.Windows.Forms.CheckBox ckbConge;
+        private System.Windows.Forms.Button btnAnnuler;
     }
 }
 

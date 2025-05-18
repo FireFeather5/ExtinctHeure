@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
@@ -43,6 +44,7 @@ namespace ExtinctHeure
         private void cboCasernes_SelectedValueChanged(object sender, EventArgs e)
         {
             cboPompiers.Items.Clear();
+            clearAll();
             cboPompiers.Text = String.Empty;
 
             if (cboCasernes.Text != String.Empty)
@@ -101,13 +103,8 @@ namespace ExtinctHeure
         // On charge les infos des pompiers
         private void ChargerInfosPompiers()
         {
-            grpInfosPerso.Controls.Clear();
-
-            btnPlusInfos.Visible = true;
-            grpInfosCarriere.Visible = false;
-            cboChoixCaserne.Items.Clear();
-            lstHabilitations.Items.Clear();
-            lstAnciennesCasernes.Items.Clear();
+            clearAll();
+            grpInfosPompier.Visible = true;
 
             string nom = cboPompiers.Text.Split(',')[0].ToLower();
             string prenom = cboPompiers.Text.Split(',')[1].ToLower();
@@ -431,6 +428,15 @@ namespace ExtinctHeure
 
             void BtnConfirm_Click(object sender, EventArgs e)
             {
+                // On initie la transaction
+                SQLiteTransaction transaction = cx.BeginTransaction();
+
+                req = $@"UPDATE Pompier SET codeGrade = '{txtCode.Text}' WHERE lower(nom) = '{nom}' AND lower(prenom) = '{prenom}'";
+                SQLiteCommand cmdUpdate = new SQLiteCommand(req, this.cx);
+                cmdUpdate.Transaction = transaction;
+
+               
+
                 // On gère la confirmation des changements
                 txtCode.Enabled = false;
                 cboGrades.Enabled = false;
@@ -444,10 +450,16 @@ namespace ExtinctHeure
                 lblGrade.Text = $"Grade : \n{cboGrades.Text}";
 
                 // On met à jour les informations dans la DB
-                /*req = $@"UPDATE Pompier SET codeGrade = '{code}' WHERE lower(nom) = '{nom}' AND lower(prenom) = '{prenom}'";
-                cmd = new SQLiteCommand(req, this.cx);
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Changements confirmés");*/
+                try {
+                    cmdUpdate.ExecuteNonQuery();
+                    transaction.Commit();
+                    MessageBox.Show("Changements confirmés");
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    MessageBox.Show("Erreur lors de la modification : " + ex.Message);
+                }
             }
         }
 
@@ -506,6 +518,18 @@ namespace ExtinctHeure
                 }
             }
 
+        }
+
+        private void clearAll()
+        {
+            grpInfosPerso.Controls.Clear();
+            grpInfosPompier.Visible = false;
+
+            btnPlusInfos.Visible = true;
+            grpInfosCarriere.Visible = false;
+            cboChoixCaserne.Items.Clear();
+            lstHabilitations.Items.Clear();
+            lstAnciennesCasernes.Items.Clear();
         }
 
         // On créer un nouveau formulaire pour l'ajout d'un pompier dans la DB
