@@ -206,21 +206,109 @@ namespace ExtinctHeure
                     {
                         dgvEng.Rows.Add(vehi, listeNumVehiFinale[indexNumVehi]);      //ajout de l'engin dans le dgv
                         indexNumVehi++;
-                        listeCodeVehiPrPomp.Add(vehi);
+                        listeCodeVehiPrPomp.Add(vehi.ToString());
                     }
                     dgvEng.Rows.Add(vehi, listeNumVehiFinale[indexNumVehi]);      //ajout de l'engin dans le dgv
                     indexNumVehi++;
                     indexNbrVehic++;
+                    listeCodeVehiPrPomp.Add(vehi.ToString());
                 }
             }
 
 
 
-            foreach(string vehi in listeCodeVehiPrPomp)
+            dgvPomp.Columns.Clear();
+
+            dgvPomp.Columns.Add("matricule", "matricule");
+            dgvPomp.Columns.Add("nom", "nom");
+            dgvPomp.Columns.Add("prenom", "prenom");
+            dgvPomp.Columns.Add("habilitation", "habilitation");
+
+
+
+
+            ArrayList listeIdHab = new ArrayList();
+            ArrayList listeHabNbr = new ArrayList();
+
+            foreach (string vehi in listeCodeVehiPrPomp)
             {
-                //tt sur les pompiers   (matricule nom prenom habilitation) G la flemme
+                //tt sur les pompiers   (matricule nom prenom habilitation)
+                //embarquer : codeTypeEngin -> idHabilitation et nombre     (pour avoir le bon nombre de pompiers de la bonne habilitation)
+                //prendre dse matricules
+
+                //MessageBox.Show("j'affiche");
+
+                foreach (DataRow dr in MesDatas.DsGlobal.Tables["Embarquer"].Rows)
+                {
+                    if (dr["codeTypeEngin"].ToString() == vehi)
+                    {
+                        //MessageBox.Show("j'afficheeeee");
+                        listeIdHab.Add(dr["idHabilitation"].ToString());
+                        listeHabNbr.Add(dr["nombre"]);
+
+                        //MessageBox.Show( dr["idHabilitation"].ToString() + dr["nombre"].ToString());
+                    }
+                }
             }
 
+            //int i = 0;
+            //int z = 0;
+            ArrayList listePomp = new ArrayList();
+            ArrayList unPomp = new ArrayList();
+
+
+            int j = 0;
+            bool te = false;
+            bool tee = false;
+
+            foreach (string idHab in listeIdHab)
+            {
+                for (int i = 0; i < Convert.ToInt32(listeHabNbr[j]); i++)
+                {
+                    if (!te)
+                    {
+                        foreach (DataRow dr in MesDatas.DsGlobal.Tables["Passer"].Rows)
+                        {
+                            if (dr["idHabilitation"].ToString() == idHab)
+                            {
+                                foreach (DataRow drr in MesDatas.DsGlobal.Tables["pompier"].Rows)
+                                {
+                                    if ((drr["matricule"].ToString() == dr["matriculePompier"].ToString()) && (Convert.ToInt32(drr["enMission"]) == 0) && (Convert.ToInt32(drr["enConge"]) == 0) && (te == false))
+                                    {
+                                        foreach (string pomp in listePomp)
+                                        {
+                                            if (pomp.ToString() == drr["matricule"].ToString())
+                                            {
+                                                tee = true;
+                                            }
+                                        }
+
+                                        if (!tee)
+                                        {
+                                            unPomp.Add(drr["matricule"]);
+                                            listePomp.Add(drr["matricule"].ToString());
+                                            unPomp.Add(drr["nom"]);
+                                            unPomp.Add(drr["prenom"]);
+                                            unPomp.Add(idHab);
+                                            //MessageBox.Show("j'ajoute");
+                                            dgvPomp.Rows.Add(unPomp[0], unPomp[1], unPomp[2], unPomp[3]);
+                                            unPomp.Clear();
+                                            te = true;
+                                        }
+                                        tee = false;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    te = false;
+                }
+                j++;
+            }
+
+
+            //maintenant il faut afficher joliement :)
+            //arraylist d'arraylist ?
 
         }
     }
