@@ -56,6 +56,7 @@ namespace ExtinctHeure
         }
 
         // Quand on séléctionne un pompier on affiche ses données
+
         private void cboPompiers_SelectedValueChanged(object sender, EventArgs e)
         {
             grpInfosPompier.Visible = true;
@@ -483,7 +484,7 @@ namespace ExtinctHeure
                                         JOIN Passer pass ON h.id = pass.idHabilitation
                                         JOIN Pompier p ON p.matricule = pass.matriculePompier
                                         WHERE p.matricule = (SELECT matricule FROM Pompier
-                                                WHERE lower(nom) = '{nom}' AND lower(prenom) = '{prenom}')";
+                                                             WHERE lower(nom) = '{nom}' AND lower(prenom) = '{prenom}')";
 
             string reqAncienneCasernes = $@"SELECT c.nom, aff.dateA, COALESCE(aff.dateFin, 'Aucune')
                                             FROM Affectation aff
@@ -497,7 +498,7 @@ namespace ExtinctHeure
             SQLiteDataReader readerHabilitation = cmdHabilitation.ExecuteReader();
             SQLiteDataReader readerAncienneCasernes = cmdAncienneCasernes.ExecuteReader();
 
-            while(readerHabilitation.Read())
+            while (readerHabilitation.Read())
             {
                 string habilitation = readerHabilitation.GetString(0);
                 lstHabilitations.Items.Add(habilitation);
@@ -510,7 +511,7 @@ namespace ExtinctHeure
                 if (readerAncienneCasernes.GetString(2) != "Aucune")
                 {
                     string dateFin = readerAncienneCasernes.GetString(2);
-                    lstAnciennesCasernes.Items.Add(ancienneCasernes + ", du " + dateDebut.Replace('-','/') + " au " + dateFin.Replace('-', '/'));
+                    lstAnciennesCasernes.Items.Add(ancienneCasernes + ", du " + dateDebut.Replace('-', '/') + " au " + dateFin.Replace('-', '/'));
                 }
                 else
                 {
@@ -544,6 +545,16 @@ namespace ExtinctHeure
             {
                 MessageBox.Show("Changements abandonnés");
             }
+        }
+
+        private void btnAnnuler_Click(object sender, EventArgs e)
+        {
+            grpInfosCarriere.Visible = false;
+            lstAnciennesCasernes.Items.Clear();
+            lstHabilitations.Items.Clear();
+            ckbConge.Checked = false;
+
+            btnPlusInfos.Visible = true;
         }
     }
 }
