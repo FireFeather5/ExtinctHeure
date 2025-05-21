@@ -479,12 +479,14 @@ namespace ExtinctHeure
             }
             cboChoixCaserne.Text = cboCasernes.Text;
 
-            string reqHabilitation = $@"SELECT h.libelle
-                                        FROM Habilitation h
-                                        JOIN Passer pass ON h.id = pass.idHabilitation
-                                        JOIN Pompier p ON p.matricule = pass.matriculePompier
-                                        WHERE p.matricule = (SELECT matricule FROM Pompier
-                                                             WHERE lower(nom) = '{nom}' AND lower(prenom) = '{prenom}')";
+            string reqHabilitationPasses = $@"SELECT h.libelle
+                                              FROM Habilitation h
+                                              JOIN Passer pass ON h.id = pass.idHabilitation
+                                              JOIN Pompier p ON p.matricule = pass.matriculePompier
+                                              WHERE p.matricule = (SELECT matricule FROM Pompier
+                                                                   WHERE lower(nom) = '{nom}' AND lower(prenom) = '{prenom}')";
+
+            string reqHabilitations = "SELECT libelle FROM Habilitation";
 
             string reqAncienneCasernes = $@"SELECT c.nom, aff.dateA, COALESCE(aff.dateFin, 'Aucune')
                                             FROM Affectation aff
@@ -493,15 +495,27 @@ namespace ExtinctHeure
                                             WHERE p.matricule = (SELECT matricule FROM Pompier
                                                                  WHERE lower(nom) = '{nom}' AND lower(prenom) = '{prenom}')";
 
-            SQLiteCommand cmdHabilitation = new SQLiteCommand(reqHabilitation, this.cx);
+            SQLiteCommand cmdHabilitationPasses = new SQLiteCommand(reqHabilitationPasses, this.cx);
+            SQLiteCommand cmdHabilitations = new SQLiteCommand(reqHabilitations, this.cx);
             SQLiteCommand cmdAncienneCasernes = new SQLiteCommand(reqAncienneCasernes, this.cx);
-            SQLiteDataReader readerHabilitation = cmdHabilitation.ExecuteReader();
+            SQLiteDataReader readerHabilitationPasses = cmdHabilitationPasses.ExecuteReader();
+            SQLiteDataReader readerHabilitations = cmdHabilitations.ExecuteReader();
             SQLiteDataReader readerAncienneCasernes = cmdAncienneCasernes.ExecuteReader();
 
-            while (readerHabilitation.Read())
+            while (readerHabilitationPasses.Read())
             {
-                string habilitation = readerHabilitation.GetString(0);
-                lstHabilitations.Items.Add(habilitation);
+                string habilitation = readerHabilitationPasses.GetString(0);
+                chklstHabilitations.Items.Add(habilitation);
+                chklstHabilitations.SetItemChecked(chklstHabilitations.Items.IndexOf(habilitation), true);
+            }
+
+            while (readerHabilitations.Read())
+            {
+                if (!chklstHabilitations.Items.Contains(readerHabilitations.GetString(0)))
+                {
+                    string habilitation = readerHabilitations.GetString(0);
+                    chklstHabilitations.Items.Add(habilitation);
+                }
             }
 
             while (readerAncienneCasernes.Read())
@@ -529,8 +543,18 @@ namespace ExtinctHeure
             btnPlusInfos.Visible = true;
             grpInfosCarriere.Visible = false;
             cboChoixCaserne.Items.Clear();
-            lstHabilitations.Items.Clear();
+            chklstHabilitations.Items.Clear();
             lstAnciennesCasernes.Items.Clear();
+        }
+
+        private void btnAnnuler_Click(object sender, EventArgs e)
+        {
+            grpInfosCarriere.Visible = false;
+            lstAnciennesCasernes.Items.Clear();
+            chklstHabilitations.Items.Clear();
+            ckbConge.Checked = false;
+
+            btnPlusInfos.Visible = true;
         }
 
         // On créer un nouveau formulaire pour l'ajout d'un pompier dans la DB
@@ -545,16 +569,6 @@ namespace ExtinctHeure
             {
                 MessageBox.Show("Changements abandonnés");
             }
-        }
-
-        private void btnAnnuler_Click(object sender, EventArgs e)
-        {
-            grpInfosCarriere.Visible = false;
-            lstAnciennesCasernes.Items.Clear();
-            lstHabilitations.Items.Clear();
-            ckbConge.Checked = false;
-
-            btnPlusInfos.Visible = true;
         }
     }
 }

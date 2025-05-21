@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using System.Xml.Linq;
 using Pinpon;
 
@@ -41,11 +42,7 @@ namespace ExtinctHeure
 
         private void btnConfirmer_Click(object sender, EventArgs e)
         {
-            if (!fieldsCheck())
-            {
-                MessageBox.Show("Une erreur a eu lieu lors de la création");
-            }
-            else
+            if (fieldsCheck())
             {
                 SQLiteTransaction transaction = cx.BeginTransaction();
 
@@ -53,17 +50,23 @@ namespace ExtinctHeure
                 string nom = txtNom.Text.Substring(0, 1).ToUpper() +
                              txtNom.Text.Substring(1, txtNom.Text.Length - 1).ToLower();
                 string prenom = txtPrenom.Text.Substring(0, 1).ToUpper() +
-                                 txtPrenom.Text.Substring(1, txtPrenom.Text.Length - 1).ToLower();
+                                txtPrenom.Text.Substring(1, txtPrenom.Text.Length - 1).ToLower();
                 string sexe = _strBuffer[0];
                 string type = _strBuffer[1];
                 string dateNaissance = calDateNaissance.SelectionRange.Start.ToString("yyyy-MM-dd");
 
                 // A MODIFIER
 
-                /*string req = "INSERT INTO Pompier (nom, prenom, sexe, dateNaissance, type, portable, idCaserne, idGrade) " +
-                             $"VALUES ('{nom}', '{prenom}', '{sexe}', '{dateNaissance}', '{type}', '{txtTelephone.Text}', @idCaserne, @idGrade)";*/
+                string req = "INSERT INTO Pompier (nom, prenom, sexe, dateNaissance, type, portable, idCaserne, idGrade) " +
+                             $"VALUES ('{nom}', '{prenom}', '{sexe}', '{dateNaissance}', '{type}', '{txtTelephone.Text}', @idCaserne, @idGrade)";
                 
-                DialogResult = DialogResult.OK;
+                MessageBox.Show(req);
+
+                //DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                DialogResult = DialogResult.Abort;
             }
         }
 
@@ -179,20 +182,20 @@ namespace ExtinctHeure
 
             if (rdbHomme.Checked)
             {
-                _strBuffer[0] = rdbHomme.Text;
+                _strBuffer[0] = "m";
             }
             else
             {
-                _strBuffer[0] = rdbFemme.Text;
+                _strBuffer[0] = "f";
             }
 
             if (rdbProfessionnel.Checked)
             {
-                _strBuffer[1] = rdbProfessionnel.Text;
+                _strBuffer[1] = "p";
             }
             else
             {
-                _strBuffer[1] = rdbVolontaire.Text;
+                _strBuffer[1] = "v";
             }
             return true;
         }

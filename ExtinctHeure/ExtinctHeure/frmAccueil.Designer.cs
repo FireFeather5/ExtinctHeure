@@ -46,13 +46,13 @@
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.ckbConge = new System.Windows.Forms.CheckBox();
             this.lblAncienneCasernes = new System.Windows.Forms.Label();
-            this.lstHabilitations = new System.Windows.Forms.ListView();
             this.btnConfirmerMaj = new System.Windows.Forms.Button();
             this.lstAnciennesCasernes = new System.Windows.Forms.ListView();
             this.lblHabilitations = new System.Windows.Forms.Label();
             this.cboChoixCaserne = new System.Windows.Forms.ComboBox();
             this.lblRattachement = new System.Windows.Forms.Label();
             this.grpInfosPerso = new System.Windows.Forms.GroupBox();
+            this.chklstHabilitations = new System.Windows.Forms.CheckedListBox();
             this.pnlGestion.SuspendLayout();
             this.pnlInfosPompiers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbIcone)).BeginInit();
@@ -216,10 +216,10 @@
             // 
             // grpInfosCarriere
             // 
+            this.grpInfosCarriere.Controls.Add(this.chklstHabilitations);
             this.grpInfosCarriere.Controls.Add(this.btnAnnuler);
             this.grpInfosCarriere.Controls.Add(this.ckbConge);
             this.grpInfosCarriere.Controls.Add(this.lblAncienneCasernes);
-            this.grpInfosCarriere.Controls.Add(this.lstHabilitations);
             this.grpInfosCarriere.Controls.Add(this.btnConfirmerMaj);
             this.grpInfosCarriere.Controls.Add(this.lstAnciennesCasernes);
             this.grpInfosCarriere.Controls.Add(this.lblHabilitations);
@@ -265,17 +265,6 @@
             this.lblAncienneCasernes.Size = new System.Drawing.Size(205, 21);
             this.lblAncienneCasernes.TabIndex = 6;
             this.lblAncienneCasernes.Text = "Anciennes affectations : ";
-            // 
-            // lstHabilitations
-            // 
-            this.lstHabilitations.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lstHabilitations.HideSelection = false;
-            this.lstHabilitations.Location = new System.Drawing.Point(433, 65);
-            this.lstHabilitations.Name = "lstHabilitations";
-            this.lstHabilitations.Size = new System.Drawing.Size(303, 157);
-            this.lstHabilitations.TabIndex = 5;
-            this.lstHabilitations.UseCompatibleStateImageBehavior = false;
-            this.lstHabilitations.View = System.Windows.Forms.View.List;
             // 
             // btnConfirmerMaj
             // 
@@ -334,6 +323,14 @@
             this.grpInfosPerso.TabIndex = 2;
             this.grpInfosPerso.TabStop = false;
             // 
+            // chklstHabilitations
+            // 
+            this.chklstHabilitations.FormattingEnabled = true;
+            this.chklstHabilitations.Location = new System.Drawing.Point(431, 65);
+            this.chklstHabilitations.Name = "chklstHabilitations";
+            this.chklstHabilitations.Size = new System.Drawing.Size(300, 142);
+            this.chklstHabilitations.TabIndex = 9;
+            // 
             // frmAccueil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -380,13 +377,13 @@
         private System.Windows.Forms.Button btnAnnuler;
         private System.Windows.Forms.CheckBox ckbConge;
         private System.Windows.Forms.Label lblAncienneCasernes;
-        private System.Windows.Forms.ListView lstHabilitations;
         private System.Windows.Forms.Button btnConfirmerMaj;
         private System.Windows.Forms.ListView lstAnciennesCasernes;
         private System.Windows.Forms.Label lblHabilitations;
         private System.Windows.Forms.ComboBox cboChoixCaserne;
         private System.Windows.Forms.Label lblRattachement;
         private System.Windows.Forms.GroupBox grpInfosPerso;
+        private System.Windows.Forms.CheckedListBox chklstHabilitations;
     }
 }
 
