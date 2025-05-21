@@ -190,6 +190,7 @@ namespace ExtinctHeure
             }
 
             ArrayList listeCodeVehiPrPomp = new ArrayList();
+            ArrayList nombreVehi = new ArrayList();
 
             // sert à vérifier que tous les engins sont disponibles en nombre suffisant
             if (!validate)           // si l'un des engins n'est pas disponible
@@ -207,8 +208,11 @@ namespace ExtinctHeure
                         dgvEng.Rows.Add(vehi, listeNumVehiFinale[indexNumVehi]);      //ajout de l'engin dans le dgv
                         indexNumVehi++;
                         listeCodeVehiPrPomp.Add(vehi.ToString());
+                        nombreVehi.Add(listeNbrNece[indexNbrVehic]);
+
                     }
                     dgvEng.Rows.Add(vehi, listeNumVehiFinale[indexNumVehi]);      //ajout de l'engin dans le dgv
+                    nombreVehi.Add(listeNbrNece[indexNbrVehic]);
                     indexNumVehi++;
                     indexNbrVehic++;
                     listeCodeVehiPrPomp.Add(vehi.ToString());
@@ -229,6 +233,7 @@ namespace ExtinctHeure
 
             ArrayList listeIdHab = new ArrayList();
             ArrayList listeHabNbr = new ArrayList();
+            //ArrayList vehic = new ArrayList();
 
             foreach (string vehi in listeCodeVehiPrPomp)
             {
@@ -245,6 +250,7 @@ namespace ExtinctHeure
                         //MessageBox.Show("j'afficheeeee");
                         listeIdHab.Add(dr["idHabilitation"].ToString());
                         listeHabNbr.Add(dr["nombre"]);
+                        //vehic.Add(vehi);
 
                         //MessageBox.Show( dr["idHabilitation"].ToString() + dr["nombre"].ToString());
                     }
@@ -253,37 +259,42 @@ namespace ExtinctHeure
 
             //int i = 0;
             //int z = 0;
-            ArrayList listePomp = new ArrayList();
-            ArrayList unPomp = new ArrayList();
+            ArrayList listePomp = new ArrayList();      //contient les pompiers déjà présents dans la mission
+            ArrayList unPomp = new ArrayList();         //contient un pompier
 
 
+            int haut = 50;
+            int gauche = 30;
+            //int k = 0;
+            int l = 0;
             int j = 0;
             bool te = false;
             bool tee = false;
 
-            foreach (string idHab in listeIdHab)
+            foreach (string idHab in listeIdHab)        //pour chaque habilitation (de chaque vehicule)
             {
-                for (int i = 0; i < Convert.ToInt32(listeHabNbr[j]); i++)
+                for (int i = 0; i < Convert.ToInt32(listeHabNbr[j]); i++)       //pour le nombre de fois qu'il faut l'habilitation
                 {
-                    if (!te)
+                    if (!te)        //si un pompier n'a pas encore été trouvé
                     {
-                        foreach (DataRow dr in MesDatas.DsGlobal.Tables["Passer"].Rows)
+                        foreach (DataRow dr in MesDatas.DsGlobal.Tables["Passer"].Rows)     //pour chaque rangé de Passer
                         {
-                            if (dr["idHabilitation"].ToString() == idHab)
+                            if (dr["idHabilitation"].ToString() == idHab)       //si l'habilitation passée par le pompier est celle recherchée
                             {
-                                foreach (DataRow drr in MesDatas.DsGlobal.Tables["pompier"].Rows)
+                                foreach (DataRow drr in MesDatas.DsGlobal.Tables["pompier"].Rows)       //pour chaque pompier
                                 {
                                     if ((drr["matricule"].ToString() == dr["matriculePompier"].ToString()) && (Convert.ToInt32(drr["enMission"]) == 0) && (Convert.ToInt32(drr["enConge"]) == 0) && (te == false))
+                                        //si le pompier est celui recherché qu'il n'est ni en mission ni en congé et que le pompier n'a pas été trouvé
                                     {
-                                        foreach (string pomp in listePomp)
+                                        foreach (string pomp in listePomp)      //pour chaque pompier déjà sélectionné
                                         {
-                                            if (pomp.ToString() == drr["matricule"].ToString())
+                                            if (pomp.ToString() == drr["matricule"].ToString())     //si le pompier sélectionné pour l'habilitation est déjà sélectionné pour une autre
                                             {
-                                                tee = true;
+                                                tee = true;         //on ne le sélectionne pas à nouveau
                                             }
                                         }
 
-                                        if (!tee)
+                                        if (!tee)       //si il n'est pas encore dans la liste on l'ajoute
                                         {
                                             unPomp.Add(drr["matricule"]);
                                             listePomp.Add(drr["matricule"].ToString());
@@ -292,6 +303,27 @@ namespace ExtinctHeure
                                             unPomp.Add(idHab);
                                             //MessageBox.Show("j'ajoute");
                                             dgvPomp.Rows.Add(unPomp[0], unPomp[1], unPomp[2], unPomp[3]);
+
+
+                                            Label lbl = new Label();
+                                            lbl.Name = "lblEP";         //"Engin : " + listeCodeVehiPrPomp[k] + listeNumVehiFinale[k] + 
+                                            lbl.Text = " : - " + unPomp[0] + " " + unPomp[1] + " " + unPomp[2] + " " + unPomp[3];
+                                            lbl.Top = haut;
+                                            lbl.Left = gauche;
+                                            lbl.Width = 400;
+                                            haut += 30;
+                                            l++;
+
+
+                                            if (l % 10 == 0)
+                                            {
+                                                haut = 50;
+                                                gauche = gauche + 450;
+                                            }
+
+                                            grbEP.Controls.Add(lbl);
+
+
                                             unPomp.Clear();
                                             te = true;
                                         }
@@ -304,6 +336,7 @@ namespace ExtinctHeure
                     te = false;
                 }
                 j++;
+                //k++;
             }
 
 
