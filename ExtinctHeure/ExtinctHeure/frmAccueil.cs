@@ -22,9 +22,11 @@ namespace ExtinctHeure
 
         SQLiteConnection cx = Connexion.Connec;
         DataSet monDS = MesDatas.DsGlobal;
+        bool loaded = false;
 
-        private void frmAccueil_Load(object sender, EventArgs e)
+        private void load()
         {
+            loaded = true;
             DataTable SchemaTable = cx.GetSchema("Tables");
             foreach (DataRow row in SchemaTable.Rows)
             {
@@ -36,29 +38,44 @@ namespace ExtinctHeure
             }
             Connexion.FermerConnexion();
 
-            ForeignKeyConstraint FK_Mission_idCaserne = new ForeignKeyConstraint("FK_Mission_idCaserne", monDS.Tables["Caserne"].Columns["id"], monDS.Tables["Mission"].Columns["idCaserne"]);
-            ForeignKeyConstraint FK_Mission_idNature = new ForeignKeyConstraint("FK_Mission_idNature", monDS.Tables["NatureSinistre"].Columns["id"], monDS.Tables["Mission"].Columns["idNatureSinistre"]);
+            DataRelation relCaserne = new DataRelation("FK_Mission_idCaserne", monDS.Tables["Caserne"].Columns["id"], monDS.Tables["Mission"].Columns["idCaserne"], false);
+            DataRelation relNature = new DataRelation("FK_Mission_idNature", monDS.Tables["NatureSinistre"].Columns["id"], monDS.Tables["Mission"].Columns["idNatureSinistre"], false);
 
-            monDS.Tables["Mission"].Constraints.Add(FK_Mission_idCaserne);
-            monDS.Tables["Mission"].Constraints.Add(FK_Mission_idNature);
+            monDS.Relations.Add(relCaserne);
+            monDS.Relations.Add(relNature);
         }
 
         private void grpMissions_VisibleChanged(object sender, EventArgs e)
         {
+            if (!loaded) { load(); }
             int position = 30; // + 160
+            pnlMissions.Controls.Clear();
             foreach (DataRow dataRow in monDS.Tables["Mission"].Rows)
             {
                 Mission mission = new Mission();
                 mission.idMission = Convert.ToInt32(dataRow["id"]);
-                mission.debutMission = dataRow["dateMission"].ToString();
-                mission.caserne = dataRow.GetParentRow("FK_Mission_idCaserne")["id"].ToString();
-                mission.natureMission = dataRow.GetParentRow("FK_Mission_idNature")["id"].ToString();
+                mission.debutMission = dataRow["dateHeureDepart"].ToString();
+                mission.caserne = dataRow.GetParentRow("FK_Mission_idCaserne")["nom"].ToString();
+                mission.natureMission = dataRow.GetParentRow("FK_Mission_idNature")["libelle"].ToString();
                 mission.nomMission = dataRow["motifAppel"].ToString();
+                mission.estFini = dataRow["dateHeureRetour"] != typeof(DBNull);
 
-                mission.Location = new Point(7, position);
-                position += 160;
+                if (chkEnCours.Checked && !mission.estFini)
+                {
+                    mission.Location = new Point(7, position);
+                    position += mission.Height + 10;
 
-                grpMissions.Controls.Add(mission);
+                    pnlMissions.Controls.Add(mission);
+                }
+                else if (!chkEnCours.Checked)
+                {
+                    mission.Location = new Point(7, position);
+                    position += mission.Height + 10;
+
+                    pnlMissions.Controls.Add(mission);
+                }
+                pnlMissions.Size = new Size(1204, 601);
+
             }
         }
     }

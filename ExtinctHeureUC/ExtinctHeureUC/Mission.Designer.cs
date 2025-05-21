@@ -45,7 +45,7 @@
             // 
             // btnCloture
             // 
-            this.btnCloture.Location = new System.Drawing.Point(966, 25);
+            this.btnCloture.Location = new System.Drawing.Point(944, 25);
             this.btnCloture.Name = "btnCloture";
             this.btnCloture.Size = new System.Drawing.Size(100, 100);
             this.btnCloture.TabIndex = 0;
@@ -55,7 +55,7 @@
             // 
             // btnRapport
             // 
-            this.btnRapport.Location = new System.Drawing.Point(1072, 25);
+            this.btnRapport.Location = new System.Drawing.Point(1050, 25);
             this.btnRapport.Name = "btnRapport";
             this.btnRapport.Size = new System.Drawing.Size(100, 100);
             this.btnRapport.TabIndex = 0;
@@ -74,7 +74,7 @@
             // lblTextId
             // 
             this.lblTextId.AutoSize = true;
-            this.lblTextId.Location = new System.Drawing.Point(255, 14);
+            this.lblTextId.Location = new System.Drawing.Point(186, 41);
             this.lblTextId.Name = "lblTextId";
             this.lblTextId.Size = new System.Drawing.Size(120, 17);
             this.lblTextId.TabIndex = 2;
@@ -83,7 +83,7 @@
             // lblId
             // 
             this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(381, 14);
+            this.lblId.Location = new System.Drawing.Point(312, 41);
             this.lblId.Name = "lblId";
             this.lblId.Size = new System.Drawing.Size(21, 17);
             this.lblId.TabIndex = 2;
@@ -92,7 +92,7 @@
             // lblTextDebut
             // 
             this.lblTextDebut.AutoSize = true;
-            this.lblTextDebut.Location = new System.Drawing.Point(484, 14);
+            this.lblTextDebut.Location = new System.Drawing.Point(415, 41);
             this.lblTextDebut.Name = "lblTextDebut";
             this.lblTextDebut.Size = new System.Drawing.Size(107, 17);
             this.lblTextDebut.TabIndex = 2;
@@ -101,7 +101,7 @@
             // lblDebut
             // 
             this.lblDebut.AutoSize = true;
-            this.lblDebut.Location = new System.Drawing.Point(597, 14);
+            this.lblDebut.Location = new System.Drawing.Point(528, 41);
             this.lblDebut.Name = "lblDebut";
             this.lblDebut.Size = new System.Drawing.Size(14, 17);
             this.lblDebut.TabIndex = 2;
@@ -110,7 +110,7 @@
             // lblTextCaserne
             // 
             this.lblTextCaserne.AutoSize = true;
-            this.lblTextCaserne.Location = new System.Drawing.Point(731, 14);
+            this.lblTextCaserne.Location = new System.Drawing.Point(662, 41);
             this.lblTextCaserne.Name = "lblTextCaserne";
             this.lblTextCaserne.Size = new System.Drawing.Size(72, 17);
             this.lblTextCaserne.TabIndex = 2;
@@ -119,7 +119,7 @@
             // lblCaserne
             // 
             this.lblCaserne.AutoSize = true;
-            this.lblCaserne.Location = new System.Drawing.Point(809, 14);
+            this.lblCaserne.Location = new System.Drawing.Point(740, 41);
             this.lblCaserne.Name = "lblCaserne";
             this.lblCaserne.Size = new System.Drawing.Size(14, 17);
             this.lblCaserne.TabIndex = 2;
@@ -129,7 +129,7 @@
             // 
             this.lblNatureMission.AutoSize = true;
             this.lblNatureMission.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNatureMission.Location = new System.Drawing.Point(255, 67);
+            this.lblNatureMission.Location = new System.Drawing.Point(415, 76);
             this.lblNatureMission.Name = "lblNatureMission";
             this.lblNatureMission.Size = new System.Drawing.Size(14, 18);
             this.lblNatureMission.TabIndex = 3;
@@ -138,7 +138,7 @@
             // lblTextNomMission
             // 
             this.lblTextNomMission.AutoSize = true;
-            this.lblTextNomMission.Location = new System.Drawing.Point(556, 67);
+            this.lblTextNomMission.Location = new System.Drawing.Point(374, 108);
             this.lblTextNomMission.Name = "lblTextNomMission";
             this.lblTextNomMission.Size = new System.Drawing.Size(35, 17);
             this.lblTextNomMission.TabIndex = 4;
@@ -147,7 +147,7 @@
             // lblNomMission
             // 
             this.lblNomMission.AutoSize = true;
-            this.lblNomMission.Location = new System.Drawing.Point(597, 67);
+            this.lblNomMission.Location = new System.Drawing.Point(415, 108);
             this.lblNomMission.Name = "lblNomMission";
             this.lblNomMission.Size = new System.Drawing.Size(14, 17);
             this.lblNomMission.TabIndex = 4;
@@ -173,7 +173,7 @@
             this.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Mission";
-            this.Size = new System.Drawing.Size(1196, 148);
+            this.Size = new System.Drawing.Size(1170, 148);
             ((System.ComponentModel.ISupportInitialize)(this.pcbImageMission)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

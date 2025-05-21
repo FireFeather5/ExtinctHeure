@@ -28,14 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.pnlMissions = new System.Windows.Forms.Panel();
             this.grpMissions = new System.Windows.Forms.GroupBox();
-            this.mission1 = new ExtinctHeureUC.Mission();
+            this.chkEnCours = new System.Windows.Forms.CheckBox();
             this.grpMissions.SuspendLayout();
             this.SuspendLayout();
             // 
+            // pnlMissions
+            // 
+            this.pnlMissions.AutoScroll = true;
+            this.pnlMissions.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlMissions.Location = new System.Drawing.Point(3, 90);
+            this.pnlMissions.Name = "pnlMissions";
+            this.pnlMissions.Size = new System.Drawing.Size(1204, 601);
+            this.pnlMissions.TabIndex = 1;
+            // 
             // grpMissions
             // 
-            this.grpMissions.Controls.Add(this.mission1);
+            this.grpMissions.Controls.Add(this.chkEnCours);
+            this.grpMissions.Controls.Add(this.pnlMissions);
             this.grpMissions.Location = new System.Drawing.Point(12, 155);
             this.grpMissions.Name = "grpMissions";
             this.grpMissions.Size = new System.Drawing.Size(1210, 694);
@@ -44,22 +55,16 @@
             this.grpMissions.Text = "Missions";
             this.grpMissions.VisibleChanged += new System.EventHandler(this.grpMissions_VisibleChanged);
             // 
-            // mission1
+            // chkEnCours
             // 
-            this.mission1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.mission1.caserne = "*";
-            this.mission1.debutMission = "*";
-            this.mission1.estFini = false;
-            this.mission1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mission1.idMission = -1;
-            this.mission1.imageMission = null;
-            this.mission1.Location = new System.Drawing.Point(7, 30);
-            this.mission1.Margin = new System.Windows.Forms.Padding(4);
-            this.mission1.Name = "mission1";
-            this.mission1.natureMission = "*";
-            this.mission1.nomMission = "*";
-            this.mission1.Size = new System.Drawing.Size(1198, 150);
-            this.mission1.TabIndex = 0;
+            this.chkEnCours.AutoSize = true;
+            this.chkEnCours.Location = new System.Drawing.Point(64, 38);
+            this.chkEnCours.Name = "chkEnCours";
+            this.chkEnCours.Size = new System.Drawing.Size(86, 21);
+            this.chkEnCours.TabIndex = 2;
+            this.chkEnCours.Text = "En cours";
+            this.chkEnCours.UseVisualStyleBackColor = true;
+            this.chkEnCours.CheckedChanged += new System.EventHandler(this.grpMissions_VisibleChanged);
             // 
             // frmAccueil
             // 
@@ -70,17 +75,19 @@
             this.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmAccueil";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Extinct\'Heure";
-            this.Load += new System.EventHandler(this.frmAccueil_Load);
             this.grpMissions.ResumeLayout(false);
+            this.grpMissions.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+        private System.Windows.Forms.Panel pnlMissions;
         private System.Windows.Forms.GroupBox grpMissions;
-        private ExtinctHeureUC.Mission mission1;
+        private System.Windows.Forms.CheckBox chkEnCours;
     }
 }
 

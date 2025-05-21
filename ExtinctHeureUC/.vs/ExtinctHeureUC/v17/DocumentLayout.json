@@ -1,9 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\abelx\\Documents\\SAE24\\ExtinctHeureUC\\",
+  "WorkspaceRootPath": "C:\\Users\\abelx\\Documents\\Cours_AUTRE\\SAE24\\ExtinctHeureUC\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9C20B76D-4562-44DF-9969-211A048B3F19}|ExtinctHeureUC\\ExtinctHeureUC.csproj|c:\\users\\abelx\\documents\\sae24\\extinctheureuc\\extinctheureuc\\mission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{9C20B76D-4562-44DF-9969-211A048B3F19}|ExtinctHeureUC\\ExtinctHeureUC.csproj|c:\\users\\abelx\\documents\\cours_autre\\sae24\\extinctheureuc\\extinctheureuc\\mission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C20B76D-4562-44DF-9969-211A048B3F19}|ExtinctHeureUC\\ExtinctHeureUC.csproj|solutionrelative:extinctheureuc\\mission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C20B76D-4562-44DF-9969-211A048B3F19}|ExtinctHeureUC\\ExtinctHeureUC.csproj|c:\\users\\abelx\\documents\\cours_autre\\sae24\\extinctheureuc\\extinctheureuc\\mission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{9C20B76D-4562-44DF-9969-211A048B3F19}|ExtinctHeureUC\\ExtinctHeureUC.csproj|solutionrelative:extinctheureuc\\mission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -19,10 +23,23 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Mission.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\abelx\\Documents\\SAE24\\ExtinctHeureUC\\ExtinctHeureUC\\Mission.cs",
+              "Title": "Mission.cs",
+              "DocumentMoniker": "C:\\Users\\abelx\\Documents\\Cours_AUTRE\\SAE24\\ExtinctHeureUC\\ExtinctHeureUC\\Mission.cs",
               "RelativeDocumentMoniker": "ExtinctHeureUC\\Mission.cs",
-              "ToolTip": "C:\\Users\\abelx\\Documents\\SAE24\\ExtinctHeureUC\\ExtinctHeureUC\\Mission.cs [Design]",
+              "ToolTip": "C:\\Users\\abelx\\Documents\\Cours_AUTRE\\SAE24\\ExtinctHeureUC\\ExtinctHeureUC\\Mission.cs",
+              "RelativeToolTip": "ExtinctHeureUC\\Mission.cs",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAAwIIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T09:43:45.166Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Mission.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\abelx\\Documents\\Cours_AUTRE\\SAE24\\ExtinctHeureUC\\ExtinctHeureUC\\Mission.cs",
+              "RelativeDocumentMoniker": "ExtinctHeureUC\\Mission.cs",
+              "ToolTip": "C:\\Users\\abelx\\Documents\\Cours_AUTRE\\SAE24\\ExtinctHeureUC\\ExtinctHeureUC\\Mission.cs [Design]",
               "RelativeToolTip": "ExtinctHeureUC\\Mission.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-19T09:11:01.44Z",
