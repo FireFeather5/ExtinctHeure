@@ -67,7 +67,8 @@
             // 
             this.pcbImageMission.Location = new System.Drawing.Point(3, 3);
             this.pcbImageMission.Name = "pcbImageMission";
-            this.pcbImageMission.Size = new System.Drawing.Size(144, 144);
+            this.pcbImageMission.Size = new System.Drawing.Size(142, 142);
+            this.pcbImageMission.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pcbImageMission.TabIndex = 1;
             this.pcbImageMission.TabStop = false;
             // 

@@ -111,6 +111,51 @@ namespace ExtinctHeureUC
             }
         }
 
+        String dateFin = "";
+
+        [Description("Date de fin de la mission")]
+        public String finMission
+        {
+            get
+            {
+                return this.dateFin;
+            }
+            set
+            {
+                this.dateFin = value;
+            }
+        }
+
+        String adresse = "";
+
+        [Description("Adresse de la mission")]
+        public String adresseMission
+        {
+            get
+            {
+                return this.adresse;
+            }
+            set
+            {
+                this.adresse = value;
+            }
+        }
+
+        String rapport = "";
+
+        [Description("Rapport de la mission")]
+        public String rapportMission
+        {
+            get
+            {
+                return this.rapport;
+            }
+            set
+            {
+                this.rapport = value;
+            }
+        }
+
         public ClotureMission ClotureMissionEvent;
         public CreerRapport CreerRapportEvent;
 
