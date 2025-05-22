@@ -11,3 +11,5 @@ C:\Users\capucine\Music\SAE24\ExtinctHeure\ExtinctHeure\obj\Debug\ExtinctHeure.c
 C:\Users\capucine\Music\SAE24\ExtinctHeure\ExtinctHeure\obj\Debug\ExtinctH.6CAEC7F4.Up2Date
 C:\Users\capucine\Music\SAE24\ExtinctHeure\ExtinctHeure\obj\Debug\ExtinctHeure.exe
 C:\Users\capucine\Music\SAE24\ExtinctHeure\ExtinctHeure\obj\Debug\ExtinctHeure.pdb
+C:\Users\capucine\Music\SAE24\ExtinctHeure\ExtinctHeure\bin\Debug\UCPompierMission.dll
+C:\Users\capucine\Music\SAE24\ExtinctHeure\ExtinctHeure\bin\Debug\UCPompierMission.pdb

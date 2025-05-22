@@ -121,10 +121,13 @@ namespace ExtinctHeure
 
         private void btnConstEqu_Click(object sender, EventArgs e)
         {
+
+
             ArrayList listeCodeNece = new ArrayList();      //type de vehicule necessaire (un seul par type)
             ArrayList listeNbrNece = new ArrayList();       //nombre de vehicule necessaire de chaque type
             int verifValide = 0;            //vérifie que la liste finale contient tous les numéros des engins
 
+         
             dgvEng.Columns.Clear();
 
             dgvEng.Columns.Add("Engin", "Engin");
@@ -207,8 +210,8 @@ namespace ExtinctHeure
                     {
                         dgvEng.Rows.Add(vehi, listeNumVehiFinale[indexNumVehi]);      //ajout de l'engin dans le dgv
                         indexNumVehi++;
-                        listeCodeVehiPrPomp.Add(vehi.ToString());
                         nombreVehi.Add(listeNbrNece[indexNbrVehic]);
+                        listeCodeVehiPrPomp.Add(vehi.ToString());
 
                     }
                     dgvEng.Rows.Add(vehi, listeNumVehiFinale[indexNumVehi]);      //ajout de l'engin dans le dgv
@@ -230,10 +233,12 @@ namespace ExtinctHeure
 
 
 
+            ArrayList listeIdHab = new ArrayList();         //contient la liste des habilitations
+            ArrayList listeHabNbr = new ArrayList();        //contient le nombre de pompier qu'il faut pour chaque habilitation
+            ArrayList listeTotaleVehi = new ArrayList();        //contient tous les véhicules dans tous leurs exemplaires pour chaque habilitation (utile pour l'affichage)
+            ArrayList listeTotaleNumVehi = new ArrayList();      //contient les numéros de tous les véhicules pour chaque habilitation
 
-            ArrayList listeIdHab = new ArrayList();
-            ArrayList listeHabNbr = new ArrayList();
-            //ArrayList vehic = new ArrayList();
+            int indexNumVeh = 0;
 
             foreach (string vehi in listeCodeVehiPrPomp)
             {
@@ -250,11 +255,14 @@ namespace ExtinctHeure
                         //MessageBox.Show("j'afficheeeee");
                         listeIdHab.Add(dr["idHabilitation"].ToString());
                         listeHabNbr.Add(dr["nombre"]);
-                        //vehic.Add(vehi);
+                        listeTotaleVehi.Add(vehi);
+
+                        listeTotaleNumVehi.Add(listeNumVehiFinale[indexNumVeh]);
 
                         //MessageBox.Show( dr["idHabilitation"].ToString() + dr["nombre"].ToString());
                     }
                 }
+                indexNumVeh++;
             }
 
             //int i = 0;
@@ -263,11 +271,11 @@ namespace ExtinctHeure
             ArrayList unPomp = new ArrayList();         //contient un pompier
 
 
-            int haut = 50;
+            int haut = 30;
             int gauche = 30;
-            //int k = 0;
             int l = 0;
             int j = 0;
+            int k = 0;
             bool te = false;
             bool tee = false;
 
@@ -305,13 +313,13 @@ namespace ExtinctHeure
                                             dgvPomp.Rows.Add(unPomp[0], unPomp[1], unPomp[2], unPomp[3]);
 
 
-                                            Label lbl = new Label();
+                                            /*Label lbl = new Label();
                                             lbl.Name = "lblEP";         //"Engin : " + listeCodeVehiPrPomp[k] + listeNumVehiFinale[k] + 
-                                            lbl.Text = " : - " + unPomp[0] + " " + unPomp[1] + " " + unPomp[2] + " " + unPomp[3];
+                                            lbl.Text = "Engin : " + listeTotaleVehi[k] + listeTotaleNumVehi[k] + " : - " + unPomp[0] + " " + unPomp[1] + " " + unPomp[2] + " " + unPomp[3];
                                             lbl.Top = haut;
                                             lbl.Left = gauche;
                                             lbl.Width = 400;
-                                            haut += 30;
+                                            haut += 50;
                                             l++;
 
 
@@ -321,8 +329,27 @@ namespace ExtinctHeure
                                                 gauche = gauche + 450;
                                             }
 
-                                            grbEP.Controls.Add(lbl);
+                                            grbEP.Controls.Add(lbl);*/
 
+
+                                            string Eng = listeTotaleVehi[k].ToString() + listeTotaleNumVehi[k].ToString();
+                                            string Pom = unPomp[0] + " " + unPomp[1] + " " + unPomp[2] + " " + unPomp[3];
+
+                                            UCPompierMission.UserControl1 lbl = new UCPompierMission.UserControl1(Eng, Pom);
+                                            lbl.Top = haut;
+                                            lbl.Left = gauche;
+                                            lbl.Width = 400;
+                                            haut += 40;
+                                            l++;
+
+
+                                            if (l % 8 == 0)
+                                            {
+                                                haut = 50;
+                                                gauche = gauche + 500;
+                                            }
+
+                                            grbEP.Controls.Add(lbl);
 
                                             unPomp.Clear();
                                             te = true;
@@ -336,7 +363,7 @@ namespace ExtinctHeure
                     te = false;
                 }
                 j++;
-                //k++;
+                k++;
             }
 
 

@@ -1,0 +1,8 @@
+C:\Users\capucine\Music\SAE24\UCPompierMission\UCPompierMission\bin\Debug\UCPompierMission.dll
+C:\Users\capucine\Music\SAE24\UCPompierMission\UCPompierMission\bin\Debug\UCPompierMission.pdb
+C:\Users\capucine\Music\SAE24\UCPompierMission\UCPompierMission\obj\Debug\UCPompierMission.csproj.AssemblyReference.cache
+C:\Users\capucine\Music\SAE24\UCPompierMission\UCPompierMission\obj\Debug\UCPompierMission.UserControl1.resources
+C:\Users\capucine\Music\SAE24\UCPompierMission\UCPompierMission\obj\Debug\UCPompierMission.csproj.GenerateResource.cache
+C:\Users\capucine\Music\SAE24\UCPompierMission\UCPompierMission\obj\Debug\UCPompierMission.csproj.CoreCompileInputs.cache
+C:\Users\capucine\Music\SAE24\UCPompierMission\UCPompierMission\obj\Debug\UCPompierMission.dll
+C:\Users\capucine\Music\SAE24\UCPompierMission\UCPompierMission\obj\Debug\UCPompierMission.pdb

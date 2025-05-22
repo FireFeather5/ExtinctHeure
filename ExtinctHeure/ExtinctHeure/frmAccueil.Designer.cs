@@ -291,7 +291,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1232, 853);
+            this.ClientSize = new System.Drawing.Size(1232, 851);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Arial Narrow", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);

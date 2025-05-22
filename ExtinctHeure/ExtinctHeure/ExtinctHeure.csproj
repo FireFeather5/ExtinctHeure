@@ -49,6 +49,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="UCPompierMission">
+      <HintPath>..\..\UCPompierMission\UCPompierMission\bin\Debug\UCPompierMission.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connexion.cs" />
