@@ -128,10 +128,6 @@ namespace ExtinctHeure
             int verifValide = 0;            //vérifie que la liste finale contient tous les numéros des engins
 
          
-            dgvEng.Columns.Clear();
-
-            dgvEng.Columns.Add("Engin", "Engin");
-            dgvEng.Columns.Add("Nombre", "Nombre");
 
             int idSin = cboNatSin.SelectedIndex + 1;        //id du sinistre
             foreach (DataRow dr in MesDatas.DsGlobal.Tables["Necessiter"].Rows)
@@ -193,7 +189,6 @@ namespace ExtinctHeure
             }
 
             ArrayList listeCodeVehiPrPomp = new ArrayList();
-            ArrayList nombreVehi = new ArrayList();
 
             // sert à vérifier que tous les engins sont disponibles en nombre suffisant
             if (!validate)           // si l'un des engins n'est pas disponible
@@ -208,14 +203,10 @@ namespace ExtinctHeure
                 {
                     if (Convert.ToInt32(listeNbrNece[indexNbrVehic]) > 1)
                     {
-                        dgvEng.Rows.Add(vehi, listeNumVehiFinale[indexNumVehi]);      //ajout de l'engin dans le dgv
                         indexNumVehi++;
-                        nombreVehi.Add(listeNbrNece[indexNbrVehic]);
                         listeCodeVehiPrPomp.Add(vehi.ToString());
 
                     }
-                    dgvEng.Rows.Add(vehi, listeNumVehiFinale[indexNumVehi]);      //ajout de l'engin dans le dgv
-                    nombreVehi.Add(listeNbrNece[indexNbrVehic]);
                     indexNumVehi++;
                     indexNbrVehic++;
                     listeCodeVehiPrPomp.Add(vehi.ToString());
@@ -224,17 +215,10 @@ namespace ExtinctHeure
 
 
 
-            dgvPomp.Columns.Clear();
-
-            dgvPomp.Columns.Add("matricule", "matricule");
-            dgvPomp.Columns.Add("nom", "nom");
-            dgvPomp.Columns.Add("prenom", "prenom");
-            dgvPomp.Columns.Add("habilitation", "habilitation");
-
-
-
             ArrayList listeIdHab = new ArrayList();         //contient la liste des habilitations
             ArrayList listeHabNbr = new ArrayList();        //contient le nombre de pompier qu'il faut pour chaque habilitation
+            
+            
             ArrayList listeTotaleVehi = new ArrayList();        //contient tous les véhicules dans tous leurs exemplaires pour chaque habilitation (utile pour l'affichage)
             ArrayList listeTotaleNumVehi = new ArrayList();      //contient les numéros de tous les véhicules pour chaque habilitation
 
@@ -242,40 +226,29 @@ namespace ExtinctHeure
 
             foreach (string vehi in listeCodeVehiPrPomp)
             {
-                //tt sur les pompiers   (matricule nom prenom habilitation)
-                //embarquer : codeTypeEngin -> idHabilitation et nombre     (pour avoir le bon nombre de pompiers de la bonne habilitation)
-                //prendre dse matricules
-
-                //MessageBox.Show("j'affiche");
 
                 foreach (DataRow dr in MesDatas.DsGlobal.Tables["Embarquer"].Rows)
                 {
                     if (dr["codeTypeEngin"].ToString() == vehi)
                     {
-                        //MessageBox.Show("j'afficheeeee");
                         listeIdHab.Add(dr["idHabilitation"].ToString());
                         listeHabNbr.Add(dr["nombre"]);
                         listeTotaleVehi.Add(vehi);
 
                         listeTotaleNumVehi.Add(listeNumVehiFinale[indexNumVeh]);
 
-                        //MessageBox.Show( dr["idHabilitation"].ToString() + dr["nombre"].ToString());
                     }
                 }
                 indexNumVeh++;
             }
 
-            //int i = 0;
-            //int z = 0;
-            ArrayList listePomp = new ArrayList();      //contient les pompiers déjà présents dans la mission
-            ArrayList unPomp = new ArrayList();         //contient un pompier
 
+            ArrayList listePomp = new ArrayList();      //contient les pompiers déjà présents dans la mission
 
             int haut = 30;
-            int gauche = 30;
+            int gauche = 50;
             int l = 0;
             int j = 0;
-            int k = 0;
             bool te = false;
             bool tee = false;
 
@@ -302,38 +275,12 @@ namespace ExtinctHeure
                                             }
                                         }
 
-                                        if (!tee)       //si il n'est pas encore dans la liste on l'ajoute
+                                        if (!tee)       //si il n'est pas encore dans la liste
                                         {
-                                            unPomp.Add(drr["matricule"]);
-                                            listePomp.Add(drr["matricule"].ToString());
-                                            unPomp.Add(drr["nom"]);
-                                            unPomp.Add(drr["prenom"]);
-                                            unPomp.Add(idHab);
-                                            //MessageBox.Show("j'ajoute");
-                                            dgvPomp.Rows.Add(unPomp[0], unPomp[1], unPomp[2], unPomp[3]);
+                                            listePomp.Add(drr["matricule"].ToString());       //On l'ajoute
 
-
-                                            /*Label lbl = new Label();
-                                            lbl.Name = "lblEP";         //"Engin : " + listeCodeVehiPrPomp[k] + listeNumVehiFinale[k] + 
-                                            lbl.Text = "Engin : " + listeTotaleVehi[k] + listeTotaleNumVehi[k] + " : - " + unPomp[0] + " " + unPomp[1] + " " + unPomp[2] + " " + unPomp[3];
-                                            lbl.Top = haut;
-                                            lbl.Left = gauche;
-                                            lbl.Width = 400;
-                                            haut += 50;
-                                            l++;
-
-
-                                            if (l % 10 == 0)
-                                            {
-                                                haut = 50;
-                                                gauche = gauche + 450;
-                                            }
-
-                                            grbEP.Controls.Add(lbl);*/
-
-
-                                            string Eng = listeTotaleVehi[k].ToString() + listeTotaleNumVehi[k].ToString();
-                                            string Pom = unPomp[0] + " " + unPomp[1] + " " + unPomp[2] + " " + unPomp[3];
+                                            string Eng = listeTotaleVehi[j].ToString() + listeTotaleNumVehi[j].ToString();
+                                            string Pom = drr["matricule"] + " " + drr["nom"] + " " + drr["prenom"] + " " + idHab;
 
                                             UCPompierMission.UserControl1 lbl = new UCPompierMission.UserControl1(Eng, Pom);
                                             lbl.Top = haut;
@@ -345,13 +292,12 @@ namespace ExtinctHeure
 
                                             if (l % 8 == 0)
                                             {
-                                                haut = 50;
+                                                haut = 30;
                                                 gauche = gauche + 500;
                                             }
 
                                             grbEP.Controls.Add(lbl);
 
-                                            unPomp.Clear();
                                             te = true;
                                         }
                                         tee = false;
@@ -363,12 +309,9 @@ namespace ExtinctHeure
                     te = false;
                 }
                 j++;
-                k++;
             }
 
 
-            //maintenant il faut afficher joliement :)
-            //arraylist d'arraylist ?
 
         }
     }

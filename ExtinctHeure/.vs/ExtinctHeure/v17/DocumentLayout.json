@@ -3,11 +3,11 @@
   "WorkspaceRootPath": "C:\\Users\\capucine\\Music\\SAE24\\ExtinctHeure\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|C:\\Users\\capucine\\Music\\SAE24\\ExtinctHeure\\extinctheure\\frmaccueil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|c:\\users\\capucine\\music\\sae24\\extinctheure\\extinctheure\\frmaccueil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|solutionrelative:extinctheure\\frmaccueil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|c:\\users\\capucine\\music\\sae24\\extinctheure\\extinctheure\\frmaccueil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|C:\\Users\\capucine\\Music\\SAE24\\ExtinctHeure\\extinctheure\\frmaccueil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|solutionrelative:extinctheure\\frmaccueil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -36,7 +36,7 @@
               "RelativeDocumentMoniker": "ExtinctHeure\\frmAccueil.cs",
               "ToolTip": "C:\\Users\\capucine\\Music\\SAE24\\ExtinctHeure\\ExtinctHeure\\frmAccueil.cs",
               "RelativeToolTip": "ExtinctHeure\\frmAccueil.cs",
-              "ViewState": "AgIAADEBAAAAAAAAAAAQwD8BAAA+AAAAAAAAAA==",
+              "ViewState": "AgIAAB0BAAAAAAAAAAAkwCoBAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-06T15:07:15.911Z",
               "EditorCaption": ""
@@ -50,8 +50,7 @@
               "ToolTip": "C:\\Users\\capucine\\Music\\SAE24\\ExtinctHeure\\ExtinctHeure\\frmAccueil.cs [Design]",
               "RelativeToolTip": "ExtinctHeure\\frmAccueil.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T14:36:57.259Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-05-06T14:36:57.259Z"
             },
             {
               "$type": "Document",
