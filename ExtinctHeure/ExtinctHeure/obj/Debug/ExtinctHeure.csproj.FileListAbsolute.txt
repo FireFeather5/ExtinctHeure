@@ -32,3 +32,4 @@ C:\Users\abelx\Documents\Cours_AUTRE\SAE24\ExtinctHeure\ExtinctHeure\bin\Debug\B
 C:\Users\abelx\Documents\Cours_AUTRE\SAE24\ExtinctHeure\ExtinctHeure\bin\Debug\itextsharp.dll
 C:\Users\abelx\Documents\Cours_AUTRE\SAE24\ExtinctHeure\ExtinctHeure\bin\Debug\BouncyCastle.Cryptography.xml
 C:\Users\abelx\Documents\Cours_AUTRE\SAE24\ExtinctHeure\ExtinctHeure\bin\Debug\itextsharp.xml
+C:\Users\abelx\Documents\Cours_AUTRE\SAE24\ExtinctHeure\ExtinctHeure\obj\Debug\ExtinctHeure.frmRapport.resources

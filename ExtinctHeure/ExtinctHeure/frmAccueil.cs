@@ -94,7 +94,8 @@ namespace ExtinctHeure
                     mission.finMission = dataRow["dateHeureRetour"].ToString();
                 }
 
-                mission.CreerRapportEvent += genererRapport;
+                mission.CreerRapportEvent = genererRapport;
+                mission.ClotureMissionEvent = cloturerMission;
 
                 if (chkEnCours.Checked && !mission.estFini)
                 {
@@ -188,25 +189,34 @@ namespace ExtinctHeure
             }
             else
             {
-                // Mettre à jour la date de fin de la mission
-                string requete = "UPDATE Mission SET dateHeureRetour = datetime('now') WHERE id = " + mission.idMission.ToString();
-                SQLiteCommand cmd = new SQLiteCommand(requete, cx);
-                try
+                Form rapport = new frmRapport();
+                if (rapport.ShowDialog() == DialogResult.OK)
                 {
-                    cx.Open();
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("La mission a été clôturée avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    mission.estFini = true;
-                    mission.finMission = DateTime.Now.ToString();
-                    grpMissions_VisibleChanged(sender, e); // Rafraîchir l'affichage des missions
+                    cx = Connexion.Connec;
+                    mission.rapportMission = ((frmRapport)rapport).rapport;
+                    string requete = $"UPDATE Mission SET dateHeureRetour = datetime('now'), compteRendu = '{mission.rapportMission}' WHERE id = " + mission.idMission.ToString();
+                    SQLiteCommand cmd = new SQLiteCommand(requete, cx);
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                        mission.estFini = true;
+                        mission.finMission = DateTime.Now.ToString();
+                        loaded = false;
+                        MessageBox.Show("La mission a été clôturée avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        grpMissions_VisibleChanged(sender, e); // Rafraîchir l'affichage des missions
+                    }
+                    catch (SQLiteException ex)
+                    {
+                        MessageBox.Show($"Erreur lors de la clôture de la mission : {ex.Message}", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        cx.Close();
+                    }
                 }
-                catch (SQLiteException ex)
+                else
                 {
-                    MessageBox.Show($"Erreur lors de la clôture de la mission : {ex.Message}", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                finally
-                {
-                    cx.Close();
+                    MessageBox.Show("La mission n'a pas été clôturée.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
