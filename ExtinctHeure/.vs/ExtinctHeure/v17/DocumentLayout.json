@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|solutionrelative:extinctheure\\frmaccueil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|c:\\users\\abelx\\documents\\cours_autre\\sae24\\extinctheure\\extinctheure\\connexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|solutionrelative:extinctheure\\connexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|C:\\Users\\abelx\\Documents\\Cours_AUTRE\\SAE24\\ExtinctHeure\\extinctheure\\frmaccueil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|solutionrelative:extinctheure\\frmaccueil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
@@ -18,8 +22,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Connexion.cs",
+              "DocumentMoniker": "C:\\Users\\abelx\\Documents\\Cours_AUTRE\\SAE24\\ExtinctHeure\\ExtinctHeure\\Connexion.cs",
+              "RelativeDocumentMoniker": "ExtinctHeure\\Connexion.cs",
+              "ToolTip": "C:\\Users\\abelx\\Documents\\Cours_AUTRE\\SAE24\\ExtinctHeure\\ExtinctHeure\\Connexion.cs",
+              "RelativeToolTip": "ExtinctHeure\\Connexion.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-26T12:35:44.926Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -28,21 +45,22 @@
               "RelativeDocumentMoniker": "ExtinctHeure\\frmAccueil.cs",
               "ToolTip": "C:\\Users\\abelx\\Documents\\Cours_AUTRE\\SAE24\\ExtinctHeure\\ExtinctHeure\\frmAccueil.cs",
               "RelativeToolTip": "ExtinctHeure\\frmAccueil.cs",
-              "ViewState": "AgIAAHYAAAAAAAAAAAAowJcAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAALYAAAAAAAAAAAAYwNIAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-19T09:50:17.544Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "frmAccueil.cs [Design]",
               "DocumentMoniker": "C:\\Users\\abelx\\Documents\\Cours_AUTRE\\SAE24\\ExtinctHeure\\ExtinctHeure\\frmAccueil.cs",
               "RelativeDocumentMoniker": "ExtinctHeure\\frmAccueil.cs",
               "ToolTip": "C:\\Users\\abelx\\Documents\\Cours_AUTRE\\SAE24\\ExtinctHeure\\ExtinctHeure\\frmAccueil.cs [Design]",
               "RelativeToolTip": "ExtinctHeure\\frmAccueil.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T14:36:57.259Z"
+              "WhenOpened": "2025-05-06T14:36:57.259Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }

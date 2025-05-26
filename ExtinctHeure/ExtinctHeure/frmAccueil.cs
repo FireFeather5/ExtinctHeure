@@ -44,9 +44,18 @@ namespace ExtinctHeure
 
             DataRelation relCaserne = new DataRelation("FK_Mission_idCaserne", monDS.Tables["Caserne"].Columns["id"], monDS.Tables["Mission"].Columns["idCaserne"], false);
             DataRelation relNature = new DataRelation("FK_Mission_idNature", monDS.Tables["NatureSinistre"].Columns["id"], monDS.Tables["Mission"].Columns["idNatureSinistre"], false);
+            DataRelation relPompier = new DataRelation("FK_Mobiliser_matriculePompier", monDS.Tables["Pompier"].Columns["matricule"], monDS.Tables["Mobiliser"].Columns["matriculePompier"], false);
+            DataRelation relHabilitation = new DataRelation("FK_Mobiliser_idHabilitation", monDS.Tables["Habilitation"].Columns["id"], monDS.Tables["Mobiliser"].Columns["idhabilitation"], false);
+            DataRelation relGrade = new DataRelation("FK_Pompier_codeGrade", monDS.Tables["Grade"].Columns["code"], monDS.Tables["Pompier"].Columns["codeGrade"], false);
+            DataRelation relEngin = new DataRelation("FK_PartirAvec_codeTypeEngin", monDS.Tables["TypeEngin"].Columns["code"], monDS.Tables["PartirAvec"].Columns["codeTypeEngin"], false);
+
 
             monDS.Relations.Add(relCaserne);
             monDS.Relations.Add(relNature);
+            monDS.Relations.Add(relPompier);
+            monDS.Relations.Add(relHabilitation);
+            monDS.Relations.Add(relGrade);
+            monDS.Relations.Add(relEngin);
         }
 
         Dictionary<string, string> imageMission = new Dictionary<string, string>()
@@ -141,20 +150,65 @@ namespace ExtinctHeure
             doc.Add(new Paragraph("Caserne : " + mission.caserne, h2));
             doc.Add(Chunk.NEWLINE);
             doc.Add(new Paragraph("Pompiers affectés : ", h2));
-            for (int i = 0; i < monDS.Tables["Moiliser"].Rows.Count; i++)   
+            doc.Add(Chunk.NEWLINE);
+
+            foreach (DataRow row in monDS.Tables["Mobiliser"].Select("idMission = " + mission.idMission))
             {
-                if (monDS.Tables["Moiliser"].Rows[i]["idMission"].ToString() == mission.idMission.ToString())
-                {
-                    DataRow[] rows = monDS.Tables["Pompiers"].Select("id = " + monDS.Tables["Moiliser"].Rows[i]["idPompier"].ToString());
-                    if (rows.Length > 0)
-                    {
-                        doc.Add(new Paragraph(rows[0]["nom"].ToString() + " " + rows[0]["prenom"].ToString()));
-                    }
-                }
+                doc.Add(new Paragraph(">>>  " + row.GetParentRow("FK_Mobiliser_matriculePompier").GetParentRow("FK_Pompier_codeGrade")["libelle"] + " " + row.GetParentRow("FK_Mobiliser_matriculePompier")["nom"] + " " + row.GetParentRow("FK_Mobiliser_matriculePompier")["prenom"] + " (" + row.GetParentRow("FK_Mobiliser_idHabilitation")["libelle"] + ")"));
             }
 
+            doc.Add(Chunk.NEWLINE);
 
+            doc.Add(new Paragraph("Engins utilisés : ", h2));
+            doc.Add(Chunk.NEWLINE);
+
+            String repa = "";
+
+            foreach (DataRow row in monDS.Tables["partirAvec"].Select("idMission = " + mission.idMission))
+            {
+                if (row["reparationsEventuelles"] != DBNull.Value && row["reparationsEventuelles"] != "")
+                {
+                    repa = row["reparationsEventuelles"].ToString();
+                }
+                else
+                {
+                    repa = "Pas de reparations prévues";
+                }
+                doc.Add(new Paragraph(">>>  " + row.GetParentRow("FK_PartirAvec_codeTypeEngin")["nom"] + " " + row["idCaserne"] + "-" + row["codeTypeEngin"] + "-" + row["numeroEngin"] + " (" + repa + ")"));
+            }
             doc.Close();
+        }
+
+        private void cloturerMission(object sender, EventArgs e)
+        {
+            Mission mission = (Mission)sender;
+            if (mission.estFini)
+            {
+                MessageBox.Show("La mission est déjà terminée.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                // Mettre à jour la date de fin de la mission
+                string requete = "UPDATE Mission SET dateHeureRetour = datetime('now') WHERE id = " + mission.idMission.ToString();
+                SQLiteCommand cmd = new SQLiteCommand(requete, cx);
+                try
+                {
+                    cx.Open();
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("La mission a été clôturée avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    mission.estFini = true;
+                    mission.finMission = DateTime.Now.ToString();
+                    grpMissions_VisibleChanged(sender, e); // Rafraîchir l'affichage des missions
+                }
+                catch (SQLiteException ex)
+                {
+                    MessageBox.Show($"Erreur lors de la clôture de la mission : {ex.Message}", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    cx.Close();
+                }
+            }
         }
     }
 }
