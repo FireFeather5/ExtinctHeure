@@ -30,8 +30,6 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.grbEP = new System.Windows.Forms.GroupBox();
-            this.dgvPomp = new System.Windows.Forms.DataGridView();
-            this.dgvEng = new System.Windows.Forms.DataGridView();
             this.lblDteMis = new System.Windows.Forms.Label();
             this.lblNumMis = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -52,9 +50,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
-            this.grbEP.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPomp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEng)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -66,45 +61,21 @@
             this.groupBox1.Controls.Add(this.lblNumMis);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 116);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1208, 829);
+            this.groupBox1.Size = new System.Drawing.Size(1208, 651);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
             // grbEP
             // 
-            this.grbEP.Controls.Add(this.dgvPomp);
-            this.grbEP.Controls.Add(this.dgvEng);
-            this.grbEP.Location = new System.Drawing.Point(30, 412);
+            this.grbEP.Location = new System.Drawing.Point(30, 339);
             this.grbEP.Name = "grbEP";
-            this.grbEP.Size = new System.Drawing.Size(1151, 396);
+            this.grbEP.Size = new System.Drawing.Size(1151, 294);
             this.grbEP.TabIndex = 5;
             this.grbEP.TabStop = false;
             this.grbEP.Text = "Mobilisation des engins et des pompiers";
-            // 
-            // dgvPomp
-            // 
-            this.dgvPomp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPomp.Location = new System.Drawing.Point(689, 195);
-            this.dgvPomp.Name = "dgvPomp";
-            this.dgvPomp.RowHeadersWidth = 51;
-            this.dgvPomp.RowTemplate.Height = 24;
-            this.dgvPomp.Size = new System.Drawing.Size(387, 95);
-            this.dgvPomp.TabIndex = 1;
-            this.dgvPomp.Visible = false;
-            // 
-            // dgvEng
-            // 
-            this.dgvEng.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEng.Location = new System.Drawing.Point(85, 239);
-            this.dgvEng.Name = "dgvEng";
-            this.dgvEng.RowHeadersWidth = 51;
-            this.dgvEng.RowTemplate.Height = 24;
-            this.dgvEng.Size = new System.Drawing.Size(387, 51);
-            this.dgvEng.TabIndex = 0;
-            this.dgvEng.Visible = false;
             // 
             // lblDteMis
             // 
@@ -134,7 +105,7 @@
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Location = new System.Drawing.Point(30, 230);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1151, 176);
+            this.groupBox3.Size = new System.Drawing.Size(1151, 103);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Décisions du régulateur";
@@ -142,7 +113,7 @@
             // cboCasMob
             // 
             this.cboCasMob.FormattingEnabled = true;
-            this.cboCasMob.Location = new System.Drawing.Point(827, 49);
+            this.cboCasMob.Location = new System.Drawing.Point(618, 50);
             this.cboCasMob.Name = "cboCasMob";
             this.cboCasMob.Size = new System.Drawing.Size(193, 30);
             this.cboCasMob.TabIndex = 11;
@@ -150,14 +121,14 @@
             // cboNatSin
             // 
             this.cboNatSin.FormattingEnabled = true;
-            this.cboNatSin.Location = new System.Drawing.Point(296, 49);
+            this.cboNatSin.Location = new System.Drawing.Point(176, 50);
             this.cboNatSin.Name = "cboNatSin";
             this.cboNatSin.Size = new System.Drawing.Size(193, 30);
             this.cboNatSin.TabIndex = 10;
             // 
             // btnConstEqu
             // 
-            this.btnConstEqu.Location = new System.Drawing.Point(1023, 109);
+            this.btnConstEqu.Location = new System.Drawing.Point(1014, 27);
             this.btnConstEqu.Name = "btnConstEqu";
             this.btnConstEqu.Size = new System.Drawing.Size(122, 61);
             this.btnConstEqu.TabIndex = 9;
@@ -167,7 +138,7 @@
             // 
             // btnAnn
             // 
-            this.btnAnn.Location = new System.Drawing.Point(895, 109);
+            this.btnAnn.Location = new System.Drawing.Point(875, 27);
             this.btnAnn.Name = "btnAnn";
             this.btnAnn.Size = new System.Drawing.Size(122, 61);
             this.btnAnn.TabIndex = 8;
@@ -177,7 +148,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(682, 48);
+            this.label9.Location = new System.Drawing.Point(473, 49);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(139, 22);
             this.label9.TabIndex = 5;
@@ -186,7 +157,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(174, 48);
+            this.label8.Location = new System.Drawing.Point(54, 49);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(116, 22);
             this.label8.TabIndex = 4;
@@ -291,18 +262,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1232, 851);
+            this.ClientSize = new System.Drawing.Size(1232, 783);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Arial Narrow", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmAccueil";
-            this.Text = "Form1";
+            this.Text = "Ajout d\'une mission";
             this.Load += new System.EventHandler(this.frmAccueil_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.grbEP.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPomp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEng)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -334,8 +302,6 @@
         private System.Windows.Forms.ComboBox cboCasMob;
         private System.Windows.Forms.ComboBox cboNatSin;
         private System.Windows.Forms.GroupBox grbEP;
-        private System.Windows.Forms.DataGridView dgvPomp;
-        private System.Windows.Forms.DataGridView dgvEng;
     }
 }
 

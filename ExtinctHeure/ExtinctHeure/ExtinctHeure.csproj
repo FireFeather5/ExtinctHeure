@@ -49,6 +49,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="testCreaControle">
+      <HintPath>D:\OneDrive\Documents\devoirs\A21\testCreaControle\testCreaControle\bin\Debug\testCreaControle.dll</HintPath>
+    </Reference>
     <Reference Include="UCPompierMission">
       <HintPath>..\..\UCPompierMission\UCPompierMission\bin\Debug\UCPompierMission.dll</HintPath>
     </Reference>

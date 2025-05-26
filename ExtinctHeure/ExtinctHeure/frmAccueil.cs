@@ -75,6 +75,10 @@ namespace ExtinctHeure
             {
                 e.Handled = false;
             }
+            if ((e.KeyChar == (char)Keys.Back) || (e.KeyChar == (char)Keys.Space))
+            {
+                e.Handled = false;
+            }
             if ((e.KeyChar == (char)Keys.Tab) || (e.KeyChar == (char)Keys.Enter))
             {
                 txtCP.Focus();
@@ -88,7 +92,7 @@ namespace ExtinctHeure
             {
                 e.Handled = false;
             }
-            if (txtCP.Text.Length < 2)
+            if (txtCP.Text.Length < 5)
             {
                 if (char.IsNumber(e.KeyChar))
                 {
@@ -108,6 +112,10 @@ namespace ExtinctHeure
             {
                 e.Handled = false;
             }
+            if ((e.KeyChar == (char)Keys.Back) || (e.KeyChar == (char)Keys.Space))
+            {
+                e.Handled = false;
+            }
         }
 
         private void txtMotif_KeyPress(object sender, KeyPressEventArgs e)
@@ -121,6 +129,8 @@ namespace ExtinctHeure
 
         private void btnConstEqu_Click(object sender, EventArgs e)
         {
+            grbEP.Controls.Clear();
+
 
 
             ArrayList listeCodeNece = new ArrayList();      //type de vehicule necessaire (un seul par type)
@@ -246,7 +256,7 @@ namespace ExtinctHeure
             ArrayList listePomp = new ArrayList();      //contient les pompiers déjà présents dans la mission
 
             int haut = 30;
-            int gauche = 50;
+            int gauche = 100;
             int l = 0;
             int j = 0;
             bool te = false;
@@ -262,45 +272,82 @@ namespace ExtinctHeure
                         {
                             if (dr["idHabilitation"].ToString() == idHab)       //si l'habilitation passée par le pompier est celle recherchée
                             {
-                                foreach (DataRow drr in MesDatas.DsGlobal.Tables["pompier"].Rows)       //pour chaque pompier
+                                //SI la caserne est la bonne (Affectation)
+                                foreach (DataRow drCas in MesDatas.DsGlobal.Tables["Affectation"].Rows)
                                 {
-                                    if ((drr["matricule"].ToString() == dr["matriculePompier"].ToString()) && (Convert.ToInt32(drr["enMission"]) == 0) && (Convert.ToInt32(drr["enConge"]) == 0) && (te == false))
-                                        //si le pompier est celui recherché qu'il n'est ni en mission ni en congé et que le pompier n'a pas été trouvé
+                                    if (Convert.ToInt32(drCas["idCaserne"]) == cboCasMob.SelectedIndex + 1)      //si la caserne de l'engin est celle demandée
                                     {
-                                        foreach (string pomp in listePomp)      //pour chaque pompier déjà sélectionné
+
+                                        foreach (DataRow drr in MesDatas.DsGlobal.Tables["pompier"].Rows)       //pour chaque pompier
                                         {
-                                            if (pomp.ToString() == drr["matricule"].ToString())     //si le pompier sélectionné pour l'habilitation est déjà sélectionné pour une autre
+                                            if (drCas["matriculePompier"].ToString() == drr["matricule"].ToString())
                                             {
-                                                tee = true;         //on ne le sélectionne pas à nouveau
+                                                if ((drr["matricule"].ToString() == dr["matriculePompier"].ToString()) && (Convert.ToInt32(drr["enMission"]) == 0) && (Convert.ToInt32(drr["enConge"]) == 0) && (te == false))
+                                                //si le pompier est celui recherché qu'il n'est ni en mission ni en congé et que le pompier n'a pas été trouvé
+                                                {
+                                                    foreach (string pomp in listePomp)      //pour chaque pompier déjà sélectionné
+                                                    {
+                                                        if (pomp.ToString() == drr["matricule"].ToString())     //si le pompier sélectionné pour l'habilitation est déjà sélectionné pour une autre
+                                                        {
+                                                            tee = true;         //on ne le sélectionne pas à nouveau
+                                                        }
+                                                    }
+
+                                                    if (!tee)       //si il n'est pas encore dans la liste
+                                                    {
+                                                        listePomp.Add(drr["matricule"].ToString());       //On l'ajoute
+
+                                                        string Eng = listeTotaleVehi[j].ToString() + listeTotaleNumVehi[j].ToString();
+                                                        string Pom = drr["matricule"] + "   " + drr["nom"] + "   " + drr["prenom"] + "   " + idHab;
+
+                                                        UCPompierMission.UserControl1 lbl = new UCPompierMission.UserControl1(Eng, Pom);
+                                                        lbl.Top = haut;
+                                                        lbl.Left = gauche;
+                                                        lbl.Width = 400;
+                                                        haut += 30;
+                                                        l++;
+
+
+                                                        if (l % 8 == 0)
+                                                        {
+                                                            haut = 30;
+                                                            gauche = gauche + 500;
+                                                        }
+
+                                                        grbEP.Controls.Add(lbl);
+
+                                                        te = true;
+
+                                                        foreach (DataRow drrr in MesDatas.DsGlobal.Tables["Pompier"].Rows)       //pour chaque pompier
+                                                        {
+                                                            if (drrr["matricule"].ToString() == dr["matriculePompier"].ToString())
+                                                            {
+                                                                //_________________________
+                                                                drrr.BeginEdit();
+                                                                drrr["enMission"] = 1;
+                                                                drrr.EndEdit();
+                                                                //ne change pas une fois l'applie fermée
+                                                            }
+                                                        }
+
+                                                        int n = 0;
+                                                        foreach (DataRow dar in MesDatas.DsGlobal.Tables["Mission"].Rows)
+                                                        {
+                                                            if (n < Convert.ToInt32(dar["id"]))
+                                                            {
+                                                                n = Convert.ToInt32(dar["id"]);
+                                                            }
+                                                        }
+                                                        n++;
+
+                                                        MesDatas.DsGlobal.Tables["Mobiliser"].Rows.Add(drr["matricule"], i, idHab);
+
+
+                                                    }
+                                                    tee = false;
+                                                }
                                             }
                                         }
-
-                                        if (!tee)       //si il n'est pas encore dans la liste
-                                        {
-                                            listePomp.Add(drr["matricule"].ToString());       //On l'ajoute
-
-                                            string Eng = listeTotaleVehi[j].ToString() + listeTotaleNumVehi[j].ToString();
-                                            string Pom = drr["matricule"] + " " + drr["nom"] + " " + drr["prenom"] + " " + idHab;
-
-                                            UCPompierMission.UserControl1 lbl = new UCPompierMission.UserControl1(Eng, Pom);
-                                            lbl.Top = haut;
-                                            lbl.Left = gauche;
-                                            lbl.Width = 400;
-                                            haut += 40;
-                                            l++;
-
-
-                                            if (l % 8 == 0)
-                                            {
-                                                haut = 30;
-                                                gauche = gauche + 500;
-                                            }
-
-                                            grbEP.Controls.Add(lbl);
-
-                                            te = true;
-                                        }
-                                        tee = false;
                                     }
                                 }
                             }
@@ -309,6 +356,26 @@ namespace ExtinctHeure
                     te = false;
                 }
                 j++;
+            }
+
+
+            int u = 0;
+            foreach(String codeVeh in listeTotaleVehi)
+            {
+                foreach (DataRow dr in MesDatas.DsGlobal.Tables["Engin"].Rows)
+                {
+                    if (dr["codeTypeEngin"].ToString() == codeVeh)
+                    {
+                        if (dr["numero"].ToString() == listeTotaleNumVehi[u].ToString())
+                        {
+                            dr.BeginEdit();
+                            dr["enMission"] = 1;
+                            dr.EndEdit();
+
+                        }
+                    }
+                }
+                u++;
             }
 
 

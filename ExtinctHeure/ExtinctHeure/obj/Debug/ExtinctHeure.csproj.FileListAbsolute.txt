@@ -13,3 +13,5 @@ C:\Users\capucine\Music\SAE24\ExtinctHeure\ExtinctHeure\obj\Debug\ExtinctHeure.e
 C:\Users\capucine\Music\SAE24\ExtinctHeure\ExtinctHeure\obj\Debug\ExtinctHeure.pdb
 C:\Users\capucine\Music\SAE24\ExtinctHeure\ExtinctHeure\bin\Debug\UCPompierMission.dll
 C:\Users\capucine\Music\SAE24\ExtinctHeure\ExtinctHeure\bin\Debug\UCPompierMission.pdb
+C:\Users\capucine\Music\SAE24\ExtinctHeure\ExtinctHeure\bin\Debug\testCreaControle.dll
+C:\Users\capucine\Music\SAE24\ExtinctHeure\ExtinctHeure\bin\Debug\testCreaControle.pdb
