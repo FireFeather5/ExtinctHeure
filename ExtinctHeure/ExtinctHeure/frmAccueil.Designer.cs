@@ -67,7 +67,7 @@
             this.pnlGestion.ForeColor = System.Drawing.SystemColors.WindowText;
             this.pnlGestion.Location = new System.Drawing.Point(15, 95);
             this.pnlGestion.Name = "pnlGestion";
-            this.pnlGestion.Size = new System.Drawing.Size(1205, 754);
+            this.pnlGestion.Size = new System.Drawing.Size(1205, 755);
             this.pnlGestion.TabIndex = 0;
             // 
             // pnlInfosPompiers
@@ -203,7 +203,7 @@
             this.grpInfosCarriere.ForeColor = System.Drawing.SystemColors.Window;
             this.grpInfosCarriere.Location = new System.Drawing.Point(17, 413);
             this.grpInfosCarriere.Name = "grpInfosCarriere";
-            this.grpInfosCarriere.Size = new System.Drawing.Size(741, 281);
+            this.grpInfosCarriere.Size = new System.Drawing.Size(740, 280);
             this.grpInfosCarriere.TabIndex = 3;
             this.grpInfosCarriere.TabStop = false;
             this.grpInfosCarriere.Text = "Gérer les informations de la carrière";
@@ -304,7 +304,7 @@
             this.grpInfosPerso.ForeColor = System.Drawing.Color.White;
             this.grpInfosPerso.Location = new System.Drawing.Point(17, 14);
             this.grpInfosPerso.Name = "grpInfosPerso";
-            this.grpInfosPerso.Size = new System.Drawing.Size(741, 375);
+            this.grpInfosPerso.Size = new System.Drawing.Size(740, 375);
             this.grpInfosPerso.TabIndex = 2;
             this.grpInfosPerso.TabStop = false;
             // 

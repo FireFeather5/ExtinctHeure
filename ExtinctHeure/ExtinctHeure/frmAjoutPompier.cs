@@ -43,15 +43,15 @@ namespace ExtinctHeure
 
         private void btnConfirmer_Click(object sender, EventArgs e)
         {
+            MessageBox.Show(chklstHabilitations.SelectedItems.Count.ToString());
+
             if (fieldsCheck())
             {
                 SQLiteTransaction transaction = cx.BeginTransaction();
 
                 // On manipules les chaines de charactères pour avoir la première lettre en majuscule et le reste en minuscule
-                string nom = txtNom.Text.Substring(0, 1).ToUpper() +
-                             txtNom.Text.Substring(1, txtNom.Text.Length - 1).ToLower();
-                string prenom = txtPrenom.Text.Substring(0, 1).ToUpper() +
-                                txtPrenom.Text.Substring(1, txtPrenom.Text.Length - 1).ToLower();
+                string nom = txtNom.Text.Substring(0, 1).ToUpper() + txtNom.Text.Substring(1, txtNom.Text.Length - 1).ToLower();
+                string prenom = txtPrenom.Text.Substring(0, 1).ToUpper() + txtPrenom.Text.Substring(1, txtPrenom.Text.Length - 1).ToLower();
                 string sexe = _strBuffer[0];
                 string type = _strBuffer[1];
                 string dateNaissance = calDateNaissance.SelectionRange.Start.ToString("yyyy-MM-dd");
@@ -59,17 +59,30 @@ namespace ExtinctHeure
                 string dateEmbauche = DateTime.Today.ToString("yyyy-MM-dd");
                 int matricule = getMatricule() + 1;
                 int bip = matricule;
+                MessageBox.Show(chklstHabilitations.SelectedItems.Count.ToString());
 
                 // A MODIFIER
 
-                string req = "INSERT INTO Pompier (matricule, nom, prenom, sexe, dateNaissance, type, portable, bip, enMission, enConge, codeGrade, dateEmbauche) " +
-                             $"VALUES ({matricule}, '{nom}', '{prenom}', '{sexe}', '{dateNaissance}', '{type}', '{txtTelephone.Text}', {bip}, {0}, {0}, '{codeGrade}', '{dateEmbauche}')";
-                SQLiteCommand cmdUpdate = new SQLiteCommand(req, this.cx);
-                cmdUpdate.Transaction = transaction;
+                string reqPompier = "INSERT INTO Pompier (matricule, nom, prenom, sexe, dateNaissance, type, portable, bip, enMission, enConge, codeGrade, dateEmbauche) " +
+                                   $"VALUES ({matricule}, '{nom}', '{prenom}', '{sexe}', '{dateNaissance}', '{type}', '{txtTelephone.Text}', {bip}, {0}, {0}, '{codeGrade}', '{dateEmbauche}')";
+                string reqHabilitations = "";
 
-                try
+                SQLiteCommand cmdUpdatePompier = new SQLiteCommand(reqPompier, this.cx, transaction);
+                SQLiteCommand cmdUpdatePasser = new SQLiteCommand(reqHabilitations, this.cx, transaction);
+
+                
+
+                for (int i = 0; i < chklstHabilitations.SelectedItems.Count; i++)
                 {
-                    cmdUpdate.ExecuteNonQuery();
+                    reqHabilitations = "INSERT INTO Passer (matriculePompier, idHabilitation, dateObtention)" +
+                                      $"VALUES ({matricule},(SELECT id FROM Habilitation WHERE libelle = {chklstHabilitations.SelectedItems[i].ToString()}), '{DateTime.Today.ToString("yyyy-MM-dd")}')";
+                    MessageBox.Show(reqHabilitations);
+                    cmdUpdatePasser.CommandText = reqHabilitations;
+                }
+
+                /*try
+                {
+                    cmdUpdatePompier.ExecuteNonQuery();
                     transaction.Commit();
                     DialogResult = DialogResult.OK;
                 }
@@ -77,7 +90,7 @@ namespace ExtinctHeure
                 {
                     transaction.Rollback();
                     MessageBox.Show("Erreur lors de la modification : " + ex.Message);
-                }
+                }*/
             }
         }
 
