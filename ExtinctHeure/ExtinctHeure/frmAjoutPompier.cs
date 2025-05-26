@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -54,19 +55,29 @@ namespace ExtinctHeure
                 string sexe = _strBuffer[0];
                 string type = _strBuffer[1];
                 string dateNaissance = calDateNaissance.SelectionRange.Start.ToString("yyyy-MM-dd");
+                string codeGrade = getCodeGrade();
+                string dateEmbauche = DateTime.Today.ToString("yyyy-MM-dd");
+                int matricule = getMatricule() + 1;
+                int bip = matricule;
 
                 // A MODIFIER
 
-                string req = "INSERT INTO Pompier (nom, prenom, sexe, dateNaissance, type, portable, idCaserne, idGrade) " +
-                             $"VALUES ('{nom}', '{prenom}', '{sexe}', '{dateNaissance}', '{type}', '{txtTelephone.Text}', @idCaserne, @idGrade)";
-                
-                MessageBox.Show(req);
+                string req = "INSERT INTO Pompier (matricule, nom, prenom, sexe, dateNaissance, type, portable, bip, enMission, enConge, codeGrade, dateEmbauche) " +
+                             $"VALUES ({matricule}, '{nom}', '{prenom}', '{sexe}', '{dateNaissance}', '{type}', '{txtTelephone.Text}', {bip}, {0}, {0}, '{codeGrade}', '{dateEmbauche}')";
+                SQLiteCommand cmdUpdate = new SQLiteCommand(req, this.cx);
+                cmdUpdate.Transaction = transaction;
 
-                //DialogResult = DialogResult.OK;
-            }
-            else
-            {
-                DialogResult = DialogResult.Abort;
+                try
+                {
+                    cmdUpdate.ExecuteNonQuery();
+                    transaction.Commit();
+                    DialogResult = DialogResult.OK;
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    MessageBox.Show("Erreur lors de la modification : " + ex.Message);
+                }
             }
         }
 
@@ -102,7 +113,7 @@ namespace ExtinctHeure
 
         private void ChargerCboGrades()
         {
-            string req = "SELECT libelle FROM Grade";
+            string req = "SELECT libelle, code FROM Grade";
             SQLiteCommand cmd = new SQLiteCommand(req, this.cx);
             SQLiteDataReader gradesReader = cmd.ExecuteReader();
 
@@ -198,6 +209,33 @@ namespace ExtinctHeure
                 _strBuffer[1] = "v";
             }
             return true;
+        }
+
+        private string getCodeGrade()
+        {
+            string code = "";
+            string req = $"SELECT code FROM Grade WHERE lower(libelle) = '{cboGrades.Text.ToLower()}'";
+            SQLiteCommand cmd = new SQLiteCommand(req, this.cx);
+            SQLiteDataReader codeReader = cmd.ExecuteReader();
+
+            while (codeReader.Read())
+            {
+                code = codeReader.GetString(0);
+            }
+            return code;
+        }
+        private int getMatricule()
+        {
+            int matricule = 0;
+            string req = "SELECT max(matricule) FROM Pompier";
+            SQLiteCommand cmd = new SQLiteCommand(req, this.cx);
+            SQLiteDataReader matriculeReader = cmd.ExecuteReader();
+
+            while (matriculeReader.Read())
+            {
+                matricule = matriculeReader.GetInt32(0);
+            }
+            return matricule;
         }
     }
 }
