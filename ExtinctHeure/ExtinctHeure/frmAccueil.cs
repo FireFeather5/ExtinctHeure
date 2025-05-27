@@ -30,6 +30,7 @@ namespace ExtinctHeure
 
         private void load()
         {
+            monDS.Clear();
             loaded = true;
             DataTable SchemaTable = cx.GetSchema("Tables");
             foreach (DataRow row in SchemaTable.Rows)
@@ -49,6 +50,7 @@ namespace ExtinctHeure
             DataRelation relGrade = new DataRelation("FK_Pompier_codeGrade", monDS.Tables["Grade"].Columns["code"], monDS.Tables["Pompier"].Columns["codeGrade"], false);
             DataRelation relEngin = new DataRelation("FK_PartirAvec_codeTypeEngin", monDS.Tables["TypeEngin"].Columns["code"], monDS.Tables["PartirAvec"].Columns["codeTypeEngin"], false);
 
+            monDS.Relations.Clear();
 
             monDS.Relations.Add(relCaserne);
             monDS.Relations.Add(relNature);
@@ -192,18 +194,30 @@ namespace ExtinctHeure
                 Form rapport = new frmRapport();
                 if (rapport.ShowDialog() == DialogResult.OK)
                 {
-                    cx = Connexion.Connec;
-                    mission.rapportMission = ((frmRapport)rapport).rapport;
-                    string requete = $"UPDATE Mission SET dateHeureRetour = datetime('now'), compteRendu = '{mission.rapportMission}' WHERE id = " + mission.idMission.ToString();
-                    SQLiteCommand cmd = new SQLiteCommand(requete, cx);
                     try
                     {
+                        cx = Connexion.Connec;
+                        mission.rapportMission = ((frmRapport)rapport).rapport;
+                        string requete = $"UPDATE Mission SET dateHeureRetour = datetime('now'), terminee = 1, compteRendu = '{mission.rapportMission}' WHERE id = " + mission.idMission.ToString();
+                        SQLiteCommand cmd = new SQLiteCommand(requete, cx);
                         cmd.ExecuteNonQuery();
+
+                        requete = $"UPDATE Pompier SET enMission = 0 WHERE matricule in (SELECT matriculePompier FROM Mobiliser WHERE idMission = {mission.idMission})";
+                        cmd = new SQLiteCommand(requete, cx);
+                        cmd.ExecuteNonQuery();
+
+                        requete = $"UPDATE Engin SET enMission = 0 WHERE (idCaserne, codeTypeEngin, numero) in (SELECT idCaserne, codeTypeEngin, numeroEngin FROM PartirAvec WHERE idMission = {mission.idMission})";
+                        cmd = new SQLiteCommand(requete, cx);
+                        cmd.ExecuteNonQuery();
+
                         mission.estFini = true;
                         mission.finMission = DateTime.Now.ToString();
+
+
                         loaded = false;
                         MessageBox.Show("La mission a été clôturée avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        grpMissions_VisibleChanged(sender, e); // Rafraîchir l'affichage des missions
+                        grpMissions_VisibleChanged(sender, e);
+                        genererRapport(sender, e);
                     }
                     catch (SQLiteException ex)
                     {
@@ -211,7 +225,7 @@ namespace ExtinctHeure
                     }
                     finally
                     {
-                        cx.Close();
+                        Connexion.FermerConnexion();
                     }
                 }
                 else
