@@ -50,9 +50,12 @@ namespace ExtinctHeure
 
             if (cboCasernes.Text != String.Empty)
             {
-                ChargercboPompiers();
                 lblPompier.Visible = true;
                 cboPompiers.Visible = true;
+                lblPompiersSansCaserne.Visible = true;
+                cboPompiersSansCaserne.Visible = true;
+                chargerCboPompiers();
+                chargerCboPompiersSansCaserne();
             }
         }
 
@@ -60,8 +63,22 @@ namespace ExtinctHeure
 
         private void cboPompiers_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (cboPompiers.Text != String.Empty)
+            if (cboPompiers.SelectedIndex != -1)
             {
+                grpInfosPerso.Controls.Clear();
+                grpInfosPompier.Visible = false;
+                cboPompiersSansCaserne.SelectedIndex = -1; // On désélectionne la combobox des pompiers sans caserne
+                ChargerInfosPompiers();
+            }
+        }
+
+        private void cboPompiersSansCaserne_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (cboPompiersSansCaserne.SelectedIndex != -1)
+            {
+                grpInfosPerso.Controls.Clear();
+                grpInfosPompier.Visible = false;
+                cboPompiers.SelectedIndex = -1; // On désélectionne la combobox des pompiers avec caserne
                 ChargerInfosPompiers();
             }
         }
@@ -83,10 +100,10 @@ namespace ExtinctHeure
             }
         }
 
-        private void ChargercboPompiers()
+        private void chargerCboPompiers()
         {
             // On récupère uniquement les pompiers présent dans la caserne choisie
-            string req = "SELECT p.nom, p.prenom, p.matricule FROM Pompier p " +
+            string req = "SELECT p.nom || ' ' || p.prenom AS NomComplet, p.matricule FROM Pompier p " +
                          "JOIN Affectation a ON p.matricule = a.matriculePompier " +
                          $"JOIN Caserne c ON a.idCaserne = c.id WHERE lower(c.nom) = '{cboCasernes.Text.ToLower()}' " +
                          "AND a.dateFin IS NULL Order by p.nom";
@@ -96,416 +113,379 @@ namespace ExtinctHeure
             DataTable dtPompiers = new DataTable();
 
             daPompier.Fill(dtPompiers);
-
-            DataRow row0 = dtPompiers.NewRow();
-            dtPompiers.Rows.InsertAt(row0, 0);
-
-            row0.BeginEdit();
-            row0["nom"] = "";
-            row0["prenom"] = "";
-            row0.AcceptChanges();
-
-            dtPompiers.Columns.Add("nomComplet");
-            foreach (DataRow row in dtPompiers.Rows)
-            {
-                row["nomComplet"] = $"{row["nom"]} {row["prenom"]}"; // On ajoute une colonne pour le nom complet
-            }
             
             cboPompiers.ValueMember = "matricule"; // Valeur de la combobox est le matricule du pompier
             cboPompiers.DisplayMember = "nomComplet"; // Affichage du nom et prénom dans la combobox
             cboPompiers.DataSource = dtPompiers;
+            cboPompiers.SelectedIndex = -1; // On ne sélectionne rien par défaut
+        }
+
+        private void chargerCboPompiersSansCaserne()
+        {
+            // On récupère uniquement les pompiers présent dans la caserne choisie
+            string req = "SELECT p.nom || ' ' || p.prenom AS NomComplet, p.matricule FROM Pompier p " +
+                         "JOIN Affectation a ON p.matricule = a.matriculePompier " +
+                         "WHERE p.matricule NOT IN (SELECT a.matriculePompier FROM Affectation a WHERE a.dateFin IS NULL)";
+
+            SQLiteDataAdapter daPompier = new SQLiteDataAdapter(req, this.cx);
+
+            DataTable dtPompiers = new DataTable();
+
+            daPompier.Fill(dtPompiers);
+
+            cboPompiersSansCaserne.ValueMember = "matricule"; // Valeur de la combobox est le matricule du pompier
+            cboPompiersSansCaserne.DisplayMember = "nomComplet"; // Affichage du nom et prénom dans la combobox
+            cboPompiersSansCaserne.DataSource = dtPompiers;
+            cboPompiersSansCaserne.SelectedIndex = -1; // On ne sélectionne rien par défaut
         }
 
         // On charge les infos des pompiers
         private void ChargerInfosPompiers()
         {
             grpInfosPompier.Visible = false;
+            clearAll();
+            grpInfosPompier.Visible = true;
 
-            if (cboPompiers.SelectedValue != DBNull.Value)
+            if (cboPompiers.SelectedIndex != -1)
             {
-                clearAll();
-                grpInfosPompier.Visible = true;
-
                 matricule = Convert.ToInt32(cboPompiers.SelectedValue);
+            }
+            else
+            {
+                matricule = Convert.ToInt32(cboPompiersSansCaserne.SelectedValue);
+            }
 
-                // Ci-dessous tous les composants dont on a besoin pour afficher les infos du pompier
+            // Ci-dessous tous les composants dont on a besoin pour afficher les infos du pompier
 
-                // On affiche le grade du pompier
-                PictureBox grade = new PictureBox();
-                grade.SizeMode = PictureBoxSizeMode.Zoom;
-                grade.Top = 100;
-                grade.Left = 550;
-                grade.Size = new Size(100, 100);
+            // On affiche le grade du pompier
+            PictureBox grade = new PictureBox
+            {
+                SizeMode = PictureBoxSizeMode.Zoom,
+                Top = 100,
+                Left = 550,
+                Size = new Size(100, 100)
+            };
 
-                // Affichage du texte du grade
-                Label lblGrade = new Label();
-                lblGrade.Font = new Font("Arial", 15, FontStyle.Bold, GraphicsUnit.Pixel);
-                lblGrade.TextAlign = ContentAlignment.MiddleCenter;
-                lblGrade.Top = 50;
-                lblGrade.Left = 520;
-                lblGrade.Width = 160;
-                lblGrade.Height = 40;
+            // Affichage du texte du grade
+            Label lblGrade = new Label
+            {
+                Font = new Font("Arial", 15, FontStyle.Bold, GraphicsUnit.Pixel),
+                TextAlign = ContentAlignment.MiddleCenter,
+                Top = 50,
+                Left = 520,
+                Width = 160,
+                Height = 40
+            };
 
-                // Ajout de la groupebox pour les infos de la carrière
-                GroupBox grpCarriere = new GroupBox();
-                grpCarriere.Text = "Carrière";
-                grpCarriere.Size = new Size(720, 125);
-                grpCarriere.Location = new Point(10, 230);
+            // Ajout de la groupebox pour les infos de la carrière
+            GroupBox grpCarriere = new GroupBox
+            {
+                Text = "Carrière",
+                Size = new Size(720, 125),
+                Location = new Point(10, 230),
+                ForeColor = Color.White
+            };
+            grpInfosPerso.Controls.Add(grpCarriere);
 
-                grpInfosPerso.Controls.Add(grpCarriere);
+            // Création de la TextBox pour le code du grade
+            TextBox txtCode = new TextBox
+            {
+                Top = 23,
+                Left = 115,
+                Size = new Size(75, 30),
+                Enabled = false
+            };
+            grpCarriere.Controls.Add(txtCode);
 
-                //Creation de la TextBox pour le code du grade
-                TextBox txtCode = new TextBox();
-                txtCode.Top = 23;
-                txtCode.Left = 115;
-                txtCode.Size = new Size(75, 30);
-                txtCode.Enabled = false;
-                grpCarriere.Controls.Add(txtCode);
+            // On affiche directement le nom du grade à côté du grade
+            ComboBox cboGrades = new ComboBox
+            {
+                Top = 23,
+                Left = 200,
+                Size = new Size(200, 20),
+                Enabled = false
+            };
+            grpCarriere.Controls.Add(cboGrades);
 
-                // On affiche directement le nom du grade à coté du grade
-                ComboBox cboGrades = new ComboBox();
-                cboGrades.Top = 23;
-                cboGrades.Left = 200;
-                cboGrades.Size = new Size(200, 20);
-                cboGrades.Enabled = false;
+            // Bouton Modifier
+            Button btnChange = new Button
+            {
+                Text = "Modifier",
+                Font = new Font("Arial", 13, FontStyle.Bold, GraphicsUnit.Pixel),
+                ForeColor = Color.DarkRed,
+                Size = new Size(100, 27),
+                Location = new Point(550, 23),
+                Cursor = Cursors.Hand
+            };
+            grpCarriere.Controls.Add(btnChange);
 
-                grpCarriere.Controls.Add(cboGrades);
+            // Bouton Annuler
+            Button btnAnnuler = new Button
+            {
+                Text = "Annuler",
+                Font = new Font("Arial", 13, FontStyle.Bold, GraphicsUnit.Pixel),
+                Size = new Size(100, 27),
+                Location = new Point(550, 58),
+                Visible = false,
+                Cursor = Cursors.Hand
+            };
+            grpCarriere.Controls.Add(btnAnnuler);
 
-                // Creation du bouton pour changer des informations
-                Button btnChange = new Button();
-                btnChange.Text = "Modifier";
-                btnChange.Font = new Font("Arial", 13, FontStyle.Bold, GraphicsUnit.Pixel);
-                btnChange.ForeColor = Color.DarkRed;
-                btnChange.Size = new Size(100, 27);
-                btnChange.Location = new Point(550, 23);
-                btnChange.Cursor = Cursors.Hand;
+            // Bouton Confirmer
+            Button btnConfirm = new Button
+            {
+                Text = "Confirmer",
+                Font = new Font("Arial", 13, FontStyle.Bold, GraphicsUnit.Pixel),
+                ForeColor = Color.DarkGreen,
+                Size = new Size(100, 27),
+                Location = new Point(550, 88),
+                Visible = false,
+                Cursor = Cursors.Hand
+            };
+            grpCarriere.Controls.Add(btnConfirm);
 
-                grpCarriere.Controls.Add(btnChange);
+            // Événements
+            cboGrades.SelectedValueChanged += cboGrades_SelectedValueChanged;
+            btnChange.Click += BtnChange_Click;
+            btnConfirm.Click += BtnConfirm_Click;
+            btnAnnuler.Click += BtnAnnuler_Click;
 
-                // Creation du bouton pour changer des informations
-                Button btnAnnuler = new Button();
-                btnAnnuler.Text = "Annuler";
-                btnAnnuler.Font = new Font("Arial", 13, FontStyle.Bold, GraphicsUnit.Pixel);
-                btnAnnuler.Size = new Size(100, 27);
-                btnAnnuler.Location = new Point(550, 58);
-                btnAnnuler.Visible = false;
-                btnAnnuler.Cursor = Cursors.Hand;
+            // Requête pour remplir les infos persos
+            string req = $@"SELECT p.matricule, p.nom, p.prenom, p.sexe, p.dateNaissance, p.type, p.dateEmbauche, p.codeGrade, g.libelle, p.enConge
+                            FROM Pompier p JOIN Grade g ON p.codeGrade = g.code WHERE matricule = {matricule}";
+            SQLiteCommand cmd = new SQLiteCommand(req, this.cx);
+            SQLiteDataReader pompierReader = cmd.ExecuteReader();
 
-                grpCarriere.Controls.Add(btnAnnuler);
+            string[] labelsPerso = {"Matricule", "Nom", "Prénom", "Sexe", "Date de Naissance",
+                                    "Type", "Date d'embauche", "Code grade", "Libelle", "En conge"};
 
-                // Creation du bouton pour confirmer le changement des informations
-                Button btnConfirm = new Button();
-                btnConfirm.Text = "Confirmer";
-                btnConfirm.Font = new Font("Arial", 13, FontStyle.Bold, GraphicsUnit.Pixel);
-                btnConfirm.ForeColor = Color.DarkGreen;
-                btnConfirm.Size = new Size(100, 27);
-                btnConfirm.Location = new Point(550, 88);
-                btnConfirm.Visible = false;
-                btnConfirm.Cursor = Cursors.Hand;
-
-                grpCarriere.Controls.Add(btnConfirm);
-
-                // Tous les évènements nécessaires
-                cboGrades.SelectedValueChanged += cboGrades_SelectedValueChanged;
-                btnChange.Click += BtnChange_Click;
-                btnConfirm.Click += BtnConfirm_Click;
-                btnAnnuler.Click += BtnAnnuler_Click;
-
-                // Requêtes pour remplir les infos persos sans la carrière
-                string req =
-                    $@"SELECT p.matricule, p.nom, p.prenom, p.sexe, p.dateNaissance, p.type, p.dateEmbauche, p.codeGrade, g.libelle, p.enConge
-                            FROM Pompier p JOIN Grade g on p.codeGrade = g.code
-                            WHERE matricule = {matricule}";
-                SQLiteCommand cmd = new SQLiteCommand(req, this.cx);
-                SQLiteDataReader pompierReader = cmd.ExecuteReader();
-
-                // Tableau des nom des colonnes
-                string[] labelsPerso =
+            while (pompierReader.Read())
+            {
+                for (int i = 0; i < labelsPerso.Length; i++)
                 {
-                    "Matricule", "Nom", "Prénom", "Sexe", "Date de Naissance",
-                    "Type", "Date d'embauche", "Code grade", "Libelle", "En conge"
-                };
+                    Label lbl = new Label();
+                    string valeur = "";
 
-                while (pompierReader.Read())
-                {
-                    // Pour uniquement les infos persos
-                    for (int i = 0; i < labelsPerso.Length; i++)
+                    if (pompierReader.GetFieldType(i).ToString() == "System.Int64")
                     {
-                        Label lbl = new Label();
-
-                        string valeur = "";
-
-                        // Pour les colonnes de la DB ayant pour valeur des entiers
-                        if (pompierReader.GetFieldType(i).ToString() == "System.Int64")
-                        {
-                            // On personnalise ici l'affichage des valeurs pour éviter simplement des nombres
-                            if (pompierReader.GetInt32(i) == 0)
-                            {
-                                ckbConge.Checked = false;
-                            }
-                            else if (pompierReader.GetInt32(i) == 1)
-                            {
-                                ckbConge.Checked = true;
-                            }
-                            else
-                            {
-                                valeur = pompierReader.GetInt32(i).ToString();
-                            }
-                        }
+                        if (pompierReader.GetInt32(i) == 0)
+                            ckbConge.Checked = false;
+                        else if (pompierReader.GetInt32(i) == 1)
+                            ckbConge.Checked = true;
                         else
-                        {
-                            // Pareil ici pour ne pas réduire le sexe à une seule lettre
-                            if (pompierReader.GetString(i) == "m")
-                            {
-                                valeur = "Homme";
-                            }
-                            else if (pompierReader.GetString(i) == "f")
-                            {
-                                valeur = "Femme";
-                            }
-                            else
-                            {
-                                valeur = pompierReader.GetString(i);
-                            }
-                        }
-
-                        // Si on souhaite personnaliser les affichages des labels il faut les gérer individuellments
-                        if (labelsPerso[i] == "Matricule")
-                        {
-                            // Ce label est isolé, il faut le gérer séparement des autres
-                            lbl.Text = $"{labelsPerso[i]} : " + valeur;
-
-                            // On créer une nouvelle font pour mettre le matricule en valeur
-                            lbl.Font = new Font("Arial", 26, FontStyle.Bold, GraphicsUnit.Pixel);
-                            lbl.Height = 40;
-                            lbl.Top = 25;
-                            lbl.Left = 250;
-                            lbl.Width = lbl.Text.Length * 15;
-
-                            grpInfosPerso.Controls.Add(lbl);
-                        }
-                        else if (labelsPerso[i] == "Type")
-                        {
-                            // Ce label également isolé
-                            lbl.Text = "Pompier : ";
-                            lbl.Top = i * 33;
-                            lbl.Left = 10;
-                            lbl.Width = lbl.Text.Length * 9;
-                            lbl.Height = 20;
-
-                            // On gère le placement des deux RadioButton
-                            RadioButton rdbProfessionel = new RadioButton();
-                            rdbProfessionel.Top = (i * 33) - 2;
-                            rdbProfessionel.Left = 105;
-                            rdbProfessionel.Text = "Professionel";
-                            rdbProfessionel.Width = rdbProfessionel.Text.Length * 10;
-
-                            RadioButton rdbVolontaire = new RadioButton();
-                            rdbVolontaire.Top = (i * 33) - 2;
-                            rdbVolontaire.Left = 235;
-                            rdbVolontaire.Text = "Volontaire";
-
-                            if (pompierReader.GetString(i) == "p")
-                            {
-                                rdbProfessionel.Checked = true;
-                                rdbVolontaire.Enabled = false;
-                            }
-                            else
-                            {
-                                rdbVolontaire.Checked = true;
-                                rdbProfessionel.Enabled = false;
-                            }
-
-                            grpInfosPerso.Controls.Add(lbl);
-                            grpInfosPerso.Controls.Add(rdbProfessionel);
-                            grpInfosPerso.Controls.Add(rdbVolontaire);
-                        }
-                        else if (labelsPerso[i] == "Code grade")
-                        {
-                            // Affichage de l'image associé au grade
-                            grade.ImageLocation = $@"..\..\..\..\Ressources\images\ImagesGrades\{valeur}.png";
-                            grade.Load();
-
-                            grpInfosPerso.Controls.Add(grade);
-                        }
-                        else if (labelsPerso[i] == "Libelle")
-                        {
-                            lblGrade.Text = $"Grade : \n{valeur}";
-
-                            grpInfosPerso.Controls.Add(lblGrade);
-                        }
-                        else
-                        {
-                            // Sinon on gère le label de la même manière
-                            lbl.Text = $"{labelsPerso[i]} : " + valeur;
-                            grpInfosPerso.Controls.Add(lbl);
-                            lbl.Top = i * 33;
-                            lbl.Left = 10;
-                            lbl.Width = lbl.Text.Length * 12;
-                            lbl.Height = 20;
-                        }
-                    }
-                }
-
-                // Nouvelle requête pour récupérer les infos de la carrière
-                req = $@"SELECT p.codeGrade, g.libelle, p.portable, p.bip
-                     FROM Pompier p JOIN Grade g on p.codeGrade = g.code
-                     WHERE matricule = {matricule}";
-                cmd = new SQLiteCommand(req, this.cx);
-                pompierReader = cmd.ExecuteReader();
-
-                //Tableau avec le noms des colonnes pour mieux se repérer
-                string[] labelsCarriere = { "Code grade", "Libelle", "Portable", "Bip" };
-
-                while (pompierReader.Read())
-                {
-                    for (int i = 0; i < labelsCarriere.Length; i++)
-                    {
-                        Label lbl = new Label();
-
-                        // On gère les labels de la même manière que pour les infos persos
-                        string valeur = "";
-
-                        try
-                        {
-                            valeur = pompierReader.GetString(i);
-                        }
-                        catch (Exception ex)
-                        {
                             valeur = pompierReader.GetInt32(i).ToString();
-                        }
+                    }
+                    else
+                    {
+                        if (pompierReader.GetString(i) == "m")
+                            valeur = "Homme";
+                        else if (pompierReader.GetString(i) == "f")
+                            valeur = "Femme";
+                        else
+                            valeur = pompierReader.GetString(i);
+                    }
 
-                        if (labelsCarriere[i] == "Code grade")
+                    if (labelsPerso[i] == "Matricule")
+                    {
+                        lbl.Text = $"{labelsPerso[i]} : {valeur}";
+                        lbl.Font = new Font("Arial", 26, FontStyle.Bold, GraphicsUnit.Pixel);
+                        lbl.Height = 40;
+                        lbl.Top = 25;
+                        lbl.Left = 250;
+                        lbl.Width = lbl.Text.Length * 15;
+                        grpInfosPerso.Controls.Add(lbl);
+                    }
+                    else if (labelsPerso[i] == "Type")
+                    {
+                        lbl.Text = "Pompier : ";
+                        lbl.Top = i * 33;
+                        lbl.Left = 10;
+                        lbl.Width = lbl.Text.Length * 9;
+                        lbl.Height = 20;
+
+                        RadioButton rdbProfessionel = new RadioButton
                         {
-                            // On personnalise l'affichage du code grade
-                            lbl.Text = $"{labelsCarriere[i]} : ";
-                            grpCarriere.Controls.Add(lbl);
+                            Top = (i * 33) - 2,
+                            Left = 105,
+                            Text = "Professionel",
+                            Width = "Professionel".Length * 10
+                        };
 
-                            lbl.Top = 25;
-                            lbl.Left = 10;
-                            lbl.Size = new Size(100, 20);
-
-                            // On affiche le code dans une textBox à coté du libellé du grade
-                            txtCode.Text = valeur;
-                            // On sauvegarde le code dans un tableau pour le réutiliser plus tard
-                            _strBuffer.Add(valeur);
-                        }
-                        else if (labelsCarriere[i] == "Libelle")
+                        RadioButton rdbVolontaire = new RadioButton
                         {
-                            cboGrades.Text = valeur;
-                            _strBuffer.Add(valeur);
+                            Top = (i * 33) - 2,
+                            Left = 235,
+                            Text = "Volontaire"
+                        };
+
+                        if (pompierReader.GetString(i) == "p")
+                        {
+                            rdbProfessionel.Checked = true;
+                            rdbVolontaire.Visible = false;
                         }
                         else
                         {
-                            lbl.Text = $"{labelsCarriere[i]} : " + valeur;
-                            grpCarriere.Controls.Add(lbl);
-
-                            lbl.Top = i * 30;
-                            lbl.Left = 10;
-                            lbl.Size = new Size(200, 20);
+                            rdbVolontaire.Checked = true;
+                            rdbProfessionel.Visible = false;
                         }
+
+                        grpInfosPerso.Controls.Add(lbl);
+                        grpInfosPerso.Controls.Add(rdbProfessionel);
+                        grpInfosPerso.Controls.Add(rdbVolontaire);
                     }
-
-                }
-
-                void cboGrades_SelectedValueChanged(object sender, EventArgs e)
-                {
-                    // On gère le changement de valeur de la combobox
-                    if (cboGrades.Text != String.Empty)
+                    else if (labelsPerso[i] == "Code grade")
                     {
-                        req = $@"SELECT code FROM Grade WHERE libelle = '{cboGrades.Text}'";
-                        cmd = new SQLiteCommand(req, this.cx);
-                        SQLiteDataReader reader = cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            txtCode.Text = reader.GetString(0);
-                        }
+                        grade.ImageLocation = $@"..\..\..\..\Ressources\images\ImagesGrades\{valeur}.png";
+                        grade.Load();
+                        grpInfosPerso.Controls.Add(grade);
+                    }
+                    else if (labelsPerso[i] == "Libelle")
+                    {
+                        lblGrade.Text = $"Grade : \n{valeur}";
+                        grpInfosPerso.Controls.Add(lblGrade);
+                    }
+                    else
+                    {
+                        lbl.Text = $"{labelsPerso[i]} : {valeur}";
+                        lbl.Top = i * 33;
+                        lbl.Left = 10;
+                        lbl.Width = lbl.Text.Length * 12;
+                        lbl.Height = 20;
+                        grpInfosPerso.Controls.Add(lbl);
                     }
                 }
+            }
 
-                void BtnChange_Click(object sender, EventArgs e)
+            // Requête carrière
+            req = $@"
+        SELECT p.codeGrade, g.libelle, p.portable, p.bip
+        FROM Pompier p 
+        JOIN Grade g ON p.codeGrade = g.code
+        WHERE matricule = {matricule}";
+            cmd = new SQLiteCommand(req, this.cx);
+            pompierReader = cmd.ExecuteReader();
+
+            string[] labelsCarriere = { "Code grade", "Libelle", "Portable", "Bip" };
+
+            while (pompierReader.Read())
+            {
+                for (int i = 0; i < labelsCarriere.Length; i++)
                 {
-                    // On affiche les boutons pour confirmer ou annuler les changements
-                    btnAnnuler.Visible = true;
-                    btnConfirm.Visible = true;
+                    Label lbl = new Label();
+                    string valeur;
 
-                    cboGrades.Text = String.Empty;
-                    cboGrades.Items.Clear();
-                    cboGrades.Enabled = true;
+                    try
+                    {
+                        valeur = pompierReader.GetString(i);
+                    }
+                    catch
+                    {
+                        valeur = pompierReader.GetInt32(i).ToString();
+                    }
 
-                    req = $"SELECT libelle FROM Grade";
+                    if (labelsCarriere[i] == "Code grade")
+                    {
+                        lbl.Text = $"{labelsCarriere[i]} : ";
+                        lbl.Top = 25;
+                        lbl.Left = 10;
+                        lbl.Size = new Size(100, 20);
+                        grpCarriere.Controls.Add(lbl);
+                        txtCode.Text = valeur;
+                        _strBuffer.Add(valeur);
+                    }
+                    else if (labelsCarriere[i] == "Libelle")
+                    {
+                        cboGrades.Text = valeur;
+                        _strBuffer.Add(valeur);
+                    }
+                    else
+                    {
+                        lbl.Text = $"{labelsCarriere[i]} : {valeur}";
+                        lbl.Top = i * 30;
+                        lbl.Left = 10;
+                        lbl.Size = new Size(200, 20);
+                        grpCarriere.Controls.Add(lbl);
+                    }
+                }
+            }
+
+            // Méthodes internes
+            void cboGrades_SelectedValueChanged(object sender, EventArgs e)
+            {
+                if (!string.IsNullOrEmpty(cboGrades.Text))
+                {
+                    req = $@"SELECT code FROM Grade WHERE libelle = '{cboGrades.Text}'";
                     cmd = new SQLiteCommand(req, this.cx);
                     SQLiteDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        string nomGrade = reader.GetString(0);
-                        cboGrades.Items.Add(nomGrade);
-                    }
-                }
-
-                void BtnAnnuler_Click(object sender, EventArgs e)
-                {
-                    // On annule les changements
-                    txtCode.Text = _strBuffer[0];
-                    cboGrades.Text = _strBuffer[1];
-                    txtCode.Enabled = false;
-                    cboGrades.Enabled = false;
-
-                    btnAnnuler.Visible = false;
-                    btnConfirm.Visible = false;
-                }
-
-                void BtnConfirm_Click(object sender, EventArgs e)
-                {
-                    // On initie la transaction
-                    SQLiteTransaction transaction = cx.BeginTransaction();
-
-                    req = $@"UPDATE Pompier SET codeGrade = '{txtCode.Text}' WHERE matricule = {matricule}";
-                    SQLiteCommand cmdUpdate = new SQLiteCommand(req, this.cx);
-                    cmdUpdate.Transaction = transaction;
-
-
-
-                    // On gère la confirmation des changements
-                    txtCode.Enabled = false;
-                    cboGrades.Enabled = false;
-
-                    btnAnnuler.Visible = false;
-                    btnConfirm.Visible = false;
-
-                    grade.ImageLocation = $@"..\..\..\..\Ressources\images\ImagesGrades\{txtCode.Text}.png";
-                    grade.Load();
-
-                    lblGrade.Text = $"Grade : \n{cboGrades.Text}";
-
-                    // On met à jour les informations dans la DB
-                    try
-                    {
-                        cmdUpdate.ExecuteNonQuery();
-                        transaction.Commit();
-                        MessageBox.Show("Changements confirmés");
-                    }
-                    catch (Exception ex)
-                    {
-                        transaction.Rollback();
-                        MessageBox.Show("Erreur lors de la modification : " + ex.Message);
+                        txtCode.Text = reader.GetString(0);
                     }
                 }
             }
-            else
-            {
-                Label lblExplicationPompier = new Label();
-                lblExplicationPompier.Font = new Font("Arial", 45, FontStyle.Bold, GraphicsUnit.Pixel);
-                lblExplicationPompier.TextAlign = ContentAlignment.MiddleCenter;
-                lblExplicationPompier.Top = 180;
-                lblExplicationPompier.Left = 450;
-                lblExplicationPompier.Width = 600;
-                lblExplicationPompier.Height = 300;
-                lblExplicationPompier.Text = "Sélectionnez un pompier pour afficher ses informations.";
 
-                pnlGestion.Controls.Add(lblExplicationPompier);
+            void BtnChange_Click(object sender, EventArgs e)
+            {
+                btnAnnuler.Visible = true;
+                btnConfirm.Visible = true;
+
+                cboGrades.Text = string.Empty;
+                cboGrades.Items.Clear();
+                cboGrades.Enabled = true;
+
+                req = "SELECT libelle FROM Grade";
+                cmd = new SQLiteCommand(req, this.cx);
+                SQLiteDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    string nomGrade = reader.GetString(0);
+                    cboGrades.Items.Add(nomGrade);
+                }
+            }
+
+            void BtnAnnuler_Click(object sender, EventArgs e)
+            {
+                txtCode.Text = _strBuffer[0];
+                cboGrades.Text = _strBuffer[1];
+                txtCode.Enabled = false;
+                cboGrades.Enabled = false;
+                btnAnnuler.Visible = false;
+                btnConfirm.Visible = false;
+            }
+
+            void BtnConfirm_Click(object sender, EventArgs e)
+            {
+                SQLiteTransaction transaction = cx.BeginTransaction();
+
+                req = $@"UPDATE Pompier SET codeGrade = '{txtCode.Text}' WHERE matricule = {matricule}";
+                SQLiteCommand cmdUpdate = new SQLiteCommand(req, this.cx)
+                {
+                    Transaction = transaction
+                };
+
+                txtCode.Enabled = false;
+                cboGrades.Enabled = false;
+                btnAnnuler.Visible = false;
+                btnConfirm.Visible = false;
+
+                grade.ImageLocation = $@"..\..\..\..\Ressources\images\ImagesGrades\{txtCode.Text}.png";
+                grade.Load();
+                lblGrade.Text = $"Grade : \n{cboGrades.Text}";
+
+                try
+                {
+                    cmdUpdate.ExecuteNonQuery();
+                    transaction.Commit();
+                    MessageBox.Show("Changements confirmés");
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    MessageBox.Show("Erreur lors de la modification : " + ex.Message);
+                }
             }
         }
+
 
         // Boutons pour afficher des informations supplémentaires sur la carrière du pompier
         private void btnPlusInfos_Click(object sender, EventArgs e)
@@ -703,7 +683,7 @@ namespace ExtinctHeure
                 }
             }
             ChargercboCasernes();
-            ChargercboPompiers();
+            chargerCboPompiers();
         }
 
         private void clearAll()

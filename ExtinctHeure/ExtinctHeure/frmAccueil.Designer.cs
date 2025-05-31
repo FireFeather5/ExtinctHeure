@@ -51,6 +51,8 @@
             this.cboChoixCaserne = new System.Windows.Forms.ComboBox();
             this.lblRattachement = new System.Windows.Forms.Label();
             this.grpInfosPerso = new System.Windows.Forms.GroupBox();
+            this.lblPompiersSansCaserne = new System.Windows.Forms.Label();
+            this.cboPompiersSansCaserne = new System.Windows.Forms.ComboBox();
             this.pnlGestion.SuspendLayout();
             this.pnlInfosPompiers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbIcone)).BeginInit();
@@ -73,6 +75,8 @@
             // pnlInfosPompiers
             // 
             this.pnlInfosPompiers.BackColor = System.Drawing.Color.DarkRed;
+            this.pnlInfosPompiers.Controls.Add(this.cboPompiersSansCaserne);
+            this.pnlInfosPompiers.Controls.Add(this.lblPompiersSansCaserne);
             this.pnlInfosPompiers.Controls.Add(this.pcbIcone);
             this.pnlInfosPompiers.Controls.Add(this.cboCasernes);
             this.pnlInfosPompiers.Controls.Add(this.cboPompiers);
@@ -103,7 +107,7 @@
             this.cboCasernes.FormattingEnabled = true;
             this.cboCasernes.Location = new System.Drawing.Point(11, 151);
             this.cboCasernes.Name = "cboCasernes";
-            this.cboCasernes.Size = new System.Drawing.Size(237, 24);
+            this.cboCasernes.Size = new System.Drawing.Size(237, 29);
             this.cboCasernes.TabIndex = 1;
             this.cboCasernes.SelectedValueChanged += new System.EventHandler(this.cboCasernes_SelectedValueChanged);
             // 
@@ -114,7 +118,7 @@
             this.cboPompiers.FormattingEnabled = true;
             this.cboPompiers.Location = new System.Drawing.Point(11, 241);
             this.cboPompiers.Name = "cboPompiers";
-            this.cboPompiers.Size = new System.Drawing.Size(237, 24);
+            this.cboPompiers.Size = new System.Drawing.Size(237, 29);
             this.cboPompiers.TabIndex = 3;
             this.cboPompiers.Visible = false;
             this.cboPompiers.SelectedValueChanged += new System.EventHandler(this.cboPompiers_SelectedValueChanged);
@@ -125,7 +129,7 @@
             this.lblPompier.ForeColor = System.Drawing.Color.Transparent;
             this.lblPompier.Location = new System.Drawing.Point(8, 202);
             this.lblPompier.Name = "lblPompier";
-            this.lblPompier.Size = new System.Drawing.Size(189, 17);
+            this.lblPompier.Size = new System.Drawing.Size(231, 21);
             this.lblPompier.TabIndex = 2;
             this.lblPompier.Text = "Veuillez choisir un pompier :";
             this.lblPompier.Visible = false;
@@ -134,10 +138,11 @@
             // 
             this.lblNouveauPompier.AutoSize = true;
             this.lblNouveauPompier.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblNouveauPompier.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNouveauPompier.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblNouveauPompier.Location = new System.Drawing.Point(43, 539);
+            this.lblNouveauPompier.Location = new System.Drawing.Point(13, 539);
             this.lblNouveauPompier.Name = "lblNouveauPompier";
-            this.lblNouveauPompier.Size = new System.Drawing.Size(189, 17);
+            this.lblNouveauPompier.Size = new System.Drawing.Size(292, 26);
             this.lblNouveauPompier.TabIndex = 1;
             this.lblNouveauPompier.Text = "Ajouter un nouveau pompier";
             this.lblNouveauPompier.Click += new System.EventHandler(this.pcbIconeNouveau_Click);
@@ -160,7 +165,7 @@
             this.lblCaserne.ForeColor = System.Drawing.Color.Transparent;
             this.lblCaserne.Location = new System.Drawing.Point(8, 111);
             this.lblCaserne.Name = "lblCaserne";
-            this.lblCaserne.Size = new System.Drawing.Size(197, 17);
+            this.lblCaserne.Size = new System.Drawing.Size(241, 21);
             this.lblCaserne.TabIndex = 1;
             this.lblCaserne.Text = "Veuillez choisir une caserne :";
             // 
@@ -214,7 +219,7 @@
             this.chklstHabilitations.FormattingEnabled = true;
             this.chklstHabilitations.Location = new System.Drawing.Point(431, 65);
             this.chklstHabilitations.Name = "chklstHabilitations";
-            this.chklstHabilitations.Size = new System.Drawing.Size(300, 137);
+            this.chklstHabilitations.Size = new System.Drawing.Size(300, 119);
             this.chklstHabilitations.TabIndex = 9;
             // 
             // btnAnnuler
@@ -235,7 +240,7 @@
             this.ckbConge.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ckbConge.Location = new System.Drawing.Point(26, 239);
             this.ckbConge.Name = "ckbConge";
-            this.ckbConge.Size = new System.Drawing.Size(89, 21);
+            this.ckbConge.Size = new System.Drawing.Size(108, 25);
             this.ckbConge.TabIndex = 7;
             this.ckbConge.Text = "En congé";
             this.ckbConge.UseVisualStyleBackColor = true;
@@ -245,7 +250,7 @@
             this.lblAncienneCasernes.AutoSize = true;
             this.lblAncienneCasernes.Location = new System.Drawing.Point(22, 76);
             this.lblAncienneCasernes.Name = "lblAncienneCasernes";
-            this.lblAncienneCasernes.Size = new System.Drawing.Size(167, 17);
+            this.lblAncienneCasernes.Size = new System.Drawing.Size(205, 21);
             this.lblAncienneCasernes.TabIndex = 6;
             this.lblAncienneCasernes.Text = "Anciennes affectations : ";
             // 
@@ -276,7 +281,7 @@
             this.lblHabilitations.AutoSize = true;
             this.lblHabilitations.Location = new System.Drawing.Point(427, 41);
             this.lblHabilitations.Name = "lblHabilitations";
-            this.lblHabilitations.Size = new System.Drawing.Size(98, 17);
+            this.lblHabilitations.Size = new System.Drawing.Size(123, 21);
             this.lblHabilitations.TabIndex = 2;
             this.lblHabilitations.Text = "Habilitations : ";
             // 
@@ -286,7 +291,7 @@
             this.cboChoixCaserne.FormattingEnabled = true;
             this.cboChoixCaserne.Location = new System.Drawing.Point(186, 41);
             this.cboChoixCaserne.Name = "cboChoixCaserne";
-            this.cboChoixCaserne.Size = new System.Drawing.Size(175, 24);
+            this.cboChoixCaserne.Size = new System.Drawing.Size(175, 29);
             this.cboChoixCaserne.TabIndex = 1;
             // 
             // lblRattachement
@@ -295,7 +300,7 @@
             this.lblRattachement.ForeColor = System.Drawing.SystemColors.Window;
             this.lblRattachement.Location = new System.Drawing.Point(22, 44);
             this.lblRattachement.Name = "lblRattachement";
-            this.lblRattachement.Size = new System.Drawing.Size(163, 17);
+            this.lblRattachement.Size = new System.Drawing.Size(200, 21);
             this.lblRattachement.TabIndex = 0;
             this.lblRattachement.Text = "Rattaché à la caserne : ";
             // 
@@ -308,9 +313,32 @@
             this.grpInfosPerso.TabIndex = 2;
             this.grpInfosPerso.TabStop = false;
             // 
+            // lblPompiersSansCaserne
+            // 
+            this.lblPompiersSansCaserne.AutoSize = true;
+            this.lblPompiersSansCaserne.ForeColor = System.Drawing.Color.Transparent;
+            this.lblPompiersSansCaserne.Location = new System.Drawing.Point(8, 295);
+            this.lblPompiersSansCaserne.Name = "lblPompiersSansCaserne";
+            this.lblPompiersSansCaserne.Size = new System.Drawing.Size(212, 21);
+            this.lblPompiersSansCaserne.TabIndex = 5;
+            this.lblPompiersSansCaserne.Text = "Pompiers sans caserne : ";
+            this.lblPompiersSansCaserne.Visible = false;
+            // 
+            // cboPompiersSansCaserne
+            // 
+            this.cboPompiersSansCaserne.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cboPompiersSansCaserne.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPompiersSansCaserne.FormattingEnabled = true;
+            this.cboPompiersSansCaserne.Location = new System.Drawing.Point(11, 336);
+            this.cboPompiersSansCaserne.Name = "cboPompiersSansCaserne";
+            this.cboPompiersSansCaserne.Size = new System.Drawing.Size(237, 29);
+            this.cboPompiersSansCaserne.TabIndex = 6;
+            this.cboPompiersSansCaserne.Visible = false;
+            this.cboPompiersSansCaserne.SelectedValueChanged += new System.EventHandler(this.cboPompiersSansCaserne_SelectedValueChanged);
+            // 
             // frmAccueil
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1234, 861);
             this.Controls.Add(this.pnlGestion);
@@ -358,6 +386,8 @@
         private System.Windows.Forms.Label lblRattachement;
         private System.Windows.Forms.GroupBox grpInfosPerso;
         private System.Windows.Forms.CheckedListBox chklstHabilitations;
+        private System.Windows.Forms.ComboBox cboPompiersSansCaserne;
+        private System.Windows.Forms.Label lblPompiersSansCaserne;
     }
 }
 
