@@ -47,6 +47,7 @@ namespace ExtinctHeure
         {
             clearAll();
             cboPompiers.Text = String.Empty;
+            cboPompiersSansCaserne.Text = String.Empty;
 
             if (cboCasernes.Text != String.Empty)
             {
@@ -54,31 +55,29 @@ namespace ExtinctHeure
                 cboPompiers.Visible = true;
                 lblPompiersSansCaserne.Visible = true;
                 cboPompiersSansCaserne.Visible = true;
-                chargerCboPompiers();
                 chargerCboPompiersSansCaserne();
+                chargerCboPompiers();
             }
         }
 
         // Quand on séléctionne un pompier on affiche ses données
-
-        private void cboPompiers_SelectedValueChanged(object sender, EventArgs e)
+        private void cboPompiers_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (cboPompiers.SelectedIndex != -1)
+            if (cboPompiers.SelectedItem != null)
             {
                 grpInfosPerso.Controls.Clear();
                 grpInfosPompier.Visible = false;
-                cboPompiersSansCaserne.SelectedIndex = -1; // On désélectionne la combobox des pompiers sans caserne
+                cboPompiersSansCaserne.SelectedItem = null;
                 ChargerInfosPompiers();
             }
         }
-
-        private void cboPompiersSansCaserne_SelectedValueChanged(object sender, EventArgs e)
+        private void cboPompiersSansCaserne_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (cboPompiersSansCaserne.SelectedIndex != -1)
+            if (cboPompiersSansCaserne.SelectedItem != null)
             {
                 grpInfosPerso.Controls.Clear();
                 grpInfosPompier.Visible = false;
-                cboPompiers.SelectedIndex = -1; // On désélectionne la combobox des pompiers avec caserne
+                cboPompiers.SelectedItem = null;
                 ChargerInfosPompiers();
             }
         }
@@ -117,7 +116,7 @@ namespace ExtinctHeure
             cboPompiers.ValueMember = "matricule"; // Valeur de la combobox est le matricule du pompier
             cboPompiers.DisplayMember = "nomComplet"; // Affichage du nom et prénom dans la combobox
             cboPompiers.DataSource = dtPompiers;
-            cboPompiers.SelectedIndex = -1; // On ne sélectionne rien par défaut
+            cboPompiers.SelectedItem = null; // On ne sélectionne rien par défaut
         }
 
         private void chargerCboPompiersSansCaserne()
@@ -136,7 +135,7 @@ namespace ExtinctHeure
             cboPompiersSansCaserne.ValueMember = "matricule"; // Valeur de la combobox est le matricule du pompier
             cboPompiersSansCaserne.DisplayMember = "nomComplet"; // Affichage du nom et prénom dans la combobox
             cboPompiersSansCaserne.DataSource = dtPompiers;
-            cboPompiersSansCaserne.SelectedIndex = -1; // On ne sélectionne rien par défaut
+            cboPompiersSansCaserne.SelectedItem = null; // On ne sélectionne rien par défaut
         }
 
         // On charge les infos des pompiers
