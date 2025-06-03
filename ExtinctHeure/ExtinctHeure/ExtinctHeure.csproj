@@ -58,6 +58,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="User_Controls">
+      <HintPath>..\..\..\..\..\OneDrive\Cours\IUT Illkirch\VisualStudio\User_Controls\User_Controls\bin\Debug\User_Controls.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connexion.cs" />
