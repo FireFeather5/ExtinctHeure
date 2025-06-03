@@ -53,6 +53,7 @@
             this.cboChoixCaserne = new System.Windows.Forms.ComboBox();
             this.lblRattachement = new System.Windows.Forms.Label();
             this.grpInfosPerso = new System.Windows.Forms.GroupBox();
+            this.lblPlusPompier = new System.Windows.Forms.Label();
             this.pnlGestion.SuspendLayout();
             this.pnlInfosPompiers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbIconeNouveau)).BeginInit();
@@ -84,6 +85,7 @@
             this.pnlInfosPompiers.Controls.Add(this.lblPompier);
             this.pnlInfosPompiers.Controls.Add(this.lblNouveauPompier);
             this.pnlInfosPompiers.Controls.Add(this.lblCaserne);
+            this.pnlInfosPompiers.Controls.Add(this.lblPlusPompier);
             this.pnlInfosPompiers.ForeColor = System.Drawing.SystemColors.WindowText;
             this.pnlInfosPompiers.Location = new System.Drawing.Point(33, 35);
             this.pnlInfosPompiers.Name = "pnlInfosPompiers";
@@ -96,7 +98,7 @@
             this.pcbIconeNouveau.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pcbIconeNouveau.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pcbIconeNouveau.Image = ((System.Drawing.Image)(resources.GetObject("pcbIconeNouveau.Image")));
-            this.pcbIconeNouveau.Location = new System.Drawing.Point(84, 422);
+            this.pcbIconeNouveau.Location = new System.Drawing.Point(125, 420);
             this.pcbIconeNouveau.Name = "pcbIconeNouveau";
             this.pcbIconeNouveau.Size = new System.Drawing.Size(100, 100);
             this.pcbIconeNouveau.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -109,7 +111,7 @@
             this.cboPompiersSansCaserne.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cboPompiersSansCaserne.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPompiersSansCaserne.FormattingEnabled = true;
-            this.cboPompiersSansCaserne.Location = new System.Drawing.Point(11, 336);
+            this.cboPompiersSansCaserne.Location = new System.Drawing.Point(19, 345);
             this.cboPompiersSansCaserne.Name = "cboPompiersSansCaserne";
             this.cboPompiersSansCaserne.Size = new System.Drawing.Size(237, 24);
             this.cboPompiersSansCaserne.TabIndex = 6;
@@ -120,7 +122,7 @@
             // 
             this.lblPompiersSansCaserne.AutoSize = true;
             this.lblPompiersSansCaserne.ForeColor = System.Drawing.Color.Transparent;
-            this.lblPompiersSansCaserne.Location = new System.Drawing.Point(8, 295);
+            this.lblPompiersSansCaserne.Location = new System.Drawing.Point(49, 305);
             this.lblPompiersSansCaserne.Name = "lblPompiersSansCaserne";
             this.lblPompiersSansCaserne.Size = new System.Drawing.Size(176, 17);
             this.lblPompiersSansCaserne.TabIndex = 5;
@@ -142,7 +144,7 @@
             this.cboCasernes.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cboCasernes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCasernes.FormattingEnabled = true;
-            this.cboCasernes.Location = new System.Drawing.Point(11, 151);
+            this.cboCasernes.Location = new System.Drawing.Point(19, 165);
             this.cboCasernes.Name = "cboCasernes";
             this.cboCasernes.Size = new System.Drawing.Size(237, 24);
             this.cboCasernes.TabIndex = 1;
@@ -153,7 +155,7 @@
             this.cboPompiers.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cboPompiers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPompiers.FormattingEnabled = true;
-            this.cboPompiers.Location = new System.Drawing.Point(11, 241);
+            this.cboPompiers.Location = new System.Drawing.Point(19, 255);
             this.cboPompiers.Name = "cboPompiers";
             this.cboPompiers.Size = new System.Drawing.Size(237, 24);
             this.cboPompiers.TabIndex = 3;
@@ -164,7 +166,7 @@
             // 
             this.lblPompier.AutoSize = true;
             this.lblPompier.ForeColor = System.Drawing.Color.Transparent;
-            this.lblPompier.Location = new System.Drawing.Point(8, 202);
+            this.lblPompier.Location = new System.Drawing.Point(43, 215);
             this.lblPompier.Name = "lblPompier";
             this.lblPompier.Size = new System.Drawing.Size(189, 17);
             this.lblPompier.TabIndex = 2;
@@ -177,7 +179,7 @@
             this.lblNouveauPompier.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblNouveauPompier.Font = new System.Drawing.Font("Arial", 13F, System.Drawing.FontStyle.Bold);
             this.lblNouveauPompier.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblNouveauPompier.Location = new System.Drawing.Point(7, 536);
+            this.lblNouveauPompier.Location = new System.Drawing.Point(7, 545);
             this.lblNouveauPompier.Name = "lblNouveauPompier";
             this.lblNouveauPompier.Size = new System.Drawing.Size(260, 21);
             this.lblNouveauPompier.TabIndex = 1;
@@ -188,7 +190,7 @@
             // 
             this.lblCaserne.AutoSize = true;
             this.lblCaserne.ForeColor = System.Drawing.Color.Transparent;
-            this.lblCaserne.Location = new System.Drawing.Point(8, 111);
+            this.lblCaserne.Location = new System.Drawing.Point(39, 125);
             this.lblCaserne.Name = "lblCaserne";
             this.lblCaserne.Size = new System.Drawing.Size(197, 17);
             this.lblCaserne.TabIndex = 1;
@@ -212,7 +214,7 @@
             // 
             this.btnPlusInfos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPlusInfos.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnPlusInfos.Location = new System.Drawing.Point(583, 393);
+            this.btnPlusInfos.Location = new System.Drawing.Point(583, 391);
             this.btnPlusInfos.Name = "btnPlusInfos";
             this.btnPlusInfos.Size = new System.Drawing.Size(175, 27);
             this.btnPlusInfos.TabIndex = 4;
@@ -243,7 +245,7 @@
             // chklstHabilitations
             // 
             this.chklstHabilitations.FormattingEnabled = true;
-            this.chklstHabilitations.Location = new System.Drawing.Point(431, 65);
+            this.chklstHabilitations.Location = new System.Drawing.Point(430, 65);
             this.chklstHabilitations.Name = "chklstHabilitations";
             this.chklstHabilitations.Size = new System.Drawing.Size(300, 137);
             this.chklstHabilitations.TabIndex = 9;
@@ -252,7 +254,7 @@
             // 
             this.btnAnnuler.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAnnuler.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnAnnuler.Location = new System.Drawing.Point(446, 229);
+            this.btnAnnuler.Location = new System.Drawing.Point(445, 220);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(135, 45);
             this.btnAnnuler.TabIndex = 8;
@@ -274,7 +276,7 @@
             // lblAncienneCasernes
             // 
             this.lblAncienneCasernes.AutoSize = true;
-            this.lblAncienneCasernes.Location = new System.Drawing.Point(22, 76);
+            this.lblAncienneCasernes.Location = new System.Drawing.Point(20, 75);
             this.lblAncienneCasernes.Name = "lblAncienneCasernes";
             this.lblAncienneCasernes.Size = new System.Drawing.Size(167, 17);
             this.lblAncienneCasernes.TabIndex = 6;
@@ -284,7 +286,7 @@
             // 
             this.btnConfirmerMaj.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnConfirmerMaj.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnConfirmerMaj.Location = new System.Drawing.Point(601, 229);
+            this.btnConfirmerMaj.Location = new System.Drawing.Point(600, 220);
             this.btnConfirmerMaj.Name = "btnConfirmerMaj";
             this.btnConfirmerMaj.Size = new System.Drawing.Size(135, 45);
             this.btnConfirmerMaj.TabIndex = 4;
@@ -295,9 +297,9 @@
             // lstAnciennesCasernes
             // 
             this.lstAnciennesCasernes.HideSelection = false;
-            this.lstAnciennesCasernes.Location = new System.Drawing.Point(26, 103);
+            this.lstAnciennesCasernes.Location = new System.Drawing.Point(20, 105);
             this.lstAnciennesCasernes.Name = "lstAnciennesCasernes";
-            this.lstAnciennesCasernes.Size = new System.Drawing.Size(335, 119);
+            this.lstAnciennesCasernes.Size = new System.Drawing.Size(360, 120);
             this.lstAnciennesCasernes.TabIndex = 3;
             this.lstAnciennesCasernes.UseCompatibleStateImageBehavior = false;
             this.lstAnciennesCasernes.View = System.Windows.Forms.View.List;
@@ -305,7 +307,7 @@
             // lblHabilitations
             // 
             this.lblHabilitations.AutoSize = true;
-            this.lblHabilitations.Location = new System.Drawing.Point(427, 41);
+            this.lblHabilitations.Location = new System.Drawing.Point(430, 40);
             this.lblHabilitations.Name = "lblHabilitations";
             this.lblHabilitations.Size = new System.Drawing.Size(98, 17);
             this.lblHabilitations.TabIndex = 2;
@@ -315,16 +317,16 @@
             // 
             this.cboChoixCaserne.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cboChoixCaserne.FormattingEnabled = true;
-            this.cboChoixCaserne.Location = new System.Drawing.Point(186, 41);
+            this.cboChoixCaserne.Location = new System.Drawing.Point(185, 42);
             this.cboChoixCaserne.Name = "cboChoixCaserne";
-            this.cboChoixCaserne.Size = new System.Drawing.Size(175, 24);
+            this.cboChoixCaserne.Size = new System.Drawing.Size(195, 24);
             this.cboChoixCaserne.TabIndex = 1;
             // 
             // lblRattachement
             // 
             this.lblRattachement.AutoSize = true;
             this.lblRattachement.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblRattachement.Location = new System.Drawing.Point(22, 44);
+            this.lblRattachement.Location = new System.Drawing.Point(20, 45);
             this.lblRattachement.Name = "lblRattachement";
             this.lblRattachement.Size = new System.Drawing.Size(163, 17);
             this.lblRattachement.TabIndex = 0;
@@ -338,6 +340,19 @@
             this.grpInfosPerso.Size = new System.Drawing.Size(740, 375);
             this.grpInfosPerso.TabIndex = 2;
             this.grpInfosPerso.TabStop = false;
+            // 
+            // lblPlusPompier
+            // 
+            this.lblPlusPompier.BackColor = System.Drawing.Color.Transparent;
+            this.lblPlusPompier.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblPlusPompier.Font = new System.Drawing.Font("Arial", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPlusPompier.ForeColor = System.Drawing.Color.White;
+            this.lblPlusPompier.Location = new System.Drawing.Point(25, 420);
+            this.lblPlusPompier.Name = "lblPlusPompier";
+            this.lblPlusPompier.Size = new System.Drawing.Size(100, 100);
+            this.lblPlusPompier.TabIndex = 7;
+            this.lblPlusPompier.Text = "+";
+            this.lblPlusPompier.Click += new System.EventHandler(this.pcbIconeNouveau_Click);
             // 
             // frmAccueil
             // 
@@ -391,6 +406,7 @@
         protected System.Windows.Forms.GroupBox grpInfosCarriere;
         public System.Windows.Forms.GroupBox grpInfosPerso;
         public System.Windows.Forms.GroupBox grpInfosPompier;
+        private System.Windows.Forms.Label lblPlusPompier;
     }
 }
 

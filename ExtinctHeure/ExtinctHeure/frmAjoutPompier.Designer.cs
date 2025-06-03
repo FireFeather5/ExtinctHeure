@@ -55,8 +55,14 @@
             this.lblGrade = new System.Windows.Forms.Label();
             this.cboGrades = new System.Windows.Forms.ComboBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.pcbGrade = new System.Windows.Forms.PictureBox();
+            this.pcbIconePompierGauche = new System.Windows.Forms.PictureBox();
+            this.pcbIconePompierDroite = new System.Windows.Forms.PictureBox();
             this.pnlSexe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbGrade)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbIconePompierGauche)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbIconePompierDroite)).BeginInit();
             this.SuspendLayout();
             // 
             // btnConfirmer
@@ -88,18 +94,18 @@
             // lblTitre
             // 
             this.lblTitre.AutoSize = true;
-            this.lblTitre.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitre.Location = new System.Drawing.Point(427, 30);
+            this.lblTitre.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitre.Location = new System.Drawing.Point(325, 30);
             this.lblTitre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitre.Name = "lblTitre";
-            this.lblTitre.Size = new System.Drawing.Size(226, 32);
+            this.lblTitre.Size = new System.Drawing.Size(450, 37);
             this.lblTitre.TabIndex = 2;
-            this.lblTitre.Text = "Nouveau pompier";
+            this.lblTitre.Text = "Ajouter un nouveau pompier";
             // 
             // lblNom
             // 
             this.lblNom.AutoSize = true;
-            this.lblNom.Location = new System.Drawing.Point(60, 100);
+            this.lblNom.Location = new System.Drawing.Point(60, 113);
             this.lblNom.Name = "lblNom";
             this.lblNom.Size = new System.Drawing.Size(51, 17);
             this.lblNom.TabIndex = 3;
@@ -108,7 +114,7 @@
             // lblPrenom
             // 
             this.lblPrenom.AutoSize = true;
-            this.lblPrenom.Location = new System.Drawing.Point(60, 135);
+            this.lblPrenom.Location = new System.Drawing.Point(60, 148);
             this.lblPrenom.Name = "lblPrenom";
             this.lblPrenom.Size = new System.Drawing.Size(72, 17);
             this.lblPrenom.TabIndex = 4;
@@ -117,7 +123,7 @@
             // lblDateNaissance
             // 
             this.lblDateNaissance.AutoSize = true;
-            this.lblDateNaissance.Location = new System.Drawing.Point(60, 205);
+            this.lblDateNaissance.Location = new System.Drawing.Point(60, 218);
             this.lblDateNaissance.Name = "lblDateNaissance";
             this.lblDateNaissance.Size = new System.Drawing.Size(142, 17);
             this.lblDateNaissance.TabIndex = 6;
@@ -126,7 +132,7 @@
             // lblTypePompier
             // 
             this.lblTypePompier.AutoSize = true;
-            this.lblTypePompier.Location = new System.Drawing.Point(60, 410);
+            this.lblTypePompier.Location = new System.Drawing.Point(60, 423);
             this.lblTypePompier.Name = "lblTypePompier";
             this.lblTypePompier.Size = new System.Drawing.Size(75, 17);
             this.lblTypePompier.TabIndex = 7;
@@ -135,7 +141,7 @@
             // lblTelephone
             // 
             this.lblTelephone.AutoSize = true;
-            this.lblTelephone.Location = new System.Drawing.Point(60, 460);
+            this.lblTelephone.Location = new System.Drawing.Point(60, 473);
             this.lblTelephone.Name = "lblTelephone";
             this.lblTelephone.Size = new System.Drawing.Size(159, 17);
             this.lblTelephone.TabIndex = 8;
@@ -152,7 +158,7 @@
             // 
             // txtNom
             // 
-            this.txtNom.Location = new System.Drawing.Point(130, 97);
+            this.txtNom.Location = new System.Drawing.Point(130, 110);
             this.txtNom.Name = "txtNom";
             this.txtNom.Size = new System.Drawing.Size(140, 24);
             this.txtNom.TabIndex = 10;
@@ -160,7 +166,7 @@
             // 
             // txtPrenom
             // 
-            this.txtPrenom.Location = new System.Drawing.Point(130, 132);
+            this.txtPrenom.Location = new System.Drawing.Point(130, 145);
             this.txtPrenom.Name = "txtPrenom";
             this.txtPrenom.Size = new System.Drawing.Size(140, 24);
             this.txtPrenom.TabIndex = 11;
@@ -169,7 +175,7 @@
             // calDateNaissance
             // 
             this.calDateNaissance.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.calDateNaissance.Location = new System.Drawing.Point(214, 205);
+            this.calDateNaissance.Location = new System.Drawing.Point(214, 218);
             this.calDateNaissance.MaxSelectionCount = 1;
             this.calDateNaissance.Name = "calDateNaissance";
             this.calDateNaissance.TabIndex = 14;
@@ -178,7 +184,7 @@
             // 
             this.rdbProfessionnel.AutoSize = true;
             this.rdbProfessionnel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rdbProfessionnel.Location = new System.Drawing.Point(140, 408);
+            this.rdbProfessionnel.Location = new System.Drawing.Point(140, 421);
             this.rdbProfessionnel.Name = "rdbProfessionnel";
             this.rdbProfessionnel.Size = new System.Drawing.Size(115, 21);
             this.rdbProfessionnel.TabIndex = 15;
@@ -190,7 +196,7 @@
             // 
             this.rdbVolontaire.AutoSize = true;
             this.rdbVolontaire.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rdbVolontaire.Location = new System.Drawing.Point(270, 408);
+            this.rdbVolontaire.Location = new System.Drawing.Point(270, 421);
             this.rdbVolontaire.Name = "rdbVolontaire";
             this.rdbVolontaire.Size = new System.Drawing.Size(89, 21);
             this.rdbVolontaire.TabIndex = 16;
@@ -200,7 +206,7 @@
             // 
             // txtTelephone
             // 
-            this.txtTelephone.Location = new System.Drawing.Point(252, 457);
+            this.txtTelephone.Location = new System.Drawing.Point(225, 470);
             this.txtTelephone.Name = "txtTelephone";
             this.txtTelephone.ShortcutsEnabled = false;
             this.txtTelephone.Size = new System.Drawing.Size(140, 24);
@@ -240,7 +246,7 @@
             this.pnlSexe.Controls.Add(this.rdbFemme);
             this.pnlSexe.Controls.Add(this.rdbHomme);
             this.pnlSexe.Controls.Add(this.lblSexe);
-            this.pnlSexe.Location = new System.Drawing.Point(38, 162);
+            this.pnlSexe.Location = new System.Drawing.Point(38, 175);
             this.pnlSexe.Name = "pnlSexe";
             this.pnlSexe.Size = new System.Drawing.Size(260, 30);
             this.pnlSexe.TabIndex = 21;
@@ -292,21 +298,54 @@
             this.cboGrades.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cboGrades.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboGrades.FormattingEnabled = true;
-            this.cboGrades.Location = new System.Drawing.Point(678, 198);
+            this.cboGrades.Location = new System.Drawing.Point(640, 195);
             this.cboGrades.Name = "cboGrades";
             this.cboGrades.Size = new System.Drawing.Size(180, 24);
             this.cboGrades.TabIndex = 23;
+            this.cboGrades.SelectionChangeCommitted += new System.EventHandler(this.cboGrades_SelectionChangeCommitted);
             // 
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
+            // 
+            // pcbGrade
+            // 
+            this.pcbGrade.Location = new System.Drawing.Point(543, 194);
+            this.pcbGrade.Name = "pcbGrade";
+            this.pcbGrade.Size = new System.Drawing.Size(25, 25);
+            this.pcbGrade.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pcbGrade.TabIndex = 24;
+            this.pcbGrade.TabStop = false;
+            // 
+            // pcbIconePompierGauche
+            // 
+            this.pcbIconePompierGauche.Image = ((System.Drawing.Image)(resources.GetObject("pcbIconePompierGauche.Image")));
+            this.pcbIconePompierGauche.Location = new System.Drawing.Point(268, 25);
+            this.pcbIconePompierGauche.Name = "pcbIconePompierGauche";
+            this.pcbIconePompierGauche.Size = new System.Drawing.Size(50, 50);
+            this.pcbIconePompierGauche.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pcbIconePompierGauche.TabIndex = 25;
+            this.pcbIconePompierGauche.TabStop = false;
+            // 
+            // pcbIconePompierDroite
+            // 
+            this.pcbIconePompierDroite.Image = ((System.Drawing.Image)(resources.GetObject("pcbIconePompierDroite.Image")));
+            this.pcbIconePompierDroite.Location = new System.Drawing.Point(782, 25);
+            this.pcbIconePompierDroite.Name = "pcbIconePompierDroite";
+            this.pcbIconePompierDroite.Size = new System.Drawing.Size(50, 50);
+            this.pcbIconePompierDroite.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pcbIconePompierDroite.TabIndex = 26;
+            this.pcbIconePompierDroite.TabStop = false;
             // 
             // frmAjoutPompier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkRed;
-            this.ClientSize = new System.Drawing.Size(1082, 558);
+            this.ClientSize = new System.Drawing.Size(1084, 561);
+            this.Controls.Add(this.pcbIconePompierDroite);
+            this.Controls.Add(this.pcbIconePompierGauche);
+            this.Controls.Add(this.pcbGrade);
             this.Controls.Add(this.cboGrades);
             this.Controls.Add(this.lblGrade);
             this.Controls.Add(this.pnlSexe);
@@ -339,6 +378,9 @@
             this.pnlSexe.ResumeLayout(false);
             this.pnlSexe.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbGrade)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbIconePompierGauche)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbIconePompierDroite)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -371,5 +413,8 @@
         private System.Windows.Forms.Label lblGrade;
         private System.Windows.Forms.ComboBox cboGrades;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.PictureBox pcbGrade;
+        private System.Windows.Forms.PictureBox pcbIconePompierDroite;
+        private System.Windows.Forms.PictureBox pcbIconePompierGauche;
     }
 }

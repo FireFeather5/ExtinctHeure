@@ -31,20 +31,18 @@ namespace ExtinctHeure
             }
         }
 
-        DataTable getAdminInfos()
+        private void getAdminInfos()
         {
             string req = "SELECT id, login, mdp AS password FROM Admin";
 
             SQLiteDataAdapter da = new SQLiteDataAdapter(req, this._cx);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-
-            return dt;
+            _dtAdminInfos = new DataTable();
+            da.Fill(_dtAdminInfos);
         }
 
         private void frmConnexion_Load(object sender, EventArgs e)
         {
-            _dtAdminInfos = getAdminInfos();
+            getAdminInfos();
         }
 
         private void btnConfirmer_Click(object sender, EventArgs e)
@@ -63,7 +61,7 @@ namespace ExtinctHeure
             if (!isValid)
             {
                 // Si les identifiants sont incorrects, on affiche un message d'erreur
-                MessageBox.Show("Login ou mot de passe incorrect", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Login et/ou mot de passe incorrect", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -76,6 +74,12 @@ namespace ExtinctHeure
         {
             e.Handled = true;
             if (char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar) || char.IsDigit(e.KeyChar)) { e.Handled = false; }
+        }
+
+        private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+            if (char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar) || char.IsDigit(e.KeyChar) || char.IsSymbol(e.KeyChar)) { e.Handled = false; }
         }
     }
 }

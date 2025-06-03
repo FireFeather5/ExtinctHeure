@@ -12,9 +12,10 @@ namespace ExtinctHeure
     {
         private List<string> _strBuffer = new List<string>(20);
         private int[] _intBuffer = new int[10];
-        private int _matricule = 0;
         private readonly SQLiteConnection _cx;
+        private bool isAlreadyConnected = false;
 
+        private int _matricule = 0;
         private Button _btnChangeGrade;
         private Button _btnAnnulerGrade;
         private Button _btnConfirmGrade;
@@ -484,11 +485,21 @@ namespace ExtinctHeure
         // Boutons pour afficher des informations supplémentaires sur la carrière du pompier
         private void btnPlusInfos_Click(object sender, EventArgs e)
         {
-            frmConnexion connexion = new frmConnexion();
-            if (connexion.ShowDialog() == DialogResult.OK)
+            if (!isAlreadyConnected)
             {
-                MessageBox.Show("Vous êtes bien connectés", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                frmConnexion connexion = new frmConnexion();
+                if (connexion.ShowDialog() == DialogResult.OK)
+                {
+                    MessageBox.Show("Vous êtes bien connecté", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    isAlreadyConnected = true;
+                }
+                else
+                {
+                    MessageBox.Show("Accès non autorisé", "Refus", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
 
+            if (isAlreadyConnected) {
                 chargerCboCasernes(cboChoixCaserne);
 
                 _intBuffer[1] = originalState();
@@ -570,10 +581,6 @@ namespace ExtinctHeure
                 }
 
                 _intBuffer[0] = compteur;
-            }
-            else
-            {
-                MessageBox.Show("Accès non autorisé", "Refus", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -692,7 +699,7 @@ namespace ExtinctHeure
 
             btnPlusInfos.Visible = true;
             grpInfosCarriere.Visible = false;
-            cboChoixCaserne.Items.Clear();
+            cboChoixCaserne.SelectedIndex = -1;
             chklstHabilitations.Items.Clear();
             lstAnciennesCasernes.Items.Clear();
         }
@@ -715,8 +722,30 @@ namespace ExtinctHeure
         // On créer un nouveau formulaire pour l'ajout d'un pompier dans la DB
         private void pcbIconeNouveau_Click(object sender, EventArgs e)
         {
-            frmConnexion connexion = new frmConnexion();
-            if (connexion.ShowDialog() == DialogResult.OK)
+            if (!isAlreadyConnected)
+            {
+                frmConnexion connexion = new frmConnexion();
+                if (connexion.ShowDialog() == DialogResult.OK)
+                {
+                    MessageBox.Show("Vous êtes bien connecté", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    isAlreadyConnected = true;
+
+                    frmAjoutPompier ajouterPimpon = new frmAjoutPompier();
+                    if (ajouterPimpon.ShowDialog() == DialogResult.OK)
+                    {
+                        MessageBox.Show("Changements confirmés", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Changements abandonnés", "Abandon", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Accès non autorisé", "Refus", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
             {
                 frmAjoutPompier ajouterPimpon = new frmAjoutPompier();
                 if (ajouterPimpon.ShowDialog() == DialogResult.OK)
@@ -727,10 +756,6 @@ namespace ExtinctHeure
                 {
                     MessageBox.Show("Changements abandonnés", "Abandon", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
-            }
-            else
-            {
-                MessageBox.Show("Accès non autorisé", "Refus", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

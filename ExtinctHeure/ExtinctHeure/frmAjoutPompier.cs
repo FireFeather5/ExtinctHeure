@@ -12,14 +12,15 @@ using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using System.Xml.Linq;
 using Pinpon;
+using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 namespace ExtinctHeure
 {
     public partial class frmAjoutPompier : Form
     {
-        private string[] _strBuffer = new string[10];
-        private int[] _intBuffer = new int[10];
-        private SQLiteConnection cx;
+        private string sexe = "";
+        private string type = "";
+        private readonly SQLiteConnection _cx;
         public frmAjoutPompier()
         {
             InitializeComponent();
@@ -28,7 +29,7 @@ namespace ExtinctHeure
 
             try
             {
-                this.cx = Connexion.Connec;
+                this._cx = Connexion.Connec;
             }
             catch (SQLiteException ex)
             {
@@ -45,54 +46,91 @@ namespace ExtinctHeure
 
         private void btnConfirmer_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(chklstHabilitations.SelectedItems.Count.ToString());
 
             if (fieldsCheck())
             {
-                SQLiteTransaction transaction = cx.BeginTransaction();
+                SQLiteTransaction transactionPompier = _cx.BeginTransaction();
 
                 // On manipules les chaines de charactères pour avoir la première lettre en majuscule et le reste en minuscule
                 string nom = txtNom.Text.Substring(0, 1).ToUpper() + txtNom.Text.Substring(1, txtNom.Text.Length - 1).ToLower();
                 string prenom = txtPrenom.Text.Substring(0, 1).ToUpper() + txtPrenom.Text.Substring(1, txtPrenom.Text.Length - 1).ToLower();
-                string sexe = _strBuffer[0];
-                string type = _strBuffer[1];
+
                 string dateNaissance = calDateNaissance.SelectionRange.Start.ToString("yyyy-MM-dd");
-                string codeGrade = getCodeGrade();
+                string codeGrade = cboGrades.SelectedValue.ToString();
+                string telephone = txtTelephone.Text;
                 string dateEmbauche = DateTime.Today.ToString("yyyy-MM-dd");
-                int matricule = getMatricule() + 1;
+                int matricule = getMaxMatricule() + 1;
                 int bip = matricule;
-                MessageBox.Show(chklstHabilitations.SelectedItems.Count.ToString());
 
-                // A MODIFIER
+                string req = "INSERT INTO Pompier (matricule, nom, prenom, sexe, dateNaissance, type, portable, bip, enMission, enConge, codeGrade, dateEmbauche) " +
+                                   $"VALUES ({matricule}, '{nom}', '{prenom}', '{sexe}', '{dateNaissance}', '{type}', '{telephone}', {bip}, {0}, {0}, '{codeGrade}', '{dateEmbauche}')";
 
-                string reqPompier = "INSERT INTO Pompier (matricule, nom, prenom, sexe, dateNaissance, type, portable, bip, enMission, enConge, codeGrade, dateEmbauche) " +
-                                   $"VALUES ({matricule}, '{nom}', '{prenom}', '{sexe}', '{dateNaissance}', '{type}', '{txtTelephone.Text}', {bip}, {0}, {0}, '{codeGrade}', '{dateEmbauche}')";
-                string reqHabilitations = "";
+                SQLiteCommand cmdUpdatePompier = new SQLiteCommand(req, this._cx, transactionPompier);
 
-                SQLiteCommand cmdUpdatePompier = new SQLiteCommand(reqPompier, this.cx, transaction);
-                SQLiteCommand cmdUpdatePasser = new SQLiteCommand(reqHabilitations, this.cx, transaction);
-
-                
-
-                for (int i = 0; i < chklstHabilitations.SelectedItems.Count; i++)
-                {
-                    reqHabilitations = "INSERT INTO Passer (matriculePompier, idHabilitation, dateObtention)" +
-                                      $"VALUES ({matricule},(SELECT id FROM Habilitation WHERE libelle = {chklstHabilitations.SelectedItems[i].ToString()}), '{DateTime.Today.ToString("yyyy-MM-dd")}')";
-                    MessageBox.Show(reqHabilitations);
-                    cmdUpdatePasser.CommandText = reqHabilitations;
-                }
-
-                /*try
+                try
                 {
                     cmdUpdatePompier.ExecuteNonQuery();
-                    transaction.Commit();
+                    transactionPompier.Commit();
                     DialogResult = DialogResult.OK;
                 }
                 catch (Exception ex)
                 {
-                    transaction.Rollback();
+                    transactionPompier.Rollback();
                     MessageBox.Show("Erreur lors de la modification : " + ex.Message);
-                }*/
+                }
+
+                // On insère les habilitations du pompier dans la table Passer
+                SQLiteTransaction transactionPasser = _cx.BeginTransaction();
+                SQLiteCommand cmdUpdatePasser = new SQLiteCommand(_cx);
+                cmdUpdatePasser.Transaction = transactionPasser;
+
+                for (int i = 0; i < chklstHabilitations.CheckedItems.Count; i++)
+                {
+                    string habilitation = chklstHabilitations.CheckedItems[i].ToString();
+                    if (habilitation.Contains("'"))
+                    {
+                        habilitation = habilitation.Replace("'", "''");
+                    }
+                    req = "INSERT INTO Passer (matriculePompier, idHabilitation, dateObtention)" +
+                         $"VALUES ({matricule},(SELECT id FROM Habilitation WHERE libelle = '{habilitation}'), '{DateTime.Today.ToString("yyyy-MM-dd")}')";
+                    cmdUpdatePasser.CommandText = req;
+                    try
+                    { 
+                        cmdUpdatePasser.ExecuteNonQuery();
+                    }
+                    catch (SQLiteException ex)
+                    {
+                        MessageBox.Show("Erreur lors de l'insertion des habilitations : " + ex.Message);
+                        return;
+                    }
+                }
+                try
+                {
+                    transactionPasser.Commit();
+                    DialogResult = DialogResult.OK;
+                }
+                catch (Exception ex)
+                {
+                    transactionPasser.Rollback();
+                    MessageBox.Show("Erreur lors de la modification : " + ex.Message);
+                }
+
+                SQLiteTransaction transactionCaserne = _cx.BeginTransaction();
+                req = $@"INSERT INTO Affectation(matriculePompier, dateA, idCaserne)
+                      VALUES({matricule}, '{DateTime.Today:yyyy-MM-dd}', {cboCasernes.SelectedValue})";
+                SQLiteCommand cmdUpdateCaserne = new SQLiteCommand(req, this._cx, transactionCaserne);
+
+                try
+                {
+                    transactionCaserne.Commit();
+                    cmdUpdateCaserne.ExecuteNonQuery();
+                    DialogResult = DialogResult.OK;
+                }
+                catch (Exception ex)
+                {
+                    transactionCaserne.Rollback();
+                    MessageBox.Show("Erreur lors de la modification : " + ex.Message);
+                }
             }
         }
 
@@ -115,34 +153,36 @@ namespace ExtinctHeure
 
         private void ChargercboCasernes()
         {
-            string req = "SELECT nom FROM Caserne";
-            SQLiteCommand cmd = new SQLiteCommand(req, this.cx);
-            SQLiteDataReader caserneReader = cmd.ExecuteReader();
+            string req = "SELECT nom, id AS idCaserne FROM Caserne";
 
-            while (caserneReader.Read())
-            {
-                string nomCaserne = caserneReader.GetString(0);
-                this.cboCasernes.Items.Add(nomCaserne);
-            }
+            SQLiteDataAdapter daCaserne = new SQLiteDataAdapter(req, this._cx);
+            DataTable dtCasernes = new DataTable();
+
+            daCaserne.Fill(dtCasernes);
+            cboCasernes.ValueMember = "idCaserne"; // Valeur de la combobox est l'id de la caserne
+            cboCasernes.DisplayMember = "nom"; // Affichage du nom de la caserne dans la combobox
+            cboCasernes.DataSource = dtCasernes;
+            cboCasernes.SelectedIndex = -1; // On ne sélectionne rien par défaut
         }
 
         private void ChargerCboGrades()
         {
             string req = "SELECT libelle, code FROM Grade";
-            SQLiteCommand cmd = new SQLiteCommand(req, this.cx);
-            SQLiteDataReader gradesReader = cmd.ExecuteReader();
 
-            while (gradesReader.Read())
-            {
-                string nomgrades = gradesReader.GetString(0);
-                this.cboGrades.Items.Add(nomgrades);
-            }
+            SQLiteDataAdapter daGrade = new SQLiteDataAdapter(req, this._cx);
+            DataTable dtGrade = new DataTable();
+
+            daGrade.Fill(dtGrade);
+            cboGrades.ValueMember = "code"; // Valeur de la combobox est l'id de la caserne
+            cboGrades.DisplayMember = "libelle"; // Affichage du nom de la caserne dans la combobox
+            cboGrades.DataSource = dtGrade;
+            cboGrades.SelectedIndex = -1; // On ne sélectionne rien par défaut
         }
 
         private void ChargerLstHabilitations()
         {
             string req = "SELECT libelle FROM Habilitation";
-            SQLiteCommand cmd = new SQLiteCommand(req, this.cx);
+            SQLiteCommand cmd = new SQLiteCommand(req, this._cx);
             SQLiteDataReader habilitationReader = cmd.ExecuteReader();
 
             while (habilitationReader.Read())
@@ -208,42 +248,28 @@ namespace ExtinctHeure
 
             if (rdbHomme.Checked)
             {
-                _strBuffer[0] = "m";
+                sexe = "m";
             }
             else
             {
-                _strBuffer[0] = "f";
+                sexe = "f";
             }
 
             if (rdbProfessionnel.Checked)
             {
-                _strBuffer[1] = "p";
+                type = "p";
             }
             else
             {
-                _strBuffer[1] = "v";
+                type = "v";
             }
             return true;
         }
-
-        private string getCodeGrade()
-        {
-            string code = "";
-            string req = $"SELECT code FROM Grade WHERE lower(libelle) = '{cboGrades.Text.ToLower()}'";
-            SQLiteCommand cmd = new SQLiteCommand(req, this.cx);
-            SQLiteDataReader codeReader = cmd.ExecuteReader();
-
-            while (codeReader.Read())
-            {
-                code = codeReader.GetString(0);
-            }
-            return code;
-        }
-        private int getMatricule()
+        private int getMaxMatricule()
         {
             int matricule = 0;
             string req = "SELECT max(matricule) FROM Pompier";
-            SQLiteCommand cmd = new SQLiteCommand(req, this.cx);
+            SQLiteCommand cmd = new SQLiteCommand(req, this._cx);
             SQLiteDataReader matriculeReader = cmd.ExecuteReader();
 
             while (matriculeReader.Read())
@@ -251,6 +277,12 @@ namespace ExtinctHeure
                 matricule = matriculeReader.GetInt32(0);
             }
             return matricule;
+        }
+
+        private void cboGrades_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            pcbGrade.ImageLocation = $@"..\..\..\..\Ressources\images\ImagesGrades\{cboGrades.SelectedValue.ToString()}.png";
+            pcbGrade.Load();
         }
     }
 }
