@@ -64,6 +64,12 @@
     <Compile Include="frmAjoutPompier.Designer.cs">
       <DependentUpon>frmAjoutPompier.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmConnexion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConnexion.Designer.cs">
+      <DependentUpon>frmConnexion.cs</DependentUpon>
+    </Compile>
     <Compile Include="mesDatas.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,6 +78,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAjoutPompier.resx">
       <DependentUpon>frmAjoutPompier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConnexion.resx">
+      <DependentUpon>frmConnexion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

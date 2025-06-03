@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\sae24\\ExtinctHeure\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|c:\\users\\afena\\documents\\but_informatique_local\\a1\\sae24\\extinctheure\\extinctheure\\frmaccueil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\sae24\\ExtinctHeure\\extinctheure\\frmaccueil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|solutionrelative:extinctheure\\frmaccueil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\sae24\\ExtinctHeure\\extinctheure\\frmaccueil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|c:\\users\\afena\\documents\\but_informatique_local\\a1\\sae24\\extinctheure\\extinctheure\\frmaccueil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|solutionrelative:extinctheure\\frmaccueil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|c:\\users\\afena\\documents\\but_informatique_local\\a1\\sae24\\extinctheure\\extinctheure\\frmaccueil.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|solutionrelative:extinctheure\\frmaccueil.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\sae24\\ExtinctHeure\\extinctheure\\frmajoutpompier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -21,6 +17,14 @@
     {
       "AbsoluteMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\sae24\\ExtinctHeure\\extinctheure\\frmajoutpompier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|solutionrelative:extinctheure\\frmajoutpompier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|c:\\users\\afena\\documents\\but_informatique_local\\a1\\sae24\\extinctheure\\extinctheure\\frmconnexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|solutionrelative:extinctheure\\frmconnexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|c:\\users\\afena\\documents\\but_informatique_local\\a1\\sae24\\extinctheure\\extinctheure\\frmconnexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C4844CD-1F3C-4778-A11A-F2D5261F1EA3}|ExtinctHeure\\ExtinctHeure.csproj|solutionrelative:extinctheure\\frmconnexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -53,7 +57,7 @@
               "RelativeDocumentMoniker": "ExtinctHeure\\frmAccueil.cs",
               "ToolTip": "C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\sae24\\ExtinctHeure\\ExtinctHeure\\frmAccueil.cs",
               "RelativeToolTip": "ExtinctHeure\\frmAccueil.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAAAiwE8AAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAAJ0CAAAAAAAAAAAkwLYCAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-23T10:35:15.175Z",
               "IsPinned": true,
@@ -61,7 +65,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "frmAjoutPompier.cs [Design]",
               "DocumentMoniker": "C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\sae24\\ExtinctHeure\\ExtinctHeure\\frmAjoutPompier.cs",
               "RelativeDocumentMoniker": "ExtinctHeure\\frmAjoutPompier.cs",
@@ -69,32 +73,48 @@
               "RelativeToolTip": "ExtinctHeure\\frmAjoutPompier.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-12T20:05:55.035Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "frmAjoutPompier.cs",
               "DocumentMoniker": "C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\sae24\\ExtinctHeure\\ExtinctHeure\\frmAjoutPompier.cs",
               "RelativeDocumentMoniker": "ExtinctHeure\\frmAjoutPompier.cs",
               "ToolTip": "C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\sae24\\ExtinctHeure\\ExtinctHeure\\frmAjoutPompier.cs",
               "RelativeToolTip": "ExtinctHeure\\frmAjoutPompier.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAiwCsAAABDAAAAAAAAAA==",
+              "ViewState": "AgIAADUAAAAAAAAAAAAiwFgAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-19T09:14:15.911Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "frmAccueil.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\sae24\\ExtinctHeure\\ExtinctHeure\\frmAccueil.Designer.cs",
-              "RelativeDocumentMoniker": "ExtinctHeure\\frmAccueil.Designer.cs",
-              "ToolTip": "C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\sae24\\ExtinctHeure\\ExtinctHeure\\frmAccueil.Designer.cs",
-              "RelativeToolTip": "ExtinctHeure\\frmAccueil.Designer.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAqwJEAAAAtAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "frmConnexion.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\sae24\\ExtinctHeure\\ExtinctHeure\\frmConnexion.cs",
+              "RelativeDocumentMoniker": "ExtinctHeure\\frmConnexion.cs",
+              "ToolTip": "C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\sae24\\ExtinctHeure\\ExtinctHeure\\frmConnexion.cs [Design]",
+              "RelativeToolTip": "ExtinctHeure\\frmConnexion.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-31T16:52:16.293Z",
+              "WhenOpened": "2025-06-03T11:56:19.389Z",
+              "IsPinned": true,
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "frmConnexion.cs",
+              "DocumentMoniker": "C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\sae24\\ExtinctHeure\\ExtinctHeure\\frmConnexion.cs",
+              "RelativeDocumentMoniker": "ExtinctHeure\\frmConnexion.cs",
+              "ToolTip": "C:\\Users\\afena\\Documents\\BUT_Informatique_local\\A1\\sae24\\ExtinctHeure\\ExtinctHeure\\frmConnexion.cs",
+              "RelativeToolTip": "ExtinctHeure\\frmConnexion.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAIwEoAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T12:14:23.494Z",
+              "IsPinned": true,
               "EditorCaption": ""
             }
           ]

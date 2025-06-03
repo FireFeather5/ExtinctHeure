@@ -23,7 +23,9 @@ namespace ExtinctHeure
         public frmAjoutPompier()
         {
             InitializeComponent();
+
             calDateNaissance.MaxDate = DateTime.Today.AddYears(-16).AddDays(1);
+
             try
             {
                 this.cx = Connexion.Connec;

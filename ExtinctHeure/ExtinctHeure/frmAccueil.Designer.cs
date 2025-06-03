@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAccueil));
             this.pnlGestion = new System.Windows.Forms.Panel();
             this.pnlInfosPompiers = new System.Windows.Forms.Panel();
+            this.pcbIconeNouveau = new System.Windows.Forms.PictureBox();
             this.cboPompiersSansCaserne = new System.Windows.Forms.ComboBox();
             this.lblPompiersSansCaserne = new System.Windows.Forms.Label();
             this.pcbIcone = new System.Windows.Forms.PictureBox();
@@ -38,7 +39,6 @@
             this.cboPompiers = new System.Windows.Forms.ComboBox();
             this.lblPompier = new System.Windows.Forms.Label();
             this.lblNouveauPompier = new System.Windows.Forms.Label();
-            this.pcbIconeNouveau = new System.Windows.Forms.PictureBox();
             this.lblCaserne = new System.Windows.Forms.Label();
             this.grpInfosPompier = new System.Windows.Forms.GroupBox();
             this.btnPlusInfos = new System.Windows.Forms.Button();
@@ -55,15 +55,15 @@
             this.grpInfosPerso = new System.Windows.Forms.GroupBox();
             this.pnlGestion.SuspendLayout();
             this.pnlInfosPompiers.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbIcone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbIconeNouveau)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbIcone)).BeginInit();
             this.grpInfosPompier.SuspendLayout();
             this.grpInfosCarriere.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlGestion
             // 
-            this.pnlGestion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.pnlGestion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(124)))), ((int)(((byte)(0)))));
             this.pnlGestion.Controls.Add(this.pnlInfosPompiers);
             this.pnlGestion.Controls.Add(this.grpInfosPompier);
             this.pnlGestion.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -75,6 +75,7 @@
             // pnlInfosPompiers
             // 
             this.pnlInfosPompiers.BackColor = System.Drawing.Color.DarkRed;
+            this.pnlInfosPompiers.Controls.Add(this.pcbIconeNouveau);
             this.pnlInfosPompiers.Controls.Add(this.cboPompiersSansCaserne);
             this.pnlInfosPompiers.Controls.Add(this.lblPompiersSansCaserne);
             this.pnlInfosPompiers.Controls.Add(this.pcbIcone);
@@ -82,13 +83,26 @@
             this.pnlInfosPompiers.Controls.Add(this.cboPompiers);
             this.pnlInfosPompiers.Controls.Add(this.lblPompier);
             this.pnlInfosPompiers.Controls.Add(this.lblNouveauPompier);
-            this.pnlInfosPompiers.Controls.Add(this.pcbIconeNouveau);
             this.pnlInfosPompiers.Controls.Add(this.lblCaserne);
             this.pnlInfosPompiers.ForeColor = System.Drawing.SystemColors.WindowText;
             this.pnlInfosPompiers.Location = new System.Drawing.Point(33, 35);
             this.pnlInfosPompiers.Name = "pnlInfosPompiers";
             this.pnlInfosPompiers.Size = new System.Drawing.Size(275, 675);
             this.pnlInfosPompiers.TabIndex = 6;
+            // 
+            // pcbIconeNouveau
+            // 
+            this.pcbIconeNouveau.BackColor = System.Drawing.Color.White;
+            this.pcbIconeNouveau.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pcbIconeNouveau.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pcbIconeNouveau.Image = ((System.Drawing.Image)(resources.GetObject("pcbIconeNouveau.Image")));
+            this.pcbIconeNouveau.Location = new System.Drawing.Point(84, 422);
+            this.pcbIconeNouveau.Name = "pcbIconeNouveau";
+            this.pcbIconeNouveau.Size = new System.Drawing.Size(100, 100);
+            this.pcbIconeNouveau.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pcbIconeNouveau.TabIndex = 4;
+            this.pcbIconeNouveau.TabStop = false;
+            this.pcbIconeNouveau.Click += new System.EventHandler(this.pcbIconeNouveau_Click);
             // 
             // cboPompiersSansCaserne
             // 
@@ -116,9 +130,9 @@
             // pcbIcone
             // 
             this.pcbIcone.Image = ((System.Drawing.Image)(resources.GetObject("pcbIcone.Image")));
-            this.pcbIcone.Location = new System.Drawing.Point(105, 15);
+            this.pcbIcone.Location = new System.Drawing.Point(100, 15);
             this.pcbIcone.Name = "pcbIcone";
-            this.pcbIcone.Size = new System.Drawing.Size(65, 65);
+            this.pcbIcone.Size = new System.Drawing.Size(75, 75);
             this.pcbIcone.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pcbIcone.TabIndex = 1;
             this.pcbIcone.TabStop = false;
@@ -132,7 +146,7 @@
             this.cboCasernes.Name = "cboCasernes";
             this.cboCasernes.Size = new System.Drawing.Size(237, 24);
             this.cboCasernes.TabIndex = 1;
-            this.cboCasernes.SelectedValueChanged += new System.EventHandler(this.cboCasernes_SelectedValueChanged);
+            this.cboCasernes.SelectionChangeCommitted += new System.EventHandler(this.cboCasernes_SelectionChangeCommitted);
             // 
             // cboPompiers
             // 
@@ -161,26 +175,14 @@
             // 
             this.lblNouveauPompier.AutoSize = true;
             this.lblNouveauPompier.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblNouveauPompier.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNouveauPompier.Font = new System.Drawing.Font("Arial", 13F, System.Drawing.FontStyle.Bold);
             this.lblNouveauPompier.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblNouveauPompier.Location = new System.Drawing.Point(13, 539);
+            this.lblNouveauPompier.Location = new System.Drawing.Point(7, 536);
             this.lblNouveauPompier.Name = "lblNouveauPompier";
-            this.lblNouveauPompier.Size = new System.Drawing.Size(246, 22);
+            this.lblNouveauPompier.Size = new System.Drawing.Size(260, 21);
             this.lblNouveauPompier.TabIndex = 1;
             this.lblNouveauPompier.Text = "Ajouter un nouveau pompier";
             this.lblNouveauPompier.Click += new System.EventHandler(this.pcbIconeNouveau_Click);
-            // 
-            // pcbIconeNouveau
-            // 
-            this.pcbIconeNouveau.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pcbIconeNouveau.Image = ((System.Drawing.Image)(resources.GetObject("pcbIconeNouveau.Image")));
-            this.pcbIconeNouveau.Location = new System.Drawing.Point(95, 416);
-            this.pcbIconeNouveau.Name = "pcbIconeNouveau";
-            this.pcbIconeNouveau.Size = new System.Drawing.Size(85, 85);
-            this.pcbIconeNouveau.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pcbIconeNouveau.TabIndex = 4;
-            this.pcbIconeNouveau.TabStop = false;
-            this.pcbIconeNouveau.Click += new System.EventHandler(this.pcbIconeNouveau_Click);
             // 
             // lblCaserne
             // 
@@ -194,6 +196,7 @@
             // 
             // grpInfosPompier
             // 
+            this.grpInfosPompier.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.grpInfosPompier.Controls.Add(this.btnPlusInfos);
             this.grpInfosPompier.Controls.Add(this.grpInfosCarriere);
             this.grpInfosPompier.Controls.Add(this.grpInfosPerso);
@@ -242,7 +245,7 @@
             this.chklstHabilitations.FormattingEnabled = true;
             this.chklstHabilitations.Location = new System.Drawing.Point(431, 65);
             this.chklstHabilitations.Name = "chklstHabilitations";
-            this.chklstHabilitations.Size = new System.Drawing.Size(300, 118);
+            this.chklstHabilitations.Size = new System.Drawing.Size(300, 137);
             this.chklstHabilitations.TabIndex = 9;
             // 
             // btnAnnuler
@@ -353,8 +356,8 @@
             this.pnlGestion.ResumeLayout(false);
             this.pnlInfosPompiers.ResumeLayout(false);
             this.pnlInfosPompiers.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbIcone)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbIconeNouveau)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbIcone)).EndInit();
             this.grpInfosPompier.ResumeLayout(false);
             this.grpInfosCarriere.ResumeLayout(false);
             this.grpInfosCarriere.PerformLayout();
@@ -371,11 +374,7 @@
         private System.Windows.Forms.ComboBox cboPompiers;
         private System.Windows.Forms.Label lblPompier;
         private System.Windows.Forms.Label lblNouveauPompier;
-        private System.Windows.Forms.PictureBox pcbIconeNouveau;
         private System.Windows.Forms.Label lblCaserne;
-        private System.Windows.Forms.GroupBox grpInfosPompier;
-        private System.Windows.Forms.Button btnPlusInfos;
-        private System.Windows.Forms.GroupBox grpInfosCarriere;
         private System.Windows.Forms.Button btnAnnuler;
         private System.Windows.Forms.CheckBox ckbConge;
         private System.Windows.Forms.Label lblAncienneCasernes;
@@ -384,10 +383,14 @@
         private System.Windows.Forms.Label lblHabilitations;
         private System.Windows.Forms.ComboBox cboChoixCaserne;
         private System.Windows.Forms.Label lblRattachement;
-        private System.Windows.Forms.GroupBox grpInfosPerso;
         private System.Windows.Forms.CheckedListBox chklstHabilitations;
         private System.Windows.Forms.ComboBox cboPompiersSansCaserne;
         private System.Windows.Forms.Label lblPompiersSansCaserne;
+        private System.Windows.Forms.PictureBox pcbIconeNouveau;
+        public System.Windows.Forms.Button btnPlusInfos;
+        protected System.Windows.Forms.GroupBox grpInfosCarriere;
+        public System.Windows.Forms.GroupBox grpInfosPerso;
+        public System.Windows.Forms.GroupBox grpInfosPompier;
     }
 }
 
