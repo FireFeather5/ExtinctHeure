@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.grbEP = new System.Windows.Forms.GroupBox();
             this.lblDteMis = new System.Windows.Forms.Label();
@@ -49,9 +50,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.epTxt = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epTxt)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -144,6 +147,7 @@
             this.btnAnn.TabIndex = 8;
             this.btnAnn.Text = "Annuler";
             this.btnAnn.UseVisualStyleBackColor = true;
+            this.btnAnn.Click += new System.EventHandler(this.btnAnn_Click);
             // 
             // label9
             // 
@@ -258,6 +262,10 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Motif";
             // 
+            // epTxt
+            // 
+            this.epTxt.ContainerControl = this;
+            // 
             // frmAccueil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 22F);
@@ -275,6 +283,7 @@
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epTxt)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -302,6 +311,7 @@
         private System.Windows.Forms.ComboBox cboCasMob;
         private System.Windows.Forms.ComboBox cboNatSin;
         private System.Windows.Forms.GroupBox grbEP;
+        private System.Windows.Forms.ErrorProvider epTxt;
     }
 }
 
