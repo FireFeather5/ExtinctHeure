@@ -13,7 +13,7 @@ namespace ExtinctHeure
         private List<string> _strBuffer = new List<string>(20);
         private int[] _intBuffer = new int[10];
         private readonly SQLiteConnection _cx;
-        private bool isAlreadyConnected = false;
+        private bool _isAlreadyConnected = false;
 
         private int _matricule = 0;
         private Button _btnChangeGrade;
@@ -485,13 +485,13 @@ namespace ExtinctHeure
         // Boutons pour afficher des informations supplémentaires sur la carrière du pompier
         private void btnPlusInfos_Click(object sender, EventArgs e)
         {
-            if (!isAlreadyConnected)
+            if (!_isAlreadyConnected)
             {
                 frmConnexion connexion = new frmConnexion();
                 if (connexion.ShowDialog() == DialogResult.OK)
                 {
                     MessageBox.Show("Vous êtes bien connecté", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    isAlreadyConnected = true;
+                    _isAlreadyConnected = true;
                 }
                 else
                 {
@@ -499,7 +499,7 @@ namespace ExtinctHeure
                 }
             }
 
-            if (isAlreadyConnected) {
+            if (_isAlreadyConnected) {
                 chargerCboCasernes(cboChoixCaserne);
 
                 _intBuffer[1] = originalState();
@@ -722,13 +722,13 @@ namespace ExtinctHeure
         // On créer un nouveau formulaire pour l'ajout d'un pompier dans la DB
         private void pcbIconeNouveau_Click(object sender, EventArgs e)
         {
-            if (!isAlreadyConnected)
+            if (!_isAlreadyConnected)
             {
                 frmConnexion connexion = new frmConnexion();
                 if (connexion.ShowDialog() == DialogResult.OK)
                 {
                     MessageBox.Show("Vous êtes bien connecté", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    isAlreadyConnected = true;
+                    _isAlreadyConnected = true;
 
                     frmAjoutPompier ajouterPimpon = new frmAjoutPompier();
                     if (ajouterPimpon.ShowDialog() == DialogResult.OK)
