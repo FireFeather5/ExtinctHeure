@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -67,6 +68,35 @@ namespace ExtinctHeure
                 j++;
                 cboNatSin.Items.Add(lib);
             }
+
+
+
+
+            int taille = this.Width;
+            int tailBout = (taille / 5) - 2;
+            int gauc = 0;
+
+            for (int k = 0; k < 5; k++)
+            {
+                
+
+                System.Windows.Forms.Button but = new System.Windows.Forms.Button();
+                but.Top = 0;
+                but.Left = gauc;
+                but.Width = tailBout;
+                but.Height = 85;
+                gauc += tailBout - 1;
+                //MessageBox.Show(tailBout.ToString() + " " + gauc.ToString());
+
+                this.Controls.Add(but);
+
+
+            }
+
+
+
+
+
         }
 
         private void txtRue_KeyPress(object sender, KeyPressEventArgs e)

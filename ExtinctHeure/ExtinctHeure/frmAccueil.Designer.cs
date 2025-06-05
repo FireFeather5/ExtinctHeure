@@ -69,7 +69,6 @@
             this.groupBox1.Size = new System.Drawing.Size(1208, 651);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
             // 
             // grbEP
             // 
@@ -119,7 +118,7 @@
             this.cboCasMob.Location = new System.Drawing.Point(618, 50);
             this.cboCasMob.Name = "cboCasMob";
             this.cboCasMob.Size = new System.Drawing.Size(193, 30);
-            this.cboCasMob.TabIndex = 11;
+            this.cboCasMob.TabIndex = 9;
             // 
             // cboNatSin
             // 
@@ -127,24 +126,25 @@
             this.cboNatSin.Location = new System.Drawing.Point(176, 50);
             this.cboNatSin.Name = "cboNatSin";
             this.cboNatSin.Size = new System.Drawing.Size(193, 30);
-            this.cboNatSin.TabIndex = 10;
+            this.cboNatSin.TabIndex = 8;
             // 
             // btnConstEqu
             // 
             this.btnConstEqu.Location = new System.Drawing.Point(1014, 27);
             this.btnConstEqu.Name = "btnConstEqu";
             this.btnConstEqu.Size = new System.Drawing.Size(122, 61);
-            this.btnConstEqu.TabIndex = 9;
+            this.btnConstEqu.TabIndex = 10;
             this.btnConstEqu.Text = "Constituer équipe";
             this.btnConstEqu.UseVisualStyleBackColor = true;
             this.btnConstEqu.Click += new System.EventHandler(this.btnConstEqu_Click);
             // 
             // btnAnn
             // 
+            this.epTxt.SetIconAlignment(this.btnAnn, System.Windows.Forms.ErrorIconAlignment.BottomLeft);
             this.btnAnn.Location = new System.Drawing.Point(875, 27);
             this.btnAnn.Name = "btnAnn";
             this.btnAnn.Size = new System.Drawing.Size(122, 61);
-            this.btnAnn.TabIndex = 8;
+            this.btnAnn.TabIndex = 11;
             this.btnAnn.Text = "Annuler";
             this.btnAnn.UseVisualStyleBackColor = true;
             this.btnAnn.Click += new System.EventHandler(this.btnAnn_Click);
