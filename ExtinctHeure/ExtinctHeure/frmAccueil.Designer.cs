@@ -29,41 +29,38 @@
         private void InitializeComponent()
         {
             this.grpStat = new System.Windows.Forms.GroupBox();
-            this.lblEnginNbHeure = new System.Windows.Forms.Label();
-            this.lblEnginNbUtilisation = new System.Windows.Forms.Label();
-            this.dgvEnginPlusUtiliseHeure = new System.Windows.Forms.DataGridView();
-            this.dgvEnginPlusUtilise = new System.Windows.Forms.DataGridView();
-            this.cboCaserneStat = new System.Windows.Forms.ComboBox();
-            this.lblTouteCaserne = new System.Windows.Forms.Label();
-            this.dgvInterventionSinistre = new System.Windows.Forms.DataGridView();
-            this.lblTypeSinistre = new System.Windows.Forms.Label();
-            this.dgvPompierHabilitation = new System.Windows.Forms.DataGridView();
-            this.lblListeHabilitation = new System.Windows.Forms.Label();
+            this.statsEnginPlusUtiliseHeure = new ExtinctHeureUC.Stats();
+            this.statsPompierHabilitation = new ExtinctHeureUC.Stats();
+            this.statsHabilitationDemandee = new ExtinctHeureUC.Stats();
+            this.statsInterventionSinistre = new ExtinctHeureUC.Stats();
+            this.statsEnginPlusUtilise = new ExtinctHeureUC.Stats();
             this.cboHabilitation = new System.Windows.Forms.ComboBox();
-            this.dgvHabilitationDemandee = new System.Windows.Forms.DataGridView();
+            this.lblTouteCaserne = new System.Windows.Forms.Label();
+            this.lblEnginNbHeure = new System.Windows.Forms.Label();
+            this.lblListeHabilitation = new System.Windows.Forms.Label();
             this.lblHabilitationDemandee = new System.Windows.Forms.Label();
+            this.lblTypeSinistre = new System.Windows.Forms.Label();
+            this.lblEnginNbUtilisation = new System.Windows.Forms.Label();
+            this.cboCaserneStat = new System.Windows.Forms.ComboBox();
+            this.lblParCaserne = new System.Windows.Forms.Label();
             this.grpStat.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEnginPlusUtiliseHeure)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEnginPlusUtilise)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvInterventionSinistre)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPompierHabilitation)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvHabilitationDemandee)).BeginInit();
             this.SuspendLayout();
             // 
             // grpStat
             // 
+            this.grpStat.Controls.Add(this.statsEnginPlusUtiliseHeure);
+            this.grpStat.Controls.Add(this.statsPompierHabilitation);
+            this.grpStat.Controls.Add(this.statsHabilitationDemandee);
+            this.grpStat.Controls.Add(this.statsInterventionSinistre);
+            this.grpStat.Controls.Add(this.statsEnginPlusUtilise);
             this.grpStat.Controls.Add(this.cboHabilitation);
+            this.grpStat.Controls.Add(this.lblParCaserne);
             this.grpStat.Controls.Add(this.lblTouteCaserne);
             this.grpStat.Controls.Add(this.lblEnginNbHeure);
             this.grpStat.Controls.Add(this.lblListeHabilitation);
             this.grpStat.Controls.Add(this.lblHabilitationDemandee);
             this.grpStat.Controls.Add(this.lblTypeSinistre);
             this.grpStat.Controls.Add(this.lblEnginNbUtilisation);
-            this.grpStat.Controls.Add(this.dgvEnginPlusUtiliseHeure);
-            this.grpStat.Controls.Add(this.dgvPompierHabilitation);
-            this.grpStat.Controls.Add(this.dgvHabilitationDemandee);
-            this.grpStat.Controls.Add(this.dgvInterventionSinistre);
-            this.grpStat.Controls.Add(this.dgvEnginPlusUtilise);
             this.grpStat.Controls.Add(this.cboCaserneStat);
             this.grpStat.Location = new System.Drawing.Point(12, 103);
             this.grpStat.Name = "grpStat";
@@ -73,120 +70,145 @@
             this.grpStat.Text = "Statistiques";
             this.grpStat.VisibleChanged += new System.EventHandler(this.grpStat_VisibleChanged);
             // 
-            // lblEnginNbHeure
+            // statsEnginPlusUtiliseHeure
             // 
-            this.lblEnginNbHeure.AutoSize = true;
-            this.lblEnginNbHeure.Location = new System.Drawing.Point(857, 130);
-            this.lblEnginNbHeure.Name = "lblEnginNbHeure";
-            this.lblEnginNbHeure.Size = new System.Drawing.Size(262, 17);
-            this.lblEnginNbHeure.TabIndex = 2;
-            this.lblEnginNbHeure.Text = "Nombre d\'heure d\'utilisation des engins";
+            this.statsEnginPlusUtiliseHeure.ColonneDroite = "Nombre d\'heure";
+            this.statsEnginPlusUtiliseHeure.ColonneGauche = "Nom de l\'engin";
+            this.statsEnginPlusUtiliseHeure.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statsEnginPlusUtiliseHeure.Location = new System.Drawing.Point(832, 494);
+            this.statsEnginPlusUtiliseHeure.Margin = new System.Windows.Forms.Padding(4);
+            this.statsEnginPlusUtiliseHeure.Name = "statsEnginPlusUtiliseHeure";
+            this.statsEnginPlusUtiliseHeure.Size = new System.Drawing.Size(371, 219);
+            this.statsEnginPlusUtiliseHeure.TabIndex = 5;
             // 
-            // lblEnginNbUtilisation
+            // statsPompierHabilitation
             // 
-            this.lblEnginNbUtilisation.AutoSize = true;
-            this.lblEnginNbUtilisation.Location = new System.Drawing.Point(112, 130);
-            this.lblEnginNbUtilisation.Name = "lblEnginNbUtilisation";
-            this.lblEnginNbUtilisation.Size = new System.Drawing.Size(210, 17);
-            this.lblEnginNbUtilisation.TabIndex = 2;
-            this.lblEnginNbUtilisation.Text = "Nombre d\'utilisation des engins";
+            this.statsPompierHabilitation.ColonneDroite = "Prénom";
+            this.statsPompierHabilitation.ColonneGauche = "Nom";
+            this.statsPompierHabilitation.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statsPompierHabilitation.Location = new System.Drawing.Point(832, 108);
+            this.statsPompierHabilitation.Margin = new System.Windows.Forms.Padding(4);
+            this.statsPompierHabilitation.Name = "statsPompierHabilitation";
+            this.statsPompierHabilitation.Size = new System.Drawing.Size(371, 219);
+            this.statsPompierHabilitation.TabIndex = 5;
             // 
-            // dgvEnginPlusUtiliseHeure
+            // statsHabilitationDemandee
             // 
-            this.dgvEnginPlusUtiliseHeure.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEnginPlusUtiliseHeure.Location = new System.Drawing.Point(789, 150);
-            this.dgvEnginPlusUtiliseHeure.Name = "dgvEnginPlusUtiliseHeure";
-            this.dgvEnginPlusUtiliseHeure.Size = new System.Drawing.Size(398, 219);
-            this.dgvEnginPlusUtiliseHeure.TabIndex = 1;
+            this.statsHabilitationDemandee.ColonneDroite = "Nombre de demande";
+            this.statsHabilitationDemandee.ColonneGauche = "Habilitation";
+            this.statsHabilitationDemandee.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statsHabilitationDemandee.Location = new System.Drawing.Point(428, 108);
+            this.statsHabilitationDemandee.Margin = new System.Windows.Forms.Padding(4);
+            this.statsHabilitationDemandee.Name = "statsHabilitationDemandee";
+            this.statsHabilitationDemandee.Size = new System.Drawing.Size(371, 219);
+            this.statsHabilitationDemandee.TabIndex = 5;
             // 
-            // dgvEnginPlusUtilise
+            // statsInterventionSinistre
             // 
-            this.dgvEnginPlusUtilise.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEnginPlusUtilise.Location = new System.Drawing.Point(22, 150);
-            this.dgvEnginPlusUtilise.Name = "dgvEnginPlusUtilise";
-            this.dgvEnginPlusUtilise.Size = new System.Drawing.Size(398, 219);
-            this.dgvEnginPlusUtilise.TabIndex = 1;
+            this.statsInterventionSinistre.ColonneDroite = "Nombre d\'interventions";
+            this.statsInterventionSinistre.ColonneGauche = "Nature du sinistre";
+            this.statsInterventionSinistre.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statsInterventionSinistre.Location = new System.Drawing.Point(22, 108);
+            this.statsInterventionSinistre.Margin = new System.Windows.Forms.Padding(4);
+            this.statsInterventionSinistre.Name = "statsInterventionSinistre";
+            this.statsInterventionSinistre.Size = new System.Drawing.Size(371, 219);
+            this.statsInterventionSinistre.TabIndex = 5;
             // 
-            // cboCaserneStat
+            // statsEnginPlusUtilise
             // 
-            this.cboCaserneStat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCaserneStat.FormattingEnabled = true;
-            this.cboCaserneStat.Location = new System.Drawing.Point(456, 24);
-            this.cboCaserneStat.Name = "cboCaserneStat";
-            this.cboCaserneStat.Size = new System.Drawing.Size(239, 25);
-            this.cboCaserneStat.TabIndex = 0;
-            this.cboCaserneStat.SelectedIndexChanged += new System.EventHandler(this.cboCaserneStat_SelectedIndexChanged);
-            // 
-            // lblTouteCaserne
-            // 
-            this.lblTouteCaserne.AutoSize = true;
-            this.lblTouteCaserne.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTouteCaserne.Location = new System.Drawing.Point(515, 409);
-            this.lblTouteCaserne.Name = "lblTouteCaserne";
-            this.lblTouteCaserne.Size = new System.Drawing.Size(180, 22);
-            this.lblTouteCaserne.TabIndex = 3;
-            this.lblTouteCaserne.Text = "Toutes les casernes";
-            // 
-            // dgvInterventionSinistre
-            // 
-            this.dgvInterventionSinistre.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvInterventionSinistre.Location = new System.Drawing.Point(22, 521);
-            this.dgvInterventionSinistre.Name = "dgvInterventionSinistre";
-            this.dgvInterventionSinistre.Size = new System.Drawing.Size(355, 219);
-            this.dgvInterventionSinistre.TabIndex = 1;
-            // 
-            // lblTypeSinistre
-            // 
-            this.lblTypeSinistre.AutoSize = true;
-            this.lblTypeSinistre.Location = new System.Drawing.Point(55, 501);
-            this.lblTypeSinistre.Name = "lblTypeSinistre";
-            this.lblTypeSinistre.Size = new System.Drawing.Size(284, 17);
-            this.lblTypeSinistre.TabIndex = 2;
-            this.lblTypeSinistre.Text = "Nombre d\'interventions par type de sinistre";
-            // 
-            // dgvPompierHabilitation
-            // 
-            this.dgvPompierHabilitation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPompierHabilitation.Location = new System.Drawing.Point(832, 521);
-            this.dgvPompierHabilitation.Name = "dgvPompierHabilitation";
-            this.dgvPompierHabilitation.Size = new System.Drawing.Size(355, 219);
-            this.dgvPompierHabilitation.TabIndex = 1;
-            // 
-            // lblListeHabilitation
-            // 
-            this.lblListeHabilitation.AutoSize = true;
-            this.lblListeHabilitation.Location = new System.Drawing.Point(933, 473);
-            this.lblListeHabilitation.Name = "lblListeHabilitation";
-            this.lblListeHabilitation.Size = new System.Drawing.Size(168, 17);
-            this.lblListeHabilitation.TabIndex = 2;
-            this.lblListeHabilitation.Text = "Pompiers par habilitation";
+            this.statsEnginPlusUtilise.ColonneDroite = "Nombre d\'utilisation";
+            this.statsEnginPlusUtilise.ColonneGauche = "Nom de l\'engin";
+            this.statsEnginPlusUtilise.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statsEnginPlusUtilise.Location = new System.Drawing.Point(22, 494);
+            this.statsEnginPlusUtilise.Margin = new System.Windows.Forms.Padding(4);
+            this.statsEnginPlusUtilise.Name = "statsEnginPlusUtilise";
+            this.statsEnginPlusUtilise.Size = new System.Drawing.Size(371, 219);
+            this.statsEnginPlusUtilise.TabIndex = 5;
             // 
             // cboHabilitation
             // 
             this.cboHabilitation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboHabilitation.FormattingEnabled = true;
-            this.cboHabilitation.Location = new System.Drawing.Point(832, 493);
+            this.cboHabilitation.Location = new System.Drawing.Point(832, 334);
             this.cboHabilitation.Name = "cboHabilitation";
             this.cboHabilitation.Size = new System.Drawing.Size(355, 25);
             this.cboHabilitation.TabIndex = 4;
             this.cboHabilitation.SelectedIndexChanged += new System.EventHandler(this.cboHabilitation_SelectedIndexChanged);
             // 
-            // dgvHabilitationDemandee
+            // lblTouteCaserne
             // 
-            this.dgvHabilitationDemandee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvHabilitationDemandee.Location = new System.Drawing.Point(428, 521);
-            this.dgvHabilitationDemandee.Name = "dgvHabilitationDemandee";
-            this.dgvHabilitationDemandee.Size = new System.Drawing.Size(355, 219);
-            this.dgvHabilitationDemandee.TabIndex = 1;
+            this.lblTouteCaserne.AutoSize = true;
+            this.lblTouteCaserne.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTouteCaserne.Location = new System.Drawing.Point(515, 52);
+            this.lblTouteCaserne.Name = "lblTouteCaserne";
+            this.lblTouteCaserne.Size = new System.Drawing.Size(180, 22);
+            this.lblTouteCaserne.TabIndex = 3;
+            this.lblTouteCaserne.Text = "Toutes les casernes";
+            // 
+            // lblEnginNbHeure
+            // 
+            this.lblEnginNbHeure.AutoSize = true;
+            this.lblEnginNbHeure.Location = new System.Drawing.Point(877, 473);
+            this.lblEnginNbHeure.Name = "lblEnginNbHeure";
+            this.lblEnginNbHeure.Size = new System.Drawing.Size(262, 17);
+            this.lblEnginNbHeure.TabIndex = 2;
+            this.lblEnginNbHeure.Text = "Nombre d\'heure d\'utilisation des engins";
+            // 
+            // lblListeHabilitation
+            // 
+            this.lblListeHabilitation.AutoSize = true;
+            this.lblListeHabilitation.Location = new System.Drawing.Point(933, 87);
+            this.lblListeHabilitation.Name = "lblListeHabilitation";
+            this.lblListeHabilitation.Size = new System.Drawing.Size(168, 17);
+            this.lblListeHabilitation.TabIndex = 2;
+            this.lblListeHabilitation.Text = "Pompiers par habilitation";
             // 
             // lblHabilitationDemandee
             // 
             this.lblHabilitationDemandee.AutoSize = true;
-            this.lblHabilitationDemandee.Location = new System.Drawing.Point(498, 501);
+            this.lblHabilitationDemandee.Location = new System.Drawing.Point(498, 88);
             this.lblHabilitationDemandee.Name = "lblHabilitationDemandee";
             this.lblHabilitationDemandee.Size = new System.Drawing.Size(221, 17);
             this.lblHabilitationDemandee.TabIndex = 2;
             this.lblHabilitationDemandee.Text = "Habilitations les plus demandées";
+            // 
+            // lblTypeSinistre
+            // 
+            this.lblTypeSinistre.AutoSize = true;
+            this.lblTypeSinistre.Location = new System.Drawing.Point(55, 88);
+            this.lblTypeSinistre.Name = "lblTypeSinistre";
+            this.lblTypeSinistre.Size = new System.Drawing.Size(284, 17);
+            this.lblTypeSinistre.TabIndex = 2;
+            this.lblTypeSinistre.Text = "Nombre d\'interventions par type de sinistre";
+            // 
+            // lblEnginNbUtilisation
+            // 
+            this.lblEnginNbUtilisation.AutoSize = true;
+            this.lblEnginNbUtilisation.Location = new System.Drawing.Point(90, 473);
+            this.lblEnginNbUtilisation.Name = "lblEnginNbUtilisation";
+            this.lblEnginNbUtilisation.Size = new System.Drawing.Size(210, 17);
+            this.lblEnginNbUtilisation.TabIndex = 2;
+            this.lblEnginNbUtilisation.Text = "Nombre d\'utilisation des engins";
+            // 
+            // cboCaserneStat
+            // 
+            this.cboCaserneStat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCaserneStat.FormattingEnabled = true;
+            this.cboCaserneStat.Location = new System.Drawing.Point(480, 402);
+            this.cboCaserneStat.Name = "cboCaserneStat";
+            this.cboCaserneStat.Size = new System.Drawing.Size(239, 25);
+            this.cboCaserneStat.TabIndex = 0;
+            this.cboCaserneStat.SelectedIndexChanged += new System.EventHandler(this.cboCaserneStat_SelectedIndexChanged);
+            // 
+            // lblParCaserne
+            // 
+            this.lblParCaserne.AutoSize = true;
+            this.lblParCaserne.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblParCaserne.Location = new System.Drawing.Point(550, 377);
+            this.lblParCaserne.Name = "lblParCaserne";
+            this.lblParCaserne.Size = new System.Drawing.Size(112, 22);
+            this.lblParCaserne.TabIndex = 3;
+            this.lblParCaserne.Text = "Par caserne";
             // 
             // frmAccueil
             // 
@@ -202,11 +224,6 @@
             this.Load += new System.EventHandler(this.frmAccueil_Load);
             this.grpStat.ResumeLayout(false);
             this.grpStat.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEnginPlusUtiliseHeure)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEnginPlusUtilise)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvInterventionSinistre)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPompierHabilitation)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvHabilitationDemandee)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -216,17 +233,18 @@
         private System.Windows.Forms.GroupBox grpStat;
         private System.Windows.Forms.ComboBox cboCaserneStat;
         private System.Windows.Forms.Label lblEnginNbUtilisation;
-        private System.Windows.Forms.DataGridView dgvEnginPlusUtilise;
         private System.Windows.Forms.Label lblEnginNbHeure;
-        private System.Windows.Forms.DataGridView dgvEnginPlusUtiliseHeure;
         private System.Windows.Forms.Label lblTouteCaserne;
         private System.Windows.Forms.Label lblTypeSinistre;
-        private System.Windows.Forms.DataGridView dgvInterventionSinistre;
         private System.Windows.Forms.Label lblListeHabilitation;
-        private System.Windows.Forms.DataGridView dgvPompierHabilitation;
         private System.Windows.Forms.ComboBox cboHabilitation;
         private System.Windows.Forms.Label lblHabilitationDemandee;
-        private System.Windows.Forms.DataGridView dgvHabilitationDemandee;
+        private ExtinctHeureUC.Stats statsEnginPlusUtiliseHeure;
+        private ExtinctHeureUC.Stats statsEnginPlusUtilise;
+        private ExtinctHeureUC.Stats statsInterventionSinistre;
+        private ExtinctHeureUC.Stats statsHabilitationDemandee;
+        private ExtinctHeureUC.Stats statsPompierHabilitation;
+        private System.Windows.Forms.Label lblParCaserne;
     }
 }
 
