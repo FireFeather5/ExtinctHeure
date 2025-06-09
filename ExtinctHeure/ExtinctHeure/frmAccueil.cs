@@ -76,24 +76,59 @@ namespace ExtinctHeure
             int tailBout = (taille / 5) - 2;
             int gauc = 0;
 
-            for (int k = 0; k < 5; k++)
-            {
-                
+            System.Windows.Forms.Button but = new System.Windows.Forms.Button();
+            but.Text = "Tableau de Bord";
+            but.Top = 0;
+            but.Left = gauc;
+            but.Width = tailBout;
+            but.Height = 85;
+            gauc += tailBout - 1;
 
-                System.Windows.Forms.Button but = new System.Windows.Forms.Button();
-                but.Top = 0;
-                but.Left = gauc;
-                but.Width = tailBout;
-                but.Height = 85;
-                gauc += tailBout - 1;
-                //MessageBox.Show(tailBout.ToString() + " " + gauc.ToString());
-
-                this.Controls.Add(but);
+            this.Controls.Add(but);
 
 
-            }
+            but = new System.Windows.Forms.Button();
+            but.Text = "Ajout de Mission";
+            but.Top = 0;
+            but.Left = gauc;
+            but.Width = tailBout;
+            but.Height = 85;
+            gauc += tailBout - 1;
+
+            this.Controls.Add(but);
 
 
+            but = new System.Windows.Forms.Button();
+            but.Text = "Visualisation des Engins";
+            but.Top = 0;
+            but.Left = gauc;
+            but.Width = tailBout;
+            but.Height = 85;
+            gauc += tailBout - 1;
+
+            this.Controls.Add(but);
+
+
+            but = new System.Windows.Forms.Button();
+            but.Text = "Gestion du Personnel";
+            but.Top = 0;
+            but.Left = gauc;
+            but.Width = tailBout;
+            but.Height = 85;
+            gauc += tailBout - 1;
+
+            this.Controls.Add(but);
+
+
+            but = new System.Windows.Forms.Button();
+            but.Text = "Statistiques";
+            but.Top = 0;
+            but.Left = gauc;
+            but.Width = tailBout;
+            but.Height = 85;
+            gauc += tailBout - 1;
+
+            this.Controls.Add(but);
 
 
 
@@ -171,24 +206,6 @@ namespace ExtinctHeure
             else
             {
                 epTxt.SetError(txtMotif, "");
-            }
-            if (txtRue.Text == "")
-            {
-                epTxt.SetError(txtRue, "La rue n'est pas renseignée");
-                pbTxt = true;
-            }
-            else
-            {
-                epTxt.SetError(txtRue, "");
-            }
-            if (txtCP.Text == "")
-            {
-                epTxt.SetError(txtCP, "Le code postal n'est pas renseigné");
-                pbTxt = true;
-            }
-            else
-            {
-                epTxt.SetError(txtCP, "");
             }
             if (txtVille.Text == "")
             {
@@ -485,6 +502,14 @@ namespace ExtinctHeure
                         }
                         u++;
                     }
+
+                    int numVehi = 0;
+                    foreach (String codeVehi in listeTotaleVehi)
+                    {
+                        MesDatas.DsGlobal.Tables["PartirAvec"].Rows.Add((cboCasMob.SelectedIndex + 1), codeVehi, listeTotaleNumVehi[numVehi], n, null);
+                        numVehi++;
+                    }
+
 
                     if (listePomp.Count > 0)
                     {
