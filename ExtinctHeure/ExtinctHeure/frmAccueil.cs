@@ -64,6 +64,10 @@ namespace ExtinctHeure
             {"Assistance non urgente", "ANU.jpg" }
         };
 
+        // VOLET 3
+
+        BindingSource bsEngin = new BindingSource();
+
         public frmAccueil()
         {
             InitializeComponent();
@@ -206,6 +210,7 @@ namespace ExtinctHeure
             grpMissions.Size = new Size(1210, 694);
             grpMissions.Location = new Point(12, 155);
             grbVolet2.Visible = false;
+            grpEngins.Visible = false;
             pnlGestion.Visible = false;
             grpStat.Visible = false;
         }
@@ -234,6 +239,7 @@ namespace ExtinctHeure
             grbVolet2.Height = 651;
             grbVolet2.Width = 1208;
 
+            grpEngins.Visible = false;
             pnlGestion.Visible = false;
             grpStat.Visible = false;
         }
@@ -255,8 +261,13 @@ namespace ExtinctHeure
             this.Text = "Visualisation des engins";
 
             grpMissions.Visible = false;
-            pnlGestion.Visible = false;
             grbVolet2.Visible = false;
+
+            grpEngins.Visible = true;
+            grpEngins.Size = new Size(1210, 749);
+            grpEngins.Location = new Point(12, 100);
+
+            pnlGestion.Visible = false;
             grpStat.Visible = false;
         }
 
@@ -278,6 +289,7 @@ namespace ExtinctHeure
 
             grpMissions.Visible = false;
             grbVolet2.Visible = false;
+            grpEngins.Visible = false;
 
             pnlGestion.Size = new Size(1205, 755);
             pnlGestion.Visible = true;
@@ -305,7 +317,9 @@ namespace ExtinctHeure
 
             grpMissions.Visible = false;
             grbVolet2.Visible = false;
+            grpEngins.Visible = false;
             pnlGestion.Visible = false;
+
             grpStat.Visible = true;
             grpStat.Size = new Size(1210, 746);
             grpStat.Location = new Point(12, 103);
@@ -1781,6 +1795,86 @@ namespace ExtinctHeure
                 String nom = reader.GetString(1);
                 String prenom = reader.GetString(2);
                 statsPompierHabilitation.AjouterLigne(prenom, nom);
+            }
+        }
+
+        // VOLET 3
+
+        private void changerEngin(object sender, EventArgs e)
+        {
+            if (sender is Button)
+            {
+                Button btn = (Button)sender;
+                switch (btn.Name)
+                {
+                    case "btnPrevious":
+                        bsEngin.MovePrevious();
+                        break;
+                    case "btnNext":
+                        bsEngin.MoveNext();
+                        break;
+                    case "btnFirst":
+                        bsEngin.MoveFirst();
+                        break;
+                    case "btnLast":
+                        bsEngin.MoveLast();
+                        break;
+                }
+            }
+        }
+
+        private void grpEngins_VisibleChanged(object sender, EventArgs e)
+        {
+            if (grpEngins.Visible)
+            {
+                lblNumeroEngin.Text = "";
+                lblReceptionEngin.Text = "";
+                monDS.Clear();
+                bsEngin = new BindingSource();
+                SQLiteConnection cx = Connexion.Connec;
+                DataTable SchemaTable = cx.GetSchema("Tables");
+                foreach (DataRow row in SchemaTable.Rows)
+                {
+                    string requete = "SELECT * FROM " + row["TABLE_NAME"].ToString();
+                    SQLiteCommand cmd = new SQLiteCommand(requete, cx);
+                    SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
+
+                    da.Fill(monDS, row["TABLE_NAME"].ToString());
+                }
+                Connexion.FermerConnexion();
+
+                BindingSource bsCaserne = new BindingSource();
+                bsCaserne.DataSource = monDS.Tables["Caserne"];
+                cboCaserne.DataSource = bsCaserne;
+                cboCaserne.DisplayMember = "nom";
+
+                monDS.Relations.Clear();
+                monDS.Relations.Add("Caserne_Engin", monDS.Tables["Caserne"].Columns["id"], monDS.Tables["Engin"].Columns["idCaserne"]);
+
+                if (!monDS.Tables["Engin"].Columns.Contains("idComplet"))
+                {
+                    monDS.Tables["Engin"].Columns.Add(new DataColumn("idComplet", typeof(string), "idCaserne + '-' + codeTypeEngin + '-' + numero"));
+                }
+
+                if (!monDS.Tables["Engin"].Columns.Contains("image"))
+                {
+                    monDS.Tables["Engin"].Columns.Add(new DataColumn("image", typeof(string), "'..\\..\\..\\..\\Ressources\\ImagesCamions\\' + codeTypeEngin + '.jpg'"));
+                }
+
+                bsEngin.DataSource = bsCaserne;
+                bsEngin.DataMember = "Caserne_Engin";
+
+                lblNumeroEngin.DataBindings.Clear();
+                lblReceptionEngin.DataBindings.Clear();
+                chkMission.DataBindings.Clear();
+                chkReparation.DataBindings.Clear();
+                pcbEngin.DataBindings.Clear();
+
+                lblNumeroEngin.DataBindings.Add("Text", bsEngin, "idComplet");
+                lblReceptionEngin.DataBindings.Add("Text", bsEngin, "dateReception");
+                chkMission.DataBindings.Add("Checked", bsEngin, "enMission");
+                chkReparation.DataBindings.Add("Checked", bsEngin, "enPanne");
+                pcbEngin.DataBindings.Add("ImageLocation", bsEngin, "image");
             }
         }
     }
