@@ -1,0 +1,17 @@
+C:\Users\abelx\Documents\SAE24\ExtinctHeureUC\ExtinctHeureUC\bin\Debug\ExtinctHeureUC.dll
+C:\Users\abelx\Documents\SAE24\ExtinctHeureUC\ExtinctHeureUC\bin\Debug\ExtinctHeureUC.pdb
+C:\Users\abelx\Documents\SAE24\ExtinctHeureUC\ExtinctHeureUC\obj\Debug\ExtinctHeureUC.csproj.AssemblyReference.cache
+C:\Users\abelx\Documents\SAE24\ExtinctHeureUC\ExtinctHeureUC\obj\Debug\ExtinctHeureUC.Mission.resources
+C:\Users\abelx\Documents\SAE24\ExtinctHeureUC\ExtinctHeureUC\obj\Debug\ExtinctHeureUC.csproj.GenerateResource.cache
+C:\Users\abelx\Documents\SAE24\ExtinctHeureUC\ExtinctHeureUC\obj\Debug\ExtinctHeureUC.csproj.CoreCompileInputs.cache
+C:\Users\abelx\Documents\SAE24\ExtinctHeureUC\ExtinctHeureUC\obj\Debug\ExtinctHeureUC.dll
+C:\Users\abelx\Documents\SAE24\ExtinctHeureUC\ExtinctHeureUC\obj\Debug\ExtinctHeureUC.pdb
+C:\Users\abelx\Documents\Cours_AUTRE\SAE24\ExtinctHeureUC\ExtinctHeureUC\bin\Debug\ExtinctHeureUC.dll
+C:\Users\abelx\Documents\Cours_AUTRE\SAE24\ExtinctHeureUC\ExtinctHeureUC\bin\Debug\ExtinctHeureUC.pdb
+C:\Users\abelx\Documents\Cours_AUTRE\SAE24\ExtinctHeureUC\ExtinctHeureUC\obj\Debug\ExtinctHeureUC.csproj.AssemblyReference.cache
+C:\Users\abelx\Documents\Cours_AUTRE\SAE24\ExtinctHeureUC\ExtinctHeureUC\obj\Debug\ExtinctHeureUC.Mission.resources
+C:\Users\abelx\Documents\Cours_AUTRE\SAE24\ExtinctHeureUC\ExtinctHeureUC\obj\Debug\ExtinctHeureUC.csproj.GenerateResource.cache
+C:\Users\abelx\Documents\Cours_AUTRE\SAE24\ExtinctHeureUC\ExtinctHeureUC\obj\Debug\ExtinctHeureUC.csproj.CoreCompileInputs.cache
+C:\Users\abelx\Documents\Cours_AUTRE\SAE24\ExtinctHeureUC\ExtinctHeureUC\obj\Debug\ExtinctHeureUC.dll
+C:\Users\abelx\Documents\Cours_AUTRE\SAE24\ExtinctHeureUC\ExtinctHeureUC\obj\Debug\ExtinctHeureUC.pdb
+C:\Users\abelx\Documents\Cours_AUTRE\SAE24\ExtinctHeureUC\ExtinctHeureUC\obj\Debug\ExtinctHeureUC.Stats.resources
