@@ -5,13 +5,19 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using iTextSharp.text.pdf.draw;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
 using Pinpon;
+using ExtinctHeureUC;
 //using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ExtinctHeure
@@ -39,6 +45,24 @@ namespace ExtinctHeure
         private Button _btnAnnulerGrade;
         private Button _btnConfirmGrade;
 
+        // VOLET 1
+        DataSet monDS = MesDatas.DsGlobal;
+        bool loaded = false;
+        iTextSharp.text.Font h1 = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 20);
+        iTextSharp.text.Font h2 = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14);
+        Dictionary<string, string> imageMission = new Dictionary<string, string>()
+        {
+            {"Secours d'urgence aux personnes", "SUAP.jpg" },
+            {"Accident de la circulation", "AC.jpg" },
+            {"Incendie", "Incendie.jpg" },
+            {"Risque industriel et pollution", "RIP.jpg" },
+            {"Feu de forêt", "FeuForet.jpg" },
+            {"Protection de la faune", "PF.jpg" },
+            {"Plan d'urgence", "PU.jpg" },
+            {"Secours en mer ou rivière", "SMR.jpg" },
+            {"Eboulement", "Eboulement.jpg" },
+            {"Assistance non urgente", "ANU.jpg" }
+        };
 
         public frmAccueil()
         {
@@ -98,8 +122,6 @@ namespace ExtinctHeure
 
             btnTabBord = new System.Windows.Forms.Button();
             btnTabBord.Text = "Tableau de Bord";
-            btnTabBord.BackColor = System.Drawing.Color.Gray;
-            btnTabBord.Enabled = false;
             btnTabBord.Top = 0;
             btnTabBord.Left = gauc;
             btnTabBord.Width = tailBout;
@@ -180,7 +202,9 @@ namespace ExtinctHeure
 
             this.Text = "Tableau de bord";
 
-
+            grpMissions.Visible = true;
+            grpMissions.Size = new Size(1210, 694);
+            grpMissions.Location = new Point(12, 155);
             grbVolet2.Visible = false;
             pnlGestion.Visible = false;
         }
@@ -201,6 +225,7 @@ namespace ExtinctHeure
 
             this.Text = "Ajout de Mission";
 
+            grpMissions.Visible = false;
 
             grbVolet2.Visible = true;
             grbVolet2.Top = 116;
@@ -227,6 +252,7 @@ namespace ExtinctHeure
 
             this.Text = "Visualisation des engins";
 
+            grpMissions.Visible = false;
             pnlGestion.Visible = false;
             grbVolet2.Visible = false;
         }
@@ -247,7 +273,7 @@ namespace ExtinctHeure
 
             this.Text = "Gestion du personnel";
 
-
+            grpMissions.Visible = false;
             grbVolet2.Visible = false;
 
             pnlGestion.Size = new Size(1205, 755);
@@ -272,7 +298,7 @@ namespace ExtinctHeure
 
             this.Text = "Statistiques";
 
-
+            grpMissions.Visible = false;
             grbVolet2.Visible = false;
             pnlGestion.Visible = false;
         }
@@ -836,7 +862,7 @@ namespace ExtinctHeure
             // Affichage du texte du grade
             Label lblGrade = new Label
             {
-                Font = new Font("Arial", 15, FontStyle.Bold, GraphicsUnit.Pixel),
+                Font = new System.Drawing.Font("Arial", 15, FontStyle.Bold, GraphicsUnit.Pixel),
                 TextAlign = ContentAlignment.MiddleCenter,
                 Top = 50,
                 Left = 520,
@@ -869,7 +895,7 @@ namespace ExtinctHeure
             _btnChangeGrade = new Button
             {
                 Text = "Modifier",
-                Font = new Font("Arial", 13, FontStyle.Bold, GraphicsUnit.Pixel),
+                Font = new System.Drawing.Font("Arial", 13, FontStyle.Bold, GraphicsUnit.Pixel),
                 ForeColor = Color.DarkRed,
                 Size = new Size(100, 27),
                 Location = new Point(550, 23),
@@ -882,7 +908,7 @@ namespace ExtinctHeure
             _btnAnnulerGrade = new Button
             {
                 Text = "Annuler",
-                Font = new Font("Arial", 13, FontStyle.Bold, GraphicsUnit.Pixel),
+                Font = new System.Drawing.Font("Arial", 13, FontStyle.Bold, GraphicsUnit.Pixel),
                 Size = new Size(100, 27),
                 Location = new Point(550, 58),
                 Visible = false,
@@ -894,7 +920,7 @@ namespace ExtinctHeure
             _btnConfirmGrade = new Button
             {
                 Text = "Confirmer",
-                Font = new Font("Arial", 13, FontStyle.Bold, GraphicsUnit.Pixel),
+                Font = new System.Drawing.Font("Arial", 13, FontStyle.Bold, GraphicsUnit.Pixel),
                 ForeColor = Color.DarkGreen,
                 Size = new Size(100, 27),
                 Location = new Point(550, 88),
@@ -961,7 +987,7 @@ namespace ExtinctHeure
                     if (labelsPerso[i] == "Matricule")
                     {
                         lbl.Text = $"{labelsPerso[i]} : {valeur}";
-                        lbl.Font = new Font("Arial", 26, FontStyle.Bold, GraphicsUnit.Pixel);
+                        lbl.Font = new System.Drawing.Font("Arial", 26, FontStyle.Bold, GraphicsUnit.Pixel);
                         lbl.Height = 40;
                         lbl.Top = 25;
                         lbl.Left = 250;
@@ -1144,6 +1170,7 @@ namespace ExtinctHeure
 
             void BtnChange_Click(object sender, EventArgs e)
             {
+                cx = Connexion.Connec;
                 _btnAnnulerGrade.Visible = true;
                 _btnConfirmGrade.Visible = true;
 
@@ -1159,6 +1186,7 @@ namespace ExtinctHeure
                     string nomGrade = reader.GetString(0);
                     cboGrades.Items.Add(nomGrade);
                 }
+                Connexion.FermerConnexion();
             }
 
             void BtnAnnulerGrade_Click(object sender, EventArgs e)
@@ -1449,5 +1477,203 @@ namespace ExtinctHeure
                 }
             }
         }
+
+        // VOLET 1
+
+        private void load()
+        {
+            monDS.Clear();
+            cx = Connexion.Connec;
+            DataTable SchemaTable = cx.GetSchema("Tables");
+            foreach (DataRow row in SchemaTable.Rows)
+            {
+                String requete = "SELECT * FROM " + row["TABLE_NAME"].ToString();
+                SQLiteCommand cmd = new SQLiteCommand(requete, cx);
+                SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
+
+                da.Fill(monDS, row["TABLE_NAME"].ToString());
+            }
+            Connexion.FermerConnexion();
+
+            monDS.Tables["Caserne"].PrimaryKey = new DataColumn[] { monDS.Tables["Caserne"].Columns["id"] };
+            monDS.Tables["NatureSinistre"].PrimaryKey = new DataColumn[] { monDS.Tables["NatureSinistre"].Columns["id"] };
+
+            DataRelation relCaserne = new DataRelation("FK_Mission_idCaserne", monDS.Tables["Caserne"].Columns["id"], monDS.Tables["Mission"].Columns["idCaserne"], false);
+            DataRelation relNature = new DataRelation("FK_Mission_idNature", monDS.Tables["NatureSinistre"].Columns["id"], monDS.Tables["Mission"].Columns["idNatureSinistre"], false);
+            DataRelation relPompier = new DataRelation("FK_Mobiliser_matriculePompier", monDS.Tables["Pompier"].Columns["matricule"], monDS.Tables["Mobiliser"].Columns["matriculePompier"], false);
+            DataRelation relHabilitation = new DataRelation("FK_Mobiliser_idHabilitation", monDS.Tables["Habilitation"].Columns["id"], monDS.Tables["Mobiliser"].Columns["idhabilitation"], false);
+            DataRelation relGrade = new DataRelation("FK_Pompier_codeGrade", monDS.Tables["Grade"].Columns["code"], monDS.Tables["Pompier"].Columns["codeGrade"], false);
+            DataRelation relEngin = new DataRelation("FK_PartirAvec_codeTypeEngin", monDS.Tables["TypeEngin"].Columns["code"], monDS.Tables["PartirAvec"].Columns["codeTypeEngin"], false);
+
+            monDS.Relations.Clear();
+
+            monDS.Relations.Add(relCaserne);
+            monDS.Relations.Add(relNature);
+            monDS.Relations.Add(relPompier);
+            monDS.Relations.Add(relHabilitation);
+            monDS.Relations.Add(relGrade);
+            monDS.Relations.Add(relEngin);
+
+            loaded = true;
+        }
+
+        private void grpMissions_VisibleChanged(object sender, EventArgs e)
+        {
+            if (!loaded) { load(); }
+            int position = 0;
+            pnlMissions.Controls.Clear();
+            foreach (DataRow dataRow in monDS.Tables["Mission"].Rows)
+            {
+                Mission mission = new Mission();
+                mission.idMission = Convert.ToInt32(dataRow["id"]);
+                mission.debutMission = dataRow["dateHeureDepart"].ToString();
+                mission.caserne = dataRow.GetParentRow("FK_Mission_idCaserne")["nom"].ToString();
+                mission.natureMission = dataRow.GetParentRow("FK_Mission_idNature")["libelle"].ToString();
+                mission.nomMission = dataRow["motifAppel"].ToString();
+                mission.adresseMission = dataRow["adresse"].ToString();
+                mission.rapportMission = dataRow["compteRendu"].ToString();
+                mission.imageMission = System.Drawing.Image.FromFile("../../../../Ressources/ImageMission/" + imageMission[mission.natureMission]);
+                mission.estFini = !(dataRow["dateHeureRetour"] is DBNull);
+                if (mission.estFini)
+                {
+                    mission.finMission = dataRow["dateHeureRetour"].ToString();
+                }
+
+                mission.CreerRapportEvent = genererRapport;
+                mission.ClotureMissionEvent = cloturerMission;
+
+                if (chkEnCours.Checked && !mission.estFini)
+                {
+                    mission.Location = new Point(7, position);
+                    position += mission.Height + 10;
+
+                    pnlMissions.Controls.Add(mission);
+                }
+                else if (!chkEnCours.Checked)
+                {
+                    mission.Location = new Point(7, position);
+                    position += mission.Height + 10;
+
+                    pnlMissions.Controls.Add(mission);
+                }
+            }
+            pnlMissions.Size = new Size(1204, 601);
+        }
+
+        private void genererRapport(object sender, EventArgs e)
+        {
+            Mission mission = (Mission)sender;
+
+            String path = $"../../../../Rapports/Rapport_mission_{mission.idMission}.pdf";
+            Document doc = new Document();
+            PdfWriter.GetInstance(doc, new FileStream(path, FileMode.Create));
+            doc.Open();
+
+            Paragraph titre = new Paragraph("Rapport de mission " + mission.idMission, h1);
+            titre.Alignment = Element.ALIGN_CENTER;
+            doc.Add(titre);
+
+            doc.Add(new Chunk(new LineSeparator(1f, 100f, BaseColor.BLACK, Element.ALIGN_CENTER, 10)));
+
+            doc.Add(new Paragraph("Date de début : " + mission.debutMission));
+            doc.Add(new Paragraph("Date de fin : " + mission.finMission));
+
+            doc.Add(new Chunk(new LineSeparator(1f, 100f, BaseColor.BLACK, Element.ALIGN_CENTER, 4)));
+
+            doc.Add(new Paragraph("Nature de la mission : " + mission.natureMission, h2));
+            doc.Add(Chunk.NEWLINE);
+            doc.Add(new Paragraph("Nom de la mission : " + mission.nomMission));
+            doc.Add(new Paragraph("Adresse : " + mission.adresseMission));
+            doc.Add(Chunk.NEWLINE);
+            doc.Add(new Paragraph("Compte-rendu : " + mission.rapportMission));
+
+            doc.Add(new Chunk(new LineSeparator(1f, 100f, BaseColor.BLACK, Element.ALIGN_CENTER, 4)));
+
+            doc.Add(new Paragraph("Caserne : " + mission.caserne, h2));
+            doc.Add(Chunk.NEWLINE);
+            doc.Add(new Paragraph("Pompiers affectés : ", h2));
+            doc.Add(Chunk.NEWLINE);
+
+            foreach (DataRow row in monDS.Tables["Mobiliser"].Select("idMission = " + mission.idMission))
+            {
+                doc.Add(new Paragraph(">>>  " + row.GetParentRow("FK_Mobiliser_matriculePompier").GetParentRow("FK_Pompier_codeGrade")["libelle"] + " " + row.GetParentRow("FK_Mobiliser_matriculePompier")["nom"] + " " + row.GetParentRow("FK_Mobiliser_matriculePompier")["prenom"] + " (" + row.GetParentRow("FK_Mobiliser_idHabilitation")["libelle"] + ")"));
+            }
+
+            doc.Add(Chunk.NEWLINE);
+
+            doc.Add(new Paragraph("Engins utilisés : ", h2));
+            doc.Add(Chunk.NEWLINE);
+
+            String repa = "";
+
+            foreach (DataRow row in monDS.Tables["partirAvec"].Select("idMission = " + mission.idMission))
+            {
+                if (row["reparationsEventuelles"] != DBNull.Value && row["reparationsEventuelles"] != "")
+                {
+                    repa = row["reparationsEventuelles"].ToString();
+                }
+                else
+                {
+                    repa = "Pas de reparations prévues";
+                }
+                doc.Add(new Paragraph(">>>  " + row.GetParentRow("FK_PartirAvec_codeTypeEngin")["nom"] + " " + row["idCaserne"] + "-" + row["codeTypeEngin"] + "-" + row["numeroEngin"] + " (" + repa + ")"));
+            }
+            doc.Close();
+        }
+
+        private void cloturerMission(object sender, EventArgs e)
+        {
+            Mission mission = (Mission)sender;
+            if (mission.estFini)
+            {
+                MessageBox.Show("La mission est déjà terminée.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                Form rapport = new frmRapport();
+                if (rapport.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        cx = Connexion.Connec;
+                        mission.rapportMission = ((frmRapport)rapport).rapport;
+                        string requete = $"UPDATE Mission SET dateHeureRetour = datetime('now'), terminee = 1, compteRendu = '{mission.rapportMission}' WHERE id = " + mission.idMission.ToString();
+                        SQLiteCommand cmd = new SQLiteCommand(requete, cx);
+                        cmd.ExecuteNonQuery();
+
+                        requete = $"UPDATE Pompier SET enMission = 0 WHERE matricule in (SELECT matriculePompier FROM Mobiliser WHERE idMission = {mission.idMission})";
+                        cmd = new SQLiteCommand(requete, cx);
+                        cmd.ExecuteNonQuery();
+
+                        requete = $"UPDATE Engin SET enMission = 0 WHERE (idCaserne, codeTypeEngin, numero) in (SELECT idCaserne, codeTypeEngin, numeroEngin FROM PartirAvec WHERE idMission = {mission.idMission})";
+                        cmd = new SQLiteCommand(requete, cx);
+                        cmd.ExecuteNonQuery();
+
+                        mission.estFini = true;
+                        mission.finMission = DateTime.Now.ToString();
+
+
+                        loaded = false;
+                        MessageBox.Show("La mission a été clôturée avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        grpMissions_VisibleChanged(sender, e);
+                        genererRapport(sender, e);
+                    }
+                    catch (SQLiteException ex)
+                    {
+                        MessageBox.Show($"Erreur lors de la clôture de la mission : {ex.Message}", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        Connexion.FermerConnexion();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("La mission n'a pas été clôturée.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+
     }
 }

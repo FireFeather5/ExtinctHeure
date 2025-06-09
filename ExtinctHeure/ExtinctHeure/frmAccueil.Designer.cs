@@ -77,6 +77,9 @@
             this.cboChoixCaserne = new System.Windows.Forms.ComboBox();
             this.lblRattachement = new System.Windows.Forms.Label();
             this.grpInfosPerso = new System.Windows.Forms.GroupBox();
+            this.pnlMissions = new System.Windows.Forms.Panel();
+            this.grpMissions = new System.Windows.Forms.GroupBox();
+            this.chkEnCours = new System.Windows.Forms.CheckBox();
             this.grbVolet2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -87,6 +90,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcbIcone)).BeginInit();
             this.grpInfosPompier.SuspendLayout();
             this.grpInfosCarriere.SuspendLayout();
+            this.grpMissions.SuspendLayout();
             this.SuspendLayout();
             // 
             // grbVolet2
@@ -150,7 +154,7 @@
             this.cboCasMob.FormattingEnabled = true;
             this.cboCasMob.Location = new System.Drawing.Point(706, 47);
             this.cboCasMob.Name = "cboCasMob";
-            this.cboCasMob.Size = new System.Drawing.Size(220, 24);
+            this.cboCasMob.Size = new System.Drawing.Size(220, 25);
             this.cboCasMob.TabIndex = 9;
             // 
             // cboNatSin
@@ -158,12 +162,12 @@
             this.cboNatSin.FormattingEnabled = true;
             this.cboNatSin.Location = new System.Drawing.Point(201, 47);
             this.cboNatSin.Name = "cboNatSin";
-            this.cboNatSin.Size = new System.Drawing.Size(220, 24);
+            this.cboNatSin.Size = new System.Drawing.Size(220, 25);
             this.cboNatSin.TabIndex = 8;
             // 
             // btnConstEqu
             // 
-            this.btnConstEqu.Location = new System.Drawing.Point(1159, 25);
+            this.btnConstEqu.Location = new System.Drawing.Point(1159, 26);
             this.btnConstEqu.Name = "btnConstEqu";
             this.btnConstEqu.Size = new System.Drawing.Size(139, 57);
             this.btnConstEqu.TabIndex = 10;
@@ -174,7 +178,7 @@
             // btnAnn
             // 
             this.epTxt.SetIconAlignment(this.btnAnn, System.Windows.Forms.ErrorIconAlignment.BottomLeft);
-            this.btnAnn.Location = new System.Drawing.Point(1000, 25);
+            this.btnAnn.Location = new System.Drawing.Point(1000, 26);
             this.btnAnn.Name = "btnAnn";
             this.btnAnn.Size = new System.Drawing.Size(139, 57);
             this.btnAnn.TabIndex = 11;
@@ -222,7 +226,7 @@
             // 
             this.txtVille.Location = new System.Drawing.Point(858, 115);
             this.txtVille.Name = "txtVille";
-            this.txtVille.Size = new System.Drawing.Size(226, 24);
+            this.txtVille.Size = new System.Drawing.Size(226, 25);
             this.txtVille.TabIndex = 8;
             this.txtVille.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVille_KeyPress);
             // 
@@ -230,7 +234,7 @@
             // 
             this.txtCP.Location = new System.Drawing.Point(858, 83);
             this.txtCP.Name = "txtCP";
-            this.txtCP.Size = new System.Drawing.Size(226, 24);
+            this.txtCP.Size = new System.Drawing.Size(226, 25);
             this.txtCP.TabIndex = 7;
             this.txtCP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCP_KeyPress);
             // 
@@ -238,7 +242,7 @@
             // 
             this.txtRue.Location = new System.Drawing.Point(858, 51);
             this.txtRue.Name = "txtRue";
-            this.txtRue.Size = new System.Drawing.Size(226, 24);
+            this.txtRue.Size = new System.Drawing.Size(226, 25);
             this.txtRue.TabIndex = 6;
             this.txtRue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRue_KeyPress);
             // 
@@ -246,7 +250,7 @@
             // 
             this.txtMotif.Location = new System.Drawing.Point(313, 51);
             this.txtMotif.Name = "txtMotif";
-            this.txtMotif.Size = new System.Drawing.Size(226, 24);
+            this.txtMotif.Size = new System.Drawing.Size(226, 25);
             this.txtMotif.TabIndex = 5;
             this.txtMotif.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMotif_KeyPress);
             // 
@@ -351,7 +355,7 @@
             this.cboPompiersSansCaserne.FormattingEnabled = true;
             this.cboPompiersSansCaserne.Location = new System.Drawing.Point(19, 345);
             this.cboPompiersSansCaserne.Name = "cboPompiersSansCaserne";
-            this.cboPompiersSansCaserne.Size = new System.Drawing.Size(237, 24);
+            this.cboPompiersSansCaserne.Size = new System.Drawing.Size(237, 25);
             this.cboPompiersSansCaserne.TabIndex = 6;
             this.cboPompiersSansCaserne.SelectionChangeCommitted += new System.EventHandler(this.cboPompiersSansCaserne_SelectionChangeCommitted);
             // 
@@ -382,7 +386,7 @@
             this.cboCasernes.FormattingEnabled = true;
             this.cboCasernes.Location = new System.Drawing.Point(19, 165);
             this.cboCasernes.Name = "cboCasernes";
-            this.cboCasernes.Size = new System.Drawing.Size(237, 24);
+            this.cboCasernes.Size = new System.Drawing.Size(237, 25);
             this.cboCasernes.TabIndex = 1;
             this.cboCasernes.SelectionChangeCommitted += new System.EventHandler(this.cboCasernes_SelectionChangeCommitted);
             // 
@@ -393,7 +397,7 @@
             this.cboPompiers.FormattingEnabled = true;
             this.cboPompiers.Location = new System.Drawing.Point(19, 255);
             this.cboPompiers.Name = "cboPompiers";
-            this.cboPompiers.Size = new System.Drawing.Size(237, 24);
+            this.cboPompiers.Size = new System.Drawing.Size(237, 25);
             this.cboPompiers.TabIndex = 3;
             this.cboPompiers.Visible = false;
             this.cboPompiers.SelectionChangeCommitted += new System.EventHandler(this.cboPompiers_SelectionChangeCommitted);
@@ -574,7 +578,7 @@
             this.cboChoixCaserne.FormattingEnabled = true;
             this.cboChoixCaserne.Location = new System.Drawing.Point(185, 42);
             this.cboChoixCaserne.Name = "cboChoixCaserne";
-            this.cboChoixCaserne.Size = new System.Drawing.Size(195, 24);
+            this.cboChoixCaserne.Size = new System.Drawing.Size(195, 25);
             this.cboChoixCaserne.TabIndex = 1;
             // 
             // lblRattachement
@@ -596,14 +600,48 @@
             this.grpInfosPerso.TabIndex = 2;
             this.grpInfosPerso.TabStop = false;
             // 
+            // pnlMissions
+            // 
+            this.pnlMissions.AutoScroll = true;
+            this.pnlMissions.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlMissions.Location = new System.Drawing.Point(3, -580);
+            this.pnlMissions.Name = "pnlMissions";
+            this.pnlMissions.Size = new System.Drawing.Size(32, 601);
+            this.pnlMissions.TabIndex = 1;
+            // 
+            // grpMissions
+            // 
+            this.grpMissions.Controls.Add(this.chkEnCours);
+            this.grpMissions.Controls.Add(this.pnlMissions);
+            this.grpMissions.Location = new System.Drawing.Point(67, 101);
+            this.grpMissions.Name = "grpMissions";
+            this.grpMissions.Size = new System.Drawing.Size(38, 23);
+            this.grpMissions.TabIndex = 0;
+            this.grpMissions.TabStop = false;
+            this.grpMissions.Text = "Missions";
+            this.grpMissions.Visible = false;
+            this.grpMissions.VisibleChanged += new System.EventHandler(this.grpMissions_VisibleChanged);
+            // 
+            // chkEnCours
+            // 
+            this.chkEnCours.AutoSize = true;
+            this.chkEnCours.Location = new System.Drawing.Point(64, 38);
+            this.chkEnCours.Name = "chkEnCours";
+            this.chkEnCours.Size = new System.Drawing.Size(86, 21);
+            this.chkEnCours.TabIndex = 2;
+            this.chkEnCours.Text = "En cours";
+            this.chkEnCours.UseVisualStyleBackColor = true;
+            this.chkEnCours.CheckedChanged += new System.EventHandler(this.grpMissions_VisibleChanged);
+            // 
             // frmAccueil
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1234, 861);
-            this.Controls.Add(this.grbVolet2);
             this.Controls.Add(this.pnlGestion);
-            this.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Controls.Add(this.grbVolet2);
+            this.Controls.Add(this.grpMissions);
+            this.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -626,6 +664,8 @@
             this.grpInfosPompier.ResumeLayout(false);
             this.grpInfosCarriere.ResumeLayout(false);
             this.grpInfosCarriere.PerformLayout();
+            this.grpMissions.ResumeLayout(false);
+            this.grpMissions.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -679,6 +719,12 @@
         public System.Windows.Forms.GroupBox grpInfosPompier;
         private System.Windows.Forms.Label lblPlusPompier;
         private System.Windows.Forms.Button btnAnnuler;
+
+        // VOLET 1
+
+        private System.Windows.Forms.Panel pnlMissions;
+        private System.Windows.Forms.GroupBox grpMissions;
+        private System.Windows.Forms.CheckBox chkEnCours;
     }
 }
 
