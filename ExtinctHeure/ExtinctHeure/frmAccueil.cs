@@ -255,6 +255,16 @@ namespace ExtinctHeure
             grbVolet2.Visible = false;
         }
 
+
+
+
+
+
+
+
+
+
+
         private void txtRue_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
