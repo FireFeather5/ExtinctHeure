@@ -40,11 +40,12 @@
             this.lblPompier = new System.Windows.Forms.Label();
             this.lblNouveauPompier = new System.Windows.Forms.Label();
             this.lblCaserne = new System.Windows.Forms.Label();
+            this.lblPlusPompier = new System.Windows.Forms.Label();
             this.grpInfosPompier = new System.Windows.Forms.GroupBox();
-            this.btnPlusInfos = new System.Windows.Forms.Button();
+            this.btnLogin = new System.Windows.Forms.Button();
             this.grpInfosCarriere = new System.Windows.Forms.GroupBox();
-            this.chklstHabilitations = new System.Windows.Forms.CheckedListBox();
             this.btnAnnuler = new System.Windows.Forms.Button();
+            this.chklstHabilitations = new System.Windows.Forms.CheckedListBox();
             this.ckbConge = new System.Windows.Forms.CheckBox();
             this.lblAncienneCasernes = new System.Windows.Forms.Label();
             this.btnConfirmerMaj = new System.Windows.Forms.Button();
@@ -53,7 +54,6 @@
             this.cboChoixCaserne = new System.Windows.Forms.ComboBox();
             this.lblRattachement = new System.Windows.Forms.Label();
             this.grpInfosPerso = new System.Windows.Forms.GroupBox();
-            this.lblPlusPompier = new System.Windows.Forms.Label();
             this.pnlGestion.SuspendLayout();
             this.pnlInfosPompiers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbIconeNouveau)).BeginInit();
@@ -94,8 +94,8 @@
             // 
             // pcbIconeNouveau
             // 
-            this.pcbIconeNouveau.BackColor = System.Drawing.Color.White;
-            this.pcbIconeNouveau.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pcbIconeNouveau.BackColor = System.Drawing.Color.Transparent;
+            this.pcbIconeNouveau.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pcbIconeNouveau.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pcbIconeNouveau.Image = ((System.Drawing.Image)(resources.GetObject("pcbIconeNouveau.Image")));
             this.pcbIconeNouveau.Location = new System.Drawing.Point(125, 420);
@@ -115,7 +115,6 @@
             this.cboPompiersSansCaserne.Name = "cboPompiersSansCaserne";
             this.cboPompiersSansCaserne.Size = new System.Drawing.Size(237, 24);
             this.cboPompiersSansCaserne.TabIndex = 6;
-            this.cboPompiersSansCaserne.Visible = false;
             this.cboPompiersSansCaserne.SelectionChangeCommitted += new System.EventHandler(this.cboPompiersSansCaserne_SelectionChangeCommitted);
             // 
             // lblPompiersSansCaserne
@@ -127,7 +126,6 @@
             this.lblPompiersSansCaserne.Size = new System.Drawing.Size(176, 17);
             this.lblPompiersSansCaserne.TabIndex = 5;
             this.lblPompiersSansCaserne.Text = "Pompiers sans caserne : ";
-            this.lblPompiersSansCaserne.Visible = false;
             // 
             // pcbIcone
             // 
@@ -196,10 +194,23 @@
             this.lblCaserne.TabIndex = 1;
             this.lblCaserne.Text = "Veuillez choisir une caserne :";
             // 
+            // lblPlusPompier
+            // 
+            this.lblPlusPompier.BackColor = System.Drawing.Color.Transparent;
+            this.lblPlusPompier.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblPlusPompier.Font = new System.Drawing.Font("Arial", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPlusPompier.ForeColor = System.Drawing.Color.White;
+            this.lblPlusPompier.Location = new System.Drawing.Point(25, 420);
+            this.lblPlusPompier.Name = "lblPlusPompier";
+            this.lblPlusPompier.Size = new System.Drawing.Size(100, 100);
+            this.lblPlusPompier.TabIndex = 7;
+            this.lblPlusPompier.Text = "+";
+            this.lblPlusPompier.Click += new System.EventHandler(this.pcbIconeNouveau_Click);
+            // 
             // grpInfosPompier
             // 
             this.grpInfosPompier.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.grpInfosPompier.Controls.Add(this.btnPlusInfos);
+            this.grpInfosPompier.Controls.Add(this.btnLogin);
             this.grpInfosPompier.Controls.Add(this.grpInfosCarriere);
             this.grpInfosPompier.Controls.Add(this.grpInfosPerso);
             this.grpInfosPompier.Cursor = System.Windows.Forms.Cursors.Default;
@@ -210,22 +221,22 @@
             this.grpInfosPompier.TabStop = false;
             this.grpInfosPompier.Visible = false;
             // 
-            // btnPlusInfos
+            // btnLogin
             // 
-            this.btnPlusInfos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPlusInfos.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnPlusInfos.Location = new System.Drawing.Point(583, 391);
-            this.btnPlusInfos.Name = "btnPlusInfos";
-            this.btnPlusInfos.Size = new System.Drawing.Size(175, 27);
-            this.btnPlusInfos.TabIndex = 4;
-            this.btnPlusInfos.Text = "Plus d\'informations";
-            this.btnPlusInfos.UseVisualStyleBackColor = true;
-            this.btnPlusInfos.Click += new System.EventHandler(this.btnPlusInfos_Click);
+            this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLogin.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.btnLogin.Location = new System.Drawing.Point(235, 390);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(300, 27);
+            this.btnLogin.TabIndex = 4;
+            this.btnLogin.Text = "Se connecter pour modifier les informations";
+            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // grpInfosCarriere
             // 
-            this.grpInfosCarriere.Controls.Add(this.chklstHabilitations);
             this.grpInfosCarriere.Controls.Add(this.btnAnnuler);
+            this.grpInfosCarriere.Controls.Add(this.chklstHabilitations);
             this.grpInfosCarriere.Controls.Add(this.ckbConge);
             this.grpInfosCarriere.Controls.Add(this.lblAncienneCasernes);
             this.grpInfosCarriere.Controls.Add(this.btnConfirmerMaj);
@@ -240,33 +251,36 @@
             this.grpInfosCarriere.TabIndex = 3;
             this.grpInfosCarriere.TabStop = false;
             this.grpInfosCarriere.Text = "Gérer les informations de la carrière";
-            this.grpInfosCarriere.Visible = false;
-            // 
-            // chklstHabilitations
-            // 
-            this.chklstHabilitations.FormattingEnabled = true;
-            this.chklstHabilitations.Location = new System.Drawing.Point(430, 65);
-            this.chklstHabilitations.Name = "chklstHabilitations";
-            this.chklstHabilitations.Size = new System.Drawing.Size(300, 137);
-            this.chklstHabilitations.TabIndex = 9;
             // 
             // btnAnnuler
             // 
             this.btnAnnuler.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAnnuler.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnAnnuler.Location = new System.Drawing.Point(445, 220);
+            this.btnAnnuler.Location = new System.Drawing.Point(504, 244);
             this.btnAnnuler.Name = "btnAnnuler";
-            this.btnAnnuler.Size = new System.Drawing.Size(135, 45);
-            this.btnAnnuler.TabIndex = 8;
+            this.btnAnnuler.Size = new System.Drawing.Size(103, 26);
+            this.btnAnnuler.TabIndex = 10;
             this.btnAnnuler.Text = "Annuler";
             this.btnAnnuler.UseVisualStyleBackColor = true;
-            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
+            this.btnAnnuler.Visible = false;
+            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click_1);
+            // 
+            // chklstHabilitations
+            // 
+            this.chklstHabilitations.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chklstHabilitations.Enabled = false;
+            this.chklstHabilitations.FormattingEnabled = true;
+            this.chklstHabilitations.Location = new System.Drawing.Point(433, 101);
+            this.chklstHabilitations.Name = "chklstHabilitations";
+            this.chklstHabilitations.Size = new System.Drawing.Size(300, 137);
+            this.chklstHabilitations.TabIndex = 9;
             // 
             // ckbConge
             // 
             this.ckbConge.AutoSize = true;
             this.ckbConge.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ckbConge.Location = new System.Drawing.Point(26, 239);
+            this.ckbConge.Enabled = false;
+            this.ckbConge.Location = new System.Drawing.Point(433, 41);
             this.ckbConge.Name = "ckbConge";
             this.ckbConge.Size = new System.Drawing.Size(89, 21);
             this.ckbConge.TabIndex = 7;
@@ -286,20 +300,22 @@
             // 
             this.btnConfirmerMaj.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnConfirmerMaj.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnConfirmerMaj.Location = new System.Drawing.Point(600, 220);
+            this.btnConfirmerMaj.Location = new System.Drawing.Point(630, 244);
             this.btnConfirmerMaj.Name = "btnConfirmerMaj";
-            this.btnConfirmerMaj.Size = new System.Drawing.Size(135, 45);
+            this.btnConfirmerMaj.Size = new System.Drawing.Size(103, 26);
             this.btnConfirmerMaj.TabIndex = 4;
             this.btnConfirmerMaj.Text = "Mettre à jour";
             this.btnConfirmerMaj.UseVisualStyleBackColor = true;
+            this.btnConfirmerMaj.Visible = false;
             this.btnConfirmerMaj.Click += new System.EventHandler(this.btnConfirmerMaj_Click);
             // 
             // lstAnciennesCasernes
             // 
+            this.lstAnciennesCasernes.Enabled = false;
             this.lstAnciennesCasernes.HideSelection = false;
             this.lstAnciennesCasernes.Location = new System.Drawing.Point(20, 105);
             this.lstAnciennesCasernes.Name = "lstAnciennesCasernes";
-            this.lstAnciennesCasernes.Size = new System.Drawing.Size(360, 120);
+            this.lstAnciennesCasernes.Size = new System.Drawing.Size(360, 133);
             this.lstAnciennesCasernes.TabIndex = 3;
             this.lstAnciennesCasernes.UseCompatibleStateImageBehavior = false;
             this.lstAnciennesCasernes.View = System.Windows.Forms.View.List;
@@ -307,7 +323,7 @@
             // lblHabilitations
             // 
             this.lblHabilitations.AutoSize = true;
-            this.lblHabilitations.Location = new System.Drawing.Point(430, 40);
+            this.lblHabilitations.Location = new System.Drawing.Point(430, 75);
             this.lblHabilitations.Name = "lblHabilitations";
             this.lblHabilitations.Size = new System.Drawing.Size(98, 17);
             this.lblHabilitations.TabIndex = 2;
@@ -316,6 +332,7 @@
             // cboChoixCaserne
             // 
             this.cboChoixCaserne.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cboChoixCaserne.Enabled = false;
             this.cboChoixCaserne.FormattingEnabled = true;
             this.cboChoixCaserne.Location = new System.Drawing.Point(185, 42);
             this.cboChoixCaserne.Name = "cboChoixCaserne";
@@ -340,19 +357,6 @@
             this.grpInfosPerso.Size = new System.Drawing.Size(740, 375);
             this.grpInfosPerso.TabIndex = 2;
             this.grpInfosPerso.TabStop = false;
-            // 
-            // lblPlusPompier
-            // 
-            this.lblPlusPompier.BackColor = System.Drawing.Color.Transparent;
-            this.lblPlusPompier.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblPlusPompier.Font = new System.Drawing.Font("Arial", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlusPompier.ForeColor = System.Drawing.Color.White;
-            this.lblPlusPompier.Location = new System.Drawing.Point(25, 420);
-            this.lblPlusPompier.Name = "lblPlusPompier";
-            this.lblPlusPompier.Size = new System.Drawing.Size(100, 100);
-            this.lblPlusPompier.TabIndex = 7;
-            this.lblPlusPompier.Text = "+";
-            this.lblPlusPompier.Click += new System.EventHandler(this.pcbIconeNouveau_Click);
             // 
             // frmAccueil
             // 
@@ -390,7 +394,6 @@
         private System.Windows.Forms.Label lblPompier;
         private System.Windows.Forms.Label lblNouveauPompier;
         private System.Windows.Forms.Label lblCaserne;
-        private System.Windows.Forms.Button btnAnnuler;
         private System.Windows.Forms.CheckBox ckbConge;
         private System.Windows.Forms.Label lblAncienneCasernes;
         private System.Windows.Forms.Button btnConfirmerMaj;
@@ -402,11 +405,12 @@
         private System.Windows.Forms.ComboBox cboPompiersSansCaserne;
         private System.Windows.Forms.Label lblPompiersSansCaserne;
         private System.Windows.Forms.PictureBox pcbIconeNouveau;
-        public System.Windows.Forms.Button btnPlusInfos;
+        public System.Windows.Forms.Button btnLogin;
         protected System.Windows.Forms.GroupBox grpInfosCarriere;
         public System.Windows.Forms.GroupBox grpInfosPerso;
         public System.Windows.Forms.GroupBox grpInfosPompier;
         private System.Windows.Forms.Label lblPlusPompier;
+        private System.Windows.Forms.Button btnAnnuler;
     }
 }
 

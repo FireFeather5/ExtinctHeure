@@ -58,11 +58,13 @@
             this.pcbGrade = new System.Windows.Forms.PictureBox();
             this.pcbIconePompierGauche = new System.Windows.Forms.PictureBox();
             this.pcbIconePompierDroite = new System.Windows.Forms.PictureBox();
+            this.pcbTypePompier = new System.Windows.Forms.PictureBox();
             this.pnlSexe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbGrade)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbIconePompierGauche)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbIconePompierDroite)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbTypePompier)).BeginInit();
             this.SuspendLayout();
             // 
             // btnConfirmer
@@ -191,6 +193,7 @@
             this.rdbProfessionnel.TabStop = true;
             this.rdbProfessionnel.Text = "Professionnel";
             this.rdbProfessionnel.UseVisualStyleBackColor = true;
+            this.rdbProfessionnel.CheckedChanged += new System.EventHandler(this.rdbProfessionnel_CheckedChanged);
             // 
             // rdbVolontaire
             // 
@@ -203,6 +206,7 @@
             this.rdbVolontaire.TabStop = true;
             this.rdbVolontaire.Text = "Volontaire";
             this.rdbVolontaire.UseVisualStyleBackColor = true;
+            this.rdbVolontaire.CheckedChanged += new System.EventHandler(this.rdbProfessionnel_CheckedChanged);
             // 
             // txtTelephone
             // 
@@ -255,24 +259,24 @@
             // 
             this.rdbFemme.AutoSize = true;
             this.rdbFemme.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rdbFemme.Location = new System.Drawing.Point(165, 8);
+            this.rdbFemme.Location = new System.Drawing.Point(170, 8);
             this.rdbFemme.Name = "rdbFemme";
-            this.rdbFemme.Size = new System.Drawing.Size(77, 21);
+            this.rdbFemme.Size = new System.Drawing.Size(92, 21);
             this.rdbFemme.TabIndex = 16;
             this.rdbFemme.TabStop = true;
-            this.rdbFemme.Text = "Femme";
+            this.rdbFemme.Text = "Femme ♀";
             this.rdbFemme.UseVisualStyleBackColor = true;
             // 
             // rdbHomme
             // 
             this.rdbHomme.AutoSize = true;
             this.rdbHomme.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rdbHomme.Location = new System.Drawing.Point(80, 8);
+            this.rdbHomme.Location = new System.Drawing.Point(75, 8);
             this.rdbHomme.Name = "rdbHomme";
-            this.rdbHomme.Size = new System.Drawing.Size(78, 21);
+            this.rdbHomme.Size = new System.Drawing.Size(93, 21);
             this.rdbHomme.TabIndex = 15;
             this.rdbHomme.TabStop = true;
-            this.rdbHomme.Text = "Homme";
+            this.rdbHomme.Text = "Homme ♂";
             this.rdbHomme.UseVisualStyleBackColor = true;
             // 
             // lblSexe
@@ -337,12 +341,23 @@
             this.pcbIconePompierDroite.TabIndex = 26;
             this.pcbIconePompierDroite.TabStop = false;
             // 
+            // pcbTypePompier
+            // 
+            this.pcbTypePompier.Image = ((System.Drawing.Image)(resources.GetObject("pcbTypePompier.Image")));
+            this.pcbTypePompier.Location = new System.Drawing.Point(24, 417);
+            this.pcbTypePompier.Name = "pcbTypePompier";
+            this.pcbTypePompier.Size = new System.Drawing.Size(30, 30);
+            this.pcbTypePompier.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pcbTypePompier.TabIndex = 27;
+            this.pcbTypePompier.TabStop = false;
+            // 
             // frmAjoutPompier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkRed;
             this.ClientSize = new System.Drawing.Size(1084, 561);
+            this.Controls.Add(this.pcbTypePompier);
             this.Controls.Add(this.pcbIconePompierDroite);
             this.Controls.Add(this.pcbIconePompierGauche);
             this.Controls.Add(this.pcbGrade);
@@ -381,6 +396,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcbGrade)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbIconePompierGauche)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbIconePompierDroite)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbTypePompier)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -416,5 +432,6 @@
         private System.Windows.Forms.PictureBox pcbGrade;
         private System.Windows.Forms.PictureBox pcbIconePompierDroite;
         private System.Windows.Forms.PictureBox pcbIconePompierGauche;
+        private System.Windows.Forms.PictureBox pcbTypePompier;
     }
 }

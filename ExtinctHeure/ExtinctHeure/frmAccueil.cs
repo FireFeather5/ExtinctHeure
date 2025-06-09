@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
+using System.Linq.Expressions;
 using System.Windows.Forms;
 using Pinpon;
 
@@ -36,6 +37,7 @@ namespace ExtinctHeure
         private void frmAccueil_Load(object sender, EventArgs e)
         {
             chargerCboCasernes(cboCasernes);
+            chargerCboPompiersSansCaserne();
         }
 
         // Une fois une caserne choisi on récupère les pompiers associés à cette caserne
@@ -49,9 +51,7 @@ namespace ExtinctHeure
             {
                 lblPompier.Visible = true;
                 cboPompiers.Visible = true;
-                lblPompiersSansCaserne.Visible = true;
-                cboPompiersSansCaserne.Visible = true;
-                chargerCboPompiersSansCaserne();
+                _intBuffer[6] = cboCasernes.SelectedIndex; // On enregistre la caserne choisi la caserne par défaut
                 chargerCboPompiers();
             }
         }
@@ -142,10 +142,12 @@ namespace ExtinctHeure
             if (cboPompiers.SelectedIndex != -1)
             {
                 _matricule = Convert.ToInt32(cboPompiers.SelectedValue);
+                _intBuffer[5] = _matricule;
             }
             else
             {
                 _matricule = Convert.ToInt32(cboPompiersSansCaserne.SelectedValue);
+                _intBuffer[5] = _matricule;
             }
 
             // Ci-dessous tous les composants dont on a besoin pour afficher les infos du pompier
@@ -243,7 +245,7 @@ namespace ExtinctHeure
             cboGrades.SelectedValueChanged += cboGrades_SelectedValueChanged;
             _btnChangeGrade.Click += BtnChange_Click;
             _btnConfirmGrade.Click += BtnConfirm_Click;
-            _btnAnnulerGrade.Click += BtnAnnuler_Click;
+            _btnAnnulerGrade.Click += BtnAnnulerGrade_Click;
 
             // Requête pour remplir les infos persos
             string req = $@"SELECT p.matricule, p.nom, p.prenom, p.sexe, p.dateNaissance, p.type, p.dateEmbauche, p.codeGrade, g.libelle, p.enConge
@@ -273,11 +275,25 @@ namespace ExtinctHeure
                     else
                     {
                         if (pompierReader.GetString(i) == "m")
+                        {
                             valeur = "Homme ♂";
+                        }
                         else if (pompierReader.GetString(i) == "f")
+                        {
                             valeur = "Femme ♀";
+                        }
+                        else if (pompierReader.GetString(i) == "v")
+                        {
+                            valeur = "Volontaire";
+                        }
+                        else if (pompierReader.GetString(i) == "p")
+                        {
+                            valeur = "Professionnel";
+                        }
                         else
+                        { 
                             valeur = pompierReader.GetString(i);
+                        }
                     }
 
                     if (labelsPerso[i] == "Matricule")
@@ -289,44 +305,6 @@ namespace ExtinctHeure
                         lbl.Left = 250;
                         lbl.Width = lbl.Text.Length * 15;
                         grpInfosPerso.Controls.Add(lbl);
-                    }
-                    else if (labelsPerso[i] == "Type")
-                    {
-                        lbl.Text = "Pompier : ";
-                        lbl.Top = i * 33;
-                        lbl.Left = 10;
-                        lbl.Width = 72;
-                        lbl.Height = 20;
-
-                        RadioButton rdbProfessionel = new RadioButton
-                        {
-                            Top = (i * 33) - 2,
-                            Left = 82,
-                            Text = "Professionel",
-                            Width = "Professionel".Length * 10
-                        };
-
-                        RadioButton rdbVolontaire = new RadioButton
-                        {
-                            Top = (i * 33) - 2,
-                            Left = 82,
-                            Text = "Volontaire"
-                        };
-
-                        if (pompierReader.GetString(i) == "p")
-                        {
-                            rdbProfessionel.Checked = true;
-                            rdbVolontaire.Visible = false;
-                        }
-                        else
-                        {
-                            rdbVolontaire.Checked = true;
-                            rdbProfessionel.Visible = false;
-                        }
-
-                        grpInfosPerso.Controls.Add(lbl);
-                        grpInfosPerso.Controls.Add(rdbProfessionel);
-                        grpInfosPerso.Controls.Add(rdbVolontaire);
                     }
                     else if (labelsPerso[i] == "Code grade")
                     {
@@ -403,6 +381,87 @@ namespace ExtinctHeure
                     }
                 }
             }
+            if(cboCasernes.SelectedIndex != -1)
+            {
+                chargerCboCasernes(cboChoixCaserne);
+                cboChoixCaserne.SelectedValue = cboCasernes.SelectedValue; // On sélectionne la caserne ou le pompier est affecté par défaut
+            }
+
+            _intBuffer[1] = originalState();
+
+            int compteur = 0;
+
+            string reqHabilitationPasses = $@"SELECT h.libelle
+                                              FROM Habilitation h
+                                              JOIN Passer pass ON h.id = pass.idHabilitation
+                                              JOIN Pompier p ON p.matricule = pass.matriculePompier
+                                              WHERE p.matricule = {_matricule}";
+
+            string reqHabilitations = "SELECT libelle FROM Habilitation";
+
+            string reqAncienneCasernes = $@"SELECT c.nom, aff.dateA, COALESCE(aff.dateFin, 'Aucune')
+                                            FROM Affectation aff
+                                            JOIN Caserne c ON aff.idCaserne = c.id
+                                            JOIN Pompier p ON aff.matriculePompier = p.matricule
+                                            WHERE p.matricule = {_matricule}";
+
+            string enConge = $"SELECT enConge FROM Pompier WHERE matricule = {_matricule}";
+
+            SQLiteCommand cmdHabilitationPasses = new SQLiteCommand(reqHabilitationPasses, this._cx);
+            SQLiteCommand cmdHabilitations = new SQLiteCommand(reqHabilitations, this._cx);
+            SQLiteCommand cmdAncienneCasernes = new SQLiteCommand(reqAncienneCasernes, this._cx);
+            SQLiteCommand cmdEnConge = new SQLiteCommand(enConge, this._cx);
+            SQLiteDataReader readerHabilitationPasses = cmdHabilitationPasses.ExecuteReader();
+            SQLiteDataReader readerHabilitations = cmdHabilitations.ExecuteReader();
+            SQLiteDataReader readerAncienneCasernes = cmdAncienneCasernes.ExecuteReader();
+            SQLiteDataReader readerEnConge = cmdEnConge.ExecuteReader();
+
+            while (readerHabilitationPasses.Read())
+            {
+                string habilitation = readerHabilitationPasses.GetString(0);
+                chklstHabilitations.Items.Add(habilitation);
+                chklstHabilitations.SetItemChecked(chklstHabilitations.Items.IndexOf(habilitation), true);
+                _strBuffer.Add(habilitation);
+                compteur++;
+            }
+
+            while (readerHabilitations.Read())
+            {
+                if (!chklstHabilitations.Items.Contains(readerHabilitations.GetString(0)))
+                {
+                    string habilitation = readerHabilitations.GetString(0);
+                    chklstHabilitations.Items.Add(habilitation);
+                }
+            }
+
+            while (readerAncienneCasernes.Read())
+            {
+                string ancienneCasernes = readerAncienneCasernes.GetString(0);
+                string dateDebut = readerAncienneCasernes.GetString(1);
+                if (readerAncienneCasernes.GetString(2) != "Aucune")
+                {
+                    string dateFin = readerAncienneCasernes.GetString(2);
+                    lstAnciennesCasernes.Items.Add(ancienneCasernes + ", du " + dateDebut.Replace('-', '/') + " au " + dateFin.Replace('-', '/'));
+                }
+                else if (lstAnciennesCasernes.Items.Count < 1)
+                {
+                    lstAnciennesCasernes.Items.Add("Aucune ancienne affectation");
+                }
+            }
+
+            while (readerEnConge.Read())
+            {
+                if (readerEnConge.GetInt32(0) == 1)
+                {
+                    ckbConge.Checked = true;
+                }
+                else
+                {
+                    ckbConge.Checked = false;
+                }
+            }
+
+            _intBuffer[0] = compteur;
 
             // Méthodes internes
             void cboGrades_SelectedValueChanged(object sender, EventArgs e)
@@ -438,12 +497,13 @@ namespace ExtinctHeure
                 }
             }
 
-            void BtnAnnuler_Click(object sender, EventArgs e)
+            void BtnAnnulerGrade_Click(object sender, EventArgs e)
             {
                 txtCode.Text = _strBuffer[0];
                 cboGrades.Text = _strBuffer[1];
                 txtCode.Enabled = false;
                 cboGrades.Enabled = false;
+
                 _btnAnnulerGrade.Visible = false;
                 _btnConfirmGrade.Visible = false;
             }
@@ -460,12 +520,15 @@ namespace ExtinctHeure
 
                 txtCode.Enabled = false;
                 cboGrades.Enabled = false;
-                btnAnnuler.Visible = false;
+                _btnAnnulerGrade.Visible = false;
                 _btnConfirmGrade.Visible = false;
 
                 grade.ImageLocation = $@"..\..\..\..\Ressources\images\ImagesGrades\{txtCode.Text}.png";
                 grade.Load();
                 lblGrade.Text = $"Grade : \n{cboGrades.Text}";
+
+                _strBuffer[0] = txtCode.Text;
+                _strBuffer[1] = cboGrades.Text;
 
                 try
                 {
@@ -483,7 +546,7 @@ namespace ExtinctHeure
 
 
         // Boutons pour afficher des informations supplémentaires sur la carrière du pompier
-        private void btnPlusInfos_Click(object sender, EventArgs e)
+        private void btnLogin_Click(object sender, EventArgs e)
         {
             if (!_isAlreadyConnected)
             {
@@ -501,92 +564,25 @@ namespace ExtinctHeure
 
             if (_isAlreadyConnected) {
                 chargerCboCasernes(cboChoixCaserne);
+                btnLogin.Visible = false;
 
-                _intBuffer[1] = originalState();
-
-                int compteur = 0;
-
-                btnPlusInfos.Visible = false;
-                grpInfosCarriere.Visible = true;
                 _btnChangeGrade.Visible = true;
 
-                string reqHabilitationPasses = $@"SELECT h.libelle
-                                              FROM Habilitation h
-                                              JOIN Passer pass ON h.id = pass.idHabilitation
-                                              JOIN Pompier p ON p.matricule = pass.matriculePompier
-                                              WHERE p.matricule = {_matricule}";
+                cboChoixCaserne.Enabled = true;
+                chklstHabilitations.Enabled = true;
+                lstAnciennesCasernes.Enabled = true;
+                ckbConge.Enabled = true;
 
-                string reqHabilitations = "SELECT libelle FROM Habilitation";
-
-                string reqAncienneCasernes = $@"SELECT c.nom, aff.dateA, COALESCE(aff.dateFin, 'Aucune')
-                                            FROM Affectation aff
-                                            JOIN Caserne c ON aff.idCaserne = c.id
-                                            JOIN Pompier p ON aff.matriculePompier = p.matricule
-                                            WHERE p.matricule = {_matricule}";
-
-                string enConge = $"SELECT enConge FROM Pompier WHERE matricule = {_matricule}";
-
-                SQLiteCommand cmdHabilitationPasses = new SQLiteCommand(reqHabilitationPasses, this._cx);
-                SQLiteCommand cmdHabilitations = new SQLiteCommand(reqHabilitations, this._cx);
-                SQLiteCommand cmdAncienneCasernes = new SQLiteCommand(reqAncienneCasernes, this._cx);
-                SQLiteCommand cmdEnConge = new SQLiteCommand(enConge, this._cx);
-                SQLiteDataReader readerHabilitationPasses = cmdHabilitationPasses.ExecuteReader();
-                SQLiteDataReader readerHabilitations = cmdHabilitations.ExecuteReader();
-                SQLiteDataReader readerAncienneCasernes = cmdAncienneCasernes.ExecuteReader();
-                SQLiteDataReader readerEnConge = cmdEnConge.ExecuteReader();
-
-                while (readerHabilitationPasses.Read())
-                {
-                    string habilitation = readerHabilitationPasses.GetString(0);
-                    chklstHabilitations.Items.Add(habilitation);
-                    chklstHabilitations.SetItemChecked(chklstHabilitations.Items.IndexOf(habilitation), true);
-                    _strBuffer.Add(habilitation);
-                    compteur++;
-                }
-
-                while (readerHabilitations.Read())
-                {
-                    if (!chklstHabilitations.Items.Contains(readerHabilitations.GetString(0)))
-                    {
-                        string habilitation = readerHabilitations.GetString(0);
-                        chklstHabilitations.Items.Add(habilitation);
-                    }
-                }
-
-                while (readerAncienneCasernes.Read())
-                {
-                    string ancienneCasernes = readerAncienneCasernes.GetString(0);
-                    string dateDebut = readerAncienneCasernes.GetString(1);
-                    if (readerAncienneCasernes.GetString(2) != "Aucune")
-                    {
-                        string dateFin = readerAncienneCasernes.GetString(2);
-                        lstAnciennesCasernes.Items.Add(ancienneCasernes + ", du " + dateDebut.Replace('-', '/') + " au " + dateFin.Replace('-', '/'));
-                    }
-                    else if (lstAnciennesCasernes.Items.Count < 1)
-                    {
-                        lstAnciennesCasernes.Items.Add("Aucune ancienne affectation");
-                    }
-                }
-
-                while (readerEnConge.Read())
-                {
-                    if (readerEnConge.GetInt32(0) == 1)
-                    {
-                        ckbConge.Checked = true;
-                    }
-                    else
-                    {
-                        ckbConge.Checked = false;
-                    }
-                }
-
-                _intBuffer[0] = compteur;
+                btnConfirmerMaj.Visible = true;
+                btnAnnuler.Visible = true;
             }
         }
 
+        List<string> habilitations = new List<string>();
         private void btnConfirmerMaj_Click(object sender, EventArgs e)
         {
-            List<string> habilitations = new List<string>();
+
+            bool hasBeenModified = false;
 
             int compteur = _intBuffer[0];
 
@@ -595,6 +591,8 @@ namespace ExtinctHeure
             int enConge = 0;
             int originalState = _intBuffer[1];
             bool congeBool = originalState == 1;
+
+            bool transactionWorked = false;
 
             if (ckbConge.Checked != congeBool)
             {
@@ -618,7 +616,7 @@ namespace ExtinctHeure
                 {
                     cmdConge.ExecuteNonQuery();
                     transactionConge.Commit();
-                    MessageBox.Show("Changements confirmés", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    hasBeenModified = true;
                 }
                 catch (Exception ex)
                 {
@@ -648,21 +646,34 @@ namespace ExtinctHeure
 
                     cmdHabilitations.CommandText = req;
 
-                    cmdHabilitations.ExecuteNonQuery();
+                    try
+                    {
+                        cmdHabilitations.ExecuteNonQuery();
+                        transactionWorked = true;
+                    }
+                    catch (SQLiteException ex)
+                    {
+                        transactionWorked = false;
+                        MessageBox.Show("Erreur SQL : " + ex.Message);
+                    }
                 }
-                try
+                if (transactionWorked)
                 {
-                    transactionHabilitations.Commit();
-                    MessageBox.Show("Changements confirmés", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (SQLiteException ex)
-                {
-                    transactionHabilitations.Rollback();
-                    MessageBox.Show("Erreur lors de la modification : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    try
+                    {
+                        transactionHabilitations.Commit();
+                        hasBeenModified = true;
+                    }
+                    catch (SQLiteException ex)
+                    {
+                        transactionHabilitations.Rollback();
+                        MessageBox.Show("Erreur lors de la modification : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
 
-            if (cboCasernes.Text != cboChoixCaserne.Text)
+            bool hasBeenModifiedCaserne = false;
+            if (cboChoixCaserne.Text != cboCasernes.Text && cboChoixCaserne.SelectedIndex != -1)
             {
                 SQLiteCommand cmdCaserne = new SQLiteCommand(req, this._cx);
                 SQLiteTransaction transactionCaserne = _cx.BeginTransaction();
@@ -680,7 +691,7 @@ namespace ExtinctHeure
                 {
                     cmdCaserne.ExecuteNonQuery();
                     transactionCaserne.Commit();
-                    MessageBox.Show("Changements confirmés", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    hasBeenModifiedCaserne = true;
                 }
                 catch (SQLiteException ex)
                 {
@@ -688,8 +699,17 @@ namespace ExtinctHeure
                     MessageBox.Show("Erreur lors de la modification : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            chargerCboCasernes(cboCasernes);
-            chargerCboPompiers();
+            if (hasBeenModified)
+            {
+                if (hasBeenModifiedCaserne)
+                {
+                    chargerCboCasernes(cboCasernes);
+                    cboCasernes.SelectedIndex = _intBuffer[6]; // On remet la caserne par défaut
+                }
+                _matricule = _intBuffer[5];
+                ChargerInfosPompiers();
+                MessageBox.Show("Changements confirmés", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void clearAll()
@@ -697,8 +717,7 @@ namespace ExtinctHeure
             grpInfosPerso.Controls.Clear();
             grpInfosPompier.Visible = false;
 
-            btnPlusInfos.Visible = true;
-            grpInfosCarriere.Visible = false;
+            btnLogin.Visible = true;
             cboChoixCaserne.SelectedIndex = -1;
             chklstHabilitations.Items.Clear();
             lstAnciennesCasernes.Items.Clear();
@@ -706,7 +725,6 @@ namespace ExtinctHeure
 
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
-            grpInfosCarriere.Visible = false;
 
             _btnChangeGrade.Visible = false;
             _btnAnnulerGrade.Visible = false;
@@ -716,7 +734,7 @@ namespace ExtinctHeure
             chklstHabilitations.Items.Clear();
             ckbConge.Checked = false;
 
-            btnPlusInfos.Visible = true;
+            btnLogin.Visible = true;
         }
 
         // On créer un nouveau formulaire pour l'ajout d'un pompier dans la DB
@@ -729,33 +747,20 @@ namespace ExtinctHeure
                 {
                     MessageBox.Show("Vous êtes bien connecté", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     _isAlreadyConnected = true;
-
-                    frmAjoutPompier ajouterPimpon = new frmAjoutPompier();
-                    if (ajouterPimpon.ShowDialog() == DialogResult.OK)
-                    {
-                        MessageBox.Show("Changements confirmés", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Changements abandonnés", "Abandon", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
                 }
                 else
                 {
                     MessageBox.Show("Accès non autorisé", "Refus", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            frmAjoutPompier ajouterPimpon = new frmAjoutPompier();
+            if (ajouterPimpon.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("Changements confirmés", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             else
             {
-                frmAjoutPompier ajouterPimpon = new frmAjoutPompier();
-                if (ajouterPimpon.ShowDialog() == DialogResult.OK)
-                {
-                    MessageBox.Show("Changements confirmés", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Changements abandonnés", "Abandon", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
+                MessageBox.Show("Changements abandonnés", "Abandon", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
@@ -768,6 +773,23 @@ namespace ExtinctHeure
             else
             {
                 return 0;
+            }
+        }
+
+        private void btnAnnuler_Click_1(object sender, EventArgs e)
+        {
+            int originalState = _intBuffer[1];
+            bool congeBool = originalState == 1;
+            ckbConge.Checked = congeBool;
+
+            int compteur = _intBuffer[0];
+            cboChoixCaserne.SelectedIndex = -1;
+            if (chklstHabilitations.CheckedItems.Count > compteur)
+            {
+                for (int i = compteur; i < chklstHabilitations.Items.Count; i++)
+                {
+                    chklstHabilitations.SetItemChecked(i, false);
+                }
             }
         }
     }

@@ -284,5 +284,19 @@ namespace ExtinctHeure
             pcbGrade.ImageLocation = $@"..\..\..\..\Ressources\images\ImagesGrades\{cboGrades.SelectedValue.ToString()}.png";
             pcbGrade.Load();
         }
+
+        private void rdbProfessionnel_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbProfessionnel.Checked)
+            {
+                pcbTypePompier.ImageLocation = @"..\..\..\..\Ressources\images\icone-pompier-noir-blanc.png";
+                pcbTypePompier.Load();
+            }
+            else if (rdbVolontaire.Checked)
+            {
+                pcbTypePompier.ImageLocation = @"..\..\..\..\Ressources\images\icone-pompier-blanc.png";
+                pcbTypePompier.Load();
+            }
+        }
     }
 }
