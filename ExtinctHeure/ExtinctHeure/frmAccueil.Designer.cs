@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grbVolet2 = new System.Windows.Forms.GroupBox();
             this.grbEP = new System.Windows.Forms.GroupBox();
             this.lblDteMis = new System.Windows.Forms.Label();
             this.lblNumMis = new System.Windows.Forms.Label();
@@ -51,24 +51,25 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.epTxt = new System.Windows.Forms.ErrorProvider(this.components);
-            this.groupBox1.SuspendLayout();
+            this.grbVolet2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epTxt)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // grbVolet2
             // 
-            this.groupBox1.Controls.Add(this.grbEP);
-            this.groupBox1.Controls.Add(this.lblDteMis);
-            this.groupBox1.Controls.Add(this.lblNumMis);
-            this.groupBox1.Controls.Add(this.groupBox3);
-            this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Location = new System.Drawing.Point(12, 116);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1208, 651);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
+            this.grbVolet2.Controls.Add(this.grbEP);
+            this.grbVolet2.Controls.Add(this.lblDteMis);
+            this.grbVolet2.Controls.Add(this.lblNumMis);
+            this.grbVolet2.Controls.Add(this.groupBox3);
+            this.grbVolet2.Controls.Add(this.groupBox2);
+            this.grbVolet2.Location = new System.Drawing.Point(44, 69);
+            this.grbVolet2.Name = "grbVolet2";
+            this.grbVolet2.Size = new System.Drawing.Size(33, 21);
+            this.grbVolet2.TabIndex = 0;
+            this.grbVolet2.TabStop = false;
+            this.grbVolet2.Visible = false;
             // 
             // grbEP
             // 
@@ -271,14 +272,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1232, 783);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.grbVolet2);
             this.Font = new System.Drawing.Font("Arial Narrow", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmAccueil";
             this.Text = "Ajout d\'une mission";
             this.Load += new System.EventHandler(this.frmAccueil_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.grbVolet2.ResumeLayout(false);
+            this.grbVolet2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -290,7 +291,7 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grbVolet2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label1;

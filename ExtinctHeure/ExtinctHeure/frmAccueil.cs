@@ -17,6 +17,23 @@ namespace ExtinctHeure
 {
     public partial class frmAccueil : Form
     {
+
+
+
+
+        System.Windows.Forms.Button btnTabBord;
+
+        System.Windows.Forms.Button btnAjouMis;
+
+        System.Windows.Forms.Button btnVisEngin;
+
+        System.Windows.Forms.Button btnGestPers;
+
+        System.Windows.Forms.Button btnStats;
+
+
+
+
         public frmAccueil()
         {
             InitializeComponent();
@@ -76,62 +93,166 @@ namespace ExtinctHeure
             int tailBout = (taille / 5) - 2;
             int gauc = 0;
 
-            System.Windows.Forms.Button but = new System.Windows.Forms.Button();
-            but.Text = "Tableau de Bord";
-            but.Top = 0;
-            but.Left = gauc;
-            but.Width = tailBout;
-            but.Height = 85;
+            btnTabBord = new System.Windows.Forms.Button();
+            btnTabBord.Text = "Tableau de Bord";
+            btnTabBord.BackColor = System.Drawing.Color.Gray;
+            btnTabBord.Enabled = false;
+            btnTabBord.Top = 0;
+            btnTabBord.Left = gauc;
+            btnTabBord.Width = tailBout;
+            btnTabBord.Height = 85;
             gauc += tailBout - 1;
 
-            this.Controls.Add(but);
+            btnTabBord.Click += new System.EventHandler(this.btnTabBord_Click);
+            this.Controls.Add(btnTabBord);
 
 
-            but = new System.Windows.Forms.Button();
-            but.Text = "Ajout de Mission";
-            but.Top = 0;
-            but.Left = gauc;
-            but.Width = tailBout;
-            but.Height = 85;
+
+            btnAjouMis = new System.Windows.Forms.Button();
+            btnAjouMis.Text = "Ajout de Mission";
+            btnAjouMis.Top = 0;
+            btnAjouMis.Left = gauc;
+            btnAjouMis.Width = tailBout;
+            btnAjouMis.Height = 85;
             gauc += tailBout - 1;
 
-            this.Controls.Add(but);
+            btnAjouMis.Click += new System.EventHandler(this.btnAjouMis_Click);
+            this.Controls.Add(btnAjouMis);
 
 
-            but = new System.Windows.Forms.Button();
-            but.Text = "Visualisation des Engins";
-            but.Top = 0;
-            but.Left = gauc;
-            but.Width = tailBout;
-            but.Height = 85;
+
+            btnVisEngin = new System.Windows.Forms.Button();
+            btnVisEngin.Text = "Visualisation des Engins";
+            btnVisEngin.Top = 0;
+            btnVisEngin.Left = gauc;
+            btnVisEngin.Width = tailBout;
+            btnVisEngin.Height = 85;
             gauc += tailBout - 1;
 
-            this.Controls.Add(but);
+            btnVisEngin.Click += new System.EventHandler(this.btnVisEngin_Click);
+            this.Controls.Add(btnVisEngin);
 
 
-            but = new System.Windows.Forms.Button();
-            but.Text = "Gestion du Personnel";
-            but.Top = 0;
-            but.Left = gauc;
-            but.Width = tailBout;
-            but.Height = 85;
+
+            btnGestPers = new System.Windows.Forms.Button();
+            btnGestPers.Text = "Gestion du Personnel";
+            btnGestPers.Top = 0;
+            btnGestPers.Left = gauc;
+            btnGestPers.Width = tailBout;
+            btnGestPers.Height = 85;
             gauc += tailBout - 1;
 
-            this.Controls.Add(but);
+            btnGestPers.Click += new System.EventHandler(this.btnGestPers_Click);
+            this.Controls.Add(btnGestPers);
 
 
-            but = new System.Windows.Forms.Button();
-            but.Text = "Statistiques";
-            but.Top = 0;
-            but.Left = gauc;
-            but.Width = tailBout;
-            but.Height = 85;
+
+            btnStats = new System.Windows.Forms.Button();
+            btnStats.Text = "Statistiques";
+            btnStats.Top = 0;
+            btnStats.Left = gauc;
+            btnStats.Width = tailBout;
+            btnStats.Height = 85;
             gauc += tailBout - 1;
 
-            this.Controls.Add(but);
+            btnStats.Click += new System.EventHandler(this.btnStats_Click);
+            this.Controls.Add(btnStats);
 
 
+        }
 
+        private void btnTabBord_Click(object sender, EventArgs e)
+        {
+            btnTabBord.Enabled = false;
+            btnTabBord.BackColor = System.Drawing.Color.Gray;
+
+            btnAjouMis.Enabled = true;
+            btnAjouMis.BackColor = System.Drawing.Color.White;
+            btnVisEngin.Enabled = true;
+            btnVisEngin.BackColor = System.Drawing.Color.White;
+            btnGestPers.Enabled = true;
+            btnGestPers.BackColor = System.Drawing.Color.White;
+            btnStats.Enabled = true;
+            btnStats.BackColor = System.Drawing.Color.White;
+
+
+            grbVolet2.Visible = false;
+        }
+
+        private void btnAjouMis_Click(object sender, EventArgs e)
+        {
+            btnAjouMis.Enabled = false;
+            btnAjouMis.BackColor = System.Drawing.Color.Gray;
+
+            btnTabBord.Enabled = true;
+            btnTabBord.BackColor = System.Drawing.Color.White;
+            btnVisEngin.Enabled = true;
+            btnVisEngin.BackColor = System.Drawing.Color.White;
+            btnGestPers.Enabled = true;
+            btnGestPers.BackColor = System.Drawing.Color.White;
+            btnStats.Enabled = true;
+            btnStats.BackColor = System.Drawing.Color.White;
+
+
+            grbVolet2.Visible = true;
+            grbVolet2.Top = 116;
+            grbVolet2.Left = 12;
+            grbVolet2.Height = 651;
+            grbVolet2.Width = 1208;
+        }
+
+        private void btnVisEngin_Click(object sender, EventArgs e)
+        {
+            btnVisEngin.Enabled = false;
+            btnVisEngin.BackColor = System.Drawing.Color.Gray;
+
+            btnTabBord.Enabled = true;
+            btnTabBord.BackColor = System.Drawing.Color.White;
+            btnAjouMis.Enabled = true;
+            btnAjouMis.BackColor = System.Drawing.Color.White;
+            btnGestPers.Enabled = true;
+            btnGestPers.BackColor = System.Drawing.Color.White;
+            btnStats.Enabled = true;
+            btnStats.BackColor = System.Drawing.Color.White;
+
+
+            grbVolet2.Visible = false;
+        }
+
+        private void btnGestPers_Click(object sender, EventArgs e)
+        {
+            btnGestPers.Enabled = false;
+            btnGestPers.BackColor = System.Drawing.Color.Gray;
+
+            btnTabBord.Enabled = true;
+            btnTabBord.BackColor = System.Drawing.Color.White;
+            btnAjouMis.Enabled = true;
+            btnAjouMis.BackColor = System.Drawing.Color.White;
+            btnVisEngin.Enabled = true;
+            btnVisEngin.BackColor = System.Drawing.Color.White;
+            btnStats.Enabled = true;
+            btnStats.BackColor = System.Drawing.Color.White;
+
+
+            grbVolet2.Visible = false;
+        }
+
+        private void btnStats_Click(object sender, EventArgs e)
+        {
+            btnStats.Enabled = false;
+            btnStats.BackColor = System.Drawing.Color.Gray;
+
+            btnTabBord.Enabled = true;
+            btnTabBord.BackColor = System.Drawing.Color.White;
+            btnAjouMis.Enabled = true;
+            btnAjouMis.BackColor = System.Drawing.Color.White;
+            btnVisEngin.Enabled = true;
+            btnVisEngin.BackColor = System.Drawing.Color.White;
+            btnGestPers.Enabled = true;
+            btnGestPers.BackColor = System.Drawing.Color.White;
+
+
+            grbVolet2.Visible = false;
         }
 
         private void txtRue_KeyPress(object sender, KeyPressEventArgs e)
