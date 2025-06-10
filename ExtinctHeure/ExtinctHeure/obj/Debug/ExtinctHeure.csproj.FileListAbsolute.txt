@@ -20,10 +20,7 @@ C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeu
 C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\bin\Debug\ExtinctHeure.pdb
 C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\bin\Debug\System.Data.SQLite.dll
 C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\bin\Debug\System.Data.SQLite.xml
-C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\bin\Debug\testCreaControle.pdb
-C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\bin\Debug\UCPompierMission.pdb
 C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\obj\Debug\ExtinctHeure.csproj.AssemblyReference.cache
-C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\obj\Debug\ExtinctHeure.exe.config
 C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\obj\Debug\ExtinctHeure.frmAccueil.resources
 C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\obj\Debug\ExtinctHeure.Properties.Resources.resources
 C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\obj\Debug\ExtinctHeure.csproj.GenerateResource.cache
@@ -55,3 +52,10 @@ C:\Users\abelx\Documents\Cours_AUTRE\SAE24\ExtinctHeure\ExtinctHeure\bin\Debug\S
 C:\Users\abelx\Documents\Cours_AUTRE\SAE24\ExtinctHeure\ExtinctHeure\obj\Debug\ExtinctH.6CAEC7F4.Up2Date
 C:\Users\abelx\Documents\Cours_AUTRE\SAE24\ExtinctHeure\ExtinctHeure\obj\Debug\ExtinctHeure.exe
 C:\Users\abelx\Documents\Cours_AUTRE\SAE24\ExtinctHeure\ExtinctHeure\obj\Debug\ExtinctHeure.pdb
+C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\bin\Debug\ExtinctHeureUC.dll
+C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\bin\Debug\itextsharp.dll
+C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\bin\Debug\ExtinctHeureUC.pdb
+C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\bin\Debug\itextsharp.xml
+C:\Users\afena\Documents\BUT_Informatique_local\A1\sae24\ExtinctHeure\ExtinctHeure\obj\Debug\ExtinctHeure.frmRapport.resources

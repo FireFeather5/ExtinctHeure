@@ -194,22 +194,22 @@ namespace ExtinctHeure
             btnTabBord.BackColor = System.Drawing.Color.Gray;
 
             btnAjouMis.Enabled = true;
-            btnAjouMis.BackColor = System.Drawing.Color.White;
+            btnAjouMis.BackColor = System.Drawing.Color.FromArgb(35, 47, 52);
             btnVisEngin.Enabled = true;
-            btnVisEngin.BackColor = System.Drawing.Color.White;
+            btnVisEngin.BackColor = System.Drawing.Color.FromArgb(35,47,52);
             btnGestPers.Enabled = true;
-            btnGestPers.BackColor = System.Drawing.Color.White;
+            btnGestPers.BackColor = System.Drawing.Color.FromArgb(35,47,52);
             btnStats.Enabled = true;
-            btnStats.BackColor = System.Drawing.Color.White;
+            btnStats.BackColor = System.Drawing.Color.FromArgb(35,47,52);
 
             this.Text = "Tableau de bord";
 
             grpMissions.Visible = true;
             grpMissions.Size = new Size(1205, 755);
             pnlMissions.Size = new Size(1199, 673);
-            grpMissions.Location = new Point(12, 100);
+            grpMissions.Location = new Point(15, 95);
             grbVolet2.Visible = false;
-            grpEngins.Visible = false;
+            pnlEngin.Visible = false;
             pnlGestion.Visible = false;
             grpStat.Visible = false;
         }
@@ -220,13 +220,13 @@ namespace ExtinctHeure
             btnAjouMis.BackColor = System.Drawing.Color.Gray;
 
             btnTabBord.Enabled = true;
-            btnTabBord.BackColor = System.Drawing.Color.White;
+            btnTabBord.BackColor = System.Drawing.Color.FromArgb(35,47,52);
             btnVisEngin.Enabled = true;
-            btnVisEngin.BackColor = System.Drawing.Color.White;
+            btnVisEngin.BackColor = System.Drawing.Color.FromArgb(35,47,52);
             btnGestPers.Enabled = true;
-            btnGestPers.BackColor = System.Drawing.Color.White;
+            btnGestPers.BackColor = System.Drawing.Color.FromArgb(35,47,52);
             btnStats.Enabled = true;
-            btnStats.BackColor = System.Drawing.Color.White;
+            btnStats.BackColor = System.Drawing.Color.FromArgb(35,47,52);
 
             this.Text = "Ajout de Mission";
 
@@ -234,9 +234,9 @@ namespace ExtinctHeure
 
             grbVolet2.Visible = true;
             grbVolet2.Size = new Size(1205, 755);
-            grbVolet2.Location = new Point(12, 100);
+            grbVolet2.Location = new Point(15, 95);
 
-            grpEngins.Visible = false;
+            pnlEngin.Visible = false;
             pnlGestion.Visible = false;
             grpStat.Visible = false;
         }
@@ -247,22 +247,22 @@ namespace ExtinctHeure
             btnVisEngin.BackColor = System.Drawing.Color.Gray;
 
             btnTabBord.Enabled = true;
-            btnTabBord.BackColor = System.Drawing.Color.White;
+            btnTabBord.BackColor = System.Drawing.Color.FromArgb(35,47,52);
             btnAjouMis.Enabled = true;
-            btnAjouMis.BackColor = System.Drawing.Color.White;
+            btnAjouMis.BackColor = System.Drawing.Color.FromArgb(35,47,52);
             btnGestPers.Enabled = true;
-            btnGestPers.BackColor = System.Drawing.Color.White;
+            btnGestPers.BackColor = System.Drawing.Color.FromArgb(35,47,52);
             btnStats.Enabled = true;
-            btnStats.BackColor = System.Drawing.Color.White;
+            btnStats.BackColor = System.Drawing.Color.FromArgb(35,47,52);
 
             this.Text = "Visualisation des engins";
 
             grpMissions.Visible = false;
             grbVolet2.Visible = false;
 
-            grpEngins.Visible = true;
-            grpEngins.Size = new Size(1205, 755);
-            grpEngins.Location = new Point(12, 100);
+            pnlEngin.Visible = true;
+            pnlEngin.Size = new Size(1205, 755);
+            pnlEngin.Location = new Point(15, 95);
 
             pnlGestion.Visible = false;
             grpStat.Visible = false;
@@ -274,24 +274,33 @@ namespace ExtinctHeure
             btnGestPers.BackColor = System.Drawing.Color.Gray;
 
             btnTabBord.Enabled = true;
-            btnTabBord.BackColor = System.Drawing.Color.White;
+            btnTabBord.BackColor = System.Drawing.Color.FromArgb(35,47,52);
             btnAjouMis.Enabled = true;
-            btnAjouMis.BackColor = System.Drawing.Color.White;
+            btnAjouMis.BackColor = System.Drawing.Color.FromArgb(35,47,52);
             btnVisEngin.Enabled = true;
-            btnVisEngin.BackColor = System.Drawing.Color.White;
+            btnVisEngin.BackColor = System.Drawing.Color.FromArgb(35,47,52);
             btnStats.Enabled = true;
-            btnStats.BackColor = System.Drawing.Color.White;
+            btnStats.BackColor = System.Drawing.Color.FromArgb(35,47,52);
 
             this.Text = "Gestion du personnel";
 
+            if (cboCasernes.Items.Count < 1)
+            {
+                chargerCboCasernes(cboCasernes);
+            }
+
+            if (cboPompiersSansCaserne.Items.Count < 1)
+            {
+                chargerCboPompiersSansCaserne();
+            }
+
             grpMissions.Visible = false;
             grbVolet2.Visible = false;
-            grpEngins.Visible = false;
+            pnlEngin.Visible = false;
 
             pnlGestion.Size = new Size(1205, 755);
+            pnlGestion.Location = new Point(15, 95);
             pnlGestion.Visible = true;
-            chargerCboCasernes(cboCasernes);
-            chargerCboPompiersSansCaserne();
 
             grpStat.Visible = false;
         }
@@ -302,24 +311,24 @@ namespace ExtinctHeure
             btnStats.BackColor = System.Drawing.Color.Gray;
 
             btnTabBord.Enabled = true;
-            btnTabBord.BackColor = System.Drawing.Color.White;
+            btnTabBord.BackColor = System.Drawing.Color.FromArgb(35,47,52);
             btnAjouMis.Enabled = true;
-            btnAjouMis.BackColor = System.Drawing.Color.White;
+            btnAjouMis.BackColor = System.Drawing.Color.FromArgb(35,47,52);
             btnVisEngin.Enabled = true;
-            btnVisEngin.BackColor = System.Drawing.Color.White;
+            btnVisEngin.BackColor = System.Drawing.Color.FromArgb(35,47,52);
             btnGestPers.Enabled = true;
-            btnGestPers.BackColor = System.Drawing.Color.White;
+            btnGestPers.BackColor = System.Drawing.Color.FromArgb(35,47,52);
 
             this.Text = "Statistiques";
 
             grpMissions.Visible = false;
             grbVolet2.Visible = false;
-            grpEngins.Visible = false;
+            pnlEngin.Visible = false;
             pnlGestion.Visible = false;
 
             grpStat.Visible = true;
             grpStat.Size = new Size(1205, 755);
-            grpStat.Location = new Point(12, 100);
+            grpStat.Location = new Point(15, 95);
         }
 
         private void cboCasernes_SelectionChangeCommitted(object sender, EventArgs e)
@@ -840,6 +849,11 @@ namespace ExtinctHeure
 
         private void ChargerInfosPompiers()
         {
+            if (_isAlreadyConnected)
+            {
+                btnLogin.Visible = false; // On cache le bouton de connexion si on est déjà connecté
+            }
+
             cx = Connexion.Connec; // On s'assure d'avoir la connexion à la base de données
 
             grpInfosPompier.Visible = false;
@@ -1175,6 +1189,7 @@ namespace ExtinctHeure
             // Méthodes internes
             void cboGrades_SelectedValueChanged(object sender, EventArgs e)
             {
+                cx = Connexion.Connec;
                 if (!string.IsNullOrEmpty(cboGrades.Text))
                 {
                     req = $@"SELECT code FROM Grade WHERE libelle = '{cboGrades.Text}'";
@@ -1185,6 +1200,7 @@ namespace ExtinctHeure
                         txtCode.Text = reader.GetString(0);
                     }
                 }
+                Connexion.FermerConnexion();
             }
 
             void BtnChange_Click(object sender, EventArgs e)
@@ -1431,7 +1447,6 @@ namespace ExtinctHeure
             grpInfosPerso.Controls.Clear();
             grpInfosPompier.Visible = false;
 
-            btnLogin.Visible = true;
             cboChoixCaserne.SelectedIndex = -1;
             chklstHabilitations.Items.Clear();
             lstAnciennesCasernes.Items.Clear();
@@ -1820,9 +1835,9 @@ namespace ExtinctHeure
             }
         }
 
-        private void grpEngins_VisibleChanged(object sender, EventArgs e)
+        private void pnlEngin_VisibleChanged(object sender, EventArgs e)
         {
-            if (grpEngins.Visible)
+            if (pnlEngin.Visible)
             {
                 btnFirst.Image = new Bitmap(System.Drawing.Image.FromFile("../../../../Ressources/ImagesNavigation/premier.png"), new Size(80, 80));
                 btnPrevious.Image = new Bitmap(System.Drawing.Image.FromFile("../../../../Ressources/ImagesNavigation/precendent.png"), new Size(80, 80));

@@ -95,7 +95,7 @@
             this.lblTypeSinistre = new System.Windows.Forms.Label();
             this.lblEnginNbUtilisation = new System.Windows.Forms.Label();
             this.cboCaserneStat = new System.Windows.Forms.ComboBox();
-            this.grpEngins = new System.Windows.Forms.GroupBox();
+            this.pnlEngin = new System.Windows.Forms.Panel();
             this.btnLast = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
@@ -123,29 +123,31 @@
             this.grpInfosCarriere.SuspendLayout();
             this.grpMissions.SuspendLayout();
             this.grpStat.SuspendLayout();
-            this.grpEngins.SuspendLayout();
+            this.pnlEngin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbEngin)).BeginInit();
             this.SuspendLayout();
             // 
             // grbVolet2
             // 
+            this.grbVolet2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(49)))), ((int)(((byte)(56)))));
             this.grbVolet2.Controls.Add(this.grbEP);
             this.grbVolet2.Controls.Add(this.lblDteMis);
             this.grbVolet2.Controls.Add(this.lblNumMis);
             this.grbVolet2.Controls.Add(this.groupBox3);
             this.grbVolet2.Controls.Add(this.groupBox2);
-            this.grbVolet2.Location = new System.Drawing.Point(50, 65);
+            this.grbVolet2.Location = new System.Drawing.Point(15, 95);
             this.grbVolet2.Name = "grbVolet2";
-            this.grbVolet2.Size = new System.Drawing.Size(38, 20);
+            this.grbVolet2.Size = new System.Drawing.Size(1205, 755);
             this.grbVolet2.TabIndex = 0;
             this.grbVolet2.TabStop = false;
             this.grbVolet2.Visible = false;
             // 
             // grbEP
             // 
-            this.grbEP.Location = new System.Drawing.Point(34, 319);
+            this.grbEP.ForeColor = System.Drawing.Color.White;
+            this.grbEP.Location = new System.Drawing.Point(18, 425);
             this.grbEP.Name = "grbEP";
-            this.grbEP.Size = new System.Drawing.Size(1315, 277);
+            this.grbEP.Size = new System.Drawing.Size(1168, 277);
             this.grbEP.TabIndex = 5;
             this.grbEP.TabStop = false;
             this.grbEP.Text = "Mobilisation des engins et des pompiers";
@@ -176,9 +178,10 @@
             this.groupBox3.Controls.Add(this.btnAnn);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Location = new System.Drawing.Point(34, 216);
+            this.groupBox3.ForeColor = System.Drawing.Color.White;
+            this.groupBox3.Location = new System.Drawing.Point(18, 216);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1315, 97);
+            this.groupBox3.Size = new System.Drawing.Size(1168, 189);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Décisions du régulateur";
@@ -186,7 +189,7 @@
             // cboCasMob
             // 
             this.cboCasMob.FormattingEnabled = true;
-            this.cboCasMob.Location = new System.Drawing.Point(706, 47);
+            this.cboCasMob.Location = new System.Drawing.Point(850, 47);
             this.cboCasMob.Name = "cboCasMob";
             this.cboCasMob.Size = new System.Drawing.Size(220, 25);
             this.cboCasMob.TabIndex = 9;
@@ -194,14 +197,14 @@
             // cboNatSin
             // 
             this.cboNatSin.FormattingEnabled = true;
-            this.cboNatSin.Location = new System.Drawing.Point(201, 47);
+            this.cboNatSin.Location = new System.Drawing.Point(230, 47);
             this.cboNatSin.Name = "cboNatSin";
             this.cboNatSin.Size = new System.Drawing.Size(220, 25);
             this.cboNatSin.TabIndex = 8;
             // 
             // btnConstEqu
             // 
-            this.btnConstEqu.Location = new System.Drawing.Point(1159, 26);
+            this.btnConstEqu.Location = new System.Drawing.Point(1000, 110);
             this.btnConstEqu.Name = "btnConstEqu";
             this.btnConstEqu.Size = new System.Drawing.Size(139, 57);
             this.btnConstEqu.TabIndex = 10;
@@ -212,7 +215,7 @@
             // btnAnn
             // 
             this.epTxt.SetIconAlignment(this.btnAnn, System.Windows.Forms.ErrorIconAlignment.BottomLeft);
-            this.btnAnn.Location = new System.Drawing.Point(1000, 26);
+            this.btnAnn.Location = new System.Drawing.Point(850, 110);
             this.btnAnn.Name = "btnAnn";
             this.btnAnn.Size = new System.Drawing.Size(139, 57);
             this.btnAnn.TabIndex = 11;
@@ -223,7 +226,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(541, 46);
+            this.label9.Location = new System.Drawing.Point(650, 50);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(139, 17);
             this.label9.TabIndex = 5;
@@ -232,7 +235,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(62, 46);
+            this.label8.Location = new System.Drawing.Point(62, 50);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(117, 17);
             this.label8.TabIndex = 4;
@@ -249,9 +252,10 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(34, 53);
+            this.groupBox2.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox2.Location = new System.Drawing.Point(18, 53);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1315, 158);
+            this.groupBox2.Size = new System.Drawing.Size(1168, 158);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Informations usager";
@@ -339,11 +343,11 @@
             // 
             // pnlGestion
             // 
-            this.pnlGestion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(124)))), ((int)(((byte)(0)))));
+            this.pnlGestion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(49)))), ((int)(((byte)(56)))));
             this.pnlGestion.Controls.Add(this.pnlInfosPompiers);
             this.pnlGestion.Controls.Add(this.grpInfosPompier);
             this.pnlGestion.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.pnlGestion.Location = new System.Drawing.Point(15, 95);
+            this.pnlGestion.Location = new System.Drawing.Point(15, 120);
             this.pnlGestion.Name = "pnlGestion";
             this.pnlGestion.Size = new System.Drawing.Size(5, 5);
             this.pnlGestion.TabIndex = 0;
@@ -351,7 +355,7 @@
             // 
             // pnlInfosPompiers
             // 
-            this.pnlInfosPompiers.BackColor = System.Drawing.Color.DarkRed;
+            this.pnlInfosPompiers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(108)))), ((int)(((byte)(145)))));
             this.pnlInfosPompiers.Controls.Add(this.pcbIconeNouveau);
             this.pnlInfosPompiers.Controls.Add(this.cboPompiersSansCaserne);
             this.pnlInfosPompiers.Controls.Add(this.lblPompiersSansCaserne);
@@ -645,6 +649,7 @@
             // 
             // grpMissions
             // 
+            this.grpMissions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(108)))), ((int)(((byte)(145)))));
             this.grpMissions.Controls.Add(this.chkEnCours);
             this.grpMissions.Controls.Add(this.pnlMissions);
             this.grpMissions.Location = new System.Drawing.Point(42, 105);
@@ -668,6 +673,7 @@
             // 
             // grpStat
             // 
+            this.grpStat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(108)))), ((int)(((byte)(145)))));
             this.grpStat.Controls.Add(this.statsEnginPlusUtiliseHeure);
             this.grpStat.Controls.Add(this.statsPompierHabilitation);
             this.grpStat.Controls.Add(this.statsHabilitationDemandee);
@@ -830,76 +836,71 @@
             this.cboCaserneStat.TabIndex = 0;
             this.cboCaserneStat.SelectedIndexChanged += new System.EventHandler(this.cboCaserneStat_SelectedIndexChanged);
             // 
-            // grpEngins
+            // pnlEngin
             // 
-            this.grpEngins.Controls.Add(this.btnLast);
-            this.grpEngins.Controls.Add(this.btnNext);
-            this.grpEngins.Controls.Add(this.btnPrevious);
-            this.grpEngins.Controls.Add(this.btnFirst);
-            this.grpEngins.Controls.Add(this.chkReparation);
-            this.grpEngins.Controls.Add(this.chkMission);
-            this.grpEngins.Controls.Add(this.pcbEngin);
-            this.grpEngins.Controls.Add(this.lblReparation);
-            this.grpEngins.Controls.Add(this.lblMission);
-            this.grpEngins.Controls.Add(this.lblReception);
-            this.grpEngins.Controls.Add(this.lblReceptionEngin);
-            this.grpEngins.Controls.Add(this.lblNumeroEngin);
-            this.grpEngins.Controls.Add(this.lblNumero);
-            this.grpEngins.Controls.Add(this.cboCaserne);
-            this.grpEngins.Controls.Add(this.lblChoixCaserne);
-            this.grpEngins.Location = new System.Drawing.Point(111, 61);
-            this.grpEngins.Name = "grpEngins";
-            this.grpEngins.Size = new System.Drawing.Size(1062, 761);
-            this.grpEngins.TabIndex = 0;
-            this.grpEngins.TabStop = false;
-            this.grpEngins.Visible = false;
-            this.grpEngins.VisibleChanged += new System.EventHandler(this.grpEngins_VisibleChanged);
+            this.pnlEngin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(108)))), ((int)(((byte)(145)))));
+            this.pnlEngin.Controls.Add(this.btnLast);
+            this.pnlEngin.Controls.Add(this.btnNext);
+            this.pnlEngin.Controls.Add(this.btnPrevious);
+            this.pnlEngin.Controls.Add(this.btnFirst);
+            this.pnlEngin.Controls.Add(this.chkReparation);
+            this.pnlEngin.Controls.Add(this.chkMission);
+            this.pnlEngin.Controls.Add(this.pcbEngin);
+            this.pnlEngin.Controls.Add(this.lblReparation);
+            this.pnlEngin.Controls.Add(this.lblMission);
+            this.pnlEngin.Controls.Add(this.lblReception);
+            this.pnlEngin.Controls.Add(this.lblReceptionEngin);
+            this.pnlEngin.Controls.Add(this.lblNumeroEngin);
+            this.pnlEngin.Controls.Add(this.lblNumero);
+            this.pnlEngin.Controls.Add(this.cboCaserne);
+            this.pnlEngin.Controls.Add(this.lblChoixCaserne);
+            this.pnlEngin.Location = new System.Drawing.Point(15, 110);
+            this.pnlEngin.Name = "pnlEngin";
+            this.pnlEngin.Size = new System.Drawing.Size(5, 5);
+            this.pnlEngin.TabIndex = 1;
+            this.pnlEngin.VisibleChanged += new System.EventHandler(this.pnlEngin_VisibleChanged);
             // 
             // btnLast
             // 
-            this.btnLast.Location = new System.Drawing.Point(661, 653);
+            this.btnLast.Location = new System.Drawing.Point(620, 650);
             this.btnLast.Name = "btnLast";
             this.btnLast.Size = new System.Drawing.Size(90, 90);
-            this.btnLast.TabIndex = 7;
+            this.btnLast.TabIndex = 19;
             this.btnLast.UseVisualStyleBackColor = true;
-            this.btnLast.Click += new System.EventHandler(this.changerEngin);
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(565, 653);
+            this.btnNext.Location = new System.Drawing.Point(524, 650);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(90, 90);
-            this.btnNext.TabIndex = 7;
+            this.btnNext.TabIndex = 20;
             this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Click += new System.EventHandler(this.changerEngin);
             // 
             // btnPrevious
             // 
-            this.btnPrevious.Location = new System.Drawing.Point(469, 653);
+            this.btnPrevious.Location = new System.Drawing.Point(428, 650);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(90, 90);
-            this.btnPrevious.TabIndex = 7;
+            this.btnPrevious.TabIndex = 21;
             this.btnPrevious.UseVisualStyleBackColor = true;
-            this.btnPrevious.Click += new System.EventHandler(this.changerEngin);
             // 
             // btnFirst
             // 
-            this.btnFirst.Location = new System.Drawing.Point(373, 653);
+            this.btnFirst.Location = new System.Drawing.Point(332, 650);
             this.btnFirst.Name = "btnFirst";
             this.btnFirst.Size = new System.Drawing.Size(90, 90);
-            this.btnFirst.TabIndex = 7;
+            this.btnFirst.TabIndex = 22;
             this.btnFirst.UseVisualStyleBackColor = true;
-            this.btnFirst.Click += new System.EventHandler(this.changerEngin);
             // 
             // chkReparation
             // 
             this.chkReparation.AutoSize = true;
             this.chkReparation.Enabled = false;
             this.chkReparation.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkReparation.Location = new System.Drawing.Point(433, 467);
+            this.chkReparation.Location = new System.Drawing.Point(392, 464);
             this.chkReparation.Name = "chkReparation";
             this.chkReparation.Size = new System.Drawing.Size(15, 14);
-            this.chkReparation.TabIndex = 5;
+            this.chkReparation.TabIndex = 17;
             this.chkReparation.UseVisualStyleBackColor = true;
             // 
             // chkMission
@@ -907,112 +908,113 @@
             this.chkMission.AutoSize = true;
             this.chkMission.Enabled = false;
             this.chkMission.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkMission.Location = new System.Drawing.Point(433, 434);
+            this.chkMission.Location = new System.Drawing.Point(392, 431);
             this.chkMission.Name = "chkMission";
             this.chkMission.Size = new System.Drawing.Size(15, 14);
-            this.chkMission.TabIndex = 5;
+            this.chkMission.TabIndex = 18;
             this.chkMission.UseVisualStyleBackColor = true;
             // 
             // pcbEngin
             // 
             this.pcbEngin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pcbEngin.Location = new System.Drawing.Point(630, 119);
+            this.pcbEngin.Location = new System.Drawing.Point(589, 116);
             this.pcbEngin.Name = "pcbEngin";
             this.pcbEngin.Size = new System.Drawing.Size(500, 500);
             this.pcbEngin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pcbEngin.TabIndex = 4;
+            this.pcbEngin.TabIndex = 16;
             this.pcbEngin.TabStop = false;
             // 
             // lblReparation
             // 
             this.lblReparation.AutoSize = true;
             this.lblReparation.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblReparation.Location = new System.Drawing.Point(158, 461);
+            this.lblReparation.Location = new System.Drawing.Point(117, 458);
             this.lblReparation.Name = "lblReparation";
             this.lblReparation.Size = new System.Drawing.Size(148, 24);
-            this.lblReparation.TabIndex = 3;
+            this.lblReparation.TabIndex = 10;
             this.lblReparation.Text = "En réparation :";
             // 
             // lblMission
             // 
             this.lblMission.AutoSize = true;
             this.lblMission.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMission.Location = new System.Drawing.Point(158, 428);
+            this.lblMission.Location = new System.Drawing.Point(117, 425);
             this.lblMission.Name = "lblMission";
             this.lblMission.Size = new System.Drawing.Size(124, 24);
-            this.lblMission.TabIndex = 3;
+            this.lblMission.TabIndex = 11;
             this.lblMission.Text = "En mission :";
             // 
             // lblReception
             // 
             this.lblReception.AutoSize = true;
             this.lblReception.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblReception.Location = new System.Drawing.Point(157, 324);
+            this.lblReception.Location = new System.Drawing.Point(116, 321);
             this.lblReception.Name = "lblReception";
             this.lblReception.Size = new System.Drawing.Size(189, 24);
-            this.lblReception.TabIndex = 3;
-            this.lblReception.Text = "Date de récéption :";
+            this.lblReception.TabIndex = 12;
+            this.lblReception.Text = "Date de réception :";
             // 
             // lblReceptionEngin
             // 
             this.lblReceptionEngin.AutoSize = true;
             this.lblReceptionEngin.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblReceptionEngin.Location = new System.Drawing.Point(434, 324);
+            this.lblReceptionEngin.Location = new System.Drawing.Point(393, 321);
             this.lblReceptionEngin.Name = "lblReceptionEngin";
             this.lblReceptionEngin.Size = new System.Drawing.Size(18, 24);
-            this.lblReceptionEngin.TabIndex = 3;
+            this.lblReceptionEngin.TabIndex = 13;
             this.lblReceptionEngin.Text = "*";
             // 
             // lblNumeroEngin
             // 
             this.lblNumeroEngin.AutoSize = true;
             this.lblNumeroEngin.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumeroEngin.Location = new System.Drawing.Point(434, 291);
+            this.lblNumeroEngin.Location = new System.Drawing.Point(393, 288);
             this.lblNumeroEngin.Name = "lblNumeroEngin";
             this.lblNumeroEngin.Size = new System.Drawing.Size(18, 24);
-            this.lblNumeroEngin.TabIndex = 3;
+            this.lblNumeroEngin.TabIndex = 14;
             this.lblNumeroEngin.Text = "*";
             // 
             // lblNumero
             // 
             this.lblNumero.AutoSize = true;
             this.lblNumero.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumero.Location = new System.Drawing.Point(158, 291);
+            this.lblNumero.Location = new System.Drawing.Point(117, 288);
             this.lblNumero.Name = "lblNumero";
             this.lblNumero.Size = new System.Drawing.Size(94, 24);
-            this.lblNumero.TabIndex = 3;
+            this.lblNumero.TabIndex = 15;
             this.lblNumero.Text = "Numero :";
             // 
             // cboCaserne
             // 
             this.cboCaserne.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCaserne.FormattingEnabled = true;
-            this.cboCaserne.Location = new System.Drawing.Point(597, 18);
+            this.cboCaserne.Location = new System.Drawing.Point(556, 15);
             this.cboCaserne.Name = "cboCaserne";
             this.cboCaserne.Size = new System.Drawing.Size(239, 25);
-            this.cboCaserne.TabIndex = 2;
+            this.cboCaserne.TabIndex = 9;
             // 
             // lblChoixCaserne
             // 
             this.lblChoixCaserne.AutoSize = true;
-            this.lblChoixCaserne.Location = new System.Drawing.Point(446, 21);
+            this.lblChoixCaserne.Location = new System.Drawing.Point(405, 18);
             this.lblChoixCaserne.Name = "lblChoixCaserne";
             this.lblChoixCaserne.Size = new System.Drawing.Size(145, 17);
-            this.lblChoixCaserne.TabIndex = 1;
+            this.lblChoixCaserne.TabIndex = 8;
             this.lblChoixCaserne.Text = "Choix de la caserne :";
             // 
             // frmAccueil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(85)))));
             this.ClientSize = new System.Drawing.Size(1234, 861);
+            this.Controls.Add(this.pnlEngin);
             this.Controls.Add(this.pnlGestion);
             this.Controls.Add(this.grbVolet2);
             this.Controls.Add(this.grpMissions);
             this.Controls.Add(this.grpStat);
-            this.Controls.Add(this.grpEngins);
             this.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ForeColor = System.Drawing.Color.White;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmAccueil";
@@ -1039,8 +1041,8 @@
             this.grpMissions.PerformLayout();
             this.grpStat.ResumeLayout(false);
             this.grpStat.PerformLayout();
-            this.grpEngins.ResumeLayout(false);
-            this.grpEngins.PerformLayout();
+            this.pnlEngin.ResumeLayout(false);
+            this.pnlEngin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbEngin)).EndInit();
             this.ResumeLayout(false);
 
@@ -1119,25 +1121,22 @@
         private ExtinctHeureUC.Stats statsHabilitationDemandee;
         private ExtinctHeureUC.Stats statsPompierHabilitation;
         private System.Windows.Forms.Label lblParCaserne;
-
-        // VOLET 3
-
-        private System.Windows.Forms.GroupBox grpEngins;
-        private System.Windows.Forms.Label lblChoixCaserne;
-        private System.Windows.Forms.ComboBox cboCaserne;
-        private System.Windows.Forms.Label lblNumero;
-        private System.Windows.Forms.Label lblReception;
-        private System.Windows.Forms.Label lblReparation;
-        private System.Windows.Forms.Label lblMission;
-        private System.Windows.Forms.PictureBox pcbEngin;
-        private System.Windows.Forms.CheckBox chkReparation;
-        private System.Windows.Forms.CheckBox chkMission;
-        private System.Windows.Forms.Label lblReceptionEngin;
-        private System.Windows.Forms.Label lblNumeroEngin;
+        private System.Windows.Forms.Panel pnlEngin;
         private System.Windows.Forms.Button btnLast;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnPrevious;
         private System.Windows.Forms.Button btnFirst;
+        private System.Windows.Forms.CheckBox chkReparation;
+        private System.Windows.Forms.CheckBox chkMission;
+        private System.Windows.Forms.PictureBox pcbEngin;
+        private System.Windows.Forms.Label lblReparation;
+        private System.Windows.Forms.Label lblMission;
+        private System.Windows.Forms.Label lblReception;
+        private System.Windows.Forms.Label lblReceptionEngin;
+        private System.Windows.Forms.Label lblNumeroEngin;
+        private System.Windows.Forms.Label lblNumero;
+        private System.Windows.Forms.ComboBox cboCaserne;
+        private System.Windows.Forms.Label lblChoixCaserne;
     }
 }
 
