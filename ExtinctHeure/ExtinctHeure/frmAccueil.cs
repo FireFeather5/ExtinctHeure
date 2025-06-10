@@ -201,6 +201,7 @@ namespace ExtinctHeure
             btnGestPers.BackColor = System.Drawing.Color.FromArgb(35,47,52);
             btnStats.Enabled = true;
             btnStats.BackColor = System.Drawing.Color.FromArgb(35,47,52);
+            grpMissions.ForeColor = Color.Black;
 
             this.Text = "Tableau de bord";
 
@@ -208,7 +209,7 @@ namespace ExtinctHeure
             grpMissions.Size = new Size(1205, 755);
             pnlMissions.Size = new Size(1199, 673);
             grpMissions.Location = new Point(15, 95);
-            grbVolet2.Visible = false;
+            pnlVolet2.Visible = false;
             pnlEngin.Visible = false;
             pnlGestion.Visible = false;
             grpStat.Visible = false;
@@ -232,9 +233,9 @@ namespace ExtinctHeure
 
             grpMissions.Visible = false;
 
-            grbVolet2.Visible = true;
-            grbVolet2.Size = new Size(1205, 755);
-            grbVolet2.Location = new Point(15, 95);
+            pnlVolet2.Visible = true;
+            pnlVolet2.Size = new Size(1205, 755);
+            pnlVolet2.Location = new Point(15, 95);
 
             pnlEngin.Visible = false;
             pnlGestion.Visible = false;
@@ -258,7 +259,7 @@ namespace ExtinctHeure
             this.Text = "Visualisation des engins";
 
             grpMissions.Visible = false;
-            grbVolet2.Visible = false;
+            pnlVolet2.Visible = false;
 
             pnlEngin.Visible = true;
             pnlEngin.Size = new Size(1205, 755);
@@ -295,7 +296,7 @@ namespace ExtinctHeure
             }
 
             grpMissions.Visible = false;
-            grbVolet2.Visible = false;
+            pnlVolet2.Visible = false;
             pnlEngin.Visible = false;
 
             pnlGestion.Size = new Size(1205, 755);
@@ -322,7 +323,7 @@ namespace ExtinctHeure
             this.Text = "Statistiques";
 
             grpMissions.Visible = false;
-            grbVolet2.Visible = false;
+            pnlVolet2.Visible = false;
             pnlEngin.Visible = false;
             pnlGestion.Visible = false;
 

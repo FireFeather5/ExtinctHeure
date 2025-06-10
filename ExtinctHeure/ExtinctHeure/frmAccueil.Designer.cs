@@ -30,28 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAccueil));
-            this.grbVolet2 = new System.Windows.Forms.GroupBox();
-            this.grbEP = new System.Windows.Forms.GroupBox();
-            this.lblDteMis = new System.Windows.Forms.Label();
-            this.lblNumMis = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.cboCasMob = new System.Windows.Forms.ComboBox();
-            this.cboNatSin = new System.Windows.Forms.ComboBox();
-            this.btnConstEqu = new System.Windows.Forms.Button();
-            this.btnAnn = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtVille = new System.Windows.Forms.TextBox();
-            this.txtCP = new System.Windows.Forms.TextBox();
-            this.txtRue = new System.Windows.Forms.TextBox();
-            this.txtMotif = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.epTxt = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnAnn = new System.Windows.Forms.Button();
             this.pnlGestion = new System.Windows.Forms.Panel();
             this.pnlInfosPompiers = new System.Windows.Forms.Panel();
             this.pcbIconeNouveau = new System.Windows.Forms.PictureBox();
@@ -111,9 +91,26 @@
             this.lblNumero = new System.Windows.Forms.Label();
             this.cboCaserne = new System.Windows.Forms.ComboBox();
             this.lblChoixCaserne = new System.Windows.Forms.Label();
-            this.grbVolet2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.pnlVolet2 = new System.Windows.Forms.Panel();
+            this.grbEP = new System.Windows.Forms.GroupBox();
+            this.lblDteMis = new System.Windows.Forms.Label();
+            this.lblNumMis = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cboCasMob = new System.Windows.Forms.ComboBox();
+            this.cboNatSin = new System.Windows.Forms.ComboBox();
+            this.btnConstEqu = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtVille = new System.Windows.Forms.TextBox();
+            this.txtCP = new System.Windows.Forms.TextBox();
+            this.txtRue = new System.Windows.Forms.TextBox();
+            this.txtMotif = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.epTxt)).BeginInit();
             this.pnlGestion.SuspendLayout();
             this.pnlInfosPompiers.SuspendLayout();
@@ -125,95 +122,18 @@
             this.grpStat.SuspendLayout();
             this.pnlEngin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbEngin)).BeginInit();
+            this.pnlVolet2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // grbVolet2
+            // epTxt
             // 
-            this.grbVolet2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(49)))), ((int)(((byte)(56)))));
-            this.grbVolet2.Controls.Add(this.grbEP);
-            this.grbVolet2.Controls.Add(this.lblDteMis);
-            this.grbVolet2.Controls.Add(this.lblNumMis);
-            this.grbVolet2.Controls.Add(this.groupBox3);
-            this.grbVolet2.Controls.Add(this.groupBox2);
-            this.grbVolet2.Location = new System.Drawing.Point(15, 95);
-            this.grbVolet2.Name = "grbVolet2";
-            this.grbVolet2.Size = new System.Drawing.Size(1205, 755);
-            this.grbVolet2.TabIndex = 0;
-            this.grbVolet2.TabStop = false;
-            this.grbVolet2.Visible = false;
-            // 
-            // grbEP
-            // 
-            this.grbEP.ForeColor = System.Drawing.Color.White;
-            this.grbEP.Location = new System.Drawing.Point(18, 425);
-            this.grbEP.Name = "grbEP";
-            this.grbEP.Size = new System.Drawing.Size(1168, 277);
-            this.grbEP.TabIndex = 5;
-            this.grbEP.TabStop = false;
-            this.grbEP.Text = "Mobilisation des engins et des pompiers";
-            // 
-            // lblDteMis
-            // 
-            this.lblDteMis.AutoSize = true;
-            this.lblDteMis.Location = new System.Drawing.Point(814, 26);
-            this.lblDteMis.Name = "lblDteMis";
-            this.lblDteMis.Size = new System.Drawing.Size(110, 17);
-            this.lblDteMis.TabIndex = 4;
-            this.lblDteMis.Text = "déclenchée le : ";
-            // 
-            // lblNumMis
-            // 
-            this.lblNumMis.AutoSize = true;
-            this.lblNumMis.Location = new System.Drawing.Point(307, 26);
-            this.lblNumMis.Name = "lblNumMis";
-            this.lblNumMis.Size = new System.Drawing.Size(75, 17);
-            this.lblNumMis.TabIndex = 3;
-            this.lblNumMis.Text = "Mission n°";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.cboCasMob);
-            this.groupBox3.Controls.Add(this.cboNatSin);
-            this.groupBox3.Controls.Add(this.btnConstEqu);
-            this.groupBox3.Controls.Add(this.btnAnn);
-            this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.ForeColor = System.Drawing.Color.White;
-            this.groupBox3.Location = new System.Drawing.Point(18, 216);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1168, 189);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Décisions du régulateur";
-            // 
-            // cboCasMob
-            // 
-            this.cboCasMob.FormattingEnabled = true;
-            this.cboCasMob.Location = new System.Drawing.Point(850, 47);
-            this.cboCasMob.Name = "cboCasMob";
-            this.cboCasMob.Size = new System.Drawing.Size(220, 25);
-            this.cboCasMob.TabIndex = 9;
-            // 
-            // cboNatSin
-            // 
-            this.cboNatSin.FormattingEnabled = true;
-            this.cboNatSin.Location = new System.Drawing.Point(230, 47);
-            this.cboNatSin.Name = "cboNatSin";
-            this.cboNatSin.Size = new System.Drawing.Size(220, 25);
-            this.cboNatSin.TabIndex = 8;
-            // 
-            // btnConstEqu
-            // 
-            this.btnConstEqu.Location = new System.Drawing.Point(1000, 110);
-            this.btnConstEqu.Name = "btnConstEqu";
-            this.btnConstEqu.Size = new System.Drawing.Size(139, 57);
-            this.btnConstEqu.TabIndex = 10;
-            this.btnConstEqu.Text = "Constituer équipe";
-            this.btnConstEqu.UseVisualStyleBackColor = true;
-            this.btnConstEqu.Click += new System.EventHandler(this.btnConstEqu_Click);
+            this.epTxt.ContainerControl = this;
             // 
             // btnAnn
             // 
+            this.btnAnn.ForeColor = System.Drawing.Color.Black;
             this.epTxt.SetIconAlignment(this.btnAnn, System.Windows.Forms.ErrorIconAlignment.BottomLeft);
             this.btnAnn.Location = new System.Drawing.Point(850, 110);
             this.btnAnn.Name = "btnAnn";
@@ -223,131 +143,13 @@
             this.btnAnn.UseVisualStyleBackColor = true;
             this.btnAnn.Click += new System.EventHandler(this.btnAnn_Click);
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(650, 50);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(139, 17);
-            this.label9.TabIndex = 5;
-            this.label9.Text = "Caserne à mobiliser";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(62, 50);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(117, 17);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "Nature du siniste";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.txtVille);
-            this.groupBox2.Controls.Add(this.txtCP);
-            this.groupBox2.Controls.Add(this.txtRue);
-            this.groupBox2.Controls.Add(this.txtMotif);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox2.Location = new System.Drawing.Point(18, 53);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1168, 158);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Informations usager";
-            // 
-            // txtVille
-            // 
-            this.txtVille.Location = new System.Drawing.Point(858, 115);
-            this.txtVille.Name = "txtVille";
-            this.txtVille.Size = new System.Drawing.Size(226, 25);
-            this.txtVille.TabIndex = 8;
-            this.txtVille.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVille_KeyPress);
-            // 
-            // txtCP
-            // 
-            this.txtCP.Location = new System.Drawing.Point(858, 83);
-            this.txtCP.Name = "txtCP";
-            this.txtCP.Size = new System.Drawing.Size(226, 25);
-            this.txtCP.TabIndex = 7;
-            this.txtCP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCP_KeyPress);
-            // 
-            // txtRue
-            // 
-            this.txtRue.Location = new System.Drawing.Point(858, 51);
-            this.txtRue.Name = "txtRue";
-            this.txtRue.Size = new System.Drawing.Size(226, 25);
-            this.txtRue.TabIndex = 6;
-            this.txtRue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRue_KeyPress);
-            // 
-            // txtMotif
-            // 
-            this.txtMotif.Location = new System.Drawing.Point(313, 51);
-            this.txtMotif.Name = "txtMotif";
-            this.txtMotif.Size = new System.Drawing.Size(226, 25);
-            this.txtMotif.TabIndex = 5;
-            this.txtMotif.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMotif_KeyPress);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(911, 23);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(113, 17);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Adresse sinistre";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(783, 118);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(34, 17);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Ville";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(726, 86);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 17);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Code postal";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(783, 54);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 17);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Rue";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(230, 54);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Motif";
-            // 
-            // epTxt
-            // 
-            this.epTxt.ContainerControl = this;
-            // 
             // pnlGestion
             // 
             this.pnlGestion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(49)))), ((int)(((byte)(56)))));
             this.pnlGestion.Controls.Add(this.pnlInfosPompiers);
             this.pnlGestion.Controls.Add(this.grpInfosPompier);
             this.pnlGestion.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.pnlGestion.Location = new System.Drawing.Point(15, 120);
+            this.pnlGestion.Location = new System.Drawing.Point(15, 78);
             this.pnlGestion.Name = "pnlGestion";
             this.pnlGestion.Size = new System.Drawing.Size(5, 5);
             this.pnlGestion.TabIndex = 0;
@@ -393,7 +195,7 @@
             this.cboPompiersSansCaserne.FormattingEnabled = true;
             this.cboPompiersSansCaserne.Location = new System.Drawing.Point(19, 345);
             this.cboPompiersSansCaserne.Name = "cboPompiersSansCaserne";
-            this.cboPompiersSansCaserne.Size = new System.Drawing.Size(237, 25);
+            this.cboPompiersSansCaserne.Size = new System.Drawing.Size(237, 30);
             this.cboPompiersSansCaserne.TabIndex = 6;
             this.cboPompiersSansCaserne.SelectionChangeCommitted += new System.EventHandler(this.cboPompiersSansCaserne_SelectionChangeCommitted);
             // 
@@ -403,7 +205,7 @@
             this.lblPompiersSansCaserne.ForeColor = System.Drawing.Color.Transparent;
             this.lblPompiersSansCaserne.Location = new System.Drawing.Point(49, 305);
             this.lblPompiersSansCaserne.Name = "lblPompiersSansCaserne";
-            this.lblPompiersSansCaserne.Size = new System.Drawing.Size(176, 17);
+            this.lblPompiersSansCaserne.Size = new System.Drawing.Size(225, 22);
             this.lblPompiersSansCaserne.TabIndex = 5;
             this.lblPompiersSansCaserne.Text = "Pompiers sans caserne : ";
             // 
@@ -424,7 +226,7 @@
             this.cboCasernes.FormattingEnabled = true;
             this.cboCasernes.Location = new System.Drawing.Point(19, 165);
             this.cboCasernes.Name = "cboCasernes";
-            this.cboCasernes.Size = new System.Drawing.Size(237, 25);
+            this.cboCasernes.Size = new System.Drawing.Size(237, 30);
             this.cboCasernes.TabIndex = 1;
             this.cboCasernes.SelectionChangeCommitted += new System.EventHandler(this.cboCasernes_SelectionChangeCommitted);
             // 
@@ -435,7 +237,7 @@
             this.cboPompiers.FormattingEnabled = true;
             this.cboPompiers.Location = new System.Drawing.Point(19, 255);
             this.cboPompiers.Name = "cboPompiers";
-            this.cboPompiers.Size = new System.Drawing.Size(237, 25);
+            this.cboPompiers.Size = new System.Drawing.Size(237, 30);
             this.cboPompiers.TabIndex = 3;
             this.cboPompiers.Visible = false;
             this.cboPompiers.SelectionChangeCommitted += new System.EventHandler(this.cboPompiers_SelectionChangeCommitted);
@@ -446,7 +248,7 @@
             this.lblPompier.ForeColor = System.Drawing.Color.Transparent;
             this.lblPompier.Location = new System.Drawing.Point(43, 215);
             this.lblPompier.Name = "lblPompier";
-            this.lblPompier.Size = new System.Drawing.Size(189, 17);
+            this.lblPompier.Size = new System.Drawing.Size(245, 22);
             this.lblPompier.TabIndex = 2;
             this.lblPompier.Text = "Veuillez choisir un pompier :";
             this.lblPompier.Visible = false;
@@ -459,7 +261,7 @@
             this.lblNouveauPompier.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.lblNouveauPompier.Location = new System.Drawing.Point(7, 545);
             this.lblNouveauPompier.Name = "lblNouveauPompier";
-            this.lblNouveauPompier.Size = new System.Drawing.Size(260, 21);
+            this.lblNouveauPompier.Size = new System.Drawing.Size(302, 26);
             this.lblNouveauPompier.TabIndex = 1;
             this.lblNouveauPompier.Text = "Ajouter un nouveau pompier";
             this.lblNouveauPompier.Click += new System.EventHandler(this.pcbIconeNouveau_Click);
@@ -470,7 +272,7 @@
             this.lblCaserne.ForeColor = System.Drawing.Color.Transparent;
             this.lblCaserne.Location = new System.Drawing.Point(39, 125);
             this.lblCaserne.Name = "lblCaserne";
-            this.lblCaserne.Size = new System.Drawing.Size(197, 17);
+            this.lblCaserne.Size = new System.Drawing.Size(254, 22);
             this.lblCaserne.TabIndex = 1;
             this.lblCaserne.Text = "Veuillez choisir une caserne :";
             // 
@@ -562,7 +364,7 @@
             this.ckbConge.Enabled = false;
             this.ckbConge.Location = new System.Drawing.Point(433, 41);
             this.ckbConge.Name = "ckbConge";
-            this.ckbConge.Size = new System.Drawing.Size(89, 21);
+            this.ckbConge.Size = new System.Drawing.Size(113, 26);
             this.ckbConge.TabIndex = 7;
             this.ckbConge.Text = "En congé";
             this.ckbConge.UseVisualStyleBackColor = true;
@@ -572,7 +374,7 @@
             this.lblAncienneCasernes.AutoSize = true;
             this.lblAncienneCasernes.Location = new System.Drawing.Point(20, 75);
             this.lblAncienneCasernes.Name = "lblAncienneCasernes";
-            this.lblAncienneCasernes.Size = new System.Drawing.Size(167, 17);
+            this.lblAncienneCasernes.Size = new System.Drawing.Size(217, 22);
             this.lblAncienneCasernes.TabIndex = 6;
             this.lblAncienneCasernes.Text = "Anciennes affectations : ";
             // 
@@ -605,7 +407,7 @@
             this.lblHabilitations.AutoSize = true;
             this.lblHabilitations.Location = new System.Drawing.Point(430, 75);
             this.lblHabilitations.Name = "lblHabilitations";
-            this.lblHabilitations.Size = new System.Drawing.Size(98, 17);
+            this.lblHabilitations.Size = new System.Drawing.Size(126, 22);
             this.lblHabilitations.TabIndex = 2;
             this.lblHabilitations.Text = "Habilitations : ";
             // 
@@ -616,7 +418,7 @@
             this.cboChoixCaserne.FormattingEnabled = true;
             this.cboChoixCaserne.Location = new System.Drawing.Point(185, 42);
             this.cboChoixCaserne.Name = "cboChoixCaserne";
-            this.cboChoixCaserne.Size = new System.Drawing.Size(195, 25);
+            this.cboChoixCaserne.Size = new System.Drawing.Size(195, 30);
             this.cboChoixCaserne.TabIndex = 1;
             // 
             // lblRattachement
@@ -625,7 +427,7 @@
             this.lblRattachement.ForeColor = System.Drawing.SystemColors.Window;
             this.lblRattachement.Location = new System.Drawing.Point(20, 45);
             this.lblRattachement.Name = "lblRattachement";
-            this.lblRattachement.Size = new System.Drawing.Size(163, 17);
+            this.lblRattachement.Size = new System.Drawing.Size(207, 22);
             this.lblRattachement.TabIndex = 0;
             this.lblRattachement.Text = "Rattaché à la caserne : ";
             // 
@@ -642,7 +444,7 @@
             // 
             this.pnlMissions.AutoScroll = true;
             this.pnlMissions.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlMissions.Location = new System.Drawing.Point(3, -652);
+            this.pnlMissions.Location = new System.Drawing.Point(3, -648);
             this.pnlMissions.Name = "pnlMissions";
             this.pnlMissions.Size = new System.Drawing.Size(30, 673);
             this.pnlMissions.TabIndex = 1;
@@ -665,7 +467,7 @@
             this.chkEnCours.AutoSize = true;
             this.chkEnCours.Location = new System.Drawing.Point(64, 38);
             this.chkEnCours.Name = "chkEnCours";
-            this.chkEnCours.Size = new System.Drawing.Size(86, 21);
+            this.chkEnCours.Size = new System.Drawing.Size(107, 26);
             this.chkEnCours.TabIndex = 2;
             this.chkEnCours.Text = "En cours";
             this.chkEnCours.UseVisualStyleBackColor = true;
@@ -688,6 +490,7 @@
             this.grpStat.Controls.Add(this.lblTypeSinistre);
             this.grpStat.Controls.Add(this.lblEnginNbUtilisation);
             this.grpStat.Controls.Add(this.cboCaserneStat);
+            this.grpStat.ForeColor = System.Drawing.Color.Black;
             this.grpStat.Location = new System.Drawing.Point(111, 90);
             this.grpStat.Name = "grpStat";
             this.grpStat.Size = new System.Drawing.Size(34, 32);
@@ -757,7 +560,7 @@
             this.cboHabilitation.FormattingEnabled = true;
             this.cboHabilitation.Location = new System.Drawing.Point(832, 334);
             this.cboHabilitation.Name = "cboHabilitation";
-            this.cboHabilitation.Size = new System.Drawing.Size(355, 25);
+            this.cboHabilitation.Size = new System.Drawing.Size(355, 30);
             this.cboHabilitation.TabIndex = 4;
             this.cboHabilitation.SelectedIndexChanged += new System.EventHandler(this.cboHabilitation_SelectedIndexChanged);
             // 
@@ -767,7 +570,7 @@
             this.lblParCaserne.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblParCaserne.Location = new System.Drawing.Point(550, 377);
             this.lblParCaserne.Name = "lblParCaserne";
-            this.lblParCaserne.Size = new System.Drawing.Size(112, 22);
+            this.lblParCaserne.Size = new System.Drawing.Size(141, 27);
             this.lblParCaserne.TabIndex = 3;
             this.lblParCaserne.Text = "Par caserne";
             // 
@@ -777,7 +580,7 @@
             this.lblTouteCaserne.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTouteCaserne.Location = new System.Drawing.Point(515, 52);
             this.lblTouteCaserne.Name = "lblTouteCaserne";
-            this.lblTouteCaserne.Size = new System.Drawing.Size(180, 22);
+            this.lblTouteCaserne.Size = new System.Drawing.Size(224, 27);
             this.lblTouteCaserne.TabIndex = 3;
             this.lblTouteCaserne.Text = "Toutes les casernes";
             // 
@@ -786,7 +589,7 @@
             this.lblEnginNbHeure.AutoSize = true;
             this.lblEnginNbHeure.Location = new System.Drawing.Point(877, 473);
             this.lblEnginNbHeure.Name = "lblEnginNbHeure";
-            this.lblEnginNbHeure.Size = new System.Drawing.Size(262, 17);
+            this.lblEnginNbHeure.Size = new System.Drawing.Size(341, 22);
             this.lblEnginNbHeure.TabIndex = 2;
             this.lblEnginNbHeure.Text = "Nombre d\'heure d\'utilisation des engins";
             // 
@@ -795,7 +598,7 @@
             this.lblListeHabilitation.AutoSize = true;
             this.lblListeHabilitation.Location = new System.Drawing.Point(933, 87);
             this.lblListeHabilitation.Name = "lblListeHabilitation";
-            this.lblListeHabilitation.Size = new System.Drawing.Size(168, 17);
+            this.lblListeHabilitation.Size = new System.Drawing.Size(217, 22);
             this.lblListeHabilitation.TabIndex = 2;
             this.lblListeHabilitation.Text = "Pompiers par habilitation";
             // 
@@ -804,7 +607,7 @@
             this.lblHabilitationDemandee.AutoSize = true;
             this.lblHabilitationDemandee.Location = new System.Drawing.Point(498, 88);
             this.lblHabilitationDemandee.Name = "lblHabilitationDemandee";
-            this.lblHabilitationDemandee.Size = new System.Drawing.Size(221, 17);
+            this.lblHabilitationDemandee.Size = new System.Drawing.Size(287, 22);
             this.lblHabilitationDemandee.TabIndex = 2;
             this.lblHabilitationDemandee.Text = "Habilitations les plus demandées";
             // 
@@ -813,7 +616,7 @@
             this.lblTypeSinistre.AutoSize = true;
             this.lblTypeSinistre.Location = new System.Drawing.Point(55, 88);
             this.lblTypeSinistre.Name = "lblTypeSinistre";
-            this.lblTypeSinistre.Size = new System.Drawing.Size(284, 17);
+            this.lblTypeSinistre.Size = new System.Drawing.Size(369, 22);
             this.lblTypeSinistre.TabIndex = 2;
             this.lblTypeSinistre.Text = "Nombre d\'interventions par type de sinistre";
             // 
@@ -822,7 +625,7 @@
             this.lblEnginNbUtilisation.AutoSize = true;
             this.lblEnginNbUtilisation.Location = new System.Drawing.Point(90, 473);
             this.lblEnginNbUtilisation.Name = "lblEnginNbUtilisation";
-            this.lblEnginNbUtilisation.Size = new System.Drawing.Size(210, 17);
+            this.lblEnginNbUtilisation.Size = new System.Drawing.Size(273, 22);
             this.lblEnginNbUtilisation.TabIndex = 2;
             this.lblEnginNbUtilisation.Text = "Nombre d\'utilisation des engins";
             // 
@@ -832,7 +635,7 @@
             this.cboCaserneStat.FormattingEnabled = true;
             this.cboCaserneStat.Location = new System.Drawing.Point(480, 402);
             this.cboCaserneStat.Name = "cboCaserneStat";
-            this.cboCaserneStat.Size = new System.Drawing.Size(239, 25);
+            this.cboCaserneStat.Size = new System.Drawing.Size(239, 30);
             this.cboCaserneStat.TabIndex = 0;
             this.cboCaserneStat.SelectedIndexChanged += new System.EventHandler(this.cboCaserneStat_SelectedIndexChanged);
             // 
@@ -854,9 +657,9 @@
             this.pnlEngin.Controls.Add(this.lblNumero);
             this.pnlEngin.Controls.Add(this.cboCaserne);
             this.pnlEngin.Controls.Add(this.lblChoixCaserne);
-            this.pnlEngin.Location = new System.Drawing.Point(15, 110);
+            this.pnlEngin.Location = new System.Drawing.Point(15, 60);
             this.pnlEngin.Name = "pnlEngin";
-            this.pnlEngin.Size = new System.Drawing.Size(5, 5);
+            this.pnlEngin.Size = new System.Drawing.Size(1205, 755);
             this.pnlEngin.TabIndex = 1;
             this.pnlEngin.VisibleChanged += new System.EventHandler(this.pnlEngin_VisibleChanged);
             // 
@@ -867,6 +670,7 @@
             this.btnLast.Size = new System.Drawing.Size(90, 90);
             this.btnLast.TabIndex = 19;
             this.btnLast.UseVisualStyleBackColor = true;
+            this.btnLast.Click += new System.EventHandler(this.changerEngin);
             // 
             // btnNext
             // 
@@ -875,6 +679,7 @@
             this.btnNext.Size = new System.Drawing.Size(90, 90);
             this.btnNext.TabIndex = 20;
             this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.changerEngin);
             // 
             // btnPrevious
             // 
@@ -883,6 +688,7 @@
             this.btnPrevious.Size = new System.Drawing.Size(90, 90);
             this.btnPrevious.TabIndex = 21;
             this.btnPrevious.UseVisualStyleBackColor = true;
+            this.btnPrevious.Click += new System.EventHandler(this.changerEngin);
             // 
             // btnFirst
             // 
@@ -891,6 +697,7 @@
             this.btnFirst.Size = new System.Drawing.Size(90, 90);
             this.btnFirst.TabIndex = 22;
             this.btnFirst.UseVisualStyleBackColor = true;
+            this.btnFirst.Click += new System.EventHandler(this.changerEngin);
             // 
             // chkReparation
             // 
@@ -899,7 +706,7 @@
             this.chkReparation.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkReparation.Location = new System.Drawing.Point(392, 464);
             this.chkReparation.Name = "chkReparation";
-            this.chkReparation.Size = new System.Drawing.Size(15, 14);
+            this.chkReparation.Size = new System.Drawing.Size(18, 17);
             this.chkReparation.TabIndex = 17;
             this.chkReparation.UseVisualStyleBackColor = true;
             // 
@@ -910,7 +717,7 @@
             this.chkMission.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkMission.Location = new System.Drawing.Point(392, 431);
             this.chkMission.Name = "chkMission";
-            this.chkMission.Size = new System.Drawing.Size(15, 14);
+            this.chkMission.Size = new System.Drawing.Size(18, 17);
             this.chkMission.TabIndex = 18;
             this.chkMission.UseVisualStyleBackColor = true;
             // 
@@ -930,7 +737,7 @@
             this.lblReparation.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblReparation.Location = new System.Drawing.Point(117, 458);
             this.lblReparation.Name = "lblReparation";
-            this.lblReparation.Size = new System.Drawing.Size(148, 24);
+            this.lblReparation.Size = new System.Drawing.Size(193, 32);
             this.lblReparation.TabIndex = 10;
             this.lblReparation.Text = "En réparation :";
             // 
@@ -940,7 +747,7 @@
             this.lblMission.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMission.Location = new System.Drawing.Point(117, 425);
             this.lblMission.Name = "lblMission";
-            this.lblMission.Size = new System.Drawing.Size(124, 24);
+            this.lblMission.Size = new System.Drawing.Size(163, 32);
             this.lblMission.TabIndex = 11;
             this.lblMission.Text = "En mission :";
             // 
@@ -950,7 +757,7 @@
             this.lblReception.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblReception.Location = new System.Drawing.Point(116, 321);
             this.lblReception.Name = "lblReception";
-            this.lblReception.Size = new System.Drawing.Size(189, 24);
+            this.lblReception.Size = new System.Drawing.Size(246, 32);
             this.lblReception.TabIndex = 12;
             this.lblReception.Text = "Date de réception :";
             // 
@@ -960,7 +767,7 @@
             this.lblReceptionEngin.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblReceptionEngin.Location = new System.Drawing.Point(393, 321);
             this.lblReceptionEngin.Name = "lblReceptionEngin";
-            this.lblReceptionEngin.Size = new System.Drawing.Size(18, 24);
+            this.lblReceptionEngin.Size = new System.Drawing.Size(25, 32);
             this.lblReceptionEngin.TabIndex = 13;
             this.lblReceptionEngin.Text = "*";
             // 
@@ -970,7 +777,7 @@
             this.lblNumeroEngin.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumeroEngin.Location = new System.Drawing.Point(393, 288);
             this.lblNumeroEngin.Name = "lblNumeroEngin";
-            this.lblNumeroEngin.Size = new System.Drawing.Size(18, 24);
+            this.lblNumeroEngin.Size = new System.Drawing.Size(25, 32);
             this.lblNumeroEngin.TabIndex = 14;
             this.lblNumeroEngin.Text = "*";
             // 
@@ -980,7 +787,7 @@
             this.lblNumero.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumero.Location = new System.Drawing.Point(117, 288);
             this.lblNumero.Name = "lblNumero";
-            this.lblNumero.Size = new System.Drawing.Size(94, 24);
+            this.lblNumero.Size = new System.Drawing.Size(125, 32);
             this.lblNumero.TabIndex = 15;
             this.lblNumero.Text = "Numero :";
             // 
@@ -990,27 +797,226 @@
             this.cboCaserne.FormattingEnabled = true;
             this.cboCaserne.Location = new System.Drawing.Point(556, 15);
             this.cboCaserne.Name = "cboCaserne";
-            this.cboCaserne.Size = new System.Drawing.Size(239, 25);
+            this.cboCaserne.Size = new System.Drawing.Size(239, 30);
             this.cboCaserne.TabIndex = 9;
+            this.cboCaserne.SelectedIndexChanged += new System.EventHandler(this.cboCaserneStat_SelectedIndexChanged);
             // 
             // lblChoixCaserne
             // 
             this.lblChoixCaserne.AutoSize = true;
             this.lblChoixCaserne.Location = new System.Drawing.Point(405, 18);
             this.lblChoixCaserne.Name = "lblChoixCaserne";
-            this.lblChoixCaserne.Size = new System.Drawing.Size(145, 17);
+            this.lblChoixCaserne.Size = new System.Drawing.Size(187, 22);
             this.lblChoixCaserne.TabIndex = 8;
             this.lblChoixCaserne.Text = "Choix de la caserne :";
             // 
+            // pnlVolet2
+            // 
+            this.pnlVolet2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(49)))), ((int)(((byte)(56)))));
+            this.pnlVolet2.Controls.Add(this.grbEP);
+            this.pnlVolet2.Controls.Add(this.lblDteMis);
+            this.pnlVolet2.Controls.Add(this.lblNumMis);
+            this.pnlVolet2.Controls.Add(this.groupBox3);
+            this.pnlVolet2.Controls.Add(this.groupBox2);
+            this.pnlVolet2.Location = new System.Drawing.Point(15, 95);
+            this.pnlVolet2.Name = "pnlVolet2";
+            this.pnlVolet2.Size = new System.Drawing.Size(5, 5);
+            this.pnlVolet2.TabIndex = 2;
+            // 
+            // grbEP
+            // 
+            this.grbEP.ForeColor = System.Drawing.Color.White;
+            this.grbEP.Location = new System.Drawing.Point(18, 438);
+            this.grbEP.Name = "grbEP";
+            this.grbEP.Size = new System.Drawing.Size(1168, 277);
+            this.grbEP.TabIndex = 10;
+            this.grbEP.TabStop = false;
+            this.grbEP.Text = "Mobilisation des engins et des pompiers";
+            // 
+            // lblDteMis
+            // 
+            this.lblDteMis.AutoSize = true;
+            this.lblDteMis.Location = new System.Drawing.Point(814, 39);
+            this.lblDteMis.Name = "lblDteMis";
+            this.lblDteMis.Size = new System.Drawing.Size(144, 22);
+            this.lblDteMis.TabIndex = 9;
+            this.lblDteMis.Text = "déclenchée le : ";
+            // 
+            // lblNumMis
+            // 
+            this.lblNumMis.AutoSize = true;
+            this.lblNumMis.Location = new System.Drawing.Point(307, 39);
+            this.lblNumMis.Name = "lblNumMis";
+            this.lblNumMis.Size = new System.Drawing.Size(97, 22);
+            this.lblNumMis.TabIndex = 8;
+            this.lblNumMis.Text = "Mission n°";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.cboCasMob);
+            this.groupBox3.Controls.Add(this.cboNatSin);
+            this.groupBox3.Controls.Add(this.btnConstEqu);
+            this.groupBox3.Controls.Add(this.btnAnn);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.ForeColor = System.Drawing.Color.White;
+            this.groupBox3.Location = new System.Drawing.Point(18, 229);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(1168, 189);
+            this.groupBox3.TabIndex = 7;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Décisions du régulateur";
+            // 
+            // cboCasMob
+            // 
+            this.cboCasMob.FormattingEnabled = true;
+            this.cboCasMob.Location = new System.Drawing.Point(850, 47);
+            this.cboCasMob.Name = "cboCasMob";
+            this.cboCasMob.Size = new System.Drawing.Size(220, 30);
+            this.cboCasMob.TabIndex = 9;
+            // 
+            // cboNatSin
+            // 
+            this.cboNatSin.FormattingEnabled = true;
+            this.cboNatSin.Location = new System.Drawing.Point(230, 47);
+            this.cboNatSin.Name = "cboNatSin";
+            this.cboNatSin.Size = new System.Drawing.Size(220, 30);
+            this.cboNatSin.TabIndex = 8;
+            // 
+            // btnConstEqu
+            // 
+            this.btnConstEqu.ForeColor = System.Drawing.Color.Black;
+            this.btnConstEqu.Location = new System.Drawing.Point(1000, 110);
+            this.btnConstEqu.Name = "btnConstEqu";
+            this.btnConstEqu.Size = new System.Drawing.Size(139, 57);
+            this.btnConstEqu.TabIndex = 10;
+            this.btnConstEqu.Text = "Constituer équipe";
+            this.btnConstEqu.UseVisualStyleBackColor = true;
+            this.btnConstEqu.Click += new System.EventHandler(this.btnConstEqu_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(650, 50);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(179, 22);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "Caserne à mobiliser";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(62, 50);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(150, 22);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Nature du siniste";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.txtVille);
+            this.groupBox2.Controls.Add(this.txtCP);
+            this.groupBox2.Controls.Add(this.txtRue);
+            this.groupBox2.Controls.Add(this.txtMotif);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox2.Location = new System.Drawing.Point(18, 66);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1168, 158);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Informations usager";
+            // 
+            // txtVille
+            // 
+            this.txtVille.Location = new System.Drawing.Point(858, 115);
+            this.txtVille.Name = "txtVille";
+            this.txtVille.Size = new System.Drawing.Size(226, 29);
+            this.txtVille.TabIndex = 8;
+            this.txtVille.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVille_KeyPress);
+            // 
+            // txtCP
+            // 
+            this.txtCP.Location = new System.Drawing.Point(858, 83);
+            this.txtCP.Name = "txtCP";
+            this.txtCP.Size = new System.Drawing.Size(226, 29);
+            this.txtCP.TabIndex = 7;
+            this.txtCP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCP_KeyPress);
+            // 
+            // txtRue
+            // 
+            this.txtRue.Location = new System.Drawing.Point(858, 51);
+            this.txtRue.Name = "txtRue";
+            this.txtRue.Size = new System.Drawing.Size(226, 29);
+            this.txtRue.TabIndex = 6;
+            this.txtRue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRue_KeyPress);
+            // 
+            // txtMotif
+            // 
+            this.txtMotif.Location = new System.Drawing.Point(313, 51);
+            this.txtMotif.Name = "txtMotif";
+            this.txtMotif.Size = new System.Drawing.Size(226, 29);
+            this.txtMotif.TabIndex = 5;
+            this.txtMotif.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMotif_KeyPress);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(911, 23);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(147, 22);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Adresse sinistre";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(783, 118);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 22);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Ville";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(726, 86);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(113, 22);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Code postal";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(783, 54);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(45, 22);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Rue";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(230, 54);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 22);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Motif";
+            // 
             // frmAccueil
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(85)))));
             this.ClientSize = new System.Drawing.Size(1234, 861);
+            this.Controls.Add(this.pnlVolet2);
             this.Controls.Add(this.pnlEngin);
             this.Controls.Add(this.pnlGestion);
-            this.Controls.Add(this.grbVolet2);
             this.Controls.Add(this.grpMissions);
             this.Controls.Add(this.grpStat);
             this.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1022,12 +1028,6 @@
             this.Text = "Extinct\'Heure";
             this.Load += new System.EventHandler(this.frmAccueil_Load);
             this.Shown += new System.EventHandler(this.frmAccueil_Shown);
-            this.grbVolet2.ResumeLayout(false);
-            this.grbVolet2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epTxt)).EndInit();
             this.pnlGestion.ResumeLayout(false);
             this.pnlInfosPompiers.ResumeLayout(false);
@@ -1044,33 +1044,17 @@
             this.pnlEngin.ResumeLayout(false);
             this.pnlEngin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbEngin)).EndInit();
+            this.pnlVolet2.ResumeLayout(false);
+            this.pnlVolet2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox grbVolet2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblDteMis;
-        private System.Windows.Forms.Label lblNumMis;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnConstEqu;
-        private System.Windows.Forms.Button btnAnn;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtVille;
-        private System.Windows.Forms.TextBox txtCP;
-        private System.Windows.Forms.TextBox txtRue;
-        private System.Windows.Forms.TextBox txtMotif;
-        private System.Windows.Forms.ComboBox cboCasMob;
-        private System.Windows.Forms.ComboBox cboNatSin;
-        private System.Windows.Forms.GroupBox grbEP;
         private System.Windows.Forms.ErrorProvider epTxt;
         private System.Windows.Forms.Panel pnlGestion;
         private System.Windows.Forms.Panel pnlInfosPompiers;
@@ -1137,6 +1121,27 @@
         private System.Windows.Forms.Label lblNumero;
         private System.Windows.Forms.ComboBox cboCaserne;
         private System.Windows.Forms.Label lblChoixCaserne;
+        private System.Windows.Forms.Panel pnlVolet2;
+        private System.Windows.Forms.GroupBox grbEP;
+        private System.Windows.Forms.Label lblDteMis;
+        private System.Windows.Forms.Label lblNumMis;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.ComboBox cboCasMob;
+        private System.Windows.Forms.ComboBox cboNatSin;
+        private System.Windows.Forms.Button btnConstEqu;
+        private System.Windows.Forms.Button btnAnn;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox txtVille;
+        private System.Windows.Forms.TextBox txtCP;
+        private System.Windows.Forms.TextBox txtRue;
+        private System.Windows.Forms.TextBox txtMotif;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }
 
