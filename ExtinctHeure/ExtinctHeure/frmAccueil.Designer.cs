@@ -638,21 +638,20 @@
             // 
             this.pnlMissions.AutoScroll = true;
             this.pnlMissions.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlMissions.Location = new System.Drawing.Point(3, -580);
+            this.pnlMissions.Location = new System.Drawing.Point(3, -645);
             this.pnlMissions.Name = "pnlMissions";
-            this.pnlMissions.Size = new System.Drawing.Size(32, 601);
+            this.pnlMissions.Size = new System.Drawing.Size(57, 673);
             this.pnlMissions.TabIndex = 1;
             // 
             // grpMissions
             // 
             this.grpMissions.Controls.Add(this.chkEnCours);
             this.grpMissions.Controls.Add(this.pnlMissions);
-            this.grpMissions.Location = new System.Drawing.Point(67, 101);
+            this.grpMissions.Location = new System.Drawing.Point(42, 105);
             this.grpMissions.Name = "grpMissions";
-            this.grpMissions.Size = new System.Drawing.Size(38, 23);
+            this.grpMissions.Size = new System.Drawing.Size(63, 31);
             this.grpMissions.TabIndex = 0;
             this.grpMissions.TabStop = false;
-            this.grpMissions.Text = "Missions";
             this.grpMissions.Visible = false;
             this.grpMissions.VisibleChanged += new System.EventHandler(this.grpMissions_VisibleChanged);
             // 
@@ -688,7 +687,6 @@
             this.grpStat.Size = new System.Drawing.Size(34, 32);
             this.grpStat.TabIndex = 0;
             this.grpStat.TabStop = false;
-            this.grpStat.Text = "Statistiques";
             this.grpStat.Visible = false;
             this.grpStat.VisibleChanged += new System.EventHandler(this.grpStat_VisibleChanged);
             // 
@@ -854,7 +852,6 @@
             this.grpEngins.Size = new System.Drawing.Size(44, 23);
             this.grpEngins.TabIndex = 0;
             this.grpEngins.TabStop = false;
-            this.grpEngins.Text = "Liste des engins";
             this.grpEngins.Visible = false;
             this.grpEngins.VisibleChanged += new System.EventHandler(this.grpEngins_VisibleChanged);
             // 
