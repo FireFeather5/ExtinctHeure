@@ -638,9 +638,9 @@
             // 
             this.pnlMissions.AutoScroll = true;
             this.pnlMissions.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlMissions.Location = new System.Drawing.Point(3, -645);
+            this.pnlMissions.Location = new System.Drawing.Point(3, -652);
             this.pnlMissions.Name = "pnlMissions";
-            this.pnlMissions.Size = new System.Drawing.Size(57, 673);
+            this.pnlMissions.Size = new System.Drawing.Size(30, 673);
             this.pnlMissions.TabIndex = 1;
             // 
             // grpMissions
@@ -649,7 +649,7 @@
             this.grpMissions.Controls.Add(this.pnlMissions);
             this.grpMissions.Location = new System.Drawing.Point(42, 105);
             this.grpMissions.Name = "grpMissions";
-            this.grpMissions.Size = new System.Drawing.Size(63, 31);
+            this.grpMissions.Size = new System.Drawing.Size(36, 19);
             this.grpMissions.TabIndex = 0;
             this.grpMissions.TabStop = false;
             this.grpMissions.Visible = false;
@@ -849,7 +849,7 @@
             this.grpEngins.Controls.Add(this.lblChoixCaserne);
             this.grpEngins.Location = new System.Drawing.Point(111, 61);
             this.grpEngins.Name = "grpEngins";
-            this.grpEngins.Size = new System.Drawing.Size(44, 23);
+            this.grpEngins.Size = new System.Drawing.Size(1062, 761);
             this.grpEngins.TabIndex = 0;
             this.grpEngins.TabStop = false;
             this.grpEngins.Visible = false;
@@ -861,7 +861,6 @@
             this.btnLast.Name = "btnLast";
             this.btnLast.Size = new System.Drawing.Size(90, 90);
             this.btnLast.TabIndex = 7;
-            this.btnLast.Text = ">|";
             this.btnLast.UseVisualStyleBackColor = true;
             this.btnLast.Click += new System.EventHandler(this.changerEngin);
             // 
@@ -871,7 +870,6 @@
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(90, 90);
             this.btnNext.TabIndex = 7;
-            this.btnNext.Text = ">>";
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Click += new System.EventHandler(this.changerEngin);
             // 
@@ -881,7 +879,6 @@
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(90, 90);
             this.btnPrevious.TabIndex = 7;
-            this.btnPrevious.Text = "<<";
             this.btnPrevious.UseVisualStyleBackColor = true;
             this.btnPrevious.Click += new System.EventHandler(this.changerEngin);
             // 
@@ -891,7 +888,6 @@
             this.btnFirst.Name = "btnFirst";
             this.btnFirst.Size = new System.Drawing.Size(90, 90);
             this.btnFirst.TabIndex = 7;
-            this.btnFirst.Text = "|<";
             this.btnFirst.UseVisualStyleBackColor = true;
             this.btnFirst.Click += new System.EventHandler(this.changerEngin);
             // 
@@ -1023,6 +1019,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Extinct\'Heure";
             this.Load += new System.EventHandler(this.frmAccueil_Load);
+            this.Shown += new System.EventHandler(this.frmAccueil_Shown);
             this.grbVolet2.ResumeLayout(false);
             this.grbVolet2.PerformLayout();
             this.groupBox3.ResumeLayout(false);

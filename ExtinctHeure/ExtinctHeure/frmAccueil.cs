@@ -186,8 +186,6 @@ namespace ExtinctHeure
 
             btnStats.Click += new System.EventHandler(this.btnStats_Click);
             this.Controls.Add(btnStats);
-
-
         }
 
         private void btnTabBord_Click(object sender, EventArgs e)
@@ -1826,6 +1824,11 @@ namespace ExtinctHeure
         {
             if (grpEngins.Visible)
             {
+                btnFirst.Image = new Bitmap(System.Drawing.Image.FromFile("../../../../Ressources/ImagesNavigation/premier.png"), new Size(80, 80));
+                btnPrevious.Image = new Bitmap(System.Drawing.Image.FromFile("../../../../Ressources/ImagesNavigation/precendent.png"), new Size(80, 80));
+                btnNext.Image = new Bitmap(System.Drawing.Image.FromFile("../../../../Ressources/ImagesNavigation/suivant.png"), new Size(80, 80));
+                btnLast.Image = new Bitmap(System.Drawing.Image.FromFile("../../../../Ressources/ImagesNavigation/dernier.png"), new Size(80, 80));
+
                 loaded = false;
                 lblNumeroEngin.Text = "";
                 lblReceptionEngin.Text = "";
@@ -1876,6 +1879,11 @@ namespace ExtinctHeure
                 chkReparation.DataBindings.Add("Checked", bsEngin, "enPanne");
                 pcbEngin.DataBindings.Add("ImageLocation", bsEngin, "image");
             }
+        }
+
+        private void frmAccueil_Shown(object sender, EventArgs e)
+        {
+            btnTabBord_Click(btnTabBord, e);
         }
     }
 }
