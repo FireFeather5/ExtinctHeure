@@ -6,8 +6,6 @@
 
 Application créée en C# avec l'application Visual Studio permettant de gérer une caserne de pompier, en se basant sur une base de donnée SQLite.
 
-<!-- image(s) -->
-
 ## Technologies utilisées
 
 **Langage :** C#
@@ -28,13 +26,10 @@ Ou télécharger tous les fichiers à la main.
 
 Installer Visual Studio.
 
-Ouvrir le fichier `ExtinctHeure.sln` dans l'aaplication (ce qui ouvrira tout le projet).
+Ouvrir le fichier `ExtinctHeure.sln` dans l'aplication (ce qui ouvrira tout le projet).
 
-<!-- a revoir
-    Vérifier que SQLite est installé
-
-    Projet > Gérer les paquets Nuget > System.Data.SQLite.Core > installer
--->
+Vérifier que SQLite est installé  
+`Projet > Gérer les paquets Nuget > System.Data.SQLite.Core > installer`
 
 Lancer l'exécution depuis l'application.
 
